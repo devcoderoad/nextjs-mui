@@ -244,7 +244,7 @@ function DashboardContent({ children }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="absolute" open={open} color="light">
+      <AppBar position="absolute" open={open} color="primary">
         <Toolbar
           sx={{
             pr: "24px", // keep right padding when drawer closed
@@ -316,7 +316,7 @@ function DashboardContent({ children }) {
             >
               <Input
                 placeholder="Search.."
-                color="light"
+                // color="light"
                 ref={inputRef}
                 onBlur={() => setSearchOpen(!searchOpen)}
                 autoFocus

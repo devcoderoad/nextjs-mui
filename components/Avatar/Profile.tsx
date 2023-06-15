@@ -46,10 +46,10 @@ export default function Component(props) {
       }}
     >
       {cog ? (
-        <Box alignSelf="end" size="small">
+        <Box alignSelf="end">
           <IconButton
             aria-describedby={id}
-            children={<MoreIcon size="small" />}
+            children={<MoreIcon />}
             onClick={handleClick}
           />
           <Popover
@@ -74,25 +74,13 @@ export default function Component(props) {
               padding={1}
               divider={<Divider orientation="vertical" flexItem />}
             >
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<RefreshIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<RefreshIcon />}>
                 Refresh
               </Button>
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<CachedIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<CachedIcon />}>
                 Reload
               </Button>
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<OffIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<OffIcon />}>
                 Remove
               </Button>
             </Stack>

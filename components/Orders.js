@@ -191,9 +191,9 @@ export default function Orders() {
                 <TableCell>{row.shipTo}</TableCell>
                 <TableCell>{row.paymentMethod}</TableCell>
                 <TableCell>{`$${row.amount}`}</TableCell>
-                <TableCell align="center">
+                {/* <TableCell align="center">
                   <Badge color={row.status} badgeContent={row.status} />
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   <Stack spacing={0.5} direction="row">
                     <Button variant="outlined" size="small">

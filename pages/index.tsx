@@ -82,7 +82,7 @@ export default function Page() {
           </Link>
           <Typography
             variant="h1"
-            md="h5"
+            // md="h5"
             mt={3}
             fontSize={{ xs: "1.75rem", sm: "2rem" }}
             color="secondary.dark"

@@ -137,9 +137,7 @@ export default function Page() {
             }}
           >
             <Box>
-              <Button color="danger" variant="outlined">
-                Transfer
-              </Button>
+              <Button variant="outlined">Transfer</Button>
               <GroupButton dense />
             </Box>
             <Box container>

@@ -36,9 +36,9 @@ const theme = createTheme({
     success: { main: "#198754" },
     info: { main: "#2e9cf2" }, //"#0dcaf0"
     warning: { main: "#ffc107" },
-    danger: { main: "#dc3545" },
-    light: { main: "#f8f9fa" },
-    dark: { main: "#212529" },
+    // alert: { main: "#dc3545" },
+    // light: { main: "#f8f9fa" },
+    // dark: { main: "#212529" },
     error: {
       main: red.A400,
     },
@@ -76,11 +76,11 @@ const theme = createTheme({
       fontWeight: "400",
       lineHeight: 1.5,
     },
-    h7: {
-      // fontFamily: roboto.style.fontFamily,
-      fontWeight: "600",
-      lineHeight: 1.5,
-    },
+    // h7: {
+    //   // fontFamily: roboto.style.fontFamily,
+    //   fontWeight: "600",
+    //   lineHeight: 1.5,
+    // },
   },
   components: {
     // Name of the component

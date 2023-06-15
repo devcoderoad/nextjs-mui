@@ -33,9 +33,9 @@ export default function FloatNotify({ show, items }) {
   return (
     <>
       <IconButton color="inherit" onClick={handleClick}>
-        <Badge badgeContent={4} color="danger">
+        {/* <Badge badgeContent={4} color="danger">
           <NotificationsIcon />
-        </Badge>
+        </Badge> */}
       </IconButton>
       <Popover
         id={id}
@@ -87,12 +87,12 @@ export default function FloatNotify({ show, items }) {
                 <Grid item>
                   <Avatar sx={{ border: "1px solid grey" }}>
                     W
-                    <Badge
+                    {/* <Badge
                       badgeContent={""}
                       color="success"
                       overlap="circular"
                       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    />
+                    /> */}
                   </Avatar>
                   {/* <small>21 Second Ago</small> */}
                 </Grid>
