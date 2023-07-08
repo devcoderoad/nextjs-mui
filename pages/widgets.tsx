@@ -1,15 +1,15 @@
-import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material'
 
-import PhoneIcon from "@mui/icons-material/Phone";
-import PhoneMissedIcon from "@mui/icons-material/PhoneMissed";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
+import PhoneIcon from '@mui/icons-material/Phone'
+import PhoneMissedIcon from '@mui/icons-material/PhoneMissed'
+import PersonPinIcon from '@mui/icons-material/PersonPin'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
 /* Components */
-import Cog from "@components/Cog/Default";
-import TabsDefault from "@components/Tabs/Default";
+import Cog from '@components/Cog/Default'
+import TabsDefault from '@components/Tabs/Default'
 
 export default function Page() {
   return (
@@ -19,8 +19,8 @@ export default function Page() {
           <Paper
             sx={{
               p: 2,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               minHeight: 240,
             }}
           >
@@ -116,5 +116,5 @@ export default function Page() {
         </Grid>
       </Container>
     </DashboardLayout>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 /* MUI */
 import {
@@ -12,27 +12,26 @@ import {
   IconButton,
   Popover,
   Stack,
-} from "@mui/material";
+} from '@mui/material'
 
 /* Icons */
-import MoreIcon from "@mui/icons-material/MoreVert";
-import RefreshIcon from "@mui/icons-material/RefreshOutlined";
-import CachedIcon from "@mui/icons-material/CachedOutlined";
-import OffIcon from "@mui/icons-material/HighlightOffOutlined";
-import AddCardIcon from "@mui/icons-material/AddCardOutlined";
+import MoreIcon from '@mui/icons-material/MoreVert'
+import RefreshIcon from '@mui/icons-material/RefreshOutlined'
+import CachedIcon from '@mui/icons-material/CachedOutlined'
+import OffIcon from '@mui/icons-material/HighlightOffOutlined'
+import AddCardIcon from '@mui/icons-material/AddCardOutlined'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
 /* Components */
-import Chart from "@components/Chart/ReChart";
-import Balance from "@components/Card/Balance";
-import Orders from "@components/Orders";
-import DashboardToolbar from "@components/Toolbar/Dashboard";
-import AvatarProfile from "@components/Avatar/Profile";
-import Cog from "@components/Cog/Default";
+import Balance from '@components/Card/Balance'
+import Orders from '@components/Orders'
+import DashboardToolbar from '@components/Toolbar/Dashboard'
+import AvatarProfile from '@components/Avatar/Profile'
+import Cog from '@components/Cog/Default'
 
-import shadows from "@mui/material/styles/shadows";
+import shadows from '@mui/material/styles/shadows'
 
 export default function Page() {
   return (
@@ -50,9 +49,9 @@ export default function Page() {
           <Paper
             sx={{
               p: 2,
-              display: "flex",
-              flexDirection: "column",
-              minHeight: "100%",
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: '100%',
             }}
           >
             <Box display="flex" justifyContent="space-between" marginBottom={1}>
@@ -76,11 +75,11 @@ export default function Page() {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
             <Orders />
           </Paper>
         </Grid>
       </Grid>
     </DashboardLayout>
-  );
+  )
 }

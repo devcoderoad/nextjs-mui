@@ -1,15 +1,15 @@
-import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material'
 
-import PhoneIcon from "@mui/icons-material/Phone";
-import PhoneMissedIcon from "@mui/icons-material/PhoneMissed";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
+import PhoneIcon from '@mui/icons-material/Phone'
+import PhoneMissedIcon from '@mui/icons-material/PhoneMissed'
+import PersonPinIcon from '@mui/icons-material/PersonPin'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
 /* Components */
-import Cog from "@components/Cog/Default";
-import TabsDefault from "@components/Tabs/Default";
+import Cog from '@components/Cog/Default'
+import TabsDefault from '@components/Tabs/Default'
 
 export default function Page() {
   return (
@@ -19,8 +19,8 @@ export default function Page() {
           <Paper
             sx={{
               p: 2,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               minHeight: 240,
             }}
           >
@@ -35,9 +35,9 @@ export default function Page() {
               </Typography>
               <TabsDefault
                 items={[
-                  { title: "Tab One Title", item: "Tab One Content" },
-                  { title: "Tab Two Title", item: "Tab Two Content" },
-                  { title: "Tab Three Title", item: "Tab Three Content" },
+                  { title: 'Tab One Title', item: 'Tab One Content' },
+                  { title: 'Tab Two Title', item: 'Tab Two Content' },
+                  { title: 'Tab Three Title', item: 'Tab Three Content' },
                 ]}
               />
             </Box>
@@ -53,11 +53,11 @@ export default function Page() {
               <TabsDefault
                 variant="fullWidth"
                 items={[
-                  { title: "Tab One Title", item: "Tab One Content" },
-                  { title: "Tab Two Title", item: "Tab Two Content" },
-                  { title: "Tab Three Title", item: "Tab Three Content" },
-                  { title: "Tab Four Title", item: "Tab Four Content" },
-                  { title: "Tab Five Title", item: "Tab Five Content" },
+                  { title: 'Tab One Title', item: 'Tab One Content' },
+                  { title: 'Tab Two Title', item: 'Tab Two Content' },
+                  { title: 'Tab Three Title', item: 'Tab Three Content' },
+                  { title: 'Tab Four Title', item: 'Tab Four Content' },
+                  { title: 'Tab Five Title', item: 'Tab Five Content' },
                 ]}
               />
             </Box>
@@ -73,9 +73,9 @@ export default function Page() {
               <TabsDefault
                 type="outlined"
                 items={[
-                  { title: "Tab One Title", item: "Tab One Content" },
-                  { title: "Tab Two Title", item: "Tab Two Content" },
-                  { title: "Tab Three Title", item: "Tab Three Content" },
+                  { title: 'Tab One Title', item: 'Tab One Content' },
+                  { title: 'Tab Two Title', item: 'Tab Two Content' },
+                  { title: 'Tab Three Title', item: 'Tab Three Content' },
                 ]}
               />
             </Box>
@@ -92,11 +92,11 @@ export default function Page() {
                 type="outlined"
                 variant="fullWidth"
                 items={[
-                  { title: "Tab One Title", item: "Tab One Content" },
-                  { title: "Tab Two Title", item: "Tab Two Content" },
-                  { title: "Tab Three Title", item: "Tab Three Content" },
-                  { title: "Tab Four Title", item: "Tab Four Content" },
-                  { title: "Tab Five Title", item: "Tab Five Content" },
+                  { title: 'Tab One Title', item: 'Tab One Content' },
+                  { title: 'Tab Two Title', item: 'Tab Two Content' },
+                  { title: 'Tab Three Title', item: 'Tab Three Content' },
+                  { title: 'Tab Four Title', item: 'Tab Four Content' },
+                  { title: 'Tab Five Title', item: 'Tab Five Content' },
                 ]}
               />
             </Box>
@@ -112,30 +112,30 @@ export default function Page() {
               <TabsDefault
                 items={[
                   {
-                    title: "Tab One Title",
-                    item: "Tab One Content",
+                    title: 'Tab One Title',
+                    item: 'Tab One Content',
                     props: {
                       icon: <PhoneIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Two Title",
-                    item: "Tab Two Content",
+                    title: 'Tab Two Title',
+                    item: 'Tab Two Content',
                     props: {
                       icon: <PhoneMissedIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Three Title",
-                    item: "Tab Three Content",
+                    title: 'Tab Three Title',
+                    item: 'Tab Three Content',
                     props: {
                       icon: <PersonPinIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                 ]}
@@ -154,48 +154,48 @@ export default function Page() {
                 variant="fullWidth"
                 items={[
                   {
-                    title: "Tab One Title",
-                    item: "Tab One Content",
+                    title: 'Tab One Title',
+                    item: 'Tab One Content',
                     props: {
                       icon: <PhoneIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Two Title",
-                    item: "Tab Two Content",
+                    title: 'Tab Two Title',
+                    item: 'Tab Two Content',
                     props: {
                       icon: <PhoneMissedIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Three Title",
-                    item: "Tab Three Content",
+                    title: 'Tab Three Title',
+                    item: 'Tab Three Content',
                     props: {
                       icon: <PhoneIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Four Title",
-                    item: "Tab Four Content",
+                    title: 'Tab Four Title',
+                    item: 'Tab Four Content',
                     props: {
                       icon: <PhoneMissedIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Five Title",
-                    item: "Tab Five Content",
+                    title: 'Tab Five Title',
+                    item: 'Tab Five Content',
                     props: {
                       icon: <PersonPinIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                 ]}
@@ -214,30 +214,30 @@ export default function Page() {
                 type="rounded"
                 items={[
                   {
-                    title: "Tab One Title",
-                    item: "Tab One Content",
+                    title: 'Tab One Title',
+                    item: 'Tab One Content',
                     props: {
                       icon: <PhoneIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Two Title",
-                    item: "Tab Two Content",
+                    title: 'Tab Two Title',
+                    item: 'Tab Two Content',
                     props: {
                       icon: <PhoneMissedIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                   {
-                    title: "Tab Three Title",
-                    item: "Tab Three Content",
+                    title: 'Tab Three Title',
+                    item: 'Tab Three Content',
                     props: {
                       icon: <PersonPinIcon fontSize="small" />,
-                      iconPosition: "start",
-                      sx: { minHeight: "36px" },
+                      iconPosition: 'start',
+                      sx: { minHeight: '36px' },
                     },
                   },
                 ]}
@@ -255,38 +255,38 @@ export default function Page() {
               <TabsDefault
                 items={[
                   {
-                    title: "Tab One Title",
-                    item: "Tab One Content",
+                    title: 'Tab One Title',
+                    item: 'Tab One Content',
                     props: {
                       icon: <PhoneIcon fontSize="small" />,
-                      iconPosition: "start",
+                      iconPosition: 'start',
                       sx: {
                         minHeight: 47,
-                        backgroundColor: "secondary.light",
+                        backgroundColor: 'secondary.light',
                       },
                     },
                   },
                   {
-                    title: "Tab Two Title",
-                    item: "Tab Two Content",
+                    title: 'Tab Two Title',
+                    item: 'Tab Two Content',
                     props: {
                       icon: <PhoneMissedIcon fontSize="small" />,
-                      iconPosition: "start",
+                      iconPosition: 'start',
                       sx: {
                         minHeight: 47,
-                        backgroundColor: "secondary.light",
+                        backgroundColor: 'secondary.light',
                       },
                     },
                   },
                   {
-                    title: "Tab Three Title",
-                    item: "Tab Three Content",
+                    title: 'Tab Three Title',
+                    item: 'Tab Three Content',
                     props: {
                       icon: <PersonPinIcon fontSize="small" />,
-                      iconPosition: "start",
+                      iconPosition: 'start',
                       sx: {
                         minHeight: 47,
-                        backgroundColor: "secondary.light",
+                        backgroundColor: 'secondary.light',
                       },
                     },
                   },
@@ -297,5 +297,5 @@ export default function Page() {
         </Grid>
       </Container>
     </DashboardLayout>
-  );
+  )
 }

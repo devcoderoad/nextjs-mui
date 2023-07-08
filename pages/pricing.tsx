@@ -1,105 +1,105 @@
-import * as React from "react";
+import * as React from 'react'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import StarIcon from "@mui/icons-material/StarBorder";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import Container from "@mui/material/Container";
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import CssBaseline from '@mui/material/CssBaseline'
+import Grid from '@mui/material/Grid'
+import StarIcon from '@mui/icons-material/StarBorder'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import Container from '@mui/material/Container'
 
 /* Config */
-import { constant } from "@config/constants";
+import { constant } from '@config/constants'
 
 /* Components */
-import Copyright from "@components/Copyright";
+import Copyright from '@components/Copyright'
 
 const tiers = [
   {
-    title: "Free",
-    price: "0",
+    title: 'Free',
+    price: '0',
     description: [
-      "10 users included",
-      "2 GB of storage",
-      "Help center access",
-      "Email support",
+      '10 users included',
+      '2 GB of storage',
+      'Help center access',
+      'Email support',
     ],
-    buttonText: "Sign up for free",
-    buttonVariant: "outlined",
+    buttonText: 'Sign up for free',
+    buttonVariant: 'outlined',
   },
   {
-    title: "Pro",
-    subheader: "Most popular",
-    price: "15",
+    title: 'Pro',
+    subheader: 'Most popular',
+    price: '15',
     description: [
-      "20 users included",
-      "10 GB of storage",
-      "Help center access",
-      "Priority email support",
+      '20 users included',
+      '10 GB of storage',
+      'Help center access',
+      'Priority email support',
     ],
-    buttonText: "Get started",
-    buttonVariant: "contained",
+    buttonText: 'Get started',
+    buttonVariant: 'contained',
   },
   {
-    title: "Enterprise",
-    price: "30",
+    title: 'Enterprise',
+    price: '30',
     description: [
-      "50 users included",
-      "30 GB of storage",
-      "Help center access",
-      "Phone & email support",
+      '50 users included',
+      '30 GB of storage',
+      'Help center access',
+      'Phone & email support',
     ],
-    buttonText: "Contact us",
-    buttonVariant: "outlined",
+    buttonText: 'Contact us',
+    buttonVariant: 'outlined',
   },
-];
+]
 
 const footers = [
   {
-    title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"],
+    title: 'Company',
+    description: ['Team', 'History', 'Contact us', 'Locations'],
   },
   {
-    title: "Features",
+    title: 'Features',
     description: [
-      "Cool stuff",
-      "Random feature",
-      "Team feature",
-      "Developer stuff",
-      "Another one",
+      'Cool stuff',
+      'Random feature',
+      'Team feature',
+      'Developer stuff',
+      'Another one',
     ],
   },
   {
-    title: "Resources",
+    title: 'Resources',
     description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource",
+      'Resource',
+      'Resource name',
+      'Another resource',
+      'Final resource',
     ],
   },
   {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"],
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
   },
-];
+]
 
 function PricingContent() {
   return (
     <React.Fragment>
       <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+        styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
       <AppBar
@@ -110,16 +110,16 @@ function PricingContent() {
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Toolbar sx={{ flexWrap: "wrap" }}>
+        <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             <Link
               href="/"
               sx={{
-                transition: "all .5s ease",
-                verticalAlign: "middle",
+                transition: 'all .5s ease',
+                verticalAlign: 'middle',
                 ml: 1.5,
-                ":hover": {
-                  filter: "brightness(1.35);",
+                ':hover': {
+                  filter: 'brightness(1.35);',
                 },
               }}
             >
@@ -127,7 +127,7 @@ function PricingContent() {
                 src="/logo-white.svg"
                 alt={constant.siteName}
                 height={24}
-                style={{ verticalAlign: "middle" }}
+                style={{ verticalAlign: 'middle' }}
               />
             </Link>
           </Typography>
@@ -198,21 +198,21 @@ function PricingContent() {
               item
               key={tier.title}
               xs={12}
-              sm={tier.title === "Enterprise" ? 12 : 6}
+              sm={tier.title === 'Enterprise' ? 12 : 6}
               md={4}
             >
               <Card>
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
-                  titleTypographyProps={{ align: "center" }}
-                  action={tier.title === "Pro" ? <StarIcon /> : null}
+                  titleTypographyProps={{ align: 'center' }}
+                  action={tier.title === 'Pro' ? <StarIcon /> : null}
                   subheaderTypographyProps={{
-                    align: "center",
+                    align: 'center',
                   }}
                   sx={{
                     backgroundColor: (theme) =>
-                      theme.palette.mode === "light"
+                      theme.palette.mode === 'light'
                         ? theme.palette.grey[200]
                         : theme.palette.grey[700],
                   }}
@@ -220,9 +220,9 @@ function PricingContent() {
                 <CardContent>
                   <Box
                     sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "baseline",
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'baseline',
                       mb: 2,
                     }}
                   >
@@ -292,7 +292,7 @@ function PricingContent() {
       </Container>
       {/* End footer */}
     </React.Fragment>
-  );
+  )
 }
 
 export default function Pricing() {
@@ -300,5 +300,5 @@ export default function Pricing() {
     <DashboardLayout>
       <PricingContent />
     </DashboardLayout>
-  );
+  )
 }

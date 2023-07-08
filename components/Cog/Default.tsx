@@ -1,35 +1,28 @@
-import * as React from "react";
+import * as React from 'react'
 
-import {
-  Box,
-  Button,
-  IconButton,
-  Divider,
-  Popover,
-  Stack,
-} from "@mui/material";
+import { Box, Button, IconButton, Divider, Popover, Stack } from '@mui/material'
 
-import MoreIcon from "@mui/icons-material/MoreVert";
-import RefreshIcon from "@mui/icons-material/RefreshOutlined";
-import CachedIcon from "@mui/icons-material/CachedOutlined";
-import OffIcon from "@mui/icons-material/HighlightOffOutlined";
+import MoreIcon from '@mui/icons-material/MoreVert'
+import RefreshIcon from '@mui/icons-material/RefreshOutlined'
+import CachedIcon from '@mui/icons-material/CachedOutlined'
+import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
 export default function Component(props) {
-  const { type = "", mode = "", children = null } = props;
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const stack = type ? "row" : "column";
-  const divider = stack === "row" ? "vertical" : "horizontal";
+  const { type = '', mode = '', children = null } = props
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const stack = type ? 'row' : 'column'
+  const divider = stack === 'row' ? 'vertical' : 'horizontal'
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
-  const open = Boolean(anchorEl);
-  const id = open ? "popover-cog-default" : undefined;
+  const open = Boolean(anchorEl)
+  const id = open ? 'popover-cog-default' : undefined
 
   return (
     <Box alignSelf="start" size="small">
@@ -46,12 +39,12 @@ export default function Component(props) {
         onClose={handleClose}
         elevation={2}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
+          vertical: 'bottom',
+          horizontal: 'right',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
         <Stack
@@ -84,5 +77,5 @@ export default function Component(props) {
         </Stack>
       </Popover>
     </Box>
-  );
+  )
 }

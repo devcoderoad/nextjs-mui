@@ -1,17 +1,17 @@
-import * as React from "react";
-import { Box, Typography } from "@mui/material";
-import MuiLink from "@mui/material/Link";
-import { constant } from "@config/constants";
+import * as React from 'react'
+import { Box, Typography } from '@mui/material'
+import MuiLink from '@mui/material/Link'
+import { constant } from '@config/constants'
 
-export default function Copyright() {
+export default function Copyright({ ...rest }) {
   return (
-    <Box sx={{ mt: 4 }}>
+    <Box sx={{ mt: 4 }} {...rest}>
       <Typography variant="body2" color="text.secondary" align="center">
-        {constant.siteCopyright}{" "}
+        {constant.siteCopyright}{' '}
         <MuiLink color="inherit" href="https://dykraf.com/">
           {constant.siteName}
         </MuiLink>
       </Typography>
     </Box>
-  );
+  )
 }

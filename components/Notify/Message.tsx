@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsIcon from '@mui/icons-material/Notifications'
 
 import {
   Box,
@@ -12,10 +12,10 @@ import {
   IconButton,
   Badge,
   Divider,
-} from "@mui/material";
+} from '@mui/material'
 
 export default function NotifyMessage(props) {
-  const { items } = props;
+  const { items } = props
 
-  return <Box>Test</Box>;
+  return <Box>Test</Box>
 }

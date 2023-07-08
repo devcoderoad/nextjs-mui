@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import Popover from '@mui/material/Popover'
+import Typography from '@mui/material/Typography'
 
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsIcon from '@mui/icons-material/Notifications'
 import {
   Box,
   Fab,
@@ -14,21 +14,21 @@ import {
   IconButton,
   Badge,
   Divider,
-} from "@mui/material";
+} from '@mui/material'
 
 export default function FloatNotify({ show, items }) {
-  const [anchorEl, setAnchorEl] = React.useState(show);
+  const [anchorEl, setAnchorEl] = React.useState(show)
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
 
   return (
     <>
@@ -43,16 +43,16 @@ export default function FloatNotify({ show, items }) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left',
         }}
       >
         <Box
           sx={{
-            width: "320px",
-            height: "320px",
-            overflowX: "hidden",
-            overflowY: "auto",
+            width: '320px',
+            height: '320px',
+            overflowX: 'hidden',
+            overflowY: 'auto',
           }}
         >
           <Grid
@@ -61,7 +61,7 @@ export default function FloatNotify({ show, items }) {
             justifyContent="space-between"
             alignItems="center"
             fontSize="small"
-            sx={{ a: { textDecoration: "none" } }}
+            sx={{ a: { textDecoration: 'none' } }}
           >
             <Box my={1} mx={2} component="span">
               Messages:
@@ -81,11 +81,11 @@ export default function FloatNotify({ show, items }) {
                 m={0.5}
                 pr={4}
                 sx={{
-                  bgColor: "secondary.main",
+                  bgColor: 'secondary.main',
                 }}
               >
                 <Grid item>
-                  <Avatar sx={{ border: "1px solid grey" }}>
+                  <Avatar sx={{ border: '1px solid grey' }}>
                     W
                     {/* <Badge
                       badgeContent={""}
@@ -98,9 +98,9 @@ export default function FloatNotify({ show, items }) {
                 </Grid>
                 <Grid item xs container wrap="wrap">
                   <Typography
-                    sx={{ p: 0, m: 1, fontWeight: "600" }}
+                    sx={{ p: 0, m: 1, fontWeight: '600' }}
                     variant="caption"
-                    component={"p"}
+                    component={'p'}
                   >
                     {item.author}
                   </Typography>
@@ -110,7 +110,7 @@ export default function FloatNotify({ show, items }) {
                 </Grid>
                 <Grid item>
                   <Typography
-                    sx={{ p: 0, m: 1, lineHeight: 1.25, fontWeight: "200" }}
+                    sx={{ p: 0, m: 1, lineHeight: 1.25, fontWeight: '200' }}
                     variant="subtitle2"
                   >
                     {item.title}
@@ -121,5 +121,5 @@ export default function FloatNotify({ show, items }) {
         </Box>
       </Popover>
     </>
-  );
+  )
 }

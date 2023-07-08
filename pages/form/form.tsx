@@ -1,14 +1,14 @@
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import EmailIcon from "@mui/icons-material/Email";
-import MapIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
+import Paper from '@mui/material/Paper'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import EmailIcon from '@mui/icons-material/Email'
+import MapIcon from '@mui/icons-material/LocationOn'
+import PhoneIcon from '@mui/icons-material/Phone'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
 export default function Page() {
   return (
@@ -16,8 +16,8 @@ export default function Page() {
       <Paper
         sx={{
           p: 4,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           minHeight: 240,
         }}
       >
@@ -25,7 +25,7 @@ export default function Page() {
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}
           id="form-registration"
           noValidate
@@ -83,7 +83,7 @@ export default function Page() {
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}
           id="form-settings"
           noValidate
@@ -151,7 +151,7 @@ export default function Page() {
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}
           id="form-check-in"
           noValidate
@@ -216,17 +216,17 @@ export default function Page() {
       <Paper
         sx={{
           p: 4,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           // minHeight: 240,
         }}
       >
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
             button: {
-              marginRight: ".5rem",
+              marginRight: '.5rem',
             },
           }}
           id="form-settings"
@@ -234,8 +234,8 @@ export default function Page() {
           autoComplete="off"
         >
           <Box>
-            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-              <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.25 }} />
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
               <TextField
                 id="input-with-sx"
                 label="Full Name"
@@ -243,8 +243,8 @@ export default function Page() {
                 margin="dense"
               />
             </Box>
-            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-              <EmailIcon sx={{ color: "action.active", mr: 1, my: 0.25 }} />
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
               <TextField
                 id="input-with-sx"
                 label="Email"
@@ -252,8 +252,8 @@ export default function Page() {
                 margin="dense"
               />
             </Box>
-            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-              <PhoneIcon sx={{ color: "action.active", mr: 1, my: 0.25 }} />
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
               <TextField
                 id="input-with-sx"
                 label="Phone"
@@ -261,8 +261,8 @@ export default function Page() {
                 margin="dense"
               />
             </Box>
-            <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-              <MapIcon sx={{ color: "action.active", mr: 1, my: 0.25 }} />
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <MapIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
               <TextField
                 id="input-with-sx"
                 label="Address"
@@ -273,7 +273,7 @@ export default function Page() {
               />
             </Box>
           </Box>
-          <Box sx={{ marginBottom: "2rem", marginTop: "2rem" }}>
+          <Box sx={{ marginBottom: '2rem', marginTop: '2rem' }}>
             <Button variant="contained">Submit</Button>
             <Button variant="contained">Submit</Button>
             <Button variant="contained">Submit</Button>
@@ -283,5 +283,5 @@ export default function Page() {
         </Box>
       </Paper>
     </DashboardLayout>
-  );
+  )
 }

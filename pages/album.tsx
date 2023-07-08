@@ -1,30 +1,30 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import CameraIcon from "@mui/icons-material/PhotoCamera";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import { createTheme } from "@mui/material/styles";
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Button from '@mui/material/Button'
+import CameraIcon from '@mui/icons-material/PhotoCamera'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import CssBaseline from '@mui/material/CssBaseline'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import Link from '@mui/material/Link'
+import { createTheme } from '@mui/material/styles'
 
 /* Components */
-import Copyright from "@components/Copyright";
+import Copyright from '@components/Copyright'
 
 /* Config */
-import { constant } from "@config/constants";
+import { constant } from '@config/constants'
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-const theme = createTheme();
+const theme = createTheme()
 
 export default function Page() {
   return (
@@ -38,11 +38,11 @@ export default function Page() {
             <Link
               href="/"
               sx={{
-                transition: "all .5s ease",
-                verticalAlign: "middle",
+                transition: 'all .5s ease',
+                verticalAlign: 'middle',
                 ml: 0,
-                ":hover": {
-                  filter: "brightness(1.35);",
+                ':hover': {
+                  filter: 'brightness(1.35);',
                 },
               }}
             >
@@ -50,7 +50,7 @@ export default function Page() {
                 src="/logo-white.svg"
                 alt={constant.siteName}
                 height={24}
-                style={{ verticalAlign: "middle" }}
+                style={{ verticalAlign: 'middle' }}
               />
             </Link>
           </Typography>
@@ -60,7 +60,7 @@ export default function Page() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper",
+            bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
           }}
@@ -76,11 +76,11 @@ export default function Page() {
               <Link
                 href="/"
                 sx={{
-                  transition: "all .5s ease",
-                  verticalAlign: "middle",
+                  transition: 'all .5s ease',
+                  verticalAlign: 'middle',
                   ml: 0,
-                  ":hover": {
-                    filter: "brightness(1.35);",
+                  ':hover': {
+                    filter: 'brightness(1.35);',
                   },
                 }}
               >
@@ -88,7 +88,7 @@ export default function Page() {
                   src="/logo.svg"
                   alt={constant.siteName}
                   height={64}
-                  style={{ verticalAlign: "middle" }}
+                  style={{ verticalAlign: 'middle' }}
                 />
               </Link>
             </Typography>
@@ -104,7 +104,7 @@ export default function Page() {
             </Typography>
             <Stack
               sx={{ pt: 4 }}
-              direction={{ lg: "row" }}
+              direction={{ lg: 'row' }}
               spacing={1}
               justifyContent="center"
             >
@@ -139,26 +139,26 @@ export default function Page() {
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
-                    maxHeight: "100%",
-                    display: "flex",
-                    flexDirection: "column",
+                    maxHeight: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}
                 >
                   <Box
                     sx={{
-                      position: "relative",
+                      position: 'relative',
                       zIndex: 0,
-                      ":before": {
+                      ':before': {
                         content: '" "',
                         zIndex: 1,
-                        position: "absolute",
+                        position: 'absolute',
                         top: 0,
                         bottom: 0,
                         right: 0,
                         left: 0,
                         background:
-                          "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
-                          "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+                          'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                          'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                       },
                     }}
                   >
@@ -188,7 +188,7 @@ export default function Page() {
         </Container>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
+      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
@@ -205,5 +205,5 @@ export default function Page() {
       {/* End footer */}
       {/* </ThemeProvider> */}
     </>
-  );
+  )
 }

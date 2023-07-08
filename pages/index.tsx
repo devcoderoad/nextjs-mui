@@ -1,75 +1,73 @@
-import * as React from "react";
-
 /* MUI */
-import { Container, Typography, Box, Grid } from "@mui/material";
+import { Container, Typography, Box, Grid } from '@mui/material'
 
 /* Components */
-import ProTip from "@components/ProTip";
-import Link from "@components/Link";
-import Copyright from "@components/Copyright";
+import ProTip from '@components/ProTip'
+import Link from '@components/Link'
+import Copyright from '@components/Copyright'
 
 /* Config */
-import { constant } from "@config/constants";
+import { constant } from '@config/constants'
 
 /* Routes */
-import { routePage, routeDocumentation } from "@config/routes";
+import { routePage, routeDocumentation } from '@config/routes'
 
 const styled = {
-  height: "100%",
-  position: "relative",
-  padding: "2rem 0rem",
-  zIndex: "0",
-  overflow: "hidden",
-  "::before, ::after": {
+  height: '100%',
+  position: 'relative',
+  padding: '2rem 0rem',
+  zIndex: '0',
+  overflow: 'hidden',
+  '::before, ::after': {
     content: "' '",
-    backgroundColor: "secondary.light",
-    position: "absolute",
-    zIndex: "-1",
-    borderRadius: "20px",
+    backgroundColor: 'secondary.light',
+    position: 'absolute',
+    zIndex: '-1',
+    borderRadius: '20px',
     bottom: 0,
-    transform: "rotate(-45deg)",
+    transform: 'rotate(-45deg)',
   },
-  "::before": {
-    top: "-30rem",
-    right: "-10rem",
-    width: "1152px",
-    height: "980px",
+  '::before': {
+    top: '-30rem',
+    right: '-10rem',
+    width: '1152px',
+    height: '980px',
   },
-  "::after": {
-    left: "-10rem",
-    width: "1024px",
-    height: "780px",
+  '::after': {
+    left: '-10rem',
+    width: '1024px',
+    height: '780px',
   },
-};
+}
 
 const styledCard = {
-  boxShadow: "1",
-  borderRadius: "10px",
+  boxShadow: '1',
+  borderRadius: '10px',
   minHeight: 240,
   p: 5,
-  backgroundColor: "white",
-  ":hover": { boxShadow: "3" },
-};
+  backgroundColor: 'white',
+  ':hover': { boxShadow: '3' },
+}
 
 const styledH = {
-  display: "block",
-  marginTop: "1rem",
-  marginBottom: "1rem",
-};
+  display: 'block',
+  marginTop: '1rem',
+  marginBottom: '1rem',
+}
 
-export default function Page() {
+export default function Home() {
   return (
     <Box maxWidth="xxl" sx={styled}>
       <Container maxWidth="lg">
-        <Box sx={{ marginBottom: "2rem" }}>
+        <Box sx={{ marginBottom: '2rem' }}>
           <Link
             href="/"
             sx={{
-              transition: "all .5s ease",
-              verticalAlign: "middle",
+              transition: 'all .5s ease',
+              verticalAlign: 'middle',
               ml: 0,
-              ":hover": {
-                filter: "brightness(1.35);",
+              ':hover': {
+                filter: 'brightness(1.35);',
               },
             }}
           >
@@ -77,14 +75,14 @@ export default function Page() {
               src="/logo.svg"
               alt={constant.siteName}
               height={34}
-              style={{ verticalAlign: "middle" }}
+              style={{ verticalAlign: 'middle' }}
             />
           </Link>
           <Typography
             variant="h1"
             // md="h5"
             mt={3}
-            fontSize={{ xs: "1.75rem", sm: "2rem" }}
+            fontSize={{ xs: '1.75rem', sm: '2rem' }}
             color="secondary.dark"
           >
             Material UI Financial Dashboard Administrator Theme
@@ -104,22 +102,22 @@ export default function Page() {
             >
               {Object.values(routePage).map((route) => {
                 return (
-                  route.href !== "/" && (
+                  route.href !== '/' && (
                     <Grid key={route.name} item xs={2} sm={4} md={4}>
                       <Link
                         href={route.href}
                         sx={{
-                          textDecoration: "none",
-                          ":hover": { color: "primary.light" },
+                          textDecoration: 'none',
+                          ':hover': { color: 'primary.light' },
                         }}
                       >
                         <Box
                           sx={{
-                            boxShadow: "1",
+                            boxShadow: '1',
                             p: 5,
-                            borderRadius: ".5rem",
-                            backgroundColor: "white",
-                            ":hover": { boxShadow: "3" },
+                            borderRadius: '.5rem',
+                            backgroundColor: 'white',
+                            ':hover': { boxShadow: '3' },
                           }}
                         >
                           <Typography variant="h5">{route.name}</Typography>
@@ -128,7 +126,7 @@ export default function Page() {
                       </Link>
                     </Grid>
                   )
-                );
+                )
               })}
             </Grid>
           </Box>
@@ -185,17 +183,17 @@ export default function Page() {
                   key={`${route.href}-docs`}
                   href={route.href}
                   color="secondary"
-                  sx={{ textDecoration: "none", marginRight: "1rem" }}
+                  sx={{ textDecoration: 'none', marginRight: '1rem' }}
                 >
                   {route.icon} {route.text}
                 </Link>
-              );
+              )
             })}
           </Box>
         </Box>
         <Box
           my={4}
-          sx={{ backgroundColor: "secondary.light" }}
+          sx={{ backgroundColor: 'secondary.light' }}
           borderRadius={2}
         >
           <ProTip />
@@ -203,5 +201,5 @@ export default function Page() {
         <Copyright />
       </Container>
     </Box>
-  );
+  )
 }

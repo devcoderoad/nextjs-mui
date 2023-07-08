@@ -1,7 +1,7 @@
-import { Box, Grid, Paper, TextField } from "@mui/material";
+import { Box, Grid, Paper, TextField } from '@mui/material'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 // import Chart from "@components/Chart/ReChart";
 
@@ -12,8 +12,8 @@ export default function Page() {
         <Paper
           sx={{
             p: 4,
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             minHeight: 240,
           }}
         >
@@ -177,5 +177,5 @@ export default function Page() {
         </Paper>
       </Grid>
     </DashboardLayout>
-  );
+  )
 }

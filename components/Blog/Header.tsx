@@ -1,18 +1,18 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import Toolbar from '@mui/material/Toolbar'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import SearchIcon from '@mui/icons-material/Search'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
 
 function Header(props) {
-  const { sections, title } = props;
+  const { sections, title } = props
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Button size="small">Subscribe</Button>
         <Typography
           component="h2"
@@ -34,7 +34,7 @@ function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: "space-between", overflowX: "auto" }}
+        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
         {sections.map((section) => (
           <Link
@@ -50,12 +50,12 @@ function Header(props) {
               borderRadius: 5,
               border: 1,
               mr: 1,
-              textDecoration: "none",
-              color: "primary.100",
-              bgcolor: "grey.100",
-              ":hover": {
-                color: "grey.600",
-                bgcolor: "grey.300",
+              textDecoration: 'none',
+              color: 'primary.100',
+              bgcolor: 'grey.100',
+              ':hover': {
+                color: 'grey.600',
+                bgcolor: 'grey.300',
               },
             }}
           >
@@ -64,7 +64,7 @@ function Header(props) {
         ))}
       </Toolbar>
     </React.Fragment>
-  );
+  )
 }
 
 Header.propTypes = {
@@ -75,6 +75,6 @@ Header.propTypes = {
     })
   ).isRequired,
   title: PropTypes.string.isRequired,
-};
+}
 
-export default Header;
+export default Header

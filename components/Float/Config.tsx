@@ -1,33 +1,33 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import ClickAwayListener from "@mui/material/ClickAwayListener";
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 
-import { Box, Fab, Button, Fade } from "@mui/material";
-import Close from "@mui/icons-material/Close";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import Settings from "@mui/icons-material/Settings";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import RefreshIcon from "@mui/icons-material/RefreshOutlined";
-import OffIcon from "@mui/icons-material/HighlightOffOutlined";
+import { Box, Fab, Button, Fade } from '@mui/material'
+import Close from '@mui/icons-material/Close'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import Settings from '@mui/icons-material/Settings'
+import MoreIcon from '@mui/icons-material/MoreVert'
+import RefreshIcon from '@mui/icons-material/RefreshOutlined'
+import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
 export default function FloatConfig() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const fabHover = {
-    transition: "transform .25s ease",
-    ":hover": { transform: "rotate(90deg)" },
-  };
+    transition: 'transform .25s ease',
+    ':hover': { transform: 'rotate(90deg)' },
+  }
 
   function onClickConfigBtn() {
-    setOpen(!open);
+    setOpen(!open)
   }
 
   const handleClickAway = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   function onBlurConfigBtn() {
-    setOpen(false);
+    setOpen(false)
   }
 
   function renderConfig() {
@@ -36,18 +36,18 @@ export default function FloatConfig() {
         // onBlur={onBlurConfigBtn}
         // onMouseOut={onBlurConfigBtn}
         sx={{
-          textAlign: "center",
-          backgroundColor: "white",
+          textAlign: 'center',
+          backgroundColor: 'white',
           borderRadius: 1,
-          color: "primary",
-          width: "226px",
-          display: "block",
-          padding: "1rem",
-          margin: "0 auto .88rem auto",
-          size: ".66rem",
+          color: 'primary',
+          width: '226px',
+          display: 'block',
+          padding: '1rem',
+          margin: '0 auto .88rem auto',
+          size: '.66rem',
           boxShadow: 1,
           button: {
-            mr: ".425rem",
+            mr: '.425rem',
           },
         }}
       >
@@ -63,7 +63,7 @@ export default function FloatConfig() {
         <Fab color="info" aria-label="add" size="small">
           <OffIcon fontSize="small" />
         </Fab>
-        <Box sx={{ mt: "1rem", mx: "auto", textAlign: "center" }}>
+        <Box sx={{ mt: '1rem', mx: 'auto', textAlign: 'center' }}>
           <Button variant="contained" color="primary">
             Wide
           </Button>
@@ -72,28 +72,28 @@ export default function FloatConfig() {
           </Button>
         </Box>
       </Box>
-    );
+    )
   }
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Box
         sx={{
-          float: "right",
-          top: "5em",
-          right: ".88rem",
-          position: "absolute",
+          float: 'right',
+          top: '5em',
+          right: '.88rem',
+          position: 'absolute',
           zIndex: 1,
-          verticalAlign: "middle",
+          verticalAlign: 'middle',
         }}
       >
         <Box
           sx={{
-            width: "100%",
-            height: "100%",
+            width: '100%',
+            height: '100%',
           }}
         >
-          {open ? <Fade in={open}>{renderConfig()}</Fade> : ""}
+          {open ? <Fade in={open}>{renderConfig()}</Fade> : ''}
           <Fab
             color="primary"
             aria-label="add"
@@ -109,5 +109,5 @@ export default function FloatConfig() {
         </Box>
       </Box>
     </ClickAwayListener>
-  );
+  )
 }

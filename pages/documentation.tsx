@@ -1,7 +1,7 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from '@mui/material'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 // import Chart from "@components/Chart/ReChart";
 
@@ -11,10 +11,10 @@ export default function Page() {
       <Paper
         sx={{
           p: 4,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           minHeight: 240,
-          marginTop: "2rem",
+          marginTop: '2rem',
         }}
       >
         <Grid container xs={12} md={8} lg={12} xl={12} spacing={4}>
@@ -99,5 +99,5 @@ export default function Page() {
         </Grid>
       </Paper>
     </DashboardLayout>
-  );
+  )
 }

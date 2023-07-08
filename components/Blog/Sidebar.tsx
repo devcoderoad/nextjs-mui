@@ -1,19 +1,19 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
 
-import ArchiveIcon from "@mui/icons-material/ArchiveOutlined";
+import ArchiveIcon from '@mui/icons-material/ArchiveOutlined'
 
 function Sidebar(props) {
-  const { archives, description, social, title } = props;
+  const { archives, description, social, title } = props
 
   return (
     <Grid item xs={12} md={4}>
-      <Paper elevation={0} sx={{ p: 2, bgcolor: "grey.200" }}>
+      <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.200' }}>
         <Typography variant="h6" gutterBottom>
           {title}
         </Typography>
@@ -24,13 +24,13 @@ function Sidebar(props) {
       </Typography>
       {archives.map((archive) => (
         <Link
-          sx={{ textDecoration: "none", ":hover": { color: "primary.light" } }}
+          sx={{ textDecoration: 'none', ':hover': { color: 'primary.light' } }}
           display="block"
           variant="body1"
           href={archive.url}
           key={archive.title}
         >
-          <ArchiveIcon sx={{ verticalAlign: "middle", mr: 0.5 }} />
+          <ArchiveIcon sx={{ verticalAlign: 'middle', mr: 0.5 }} />
           {archive.title}
         </Link>
       ))}
@@ -53,7 +53,7 @@ function Sidebar(props) {
         </Link>
       ))}
     </Grid>
-  );
+  )
 }
 
 Sidebar.propTypes = {
@@ -71,6 +71,6 @@ Sidebar.propTypes = {
     })
   ).isRequired,
   title: PropTypes.string.isRequired,
-};
+}
 
-export default Sidebar;
+export default Sidebar

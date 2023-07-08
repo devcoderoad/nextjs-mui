@@ -1,26 +1,26 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles'
 
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonBase from "@mui/material/ButtonBase";
+import Paper from '@mui/material/Paper'
+import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import ButtonBase from '@mui/material/ButtonBase'
 
 /* Components */
-import ProTip from "@components/ProTip";
-import Link from "@components/Link";
-import Copyright from "@components/Copyright";
+import ProTip from '@components/ProTip'
+import Link from '@components/Link'
+import Copyright from '@components/Copyright'
 
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  maxWidth: "100%",
-  maxHeight: "100%",
-});
+const Img = styled('img')({
+  margin: 'auto',
+  display: 'block',
+  maxWidth: '100%',
+  maxHeight: '100%',
+})
 
 export default function Page() {
   return (
@@ -54,13 +54,13 @@ export default function Page() {
           <Paper
             sx={{
               p: 2,
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "2rem",
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '2rem',
               maxWidth: 500,
               flexGrow: 1,
               backgroundColor: (theme) =>
-                theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+                theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
             }}
           >
             <Grid container spacing={2}>
@@ -90,7 +90,7 @@ export default function Page() {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography sx={{ cursor: "pointer" }} variant="body2">
+                    <Typography sx={{ cursor: 'pointer' }} variant="body2">
                       Remove
                     </Typography>
                   </Grid>
@@ -113,5 +113,5 @@ export default function Page() {
         <Copyright />
       </Box>
     </Container>
-  );
+  )
 }

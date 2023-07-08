@@ -1,27 +1,25 @@
+import * as React from 'react'
 
-
-import * as React from "react";
-
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
+import Snackbar from '@mui/material/Snackbar'
+import MuiAlert from '@mui/material/Alert'
+import Box from '@mui/material/Box'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
 export default function SnackBar(props) {
-  const { title = "", message = "" } = props;
-  const [open, setOpen] = React.useState(true);
-  const [alertOpen, setAlertOpen] = React.useState(true);
+  const { title = '', message = '' } = props
+  const [open, setOpen] = React.useState(true)
+  const [alertOpen, setAlertOpen] = React.useState(true)
 
   const handleCloseAlert = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const onCloseBar = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   return (
     // <Box
@@ -36,10 +34,10 @@ export default function SnackBar(props) {
     //   }}
     // >
     <Snackbar
-      sx={{ position: "fixed", marginTop: "2rem", float: "right" }}
+      sx={{ position: 'fixed', marginTop: '2rem', float: 'right' }}
       open={open}
       autoHideDuration={4000}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       onClose={onCloseBar}
       key="top-right"
     >
@@ -48,5 +46,5 @@ export default function SnackBar(props) {
       </Alert>
     </Snackbar>
     // </Box>
-  );
+  )
 }

@@ -1,13 +1,18 @@
-"use client";
-import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
+'use client'
+import { Box, Container, Grid, Paper, Stack, Typography } from '@mui/material'
 
 /* Layouts */
-import DashboardLayout from "@layouts/DashboardLayout";
+import DashboardLayout from '@layouts/DashboardLayout'
 
 /* Components */
-import Cog from "@components/Cog/Default";
-import Chart from "@components/Chart/ReChart";
-import TabsDefault from "@components/Tabs/Default";
+import Cog from '@components/Cog/Default'
+import {
+  ChartApexBasicArea,
+  ChartApex,
+  ChartApexArea,
+  ChartApexBar,
+} from '@components/Chart/apexcharts'
+import TabsDefault from '@components/Tabs/Default'
 
 export default function Page() {
   function renderChart() {
@@ -24,10 +29,19 @@ export default function Page() {
           </Box>
         </Stack>
         <Box>
-          <Chart />
+          <ChartApexBasicArea />
+        </Box>
+        <Box>
+          <ChartApex />
+        </Box>
+        <Box>
+          <ChartApexArea />
+        </Box>
+        <Box>
+          <ChartApexBar />
         </Box>
       </Stack>
-    );
+    )
   }
 
   return (
@@ -37,21 +51,21 @@ export default function Page() {
           <Paper
             sx={{
               p: 2,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               minHeight: 240,
             }}
           >
             <TabsDefault
               items={[
-                { title: "Chart JS", item: renderChart() },
-                { title: "Chart JS Two", item: renderChart() },
-                { title: "Chart JS Three", item: renderChart() },
+                { title: 'Chart JS', item: renderChart() },
+                { title: 'Chart JS Two', item: renderChart() },
+                { title: 'Chart JS Three', item: renderChart() },
               ]}
             />
           </Paper>
         </Grid>
       </Container>
     </DashboardLayout>
-  );
+  )
 }

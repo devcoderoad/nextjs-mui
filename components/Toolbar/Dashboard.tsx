@@ -1,12 +1,18 @@
-import { Toolbar, Typography, IconButton } from "@mui/material";
-import CommnentIcon from "@mui/icons-material/CommentBankOutlined";
+import { Toolbar, Typography, IconButton } from '@mui/material'
+import CommentIcon from '@mui/icons-material/CommentBankOutlined'
 
-export default function Component(props) {
+interface OwnProps {
+  title?: string
+  type?: string
+  children?: React.ReactElement
+}
+
+export default function Component(props: OwnProps) {
   const {
-    title = "Hi, Administrator",
-    type = "secondary",
+    title = 'Hi, Administrator',
+    type = 'secondary.main',
     children = null,
-  } = props;
+  } = props
 
   return (
     <Toolbar>
@@ -17,11 +23,11 @@ export default function Component(props) {
           aria-label={title}
           size="small"
         >
-          <CommnentIcon color={type} />
+          <CommentIcon htmlColor={type} />
         </IconButton>
         {title}
       </Typography>
       {children}
     </Toolbar>
-  );
+  )
 }

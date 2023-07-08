@@ -1,16 +1,16 @@
-import * as React from "react";
+import * as React from 'react'
 
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import SummarizeIcon from "@mui/icons-material/Summarize";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
-import TabIcon from "@mui/icons-material/TabUnselected";
-import PagesIcon from "@mui/icons-material/PagesOutlined";
-import UserIcon from "@mui/icons-material/VerifiedUser";
-import ShopIcon from "@mui/icons-material/Shop2";
-import GalleryIcon from "@mui/icons-material/BrowseGallery";
+import AssignmentIcon from '@mui/icons-material/Assignment'
+import AssessmentIcon from '@mui/icons-material/Assessment'
+import SummarizeIcon from '@mui/icons-material/Summarize'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import StarBorder from '@mui/icons-material/StarBorder'
+import TabIcon from '@mui/icons-material/TabUnselected'
+import PagesIcon from '@mui/icons-material/PagesOutlined'
+import UserIcon from '@mui/icons-material/VerifiedUser'
+import ShopIcon from '@mui/icons-material/Shop2'
+import GalleryIcon from '@mui/icons-material/BrowseGallery'
 
 import {
   ListItemButton,
@@ -19,10 +19,10 @@ import {
   ListSubheader,
   List,
   Collapse,
-} from "@mui/material";
+} from '@mui/material'
 
 /* routes */
-import { routeDashboard } from "@config/routes";
+import { routeDashboard } from '@config/routes'
 
 export const mainListItems = (compact = true) => (
   <React.Fragment>
@@ -35,23 +35,23 @@ export const mainListItems = (compact = true) => (
           <ListItemIcon>{route.icon}</ListItemIcon>
           <ListItemText primary={route.name} />
         </ListItemButton>
-      );
+      )
     })}
   </React.Fragment>
-);
+)
 
 export const secondaryListItems = (compact = false) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
     if (!compact) {
-      setOpen(false);
+      setOpen(false)
     }
-  }, [compact]);
+  }, [compact])
 
   const handleClick = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   return (
     <React.Fragment>
@@ -67,37 +67,37 @@ export const secondaryListItems = (compact = false) => {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
-          <ListItemButton dense sx={{ pl: 4 }} href="/widgets">
-            <ListItemIcon>
-              <StarBorder fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Widgets`} />
-          </ListItemButton>
-          <ListItemButton dense sx={{ pl: 4 }} href="/tabs">
+          <ListItemButton dense href="/widgets">
             <ListItemIcon>
               <TabIcon fontSize="small" />
             </ListItemIcon>
+            <ListItemText primary={`Widgets`} />
+          </ListItemButton>
+          <ListItemButton dense href="/tabs">
+            <ListItemIcon>
+              <StarBorder fontSize="small" />
+            </ListItemIcon>
             <ListItemText primary={`Tabs`} />
           </ListItemButton>
-          <ListItemButton dense sx={{ pl: 4 }} href="/landing/filter">
+          <ListItemButton dense href="/landing/filter">
             <ListItemIcon>
               <PagesIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={`Landing`} />
           </ListItemButton>
-          <ListItemButton dense sx={{ pl: 4 }} href="/about">
+          <ListItemButton dense href="/about">
             <ListItemIcon>
               <UserIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={`About`} />
           </ListItemButton>
-          <ListItemButton dense sx={{ pl: 4 }} href="/checkout">
+          <ListItemButton dense href="/checkout">
             <ListItemIcon>
               <ShopIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={`Checkout`} />
           </ListItemButton>
-          <ListItemButton dense sx={{ pl: 4 }} href="/gallery">
+          <ListItemButton dense href="/gallery">
             <ListItemIcon>
               <GalleryIcon fontSize="small" />
             </ListItemIcon>
@@ -118,8 +118,8 @@ export const secondaryListItems = (compact = false) => {
         <ListItemText primary="Year-end sale" />
       </ListItemButton>
     </React.Fragment>
-  );
-};
+  )
+}
 
 export const thirdListItems = (compact = false) => (
   <React.Fragment>
@@ -139,4 +139,4 @@ export const thirdListItems = (compact = false) => (
       <ListItemText primary="Last quarter" />
     </ListItemButton>
   </React.Fragment>
-);
+)
