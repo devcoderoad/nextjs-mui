@@ -169,7 +169,7 @@ const Drawer = styled(MuiDrawer, {
   },
 }))
 
-function DashboardContent({ children }) {
+function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   const theme = useTheme()
   const match = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true })
 
@@ -196,11 +196,11 @@ function DashboardContent({ children }) {
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.HTMLAttributeAnchorTarget) => {
     setAuth(event.target.checked)
   }
 
-  const handleMenuProfile = (event) => {
+  const handleMenuProfile = (event: React.HTMLAttributeAnchorTarget) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -329,7 +329,7 @@ function DashboardContent({ children }) {
               aria-label="profile of current user"
               aria-controls="menu-appbar-profile"
               aria-haspopup="true"
-              onClick={handleMenuProfile}
+              onClick={() => handleMenuProfile}
             >
               <AccountIcon fontSize="small" />
             </IconButton>

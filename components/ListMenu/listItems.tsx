@@ -1,5 +1,6 @@
 import * as React from 'react'
-
+// import { Router } from 'next/router'
+import { useRouter } from 'next/router'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import AssessmentIcon from '@mui/icons-material/Assessment'
 import SummarizeIcon from '@mui/icons-material/Summarize'
@@ -22,25 +23,34 @@ import {
 } from '@mui/material'
 
 /* routes */
-import { routeDashboard } from '@config/routes'
+import { routeDashboard, routeSecondary } from '@config/routes'
 
-export const mainListItems = (compact = true) => (
-  <React.Fragment>
-    <ListSubheader component="div" hidden={!compact} color="primary">
-      Pages
-    </ListSubheader>
-    {Object.values(routeDashboard).map((route) => {
-      return (
-        <ListItemButton dense key={route.to} href={route.href}>
-          <ListItemIcon>{route.icon}</ListItemIcon>
-          <ListItemText primary={route.name} />
-        </ListItemButton>
-      )
-    })}
-  </React.Fragment>
-)
+export const mainListItems = (compact = true) => {
+  const router = useRouter()
+  return (
+    <React.Fragment>
+      <ListSubheader component="div" hidden={!compact} color="primary">
+        Pages
+      </ListSubheader>
+      {Object.values(routeDashboard).map((route) => {
+        return (
+          <ListItemButton
+            dense
+            key={route.to}
+            href={route.href}
+            selected={route.href === router.asPath}
+          >
+            <ListItemIcon>{route.icon}</ListItemIcon>
+            <ListItemText primary={route.name} />
+          </ListItemButton>
+        )
+      })}
+    </React.Fragment>
+  )
+}
 
 export const secondaryListItems = (compact = false) => {
+  const router = useRouter()
   const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
@@ -67,42 +77,19 @@ export const secondaryListItems = (compact = false) => {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
-          <ListItemButton dense href="/widgets">
-            <ListItemIcon>
-              <TabIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Widgets`} />
-          </ListItemButton>
-          <ListItemButton dense href="/tabs">
-            <ListItemIcon>
-              <StarBorder fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Tabs`} />
-          </ListItemButton>
-          <ListItemButton dense href="/landing/filter">
-            <ListItemIcon>
-              <PagesIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Landing`} />
-          </ListItemButton>
-          <ListItemButton dense href="/about">
-            <ListItemIcon>
-              <UserIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`About`} />
-          </ListItemButton>
-          <ListItemButton dense href="/checkout">
-            <ListItemIcon>
-              <ShopIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Checkout`} />
-          </ListItemButton>
-          <ListItemButton dense href="/gallery">
-            <ListItemIcon>
-              <GalleryIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={`Gallery`} />
-          </ListItemButton>
+          {Object.values(routeSecondary).map((route) => {
+            return (
+              <ListItemButton
+                dense
+                key={route.to}
+                href={route.href}
+                selected={route.href === router.asPath}
+              >
+                <ListItemIcon>{route.icon}</ListItemIcon>
+                <ListItemText primary={route.name} />
+              </ListItemButton>
+            )
+          })}
         </List>
       </Collapse>
       <ListItemButton dense>

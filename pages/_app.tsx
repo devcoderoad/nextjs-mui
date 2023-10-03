@@ -5,7 +5,7 @@ import { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material/styles'
 // import { useTheme, ThemeProvider as ColorModeProvider } from 'next-themes'
 // import { useTheme, ThemeProvider } from 'next-themes'
-import { getCookie, setCookie } from 'cookies-next'
+// import { getCookie, setCookie } from 'cookies-next'
 
 // import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'

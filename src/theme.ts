@@ -1,4 +1,4 @@
-import { Roboto, Poppins } from '@next/font/google'
+import { Roboto, Poppins } from 'next/font/google'
 import { createTheme } from '@mui/material/styles'
 import { red, deepOrange } from '@mui/material/colors'
 
