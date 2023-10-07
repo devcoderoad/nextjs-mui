@@ -72,7 +72,7 @@ export const secondaryListItems = (compact = false) => {
         <ListItemIcon>
           <AssessmentIcon />
         </ListItemIcon>
-        <ListItemText primary={`Other Pages`} />
+        <ListItemText primary={'Other Pages'} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>

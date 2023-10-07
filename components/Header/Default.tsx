@@ -18,12 +18,12 @@ import {
 
 import SearchIcon from '@mui/icons-material/Search'
 
-function Header(props) {
+function Header(props: any) {
   const { sections, title = 'test' } = props
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
   const handleClose = () => {
@@ -242,7 +242,7 @@ function Header(props) {
           variant="dense"
           sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
         >
-          {sections.map((section) => (
+          {sections.map((section: any) => (
             <Link
               color="primary"
               noWrap

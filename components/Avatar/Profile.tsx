@@ -20,11 +20,11 @@ import RefreshIcon from '@mui/icons-material/RefreshOutlined'
 import CachedIcon from '@mui/icons-material/CachedOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
-export default function Component(props) {
+export default function Component(props: any) {
   const { items, cog = false } = props
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -47,11 +47,9 @@ export default function Component(props) {
     >
       {cog ? (
         <Box alignSelf="end">
-          <IconButton
-            aria-describedby={id}
-            children={<MoreIcon />}
-            onClick={handleClick}
-          />
+          <IconButton aria-describedby={id} onClick={handleClick}>
+            <MoreIcon />
+          </IconButton>
           <Popover
             marginThreshold={0}
             id={id}

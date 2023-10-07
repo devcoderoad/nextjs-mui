@@ -1,4 +1,6 @@
-import * as React from 'react'
+// import * as React from 'react'
+
+import Link from 'next/link'
 
 import { styled } from '@mui/material/styles'
 
@@ -12,7 +14,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 
 /* Components */
 import ProTip from '@components/ProTip'
-import Link from '@components/Link'
+// import Link from '@components/Link'
 import Copyright from '@components/Copyright'
 
 const Img = styled('img')({
@@ -105,7 +107,7 @@ export default function Page() {
           </Paper>
         </Container>
         <div>
-          <Button variant="contained" component={Link} noLinkStyle href="/">
+          <Button variant="contained" component={Link} href="/">
             Go to the main page
           </Button>
         </div>

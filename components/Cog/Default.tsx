@@ -7,13 +7,13 @@ import RefreshIcon from '@mui/icons-material/RefreshOutlined'
 import CachedIcon from '@mui/icons-material/CachedOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
-export default function Component(props) {
+export default function Component(props: any) {
   const { type = '', mode = '', children = null } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
   const stack = type ? 'row' : 'column'
   const divider = stack === 'row' ? 'vertical' : 'horizontal'
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -25,12 +25,10 @@ export default function Component(props) {
   const id = open ? 'popover-cog-default' : undefined
 
   return (
-    <Box alignSelf="start" size="small">
-      <IconButton
-        aria-describedby={id}
-        children={<MoreIcon size="small" />}
-        onClick={handleClick}
-      />
+    <Box alignSelf="start">
+      <IconButton aria-describedby={id} onClick={handleClick}>
+        <MoreIcon />
+      </IconButton>
       <Popover
         marginThreshold={0}
         id={id}
@@ -53,25 +51,13 @@ export default function Component(props) {
           padding={1}
           divider={<Divider orientation={divider} flexItem />}
         >
-          <Button
-            variant="text"
-            size="small"
-            startIcon={<RefreshIcon size="small" />}
-          >
+          <Button variant="text" startIcon={<RefreshIcon />}>
             Refresh
           </Button>
-          <Button
-            variant="text"
-            size="small"
-            startIcon={<CachedIcon size="small" />}
-          >
+          <Button variant="text" startIcon={<CachedIcon />}>
             Reload
           </Button>
-          <Button
-            variant="text"
-            size="small"
-            startIcon={<OffIcon size="small" />}
-          >
+          <Button variant="text" startIcon={<OffIcon />}>
             Remove
           </Button>
         </Stack>

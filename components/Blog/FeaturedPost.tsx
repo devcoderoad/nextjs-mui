@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/material'
 
-function FeaturedPost(props) {
+function FeaturedPost(props: any) {
   const { post } = props
 
   return (

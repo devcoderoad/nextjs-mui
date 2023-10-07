@@ -20,6 +20,8 @@ export default function Page() {
     description: 'lorem ipsum dolor sit amet',
     image:
       'https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&h=720&q=80',
+    imageLabel: 'lorem ipsum dolor sit amet',
+    date: '20 June 2023',
   }
   return (
     <DashboardLayout>
@@ -171,7 +173,7 @@ export default function Page() {
                 zIndex: 0,
                 color: 'white',
                 ':before': {
-                  content: "' '",
+                  content: '" "',
                   position: 'absolute',
                   left: 0,
                   right: 0,
@@ -180,7 +182,6 @@ export default function Page() {
                   heigth: '100%',
                   top: 0,
                   bottom: 0,
-                  right: 0,
                   background:
                     'linear-gradient(180deg,rgba(2,0,36,0) 63%,rgba(0,0,0,.7));',
                 },

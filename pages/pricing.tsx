@@ -251,7 +251,7 @@ function PricingContent() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
+                  <Button fullWidth /* variant={tier.buttonVariant} */>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
@@ -271,13 +271,13 @@ function PricingContent() {
         }}
       >
         <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
+          {footers.map((footer: any) => (
             <Grid item xs={6} sm={3} key={footer.title}>
               <Typography variant="h6" color="text.primary" gutterBottom>
                 {footer.title}
               </Typography>
               <ul>
-                {footer.description.map((item) => (
+                {footer.description.map((item: any) => (
                   <li key={item}>
                     <Link href="#" variant="subtitle1" color="text.secondary">
                       {item}

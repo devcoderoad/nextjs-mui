@@ -9,8 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import Stack from '@mui/material/Stack'
-// import Input from "@mui/material/Input";
-// import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import {
   Container,
@@ -48,86 +46,18 @@ import { ToggleColor } from '@components/Toggle/Color'
 
 /* Config */
 import { constant } from '@config/constants'
-
-const style = {
-  boxSearch: {
-    '& .MuiTextField-root': { m: 2, width: '12ch' },
-  },
-  drawer: {
-    boxShadow: '0 .3rem .8rem rgba(0, 0, 0, .12)',
-    transition: 'all .2s ease-out',
-    zIndex: 11,
-    border: 0,
-  },
-  drawerPaper: {
-    '.MuiDrawer-paper': {
-      width: '58px',
-      position: 'relative',
-    },
-  },
-  dividerArrow: {
-    display: 'block',
-    margin: '12px 7px 0 5px',
-    width: '10px',
-    height: '10px',
-    borderWidth: 0,
-    borderStyle: 'none',
-    borderColor: 'none',
-    borderTop: '1px solid #000',
-    borderLeft: '1px solid #000',
-    transform: 'rotate(135deg) translate(7px,7px)',
-  },
-  menuPaperProps: {
-    elevation: 0,
-    sx: {
-      overflow: 'visible',
-      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-      mt: 1.5,
-      '& .MuiAvatar-root': {
-        width: 32,
-        height: 32,
-        ml: -0.5,
-        mr: 1,
-      },
-      '&:before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        right: 14,
-        width: 10,
-        height: 10,
-        bgcolor: 'background.paper',
-        transform: 'translateY(-50%) rotate(45deg)',
-        zIndex: 0,
-      },
-    },
-  },
-  menuProfile: {
-    a: { textDecoration: 'none' },
-    svg: { fontSize: 'large', verticalAlign: 'middle', mr: 0.5 },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    px: [1],
-    a: {
-      transition: 'all .5s ease',
-      verticalAlign: 'middle',
-      ml: 1.5,
-      ':hover': {
-        filter: 'brightness(1.35);',
-      },
-    },
-  },
-}
+import { CommonProps } from '@mui/material/OverridableComponent'
 
 const drawerWidth = 240
 
+interface OwnProps extends CommonProps {
+  open: boolean
+  theme?: any
+}
+
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
+})(({ theme, open }: OwnProps) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -173,10 +103,93 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   const theme = useTheme()
   const match = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true })
 
-  const [open, setOpen] = React.useState(true)
-  const [searchOpen, setSearchOpen] = React.useState(true)
+  const [open, setOpen] = React.useState<boolean>(true)
+  const [searchOpen, setSearchOpen] = React.useState(false)
   const [openNotify, setOpenNotify] = React.useState(false)
-  const inputRef = React.useRef(null)
+
+  const style = React.useMemo(
+    () => ({
+      boxSearch: {
+        '& .MuiTextField-root': { m: 2, width: '12ch' },
+      },
+      drawer: {
+        boxShadow: '0 .3rem .8rem rgba(0, 0, 0, .12)',
+        transition: 'all .2s ease-out',
+        zIndex: 11,
+        border: 0,
+      },
+      drawerPaper: {
+        '.MuiDrawer-paper': {
+          width: '58px',
+          position: 'relative',
+        },
+      },
+      dividerArrow: {
+        display: 'block',
+        margin: '12px 7px 0 5px',
+        width: '10px',
+        height: '10px',
+        borderWidth: 0,
+        borderStyle: 'none',
+        borderColor: 'none',
+        borderTop: '1px solid #000',
+        borderLeft: '1px solid #000',
+        transform: 'rotate(135deg) translate(7px,7px)',
+      },
+      menuPaperProps: {
+        elevation: 0,
+        sx: {
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+          mt: 1.5,
+          '& .MuiAvatar-root': {
+            width: 32,
+            height: 32,
+            ml: -0.5,
+            mr: 1,
+          },
+          '&:before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            bgcolor: 'background.paper',
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
+          },
+        },
+      },
+      menuProfile: {
+        a: { textDecoration: 'none' },
+        svg: { fontSize: 'large', verticalAlign: 'middle', mr: 0.5 },
+      },
+      toolbar: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        px: [1],
+        a: {
+          transition: 'all .5s ease',
+          verticalAlign: 'middle',
+          ml: 1.5,
+          ':hover': {
+            filter: 'brightness(1.35);',
+          },
+        },
+      },
+      toolbarNav: {
+        pr: '24px',
+        boxShadow: 'none',
+        textTransform: 'uppercase',
+        backgroundColor: theme.palette.mode === 'dark' ? '#232323' : 'white',
+        color: theme.palette.mode === 'dark' ? 'white' : 'gray',
+      },
+    }),
+    [theme.palette.mode]
+  )
 
   React.useEffect(() => {
     setOpenNotify(false)
@@ -196,21 +209,17 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handleChange = (event: React.HTMLAttributeAnchorTarget) => {
-    setAuth(event.target.checked)
+  const handleChange = (event: any) => {
+    /* setAuth(event.target.checked) */
   }
 
-  const handleMenuProfile = (event: React.HTMLAttributeAnchorTarget) => {
-    setAnchorEl(event.currentTarget)
+  const handleMenuProfile = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.target as any)
   }
 
   const handleClose = () => {
     setAnchorEl(null)
   }
-
-  // const handleClickAway = () => {
-  //   setSearchOpen(false);
-  // };
 
   const itemsNotify = [
     {
@@ -243,13 +252,23 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   ]
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar position="absolute" open={open} color="primary">
-        <Toolbar
-          sx={{
-            pr: '24px', // keep right padding when drawer closed
-          }}
-        >
+    <Box
+      sx={{
+        display: 'flex',
+        // '.MuiToolbar-root .MuiToolbar-gutters .MuiToolbar-regular': {
+        //   backgroundColor: 'none !important',
+        // },
+      }}
+    >
+      <AppBar
+        position="absolute"
+        open={open}
+        enableColorOnDark
+        elevation={0}
+        color="primary"
+        style={{ backgroundColor: 'transparent' }}
+      >
+        <Toolbar sx={style.toolbarNav} component={'nav'}>
           <Box
             display="flex"
             sx={{
@@ -284,7 +303,7 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             </IconButton>
             <Divider
               orientation="vertical"
-              variant="center"
+              variant="middle"
               flexItem
               sx={style.dividerArrow}
             />
@@ -299,37 +318,36 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
               Dashboard
             </Typography>
           </Box>
-          <Stack spacing={{ md: 1 }} direction="row">
-            <IconButton
-              color="inherit"
-              onClick={() => setSearchOpen(!searchOpen)}
-            >
-              <SearchIcon fontSize="small" />
-            </IconButton>
-            {/* <ClickAwayListener onClickAway={() => setSearchOpen(!searchOpen)}> */}
-            <Box
-              hidden={searchOpen}
-              component="form"
-              sx={style.boxSearch}
-              noValidate
-              autoComplete="off"
-            >
-              <Input
-                placeholder="Search.."
-                // color="light"
-                ref={inputRef}
-                onBlur={() => setSearchOpen(!searchOpen)}
-                autoFocus
-              />
-            </Box>
-            {/* </ClickAwayListener> */}
+          <Stack spacing={{ md: 0 }} direction="row">
+            <ClickAwayListener onClickAway={() => setSearchOpen(false)}>
+              <Box display={'flex'} alignItems={'center'}>
+                <IconButton
+                  color="inherit"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                >
+                  <SearchIcon fontSize="medium" />
+                </IconButton>
+                {searchOpen ? (
+                  <Box
+                    component="form"
+                    sx={style.boxSearch}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <Input size="small" placeholder="Search.." autoFocus />
+                  </Box>
+                ) : (
+                  ''
+                )}
+              </Box>
+            </ClickAwayListener>
             <FloatNotify show={openNotify} items={itemsNotify} />
             <IconButton
               color="inherit"
               aria-label="profile of current user"
               aria-controls="menu-appbar-profile"
               aria-haspopup="true"
-              onClick={() => handleMenuProfile}
+              onClick={handleMenuProfile}
             >
               <AccountIcon fontSize="small" />
             </IconButton>
@@ -347,14 +365,10 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
               horizontal: 'right',
             }}
             sx={style.menuProfile}
-            PaperProps={style.menuPaperProps}
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem
-              dense
-              //onClick={handleClose}
-            >
+            <MenuItem dense onClick={handleClose}>
               <Link href="/profile">
                 <AccountIcon /> Profile
               </Link>
@@ -392,7 +406,12 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
         <List
           component="nav"
           sx={{
-            a: { textDecoration: 'none' },
+            '.MuiButtonBase-root': {
+              textDecoration: 'none',
+              borderRadius: open ? '2rem' : 0,
+              transition: 'all .2s ease-out',
+            },
+            px: open ? '.75rem' : 0,
           }}
         >
           {mainListItems(open)}

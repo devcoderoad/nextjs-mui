@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import { Box, Tab, Tabs } from '@mui/material'
 
@@ -68,7 +67,7 @@ function BasicTabs(props: any) {
 
   const a11yProps = (index: number) => {
     return {
-      key: `${index + index}`,
+      // key: `${index + index}`,
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     }
@@ -89,6 +88,7 @@ function BasicTabs(props: any) {
             items.map((item: any, i: number) => {
               return (
                 <Tab
+                  key={item.title + i}
                   label={item.title}
                   {...(item.props ? { ...item.props } : {})}
                   {...a11yProps(i)}
@@ -105,8 +105,9 @@ function BasicTabs(props: any) {
               value={value}
               index={i}
               title={item.title}
-              children={[item.item]}
-            />
+            >
+              {[item.item]}
+            </TabPanel>
           )
         })}
     </Box>

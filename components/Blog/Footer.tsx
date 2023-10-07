@@ -19,7 +19,7 @@ function Copyright() {
   )
 }
 
-function Footer(props) {
+function Footer(props: any) {
   const { description, title, ...rest } = props
 
   return (

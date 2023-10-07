@@ -200,7 +200,7 @@ export default function Page() {
             >
               <Typography
                 component="h3"
-                variant="h7"
+                variant="h6"
                 paddingBottom={1}
                 color="secondary.dark"
               >
@@ -255,7 +255,7 @@ export default function Page() {
                           <Button
                             variant="text"
                             size="small"
-                            color={item.type}
+                            // color={item.type}
                             startIcon={<CheckBoxIcon />}
                           >
                             {item.action}
@@ -275,7 +275,7 @@ export default function Page() {
           <Paper sx={{ p: 2 }}>
             <Typography
               component="h3"
-              variant="h7"
+              variant="h6"
               paddingBottom={1}
               color="secondary.dark"
             >

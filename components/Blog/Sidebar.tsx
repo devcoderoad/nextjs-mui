@@ -8,7 +8,7 @@ import Link from '@mui/material/Link'
 
 import ArchiveIcon from '@mui/icons-material/ArchiveOutlined'
 
-function Sidebar(props) {
+function Sidebar(props: any) {
   const { archives, description, social, title } = props
 
   return (
@@ -22,7 +22,7 @@ function Sidebar(props) {
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
         Archives
       </Typography>
-      {archives.map((archive) => (
+      {archives.map((archive: any) => (
         <Link
           sx={{ textDecoration: 'none', ':hover': { color: 'primary.light' } }}
           display="block"
@@ -38,7 +38,7 @@ function Sidebar(props) {
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
         Social
       </Typography>
-      {social.map((network) => (
+      {social.map((network: any) => (
         <Link
           display="block"
           variant="body1"

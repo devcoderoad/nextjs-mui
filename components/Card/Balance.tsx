@@ -17,7 +17,7 @@ import {
 } from '@mui/material'
 
 /* 
-function BalanceCard (props) {
+function BalanceCard (props: any) {
   const { post } = props;
 }
 */
@@ -73,7 +73,7 @@ function BalanceCard() {
           }}
         >
           {balanceData &&
-            balanceData.map((item) => {
+            balanceData.map((item: any) => {
               return (
                 <Grid
                   key={item.id}
@@ -152,7 +152,6 @@ function BalanceCard() {
                           <MenuItem dense component="div">
                             <Link
                               href="#transfer"
-                              component="h4"
                               variant="body2"
                               underline="none"
                               py={0.5}
@@ -168,7 +167,6 @@ function BalanceCard() {
                           <MenuItem dense component="div">
                             <Link
                               href="#statement"
-                              component="h4"
                               variant="body2"
                               underline="none"
                               py={0.5}
@@ -184,7 +182,6 @@ function BalanceCard() {
                           <MenuItem dense component="div">
                             <Link
                               href="#statement"
-                              component="h4"
                               variant="body2"
                               underline="none"
                               py={0.5}

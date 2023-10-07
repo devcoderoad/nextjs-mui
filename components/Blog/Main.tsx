@@ -9,9 +9,9 @@ import Markdown from './Markdown'
 import TimerIcon from '@mui/icons-material/TimerOutlined'
 import UserIcon from '@mui/icons-material/AccountCircleOutlined'
 
-function Main(props) {
+function Main(props: any) {
   const { posts, title } = props
-  posts.map((post) => (post.excerpt = post.excerpt.replace('\n<!-- ', '')))
+  posts.map((post: any) => (post.excerpt = post.excerpt.replace('\n<!-- ', '')))
 
   return (
     <Grid
@@ -28,7 +28,7 @@ function Main(props) {
         {title}
       </Typography>
       <Divider />
-      {posts.map((post, index) => (
+      {posts.map((post: any, index: number) => (
         <Box
           key={post.data.date + index}
           sx={{ bgcolor: 'grey.100', mb: 2, px: 2, pb: 2 }}

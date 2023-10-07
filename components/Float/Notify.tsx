@@ -16,10 +16,10 @@ import {
   Divider,
 } from '@mui/material'
 
-export default function FloatNotify({ show, items }) {
+export default function FloatNotify({ show, items }: any) {
   const [anchorEl, setAnchorEl] = React.useState(show)
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -73,7 +73,7 @@ export default function FloatNotify({ show, items }) {
           <Divider />
           {items &&
             items.length &&
-            items.map((item) => (
+            items.map((item: any) => (
               <Grid
                 key={item.id}
                 container

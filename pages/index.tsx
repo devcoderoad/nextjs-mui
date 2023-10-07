@@ -3,7 +3,9 @@ import { Container, Typography, Box, Grid } from '@mui/material'
 
 /* Components */
 import ProTip from '@components/ProTip'
-import Link from '@components/Link'
+// import Link from '@components/Link'
+// import Link from 'next/link'
+import Link from '@mui/material/Link'
 import Copyright from '@components/Copyright'
 
 /* Config */
@@ -19,7 +21,7 @@ const styled = {
   zIndex: '0',
   overflow: 'hidden',
   '::before, ::after': {
-    content: "' '",
+    content: '" "',
     backgroundColor: 'secondary.light',
     position: 'absolute',
     zIndex: '-1',
@@ -62,14 +64,14 @@ export default function Home() {
         <Box sx={{ marginBottom: '2rem' }}>
           <Link
             href="/"
-            sx={{
-              transition: 'all .5s ease',
-              verticalAlign: 'middle',
-              ml: 0,
-              ':hover': {
-                filter: 'brightness(1.35);',
-              },
-            }}
+            // sx={{
+            //   transition: 'all .5s ease',
+            //   verticalAlign: 'middle',
+            //   ml: 0,
+            //   ':hover': {
+            //     filter: 'brightness(1.35);',
+            //   },
+            // }}
           >
             <img
               src="/logo.svg"
@@ -106,10 +108,11 @@ export default function Home() {
                     <Grid key={route.name} item xs={2} sm={4} md={4}>
                       <Link
                         href={route.href}
-                        sx={{
-                          textDecoration: 'none',
-                          ':hover': { color: 'primary.light' },
-                        }}
+                        underline="none"
+                        // sx={{
+                        //   textDecoration: 'none',
+                        //   ':hover': { color: 'primary.light' },
+                        // }}
                       >
                         <Box
                           sx={{
@@ -145,25 +148,25 @@ export default function Home() {
               <Grid item md={4} xs={24}>
                 <Box sx={styledCard}>
                   <Typography variant="h5">Responsive Pages</Typography>
-                  <Box variant="p">Mobile Responsive Pages</Box>
+                  <Box>Mobile Responsive Pages</Box>
                 </Box>
               </Grid>
               <Grid item xs={8}>
                 <Box sx={styledCard}>
                   <Typography variant="h5">Charts Component</Typography>
-                  <Box variant="p">Chart Components in your Dashboard</Box>
+                  <Box>Chart Components in your Dashboard</Box>
                 </Box>
               </Grid>
               <Grid item md={4} xs={24}>
                 <Box sx={styledCard}>
                   <Typography variant="h5">Semantic HTML</Typography>
-                  <Box variant="p">HTML5 Semantic HTML Tag</Box>
+                  <Box>HTML5 Semantic HTML Tag</Box>
                 </Box>
               </Grid>
               <Grid item xs={8}>
                 <Box sx={styledCard}>
                   <Typography variant="h5">Button, Icons and Cards</Typography>
-                  <Box variant="p">Ready to use Button, Icons and Cards</Box>
+                  <Box>Ready to use Button, Icons and Cards</Box>
                 </Box>
               </Grid>
             </Grid>
@@ -183,7 +186,7 @@ export default function Home() {
                   key={`${route.href}-docs`}
                   href={route.href}
                   color="secondary"
-                  sx={{ textDecoration: 'none', marginRight: '1rem' }}
+                  // sx={{ textDecoration: 'none', marginRight: '1rem' }}
                 >
                   {route.icon} {route.text}
                 </Link>

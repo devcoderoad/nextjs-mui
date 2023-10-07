@@ -25,66 +25,82 @@ import CachedIcon from '@mui/icons-material/CachedOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, status, amount) {
+function createData({
+  id,
+  date,
+  name,
+  shipTo,
+  paymentMethod,
+  status,
+  amount,
+}: {
+  id: string
+  date: string
+  name: string
+  shipTo: string
+  paymentMethod: string
+  status: string
+  amount: string
+}) {
   return { id, date, name, shipTo, paymentMethod, status, amount }
 }
 
 const rows = [
-  createData(
-    0,
-    '16 Mar, 2019',
-    'Elvis Presley',
-    'Tupelo, MS',
-    'VISA ⠀•••• 3719',
-    'warning',
-    312.44
-  ),
-  createData(
-    1,
-    '16 Mar, 2019',
-    'Paul McCartney',
-    'London, UK',
-    'VISA ⠀•••• 2574',
-    'success',
-    866.99
-  ),
-  createData(
-    2,
-    '16 Mar, 2019',
-    'Tom Scholz',
-    'Boston, MA',
-    'MC ⠀•••• 1253',
-    'info',
-    100.81
-  ),
-  createData(
-    3,
-    '16 Mar, 2019',
-    'Michael Jackson',
-    'Gary, IN',
-    'AMEX ⠀•••• 2000',
-    'primary',
-    654.39
-  ),
-  createData(
-    4,
-    '15 Mar, 2019',
-    'Bruce Springsteen',
-    'Long Branch, NJ',
-    'VISA ⠀•••• 5919',
-    'danger',
-    212.79
-  ),
+  createData({
+    id: '0',
+    date: '16 Mar, 2019',
+    name: 'Elvis Presley',
+    shipTo: 'Tupelo, MS',
+    paymentMethod: 'VISA ⠀•••• 3719',
+    status: 'warning',
+    amount: '312.44',
+  }),
+  createData({
+    id: '1',
+    date: '16 Mar, 2019',
+    name: 'Paul McCartney',
+    shipTo: 'London, UK',
+    paymentMethod: 'VISA ⠀•••• 2574',
+    status: 'success',
+    amount: '866.99',
+  }),
+  createData({
+    id: '2',
+    date: '16 Mar, 2019',
+    name: 'Tom Scholz',
+    shipTo: 'Boston, MA',
+    paymentMethod: 'MC ⠀•••• 1253',
+    status: 'info',
+    amount: '100.81',
+  }),
+  createData({
+    id: '3',
+    date: '16 Mar, 2019',
+    name: 'Michael Jackson',
+    shipTo: 'Gary, IN',
+    paymentMethod: 'AMEX ⠀•••• 2000',
+    status: 'primary',
+    amount: '654.39',
+  }),
+  createData({
+    id: '4',
+    date: '15 Mar, 2019',
+    name: 'Bruce Springsteen',
+    shipTo: 'Long Branch, NJ',
+    paymentMethod: 'VISA ⠀•••• 5919',
+    status: 'danger',
+    amount: '212.79',
+  }),
 ]
 
-function preventDefault(event) {
+function preventDefault(event: any) {
   event.preventDefault()
 }
 
 export default function Orders() {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -102,11 +118,9 @@ export default function Orders() {
           <Title>Recent Orders</Title>
         </Box>
         <Box>
-          <IconButton
-            aria-describedby={id}
-            children={<MoreIcon size="small" />}
-            onClick={handleClick}
-          />
+          <IconButton aria-describedby={id} onClick={handleClick}>
+            <MoreIcon />
+          </IconButton>
           <Popover
             marginThreshold={0}
             id={id}
@@ -129,25 +143,13 @@ export default function Orders() {
               padding={1}
               divider={<Divider orientation="horizontal" flexItem />}
             >
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<RefreshIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<RefreshIcon />}>
                 Refresh
               </Button>
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<CachedIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<CachedIcon />}>
                 Reload
               </Button>
-              <Button
-                variant="text"
-                size="small"
-                startIcon={<OffIcon size="small" />}
-              >
+              <Button variant="text" size="small" startIcon={<OffIcon />}>
                 Remove
               </Button>
             </Stack>
@@ -159,15 +161,15 @@ export default function Orders() {
           size="small"
           sx={{
             'thead > tr:first-child': {
-              backgroundColor: 'secondary.light',
+              // backgroundColor: 'secondary.light',
               th: {
                 fontWeight: 'bold',
-                color: 'secondary.dark',
+                // color: 'secondary.dark',
               },
             },
             tbody: {
               'tr:nth-child(odd):hover': {
-                backgroundColor: 'secondary.light',
+                // backgroundColor: 'secondary.light',
               },
             },
           }}
@@ -184,7 +186,7 @@ export default function Orders() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {rows.map((row: any) => (
               <TableRow key={row.id}>
                 <TableCell>{row.date}</TableCell>
                 <TableCell>{row.name}</TableCell>

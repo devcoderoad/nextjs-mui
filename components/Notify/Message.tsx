@@ -14,7 +14,7 @@ import {
   Divider,
 } from '@mui/material'
 
-export default function NotifyMessage(props) {
+export default function NotifyMessage(props: any) {
   const { items } = props
 
   return <Box>Test</Box>

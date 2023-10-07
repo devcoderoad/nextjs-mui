@@ -20,7 +20,7 @@ import Copyright from '@components/Copyright'
 const theme = createTheme()
 
 export default function Page() {
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     console.log({

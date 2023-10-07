@@ -17,9 +17,9 @@ export default function MediasCard() {
     >
       <CardMedia
         component="div"
-        height="220"
+        // height="220"
         // image="https://images.unsplash.com/flagged/photo-1557665159-2dfaf0ab25ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&h=987&q=80"
-        alt="green iguana"
+        // alt="green iguana"
         sx={{
           background:
             'url(https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80) top center no-repeat',
@@ -31,11 +31,10 @@ export default function MediasCard() {
           zIndex: 0,
           color: 'white',
           textShadow: '2px 2px 15px #000000',
-          zIndex: 0,
           pl: '1rem',
           pt: '1rem',
           ':after': {
-            content: "' '",
+            content: '" "',
             position: 'absolute',
             left: 0,
             right: 0,
@@ -44,7 +43,6 @@ export default function MediasCard() {
             height: '100%',
             top: 0,
             bottom: 0,
-            right: 0,
             background:
               'linear-gradient(180deg,rgba(2,0,36,0) 15%,rgba(0,0,0,.8));',
           },

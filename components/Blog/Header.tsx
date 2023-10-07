@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 
-function Header(props) {
+function Header(props: any) {
   const { sections, title } = props
 
   return (
@@ -36,7 +36,7 @@ function Header(props) {
         variant="dense"
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
-        {sections.map((section) => (
+        {sections.map((section: any) => (
           <Link
             color="primary"
             noWrap

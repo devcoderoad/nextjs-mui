@@ -140,8 +140,8 @@ export default function Page() {
               <Button variant="outlined">Transfer</Button>
               <GroupButton dense />
             </Box>
-            <Box container>
-              <Box item>
+            <Box>
+              <Box>
                 <Typography
                   component="h4"
                   variant="body1"

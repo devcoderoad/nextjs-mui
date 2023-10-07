@@ -296,7 +296,7 @@ function ChartApexPie(props: {
   data?: any
   // sx: Sx[] | Sx
 }): ReactNode {
-  var options: ApexOptions = {
+  const options: ApexOptions = {
     series: [25, 15, 44, 55, 41, 17],
     chart: {
       width: '100%',
@@ -370,7 +370,7 @@ function ChartApexBar(props: {
   data?: any
   // sx: Sx[] | Sx
 }): ReactNode {
-  var options: ApexOptions = {
+  const options: ApexOptions = {
     series: [
       {
         name: 'Net Profit',
@@ -470,7 +470,7 @@ function ChartApexRadial(props: {
   data?: any
   // sx: Sx[] | Sx
 }): ReactNode {
-  var options: ApexOptions = {
+  const options: ApexOptions = {
     series: [76, 67, 61, 90],
     chart: {
       height: 390,

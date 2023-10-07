@@ -9,20 +9,19 @@ import Document, {
 } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 import { AppType } from 'next/app'
-import { /* theme,  */ roboto } from '@src/theme'
+import { roboto } from '@src/theme'
 import createEmotionCache from '@src/createEmotionCache'
 // import { getInitColorSchemeScript } from '@mui/material/styles'
 
-import { MyAppProps } from './_app'
+import { MUIAppProps } from './_app'
 
 interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: JSX.Element[]
 }
-// console.log(theme)
 
 export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
-    <Html lang="en" className={roboto.className}>
+    <Html lang="en" className={roboto.className} suppressHydrationWarning>
       <Head>
         {/* PWA primary color */}
         {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
@@ -31,7 +30,6 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         {emotionStyleTags}
       </Head>
       <body>
-        {/* {getInitColorSchemeScript()} */}
         <Main />
         <NextScript />
       </body>
@@ -71,10 +69,20 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const cache = createEmotionCache()
   const { extractCriticalToChunks } = createEmotionServer(cache)
 
+  // ctx.renderPage = () =>
+  //   originalRenderPage({
+  //     enhanceApp: (
+  //       App: React.ComponentType<React.ComponentProps<AppType> & MUIAppProps>
+  //     ) =>
+  //       function EnhanceApp(props) {
+  //         return <App emotionCache={cache} {...props} />
+  //       },
+  //   })
+
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (
-        App: React.ComponentType<React.ComponentProps<AppType> & MyAppProps>
+        App: React.ComponentType<React.ComponentProps<AppType> & MUIAppProps>
       ) =>
         function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />

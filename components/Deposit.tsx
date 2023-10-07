@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import { Box, Grid, Divider, Paper, Stack, Typography } from '@mui/material'
 
@@ -6,7 +5,7 @@ import Cog from '@components/Cog/Default'
 
 import Title from './Title'
 
-export default function Component(props) {
+export default function Component(props: any) {
   const {
     items = [
       {
@@ -60,7 +59,7 @@ export default function Component(props) {
       </Stack>
       <Grid container spacing={4}>
         {items && items.length > 0
-          ? items.map((obj) => {
+          ? items.map((obj: any) => {
               return (
                 <Grid key={obj.id} item lg={3}>
                   <Title>{obj.title}</Title>
@@ -80,18 +79,10 @@ export default function Component(props) {
                     }}
                     elevation={0}
                   >
-                    <Typography
-                      component="h5"
-                      variant="body"
-                      color={`${obj.type}.main`}
-                    >
+                    <Typography component="h5" color={`${obj.type}.main`}>
                       Account No
                     </Typography>
-                    <Typography
-                      component="h5"
-                      variant="body"
-                      color="secondary.dark"
-                    >
+                    <Typography component="h5" color="secondary.dark">
                       {obj.accNo}
                     </Typography>
                   </Paper>
@@ -104,11 +95,7 @@ export default function Component(props) {
                     </Typography>
                   </Box>
                   <Divider light={true} sx={{ marginY: 1.25 }} />
-                  <Typography
-                    component="h4"
-                    color={`${obj.type}.main`}
-                    variant="body"
-                  >
+                  <Typography component="h4" color={`${obj.type}.main`}>
                     Interest: {obj.interest}
                   </Typography>
                 </Grid>
