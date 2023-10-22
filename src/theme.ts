@@ -72,13 +72,13 @@ export const getThemeTokens: ThemeOptions = {
         disableRipple: true, // No more ripple, on the whole application 💣!
       },
     },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: {
-          minWidth: '42px',
-        },
-      },
-    },
+    // MuiListItemIcon: {
+    //   styleOverrides: {
+    //     root: {
+    //       minWidth: '42px',
+    //     },
+    //   },
+    // },
     MuiListSubheader: {
       styleOverrides: {
         root: {
@@ -194,6 +194,20 @@ export const darkTheme = createTheme({
     background: {
       paper: '#252525',
       // default: '#252525',
+    },
+  },
+  components: {
+    MuiCard: {
+      defaultProps: {
+        // sx: {
+        //   borderColor: '#4e4e4e !important',
+        // },
+      },
+      styleOverrides: {
+        root: {
+          borderColor: '#4e4e4e !important',
+        },
+      },
     },
   },
   // components: {

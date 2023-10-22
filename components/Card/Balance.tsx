@@ -14,6 +14,7 @@ import {
   MenuItem,
   Link,
   Popover,
+  useTheme,
 } from '@mui/material'
 
 /* 
@@ -22,6 +23,8 @@ function BalanceCard (props: any) {
 }
 */
 function BalanceCard() {
+  const theme = useTheme()
+
   const balanceData = [
     {
       id: 1,
@@ -74,6 +77,7 @@ function BalanceCard() {
         >
           {balanceData &&
             balanceData.map((item: any) => {
+              const isDark = theme.palette.mode === 'dark'
               return (
                 <Grid
                   key={item.id}
@@ -81,19 +85,25 @@ function BalanceCard() {
                   alignItems="top"
                   boxShadow={0}
                   sx={{
-                    border: '2px solid #f2f2f2',
+                    border: isDark
+                      ? '2px solid secondary.light'
+                      : '2px solid #f2f2f2',
                     p: 2,
                     borderRadius: '12px',
-                    color: 'white',
+                    color: isDark ? 'grey.400' : 'white',
                     transition: '.5s ease',
-                    boxShadow:
-                      '0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)',
-                    backgroundColor: `${item.variant}.main`,
+                    boxShadow: isDark
+                      ? '0 2px 6px 0 rgb(10 10 50 / 65%), 0 2px 6px 0 rgb(0 0 0 / 54%)'
+                      : '0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)',
+                    backgroundColor: isDark
+                      ? 'primary.dark'
+                      : `${item.variant}.main`,
                     backgroundImage:
                       'linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0))',
                     ':hover': {
-                      boxShadow:
-                        '0 2px 12px 0 rgb(218 218 253 / 75%), 0 2px 12px 0 rgb(206 206 238 / 64%)',
+                      boxShadow: isDark
+                        ? '0 2px 12px 0 rgb(0 0 0 / 75%), 0 2px 12px 0 rgb(0 0 0 / 94%)'
+                        : '0 2px 12px 0 rgb(218 218 253 / 75%), 0 2px 12px 0 rgb(206 206 238 / 64%)',
                     },
                   }}
                 >

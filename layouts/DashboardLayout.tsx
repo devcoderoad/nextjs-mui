@@ -406,12 +406,15 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
         <List
           component="nav"
           sx={{
+            px: open ? '.75rem' : 0,
             '.MuiButtonBase-root': {
               textDecoration: 'none',
               borderRadius: open ? '2rem' : 0,
               transition: 'all .2s ease-out',
             },
-            px: open ? '.75rem' : 0,
+            '.MuiListItemIcon-root': {
+              minWidth: '42px',
+            },
           }}
         >
           {mainListItems(open)}
