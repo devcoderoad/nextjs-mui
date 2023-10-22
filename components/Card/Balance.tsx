@@ -14,8 +14,8 @@ import {
   MenuItem,
   Link,
   Popover,
-  useTheme,
 } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
 /* 
 function BalanceCard (props: any) {

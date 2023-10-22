@@ -1,6 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
+import { signOut } from 'next-auth/react'
+
 import {
   Box,
   Button,
@@ -28,6 +30,11 @@ function Header(props: any) {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = () => {
+    handleClose()
+    signOut()
   }
 
   return (
@@ -171,7 +178,7 @@ function Header(props: any) {
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </Grid>
               <Divider orientation="vertical" flexItem />

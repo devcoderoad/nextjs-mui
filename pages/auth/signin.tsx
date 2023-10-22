@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { getCsrfToken, signIn, useSession } from 'next-auth/react'
+
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -20,13 +22,26 @@ import Copyright from '@components/Copyright'
 const theme = createTheme()
 
 export default function Page() {
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    console.log({
+    // const body = {
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // }
+    const isLogin = await signIn('credentials', {
+      // ...body,
       email: data.get('email'),
       password: data.get('password'),
+      redirect: false,
     })
+    console.log({ isLogin })
+    if (isLogin?.status === 401 && isLogin?.error) {
+      // setMessage(isLogin.error);
+      console.log('error')
+    } else {
+      window.location.href = '/dashboard'
+    }
   }
 
   return (
@@ -83,6 +98,7 @@ export default function Page() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                defaultValue="admin@admin.org"
               />
               <TextField
                 size="small"
@@ -93,6 +109,7 @@ export default function Page() {
                 label="Password"
                 type="password"
                 id="password"
+                defaultValue="password"
                 autoComplete="current-password"
               />
               <FormControlLabel

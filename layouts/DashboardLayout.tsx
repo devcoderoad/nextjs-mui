@@ -47,6 +47,8 @@ import { ToggleColor } from '@components/Toggle/Color'
 /* Config */
 import { constant } from '@config/constants'
 import { CommonProps } from '@mui/material/OverridableComponent'
+import { Logout } from '@mui/icons-material'
+import { signOut } from 'next-auth/react'
 
 const drawerWidth = 240
 
@@ -251,6 +253,10 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
     },
   ]
 
+  const handleLogout = () => {
+    signOut({ callbackUrl: '/auth/signin' })
+  }
+
   return (
     <Box
       sx={{
@@ -376,6 +382,11 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             <MenuItem dense onClick={handleClose}>
               <Link href="/setting">
                 <SettingIcon /> Settings
+              </Link>
+            </MenuItem>
+            <MenuItem dense onClick={handleClose}>
+              <Link href="/setting" onClick={handleLogout}>
+                <Logout /> Logout
               </Link>
             </MenuItem>
           </Menu>
