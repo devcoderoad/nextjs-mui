@@ -1,13 +1,14 @@
 import NextAuth, { User } from 'next-auth'
-import { AdapterUser } from 'next-auth/adapters'
 import CredentialsProvider from 'next-auth/providers/credentials'
 // import { API_LOGIN } from '@/config/endpoint'
 // import { PAGE_ROUTES } from '@/config/constants'
+
 /* 
   secret: process.env.SECRET,
   // Enable debug messages in the console if you are having problems
   debug: false,
 */
+
 export default NextAuth({
   session: {
     strategy: 'jwt',
@@ -33,9 +34,6 @@ export default NextAuth({
           )
 
           const json = await res.json()
-          // console.log({ ok: res.ok })
-          // console.log(res.body)
-          // console.log({ json })
 
           if (res.ok && json.token) {
             const user = {
@@ -52,17 +50,12 @@ export default NextAuth({
           return null
         } catch (error: any) {
           throw new Error('Login failed: ' + error.message)
-          // return null
         }
       },
     }),
   ],
-  // callbacks: {
-  //   async jwt({ token, user }) {},
-  // },
   jwt: {
     maxAge: 60 * 60 * 24 * 7,
-    // signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
   },
   pages: {
     signIn: '/auth/signin',

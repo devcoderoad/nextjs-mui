@@ -147,9 +147,9 @@ const routeDashboard = {
   signin: {
     name: 'Users',
     icon: <PeopleIcon />,
-    href: '/auth/signin',
-    url: '/auth/signin',
-    to: '/auth/signin',
+    href: '/users',
+    url: '/users',
+    to: '/users',
   },
   pricing: {
     name: 'Pricing',

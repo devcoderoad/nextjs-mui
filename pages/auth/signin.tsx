@@ -14,7 +14,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 
 import { constant } from '@config/constants'
 import Copyright from '@components/Copyright'
@@ -25,12 +25,7 @@ export default function Page() {
   const handleSubmit = async (event: any) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    // const body = {
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // }
     const isLogin = await signIn('credentials', {
-      // ...body,
       email: data.get('email'),
       password: data.get('password'),
       redirect: false,
@@ -38,7 +33,7 @@ export default function Page() {
     console.log({ isLogin })
     if (isLogin?.status === 401 && isLogin?.error) {
       // setMessage(isLogin.error);
-      console.log('error')
+      console.log(isLogin?.error)
     } else {
       window.location.href = '/dashboard'
     }
@@ -46,7 +41,6 @@ export default function Page() {
 
   return (
     <>
-      {/* <ThemeProvider theme={theme}> */}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper sx={{ p: 4, mt: { xs: 12, lg: 24 } }} elevation={1}>
@@ -143,7 +137,6 @@ export default function Page() {
         </Paper>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-      {/* </ThemeProvider> */}
     </>
   )
 }

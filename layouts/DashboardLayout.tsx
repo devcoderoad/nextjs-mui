@@ -29,6 +29,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import HomeIcon from '@mui/icons-material/HomeOutlined'
 import AccountIcon from '@mui/icons-material/AccountCircle'
 import SettingIcon from '@mui/icons-material/Settings'
+import LogoutIcon from '@mui/icons-material/LogoutRounded'
 
 /* Components */
 import {
@@ -47,7 +48,6 @@ import { ToggleColor } from '@components/Toggle/Color'
 /* Config */
 import { constant } from '@config/constants'
 import { CommonProps } from '@mui/material/OverridableComponent'
-import { Logout } from '@mui/icons-material'
 import { signOut } from 'next-auth/react'
 
 const drawerWidth = 240
@@ -385,8 +385,8 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
               </Link>
             </MenuItem>
             <MenuItem dense onClick={handleClose}>
-              <Link href="/setting" onClick={handleLogout}>
-                <Logout /> Logout
+              <Link onClick={handleLogout}>
+                <LogoutIcon /> Logout
               </Link>
             </MenuItem>
           </Menu>
