@@ -1,5 +1,5 @@
 /* MUI */
-import { Container, Typography, Box, Grid } from '@mui/material'
+import { Container, Typography, Box, Grid, Paper } from '@mui/material'
 
 /* Components */
 import ProTip from '@components/ProTip'
@@ -90,6 +90,26 @@ export default function Home() {
             Material UI Financial Dashboard Administrator Theme
           </Typography>
           <div>A premium Theme for your Next.js Website Application</div>
+          <Paper>
+            <Box padding={2} mt={2}>
+              <Grid>
+                <Grid item>
+                  <Typography color={'secondary'}>
+                    Customized and integrated with{' '}
+                    <img
+                      src="https://raw.githubusercontent.com/nextauthjs/next-auth/c3388bde474d11a9743add30e998da1d6026a7d4/docs/static/img/logo/logo.png"
+                      width={20}
+                      alt="NextAuth.js in Web Application"
+                      style={{ verticalAlign: 'middle' }}
+                    />{' '}
+                    NextAuth.js, an Authentication System build for Next.js web
+                    application.
+                  </Typography>
+                </Grid>
+                {/* <Grid item></Grid> */}
+              </Grid>
+            </Box>
+          </Paper>
         </Box>
         <Box>
           <Typography color="primary" variant="h4" sx={styledH}>

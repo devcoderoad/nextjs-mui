@@ -40,18 +40,11 @@ export default function Page() {
       </Typography>
       <Box component="section">
         <Grid container mb={4} spacing={2}>
-          <Grid item sm={12} md={6} lg={3}>
-            <CardMedias />
-          </Grid>
-          <Grid item sm={12} md={6} lg={3}>
-            <CardMedias />
-          </Grid>
-          <Grid item sm={12} md={6} lg={3}>
-            <CardMedias />
-          </Grid>
-          <Grid item sm={12} md={6} lg={3}>
-            <CardMedias />
-          </Grid>
+          {[0, 1, 2, 3].map((_, i) => (
+            <Grid item key={i++} sm={12} md={6} lg={3}>
+              <CardMedias />
+            </Grid>
+          ))}
         </Grid>
       </Box>
       <Box component="section" my={6}>
@@ -237,113 +230,37 @@ export default function Page() {
       </Box>
       <Box component="section">
         <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card sx={{ display: 'flex' }}>
-                <CardContent sx={{ flex: 1 }}>
-                  <Typography component="h3" variant="h6">
-                    {post.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {post.date}
-                  </Typography>
-                  <Typography variant="subtitle2" paragraph>
-                    {post.description}
-                  </Typography>
-                  <Typography variant="caption" color="primary">
-                    Continue reading...
-                  </Typography>
-                </CardContent>
-                <CardMedia
-                  component="img"
-                  sx={{
-                    width: 160,
-                    display: { xs: 'none', sm: 'block' },
-                  }}
-                  image={post.image}
-                  alt={post.imageLabel}
-                />
-              </Card>
-            </CardActionArea>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card sx={{ display: 'flex' }}>
-                <CardContent sx={{ flex: 1 }}>
-                  <Typography component="h3" variant="h6">
-                    {post.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {post.date}
-                  </Typography>
-                  <Typography variant="subtitle2" paragraph>
-                    {post.description}
-                  </Typography>
-                  <Typography variant="caption" color="primary">
-                    Continue reading...
-                  </Typography>
-                </CardContent>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                  image={post.image}
-                  alt={post.imageLabel}
-                />
-              </Card>
-            </CardActionArea>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card sx={{ display: 'flex' }}>
-                <CardContent sx={{ flex: 1 }}>
-                  <Typography component="h3" variant="h6">
-                    {post.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {post.date}
-                  </Typography>
-                  <Typography variant="subtitle2" paragraph>
-                    {post.description}
-                  </Typography>
-                  <Typography variant="caption" color="primary">
-                    Continue reading...
-                  </Typography>
-                </CardContent>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                  image={post.image}
-                  alt={post.imageLabel}
-                />
-              </Card>
-            </CardActionArea>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card sx={{ display: 'flex' }}>
-                <CardContent sx={{ flex: 1 }}>
-                  <Typography component="h3" variant="h6">
-                    {post.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    {post.date}
-                  </Typography>
-                  <Typography variant="subtitle2" paragraph>
-                    {post.description}
-                  </Typography>
-                  <Typography variant="caption" color="primary">
-                    Continue reading...
-                  </Typography>
-                </CardContent>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                  image={post.image}
-                  alt={post.imageLabel}
-                />
-              </Card>
-            </CardActionArea>
-          </Grid>
+          {[0, 1, 2, 3].map((_, i) => (
+            <Grid key={i++} item xs={12} md={6}>
+              <CardActionArea component="a" href="#">
+                <Card sx={{ display: 'flex' }}>
+                  <CardContent sx={{ flex: 1 }}>
+                    <Typography component="h3" variant="h6">
+                      {post.title}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                      {post.date}
+                    </Typography>
+                    <Typography variant="subtitle2" paragraph>
+                      {post.description}
+                    </Typography>
+                    <Typography variant="caption" color="primary">
+                      Continue reading...
+                    </Typography>
+                  </CardContent>
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      width: 160,
+                      display: { xs: 'none', sm: 'block' },
+                    }}
+                    image={post.image}
+                    alt={post.imageLabel}
+                  />
+                </Card>
+              </CardActionArea>
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </DashboardLayout>

@@ -158,6 +158,12 @@ export default function Page() {
         </Typography>
       </Toolbar>
       <Grid container spacing={2}>
+        {[0, 1, 2, 3, 4].map((_, i) => (
+          <Grid key={i++} item xs={12} sm={12} lg={3}>
+            <AvatarProfile />
+          </Grid>
+        ))}
+        {/* 
         <Grid item xs={12} sm={12} lg={3}>
           <AvatarProfile />
         </Grid>
@@ -170,6 +176,7 @@ export default function Page() {
         <Grid item xs={12} sm={12} lg={3}>
           <AvatarProfile />
         </Grid>
+         */}
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
             <Orders />

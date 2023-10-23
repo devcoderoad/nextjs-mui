@@ -58,9 +58,9 @@ export default function Page() {
           >
             <TabsDefault
               items={[
-                { title: 'Chart JS', item: renderChart() },
-                { title: 'Chart JS Two', item: renderChart() },
-                { title: 'Chart JS Three', item: renderChart() },
+                { key: 1, title: 'Chart JS', item: renderChart() },
+                { key: 2, title: 'Chart JS Two', item: renderChart() },
+                { key: 3, title: 'Chart JS Three', item: renderChart() },
               ]}
             />
           </Paper>

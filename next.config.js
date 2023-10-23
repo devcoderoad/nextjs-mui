@@ -1,7 +1,11 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['source.unsplash.com', 'https://source.unsplash.com/random'],
+    domains: [
+      'source.unsplash.com',
+      'https://source.unsplash.com/random',
+      'https://github.com',
+    ],
   },
   webpack: function (config) {
     config.module.rules.push({
