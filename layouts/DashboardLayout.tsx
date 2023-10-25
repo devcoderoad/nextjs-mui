@@ -48,7 +48,7 @@ import { ToggleColor } from '@components/Toggle/Color'
 /* Config */
 import { constant } from '@config/constants'
 import { CommonProps } from '@mui/material/OverridableComponent'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 const drawerWidth = 240
 
@@ -102,12 +102,15 @@ const Drawer = styled(MuiDrawer, {
 }))
 
 function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
+  const { data: session, status } = useSession()
+
   const theme = useTheme()
   const match = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true })
-
   const [open, setOpen] = React.useState<boolean>(true)
   const [searchOpen, setSearchOpen] = React.useState(false)
   const [openNotify, setOpenNotify] = React.useState(false)
+  const [isDrawerHover, setIsDrawerHover] = React.useState(false)
+  const [storage, setStorage] = React.useState<{ drawer: string }>()
 
   const style = React.useMemo(
     () => ({
@@ -194,6 +197,21 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   )
 
   React.useEffect(() => {
+    const drawer = JSON.parse(localStorage.getItem('finDash') as string)
+    if (drawer) {
+      setStorage({ drawer: drawer.drawer })
+    } else {
+      localStorage.setItem('finDash', JSON.stringify({ drawer: false }))
+    }
+  }, [])
+
+  React.useEffect(() => {
+    setOpen(storage?.drawer as unknown as boolean)
+  }, [storage?.drawer])
+
+  // console.log(storage)
+
+  React.useEffect(() => {
     setOpenNotify(false)
   }, [])
 
@@ -205,9 +223,18 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
     }
   }, [match])
 
+  React.useEffect(() => {
+    setOpen(isDrawerHover)
+  }, [isDrawerHover])
+
   const toggleDrawer = () => {
     setOpen(!open)
+    localStorage.setItem('finDash', JSON.stringify({ drawer: !open }))
   }
+
+  // console.log({ storage })
+  // console.log({ open })
+  // console.log(window.localStorage.getItem('finDash'))
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -254,7 +281,7 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   ]
 
   const handleLogout = () => {
-    signOut({ callbackUrl: '/auth/signin' })
+    signOut({ callbackUrl: '/' })
   }
 
   return (
@@ -400,40 +427,51 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
           ...(!open && { ...style.drawerPaper }),
         }}
       >
-        <Toolbar sx={style.toolbar}>
-          <Link href="/">
-            <img
-              src="/logo.svg"
-              alt={constant.siteName}
-              height={24}
-              style={{ verticalAlign: 'middle' }}
-            />
-          </Link>
-          <IconButton onClick={toggleDrawer}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </Toolbar>
-        <Divider />
-        <List
-          component="nav"
-          sx={{
-            px: open ? '.75rem' : 0,
-            '.MuiButtonBase-root': {
-              textDecoration: 'none',
-              borderRadius: open ? '2rem' : 0,
-              transition: 'all .2s ease-out',
-            },
-            '.MuiListItemIcon-root': {
-              minWidth: '42px',
-            },
+        <Box
+          onMouseOver={() => {
+            setIsDrawerHover(true)
+          }}
+          onMouseOut={() => {
+            if (!storage?.drawer) {
+              setIsDrawerHover(false)
+            }
           }}
         >
-          {mainListItems(open)}
-          <Divider sx={{ my: 1 }} />
-          {secondaryListItems(open)}
-          <Divider sx={{ my: 1 }} />
-          {thirdListItems(open)}
-        </List>
+          <Toolbar sx={style.toolbar}>
+            <Link href="/">
+              <img
+                src="/logo.svg"
+                alt={constant.siteName}
+                height={24}
+                style={{ verticalAlign: 'middle' }}
+              />
+            </Link>
+            <IconButton onClick={toggleDrawer}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+          <List
+            component="nav"
+            sx={{
+              px: open ? '.75rem' : 0,
+              '.MuiButtonBase-root': {
+                textDecoration: 'none',
+                borderRadius: open ? '2rem' : 0,
+                transition: 'all .2s ease-out',
+              },
+              '.MuiListItemIcon-root': {
+                minWidth: '42px',
+              },
+            }}
+          >
+            {mainListItems(open)}
+            <Divider sx={{ my: 1 }} />
+            {secondaryListItems(open)}
+            <Divider sx={{ my: 1 }} />
+            {thirdListItems(open)}
+          </List>
+        </Box>
       </Drawer>
       <Box
         id="back-to-top-anchor"

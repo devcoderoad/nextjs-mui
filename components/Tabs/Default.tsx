@@ -88,10 +88,10 @@ function BasicTabs(props: any) {
             items.map((item: any, i: number) => {
               return (
                 <Tab
-                  key={item.title + i}
+                  key={`${i + i}`}
+                  {...a11yProps(i)}
                   label={item.title}
                   {...(item.props ? { ...item.props } : {})}
-                  {...a11yProps(i)}
                 />
               )
             })}

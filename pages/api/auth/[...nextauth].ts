@@ -1,4 +1,5 @@
 import NextAuth, { User } from 'next-auth'
+import { AdapterUser } from 'next-auth/adapters'
 import CredentialsProvider from 'next-auth/providers/credentials'
 // import { API_LOGIN } from '@/config/endpoint'
 // import { PAGE_ROUTES } from '@/config/constants'
@@ -10,9 +11,9 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 */
 
 export default NextAuth({
-  session: {
-    strategy: 'jwt',
-  },
+  // session: {
+  //   strategy: 'jwt',
+  // },
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -39,8 +40,9 @@ export default NextAuth({
             const user = {
               id: json.id,
               email: json.email,
-              fullName: json.fullName,
+              name: json.fullName,
               phoneNumber: json.phoneNumber,
+              image: json.image,
               token: json.token,
               role: json.role,
             }
@@ -54,6 +56,15 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      return session
+    },
+    async jwt({ token, account, profile }) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      return token
+    },
+  },
   jwt: {
     maxAge: 60 * 60 * 24 * 7,
   },

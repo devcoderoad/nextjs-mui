@@ -44,30 +44,29 @@ export default function FloatConfig() {
           display: 'block',
           padding: '1rem',
           margin: '0 auto .88rem auto',
-          size: '.66rem',
           boxShadow: 1,
           button: {
             mr: '.425rem',
           },
         }}
       >
-        <Fab color="primary" aria-label="add" size="small">
+        <Fab color="secondary" aria-label="add" size="small">
           <FavoriteIcon fontSize="small" />
         </Fab>
         <Fab color="secondary" aria-label="add" size="small">
           <MoreIcon fontSize="small" />
         </Fab>
-        <Fab color="success" aria-label="add" size="small">
+        <Fab color="secondary" aria-label="add" size="small">
           <RefreshIcon fontSize="small" />
         </Fab>
-        <Fab color="info" aria-label="add" size="small">
+        <Fab color="secondary" aria-label="add" size="small">
           <OffIcon fontSize="small" />
         </Fab>
         <Box sx={{ mt: '1rem', mx: 'auto', textAlign: 'center' }}>
-          <Button variant="contained" color="primary">
+          <Button variant="outlined" color="primary" size="small">
             Wide
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="outlined" color="primary" size="small">
             Large
           </Button>
         </Box>

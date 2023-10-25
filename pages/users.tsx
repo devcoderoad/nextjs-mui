@@ -10,6 +10,7 @@ import {
   Toolbar,
   Link,
   Button,
+  Divider,
 } from '@mui/material'
 
 import Table from '@mui/material/Table'
@@ -30,6 +31,8 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import CommentBankIcon from '@mui/icons-material/CommentBank'
 import AddchartOutlinedIcon from '@mui/icons-material/AddchartOutlined'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
+import PersonIcon from '@mui/icons-material/Person'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
@@ -141,9 +144,10 @@ export default function Page() {
             svg: { verticalAlign: 'middle', mr: 1 },
           }}
         >
-          <CircleIcon fontSize="small" />
+          <PersonIcon fontSize="small" />
           Profile
         </Link>
+        <Divider orientation="vertical" variant="middle" />
         <Typography
           variant="subtitle2"
           color="secondary.main"
@@ -153,30 +157,16 @@ export default function Page() {
             svg: { verticalAlign: 'middle', mr: 1 },
           }}
         >
-          <AccountTreeIcon fontSize="small" />
-          New Sign
+          <PeopleAltIcon fontSize="small" />
+          New Signing
         </Typography>
       </Toolbar>
       <Grid container spacing={2}>
-        {[0, 1, 2, 3, 4].map((_, i) => (
+        {[0, 1, 2, 3].map((_, i) => (
           <Grid key={i++} item xs={12} sm={12} lg={3}>
             <AvatarProfile />
           </Grid>
         ))}
-        {/* 
-        <Grid item xs={12} sm={12} lg={3}>
-          <AvatarProfile />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={3}>
-          <AvatarProfile />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={3}>
-          <AvatarProfile />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={3}>
-          <AvatarProfile />
-        </Grid>
-         */}
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
             <Orders />

@@ -67,6 +67,7 @@
 import { FC } from 'react'
 import { EmotionCache } from '@emotion/react'
 import { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 import PageProvider from '@/src/helpers/PageProvider'
 
 export interface MUIAppProps extends AppProps {
@@ -74,9 +75,11 @@ export interface MUIAppProps extends AppProps {
 }
 
 const App: FC<MUIAppProps> = ({ Component, pageProps, emotionCache }) => (
-  <PageProvider emotionCache={emotionCache}>
-    <Component {...pageProps} />
-  </PageProvider>
+  <SessionProvider session={pageProps.session}>
+    <PageProvider emotionCache={emotionCache}>
+      <Component {...pageProps} />
+    </PageProvider>
+  </SessionProvider>
 )
 
 export default App

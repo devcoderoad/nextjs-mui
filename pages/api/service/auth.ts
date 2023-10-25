@@ -20,6 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       email: 'admin@admin.org',
       fullName: 'Web Administrator',
       phoneNumber: '+628080808080',
+      image: 'https://ui-avatars.com/api/?name=Web+Administrator',
       token:
         'FnZwAV/5ObvouIQeVFpzLs6rVka2R1CQeekyMmqzSXX3h8ORxcXUrvumQ9+Oi/jbktEXuICgo88p6BMXs31TUQ==',
       role: 'admin',

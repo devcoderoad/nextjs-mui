@@ -10,6 +10,7 @@ import {
   Toolbar,
   ButtonGroup,
   Avatar,
+  Stack,
 } from '@mui/material'
 
 import { deepOrange, green } from '@mui/material/colors'
@@ -325,11 +326,16 @@ export default function Page() {
                 },
               }}
             >
-              <Link href="/gallery" /* mr={3} variant="h6" */>Featured</Link>
-              <Link href="/gallery" /* mr={3} variant="h6" */>Trending</Link>
-              <Link href="/gallery" /* mr={3} variant="h6" */>
-                New Releases
-              </Link>
+              <Stack
+                sx={{ py: 4 }}
+                direction={{ lg: 'row' }}
+                spacing={1}
+                justifyContent="center"
+              >
+                <Button variant="contained">Featured</Button>
+                <Button variant="contained">Trending</Button>
+                <Button variant="contained">New Releases</Button>
+              </Stack>
             </Toolbar>
           </Box>
           <Box marginX={4}>
@@ -353,12 +359,11 @@ export default function Page() {
                   >
                     <Link
                       href={'#'}
-                      // sx={{
-                      //   textDecoration: 'none',
-                      //   height: '100%',
-                      //   display: 'block',
-                      //   ':hover': { color: 'primary.light' },
-                      // }}
+                      style={{
+                        textDecoration: 'none',
+                        height: '100%',
+                        display: 'block',
+                      }}
                     >
                       <Box
                         sx={{
