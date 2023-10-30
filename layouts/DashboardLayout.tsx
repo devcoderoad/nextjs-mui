@@ -21,6 +21,7 @@ import {
   IconButton,
   Link,
   useMediaQuery,
+  Badge,
 } from '@mui/material'
 
 /* Icons */
@@ -30,6 +31,8 @@ import HomeIcon from '@mui/icons-material/HomeOutlined'
 import AccountIcon from '@mui/icons-material/AccountCircle'
 import SettingIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/LogoutRounded'
+import WindowIcon from '@mui/icons-material/Window'
+import NotificationsIcon from '@mui/icons-material/Notifications'
 
 /* Components */
 import {
@@ -49,6 +52,9 @@ import { ToggleColor } from '@components/Toggle/Color'
 import { constant } from '@config/constants'
 import { CommonProps } from '@mui/material/OverridableComponent'
 import { signOut, useSession } from 'next-auth/react'
+
+/* routes */
+import { routeSecondary } from '@config/routes'
 
 const drawerWidth = 240
 
@@ -167,9 +173,64 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
           },
         },
       },
-      menuProfile: {
+      menuHasPopup: {
         a: { textDecoration: 'none' },
         svg: { fontSize: 'large', verticalAlign: 'middle', mr: 0.5 },
+        '.MuiPaper-root': {
+          '&:before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            bgcolor: 'background.paper',
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
+          },
+          '.MuiList-root': {
+            overflow: 'hidden',
+            paddingTop: 0,
+            paddingBottom: 0,
+          },
+          transformOrigin: { horizontal: 'right', vertical: 'top' },
+          anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+          overflow: 'visible',
+          maxHeight: '100%',
+        },
+        overflow: 'hidden',
+        top: 10,
+        right: -20,
+        '&.appbar-widget': {
+          '.MuiMenu-paper': {
+            width: '250px',
+            // transformOrigin: { horizontal: 'right', vertical: 'top' },
+            // anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+          },
+          '.MuiList-root': {
+            paddingTop: 0,
+            paddingBottom: 0,
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyItems: 'center',
+            justifyContent: 'start',
+            '.MuiMenuItem-root': {
+              '.MuiLink-root': {
+                marginTop: '.5rem',
+                marginBottom: '.5rem',
+                display: 'grid',
+                justifyItems: 'center',
+                justifyContent: 'start',
+              },
+              flexGrow: 0,
+              flexBasis: '33.3%',
+              maxWidth: '33.3%',
+              justifyContent: 'center',
+            },
+          },
+        },
       },
       toolbar: {
         display: 'flex',
@@ -236,18 +297,24 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   // console.log({ open })
   // console.log(window.localStorage.getItem('finDash'))
 
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorElProfile, setAnchorElProfile] = React.useState(null)
+  const [anchorElWidgets, setAnchorElWidgets] = React.useState(null)
 
   const handleChange = (event: any) => {
     /* setAuth(event.target.checked) */
   }
 
   const handleMenuProfile = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.target as any)
+    setAnchorElProfile(event.target as any)
+  }
+
+  const handleMenuWidget = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElWidgets(event.target as any)
   }
 
   const handleClose = () => {
-    setAnchorEl(null)
+    setAnchorElProfile(null)
+    setAnchorElWidgets(null)
   }
 
   const itemsNotify = [
@@ -377,18 +444,30 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             <FloatNotify show={openNotify} items={itemsNotify} />
             <IconButton
               color="inherit"
+              aria-label="widget shortcut"
+              aria-controls="menu-appbar-widget"
+              aria-haspopup="true"
+              onClick={handleMenuWidget}
+            >
+              <WindowIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
               aria-label="profile of current user"
               aria-controls="menu-appbar-profile"
               aria-haspopup="true"
               onClick={handleMenuProfile}
             >
-              <AccountIcon fontSize="small" />
+              <AccountIcon />
             </IconButton>
           </Stack>
           <Menu
-            id="menu-appbar-profile"
+            id="menu-appbar-widget"
+            className="appbar-widget"
+            sx={style.menuHasPopup}
+            elevation={4}
             keepMounted
-            anchorEl={anchorEl}
+            anchorEl={anchorElWidgets}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'right',
@@ -397,8 +476,43 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
               vertical: 'top',
               horizontal: 'right',
             }}
-            sx={style.menuProfile}
-            open={Boolean(anchorEl)}
+            open={Boolean(anchorElWidgets)}
+            onClose={handleClose}
+          >
+            {Object.values(routeSecondary).map((item: any) => {
+              const icon = () => item.icon
+              return (
+                <MenuItem key={item.url} dense onClick={handleClose}>
+                  <Link href={item.url}>
+                    {icon()}
+                    <Typography
+                      component="span"
+                      color="secondary.main"
+                      variant="caption"
+                      noWrap
+                    >
+                      {item.name}
+                    </Typography>
+                  </Link>
+                </MenuItem>
+              )
+            })}
+          </Menu>
+          <Menu
+            id="menu-appbar-profile"
+            sx={style.menuHasPopup}
+            elevation={4}
+            keepMounted
+            anchorEl={anchorElProfile}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={Boolean(anchorElProfile)}
             onClose={handleClose}
           >
             <MenuItem dense onClick={handleClose}>
@@ -428,14 +542,14 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
         }}
       >
         <Box
-          onMouseOver={() => {
-            setIsDrawerHover(true)
-          }}
-          onMouseOut={() => {
-            if (!storage?.drawer) {
-              setIsDrawerHover(false)
-            }
-          }}
+        // onMouseOver={() => {
+        //   setIsDrawerHover(true)
+        // }}
+        // onMouseOut={() => {
+        //   if (!storage?.drawer) {
+        //     setIsDrawerHover(false)
+        //   }
+        // }}
         >
           <Toolbar sx={style.toolbar}>
             <Link href="/">

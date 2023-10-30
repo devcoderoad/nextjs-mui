@@ -297,9 +297,14 @@ export default function Blog() {
                     <Box component="p">{post.description}</Box>
                   </Box>
                 </Box>
-                <Stack direction="row" justifyContent="space-between">
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="flex-start"
+                >
                   <Box>
                     <Button
+                      size="small"
                       variant="text"
                       startIcon={<AccessTimeIcon fontSize="small" />}
                     >
@@ -308,12 +313,14 @@ export default function Blog() {
                   </Box>
                   <Box>
                     <Button
+                      size="small"
                       variant="text"
                       startIcon={<FavoriteIcon fontSize="small" />}
                     >
                       {post.view}
                     </Button>
                     <Button
+                      size="small"
                       variant="text"
                       startIcon={<VisibilityIcon fontSize="small" />}
                     >
