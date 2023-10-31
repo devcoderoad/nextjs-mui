@@ -5,7 +5,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { Box, Fab, Button, Fade } from '@mui/material'
 import Close from '@mui/icons-material/Close'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import Settings from '@mui/icons-material/Settings'
+import SettingsIcon from '@mui/icons-material/Settings'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import RefreshIcon from '@mui/icons-material/RefreshOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
@@ -102,7 +102,7 @@ export default function FloatConfig() {
             // onBlur={onBlurConfigBtn}
             // onMouseLeave={onBlurConfigBtn}
           >
-            {!open ? <Settings /> : <Close />}
+            {!open ? <SettingsIcon /> : <Close />}
             {/* <AddIcon /> */}
           </Fab>
         </Box>

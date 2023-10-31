@@ -22,6 +22,7 @@ import {
   Link,
   useMediaQuery,
   Badge,
+  Avatar,
 } from '@mui/material'
 
 /* Icons */
@@ -55,6 +56,7 @@ import { signOut, useSession } from 'next-auth/react'
 
 /* routes */
 import { routeSecondary } from '@config/routes'
+import { Session } from 'next-auth'
 
 const drawerWidth = 240
 
@@ -117,6 +119,13 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   const [openNotify, setOpenNotify] = React.useState(false)
   const [isDrawerHover, setIsDrawerHover] = React.useState(false)
   const [storage, setStorage] = React.useState<{ drawer: string }>()
+
+  const user = React.useMemo(
+    () => ({
+      ...session?.user,
+    }),
+    [session]
+  )
 
   const style = React.useMemo(
     () => ({
@@ -270,8 +279,6 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
     setOpen(storage?.drawer as unknown as boolean)
   }, [storage?.drawer])
 
-  // console.log(storage)
-
   React.useEffect(() => {
     setOpenNotify(false)
   }, [])
@@ -293,8 +300,6 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
     localStorage.setItem('finDash', JSON.stringify({ drawer: !open }))
   }
 
-  // console.log({ storage })
-  // console.log({ open })
   // console.log(window.localStorage.getItem('finDash'))
 
   const [anchorElProfile, setAnchorElProfile] = React.useState(null)
@@ -451,15 +456,36 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             >
               <WindowIcon />
             </IconButton>
-            <IconButton
-              color="inherit"
-              aria-label="profile of current user"
-              aria-controls="menu-appbar-profile"
-              aria-haspopup="true"
-              onClick={handleMenuProfile}
-            >
-              <AccountIcon />
-            </IconButton>
+            {user ? (
+              <Box
+                onClick={handleMenuProfile}
+                component="a"
+                sx={{ cursor: 'pointer' }}
+              >
+                <Stack direction="row">
+                  <IconButton
+                    color="inherit"
+                    aria-label="profile of current user"
+                    aria-controls="menu-appbar-profile"
+                    aria-haspopup="true"
+                  >
+                    <Avatar src={user?.image || ''} />
+                    {/* <img src={user?.image || ''} /> */}
+                  </IconButton>
+                  <Stack direction="column" justifyContent={'center'}>
+                    <Typography variant="caption">{user?.name}</Typography>
+                    <Typography
+                      variant="caption"
+                      sx={{ textTransform: 'lowercase' }}
+                    >
+                      {user?.email}
+                    </Typography>
+                  </Stack>
+                </Stack>
+              </Box>
+            ) : (
+              ''
+            )}
           </Stack>
           <Menu
             id="menu-appbar-widget"
