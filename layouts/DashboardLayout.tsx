@@ -56,13 +56,17 @@ import { signOut, useSession } from 'next-auth/react'
 
 /* routes */
 import { routeSecondary } from '@config/routes'
-import { Session } from 'next-auth'
 
 const drawerWidth = 240
 
 interface OwnProps extends CommonProps {
-  open: boolean
+  open?: boolean
   theme?: any
+  children: React.ReactNode
+  breadcrumb?: {
+    name?: string
+    url?: string
+  }
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -109,7 +113,9 @@ const Drawer = styled(MuiDrawer, {
   },
 }))
 
-function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
+function DashboardContent(props: OwnProps): JSX.Element {
+  const { breadcrumb = { name: 'Dashboard', url: '/dashboard' }, children } =
+    props
   const { data: session, status } = useSession()
 
   const theme = useTheme()
@@ -203,14 +209,16 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             paddingTop: 0,
             paddingBottom: 0,
           },
-          transformOrigin: { horizontal: 'right', vertical: 'top' },
-          anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+          // transformOrigin: { horizontal: 'right', vertical: 'top' },
+          // anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
           overflow: 'visible',
           maxHeight: '100%',
         },
-        overflow: 'hidden',
+        // overflow: 'hidden',
         top: 10,
         right: -20,
+        overflow: 'visible',
+        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.2))',
         '&.appbar-widget': {
           '.MuiMenu-paper': {
             width: '250px',
@@ -310,11 +318,11 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   }
 
   const handleMenuProfile = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElProfile(event.target as any)
+    setAnchorElProfile(event.currentTarget as any)
   }
 
   const handleMenuWidget = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElWidgets(event.target as any)
+    setAnchorElWidgets(event.currentTarget as any)
   }
 
   const handleClose = () => {
@@ -414,13 +422,13 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             />
             <Typography
               component="a"
-              href="/"
+              href={breadcrumb.url}
               variant="subtitle1"
               color="inherit"
               noWrap
               sx={{ textDecoration: 'none' }}
             >
-              Dashboard
+              {breadcrumb.name}
             </Typography>
           </Box>
           <Stack spacing={{ md: 0 }} direction="row">
@@ -469,18 +477,9 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
                     aria-controls="menu-appbar-profile"
                     aria-haspopup="true"
                   >
-                    <Avatar src={user?.image || ''} />
+                    {user?.image ? <Avatar src={user?.image} /> : ''}
                     {/* <img src={user?.image || ''} /> */}
                   </IconButton>
-                  <Stack direction="column" justifyContent={'center'}>
-                    <Typography variant="caption">{user?.name}</Typography>
-                    <Typography
-                      variant="caption"
-                      sx={{ textTransform: 'lowercase' }}
-                    >
-                      {user?.email}
-                    </Typography>
-                  </Stack>
                 </Stack>
               </Box>
             ) : (
@@ -494,14 +493,8 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             elevation={4}
             keepMounted
             anchorEl={anchorElWidgets}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             open={Boolean(anchorElWidgets)}
             onClose={handleClose}
           >
@@ -530,28 +523,33 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
             elevation={4}
             keepMounted
             anchorEl={anchorElProfile}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             open={Boolean(anchorElProfile)}
             onClose={handleClose}
           >
-            <MenuItem dense onClick={handleClose}>
+            <MenuItem dense>
+              <Stack direction="column" justifyContent={'center'} m={0.5}>
+                <Typography variant="caption">{user?.name}</Typography>
+                <Typography
+                  variant="caption"
+                  sx={{ textTransform: 'lowercase' }}
+                >
+                  {user?.email}
+                </Typography>
+              </Stack>
+            </MenuItem>
+            <MenuItem dense>
               <Link href="/profile">
                 <AccountIcon /> Profile
               </Link>
             </MenuItem>
-            <MenuItem dense onClick={handleClose}>
+            <MenuItem dense>
               <Link href="/setting">
                 <SettingIcon /> Settings
               </Link>
             </MenuItem>
-            <MenuItem dense onClick={handleClose}>
+            <MenuItem dense>
               <Link onClick={handleLogout}>
                 <LogoutIcon /> Logout
               </Link>
@@ -642,10 +640,7 @@ function DashboardContent({ children }: React.PropsWithChildren): JSX.Element {
   )
 }
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactElement | React.ReactElement[]
-}) {
-  return <DashboardContent>{children}</DashboardContent>
+export default function DashboardLayout({ children, ...rest }: OwnProps) {
+  // const { children, ...rest } = props
+  return <DashboardContent {...rest}>{children}</DashboardContent>
 }

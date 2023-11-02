@@ -108,22 +108,29 @@ export const secondaryListItems = (compact = false) => {
   )
 }
 
-export const thirdListItems = (compact = false) => (
-  <React.Fragment>
-    <ListSubheader component="div" hidden={!compact} color="primary">
-      Widgets
-    </ListSubheader>
-    <ListItemButton dense>
-      <ListItemIcon>
-        <AssessmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton dense>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-  </React.Fragment>
-)
+export const thirdListItems = (compact = false) => {
+  const router = useRouter()
+  return (
+    <React.Fragment>
+      <ListSubheader component="div" hidden={!compact} color="primary">
+        Widgets
+      </ListSubheader>
+      <ListItemButton dense href={'/faqs'} selected={'/faqs' === router.asPath}>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="FAQs" />
+      </ListItemButton>
+      <ListItemButton
+        dense
+        href={'/commerce'}
+        selected={'/commerce' === router.asPath}
+      >
+        <ListItemIcon>
+          <AssessmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Commerce" />
+      </ListItemButton>
+    </React.Fragment>
+  )
+}

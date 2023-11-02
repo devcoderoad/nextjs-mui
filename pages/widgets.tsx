@@ -10,11 +10,36 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import Cog from '@components/Cog/Default'
 import TabsDefault from '@components/Tabs/Default'
+import Messages from '@components/Message/User'
 
 export default function Page() {
   return (
     <DashboardLayout>
       <Container maxWidth="xl">
+        <Grid item xs={12} md={8} lg={9} marginY={4}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: 240,
+            }}
+          >
+            <Box marginBottom={2}>
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Messages
+              </Typography>
+              <Box>
+                <Messages />
+              </Box>
+            </Box>
+          </Paper>
+        </Grid>
         <Grid item xs={12} md={8} lg={9} marginY={4}>
           <Paper
             sx={{

@@ -45,7 +45,7 @@ export default function Page() {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout breadcrumb={{ name: 'Chart', url: '/chart' }}>
       <Container maxWidth="xl">
         <Grid item xs={12} md={8} lg={9} marginY={4}>
           <Paper

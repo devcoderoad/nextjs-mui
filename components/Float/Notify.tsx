@@ -17,36 +17,20 @@ import {
   styled,
 } from '@mui/material'
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    backgroundColor: '#44b700',
-    color: '#44b700',
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.8)',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}))
+/* Components */
+import Messages from '@components/Message/User'
 
-export default function FloatNotify({ show, items }: any) {
+export default function FloatNotify({
+  show,
+  items,
+}: {
+  show: any
+  items: {
+    author: string
+    title: string
+    text: string
+  }[]
+}) {
   const [anchorEl, setAnchorEl] = React.useState(show)
 
   const handleClick = (event: any) => {
@@ -72,9 +56,35 @@ export default function FloatNotify({ show, items }: any) {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        sx={{
+          maxHeight: '400px',
+          '.MuiPaper-root': {
+            '&:before': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: 'background.paper',
+              transform: 'translateY(-50%) rotate(45deg)',
+              zIndex: 0,
+            },
+            '.MuiList-root': {
+              overflow: 'hidden',
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            overflow: 'visible',
+            maxHeight: '100%',
+          },
+          top: 10,
+          right: -20,
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.2))',
         }}
       >
         <Box
@@ -101,62 +111,7 @@ export default function FloatNotify({ show, items }: any) {
             </Box>
           </Grid>
           <Divider />
-          {items &&
-            items.length &&
-            items.map((item: any) => (
-              <Grid
-                key={item.id}
-                container
-                spacing={2}
-                m={0.5}
-                pr={4}
-                sx={{
-                  bgColor: 'secondary.main',
-                }}
-              >
-                <Grid item component="div">
-                  <Avatar
-                    sx={{
-                      borderWidth: '1px',
-                      borderColor: 'secondary.main',
-                      borderStyle: 'solid',
-                      overflow: 'visible',
-                      zIndex: 0,
-                      '.MuiBadge-root': { zIndex: 1, right: -10, bottom: -10 },
-                    }}
-                  >
-                    {item.author.slice(0, 1)}
-                    <StyledBadge
-                      color="success"
-                      overlap="circular"
-                      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                      variant="dot"
-                    />
-                  </Avatar>
-                  {/* <small>21 Second Ago</small> */}
-                </Grid>
-                <Grid item xs container wrap="wrap">
-                  <Typography
-                    sx={{ fontWeight: '600' }}
-                    variant="caption"
-                    component={'p'}
-                  >
-                    {item.author}
-                  </Typography>
-                  <Typography sx={{ mt: 0.5 }} variant="caption" component="p">
-                    {item.text}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    sx={{ lineHeight: 1.25, fontWeight: '200' }}
-                    variant="subtitle2"
-                  >
-                    {item.title}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
+          <Messages />
         </Box>
       </Popover>
     </>

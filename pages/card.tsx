@@ -32,7 +32,7 @@ export default function Page() {
     imageLabel: 'Image Label',
   }
   return (
-    <DashboardLayout>
+    <DashboardLayout breadcrumb={{ name: 'Cards', url: '/card' }}>
       <Typography variant="h6" marginTop={2}>
         Cards
       </Typography>
