@@ -23,6 +23,7 @@ import {
   useMediaQuery,
   Badge,
   Avatar,
+  Popover,
 } from '@mui/material'
 
 /* Icons */
@@ -219,14 +220,14 @@ function DashboardContent(props: OwnProps): JSX.Element {
         top: 10,
         right: -20,
         overflow: 'visible',
-        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.2))',
+        // filter: 'drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, .15))',
         '&.appbar-widget': {
           '.MuiMenu-paper': {
             width: '250px',
             // transformOrigin: { horizontal: 'right', vertical: 'top' },
             // anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
           },
-          '.MuiList-root': {
+          '.MuiPopover-paper': {
             paddingTop: 0,
             paddingBottom: 0,
             display: 'flex',
@@ -515,11 +516,11 @@ function DashboardContent(props: OwnProps): JSX.Element {
               ''
             )}
           </Stack>
-          <Menu
+          <Popover
             id="menu-appbar-widget"
             className="appbar-widget"
             sx={style.menuHasPopup}
-            elevation={4}
+            // elevation={4}
             keepMounted
             anchorEl={anchorElWidgets}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -530,7 +531,12 @@ function DashboardContent(props: OwnProps): JSX.Element {
             {Object.values(routeSecondary).map((item: any) => {
               const icon = () => item.icon
               return (
-                <MenuItem key={item.url} dense onClick={handleClose}>
+                <MenuItem
+                  key={item.url}
+                  dense
+                  component="div"
+                  onClick={handleClose}
+                >
                   <Link href={item.url}>
                     {icon()}
                     <Typography
@@ -545,11 +551,11 @@ function DashboardContent(props: OwnProps): JSX.Element {
                 </MenuItem>
               )
             })}
-          </Menu>
-          <Menu
+          </Popover>
+          <Popover
             id="menu-appbar-profile"
             sx={style.menuHasPopup}
-            elevation={4}
+            // elevation={4}
             keepMounted
             anchorEl={anchorElProfile}
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -557,7 +563,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
             open={Boolean(anchorElProfile)}
             onClose={handleClose}
           >
-            <MenuItem dense>
+            <MenuItem dense component="div">
               <Stack direction="column" justifyContent={'center'} m={0.5}>
                 <Typography variant="caption">{user?.name}</Typography>
                 <Typography
@@ -568,22 +574,22 @@ function DashboardContent(props: OwnProps): JSX.Element {
                 </Typography>
               </Stack>
             </MenuItem>
-            <MenuItem dense>
+            <MenuItem dense component="div">
               <Link href="/profile">
                 <AccountIcon /> Profile
               </Link>
             </MenuItem>
-            <MenuItem dense>
+            <MenuItem dense component="div">
               <Link href="/setting">
                 <SettingIcon /> Settings
               </Link>
             </MenuItem>
-            <MenuItem dense>
+            <MenuItem dense component="div">
               <Link onClick={handleLogout}>
                 <LogoutIcon /> Logout
               </Link>
             </MenuItem>
-          </Menu>
+          </Popover>
         </Toolbar>
       </AppBar>
       <Drawer

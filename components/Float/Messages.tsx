@@ -85,7 +85,6 @@ export default function FloatNotify({
           top: 10,
           right: -20,
           overflow: 'visible',
-          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.2))',
           a: { color: 'primary.main' },
         }}
       >
