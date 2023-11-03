@@ -11,10 +11,16 @@ import DashboardLayout from '@layouts/DashboardLayout'
 import Cog from '@components/Cog/Default'
 import TabsDefault from '@components/Tabs/Default'
 import Messages from '@components/Message/User'
+import System from '@components/Message/System'
 
 export default function Page() {
   return (
-    <DashboardLayout>
+    <DashboardLayout
+      breadcrumb={[
+        { url: '/widgets', name: 'Widgets' },
+        { url: '/cards', name: 'Cards' },
+      ]}
+    >
       <Container maxWidth="xl">
         <Grid item xs={12} md={8} lg={9} marginY={4}>
           <Paper
@@ -26,17 +32,30 @@ export default function Page() {
             }}
           >
             <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Messages
-              </Typography>
-              <Box>
-                <Messages />
-              </Box>
+              <Grid container>
+                <Grid item md>
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Messages
+                  </Typography>
+                  <Messages />
+                </Grid>
+                <Grid item md>
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Notifications
+                  </Typography>
+                  <System />
+                </Grid>
+              </Grid>
             </Box>
           </Paper>
         </Grid>

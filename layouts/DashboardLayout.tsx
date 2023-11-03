@@ -32,7 +32,7 @@ import HomeIcon from '@mui/icons-material/HomeOutlined'
 import AccountIcon from '@mui/icons-material/AccountCircle'
 import SettingIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/LogoutRounded'
-import WindowIcon from '@mui/icons-material/Window'
+import WindowIcon from '@mui/icons-material/WindowOutlined'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 
 /* Components */
@@ -46,6 +46,7 @@ import AlertBar from '@components/Alert/SnackBar'
 import Copyright from '@components/Copyright'
 import FloatConfig from '@components/Float/Config'
 import FloatNotify from '@components/Float/Notify'
+import FloatMessages from '@components/Float/Messages'
 import ScrollToTop from '@components/Scroll/ToTop'
 import { ToggleColor } from '@components/Toggle/Color'
 
@@ -66,7 +67,7 @@ interface OwnProps extends CommonProps {
   breadcrumb?: {
     name?: string
     url?: string
-  }
+  }[]
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -114,7 +115,7 @@ const Drawer = styled(MuiDrawer, {
 }))
 
 function DashboardContent(props: OwnProps): JSX.Element {
-  const { breadcrumb = { name: 'Dashboard', url: '/dashboard' }, children } =
+  const { breadcrumb = [{ name: 'Dashboard', url: '/dashboard' }], children } =
     props
   const { data: session, status } = useSession()
 
@@ -152,9 +153,9 @@ function DashboardContent(props: OwnProps): JSX.Element {
       },
       dividerArrow: {
         display: 'block',
-        margin: '12px 7px 0 5px',
-        width: '10px',
-        height: '10px',
+        margin: '10px 0px 0 15px',
+        width: '8px',
+        height: '8px',
         borderWidth: 0,
         borderStyle: 'none',
         borderColor: 'none',
@@ -408,13 +409,40 @@ function DashboardContent(props: OwnProps): JSX.Element {
               color="inherit"
               href="/"
               sx={{
-                marginLeft: 0,
-                marginRight: '.75rem',
+                ml: 0,
               }}
             >
               <HomeIcon fontSize="small" />
             </IconButton>
-            <Divider
+            {breadcrumb &&
+              breadcrumb.map((item, i) => {
+                const sum = breadcrumb.length + 1
+                return (
+                  <Box key={`bread-${i + 1}`} sx={{ display: 'flex' }}>
+                    {i < sum ? (
+                      <Divider
+                        orientation="vertical"
+                        variant="middle"
+                        flexItem
+                        sx={style.dividerArrow}
+                      />
+                    ) : (
+                      ''
+                    )}
+                    <Typography
+                      component="a"
+                      href={item.url}
+                      variant="subtitle1"
+                      color="inherit"
+                      noWrap
+                      sx={{ textDecoration: 'none' }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </Box>
+                )
+              })}
+            {/* <Divider
               orientation="vertical"
               variant="middle"
               flexItem
@@ -429,7 +457,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
               sx={{ textDecoration: 'none' }}
             >
               {breadcrumb.name}
-            </Typography>
+            </Typography> */}
           </Box>
           <Stack spacing={{ md: 0 }} direction="row">
             <ClickAwayListener onClickAway={() => setSearchOpen(false)}>
@@ -455,6 +483,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
               </Box>
             </ClickAwayListener>
             <FloatNotify show={openNotify} items={itemsNotify} />
+            <FloatMessages show={openNotify} items={itemsNotify} />
             <IconButton
               color="inherit"
               aria-label="widget shortcut"

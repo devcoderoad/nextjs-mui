@@ -20,6 +20,7 @@ import ReadIcon from '@mui/icons-material/ChevronRightTwoTone'
 import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import CardMedias from '@components/Card/Medias'
+import CardBlog from '@components/Card/Blog'
 
 export default function Page() {
   const post = {
@@ -32,7 +33,7 @@ export default function Page() {
     imageLabel: 'Image Label',
   }
   return (
-    <DashboardLayout breadcrumb={{ name: 'Cards', url: '/card' }}>
+    <DashboardLayout breadcrumb={[{ name: 'Cards', url: '/card' }]}>
       <Typography variant="h6" marginTop={2}>
         Cards
       </Typography>
@@ -181,6 +182,9 @@ export default function Page() {
             </Grid>
           </Grid>
         </Grid>
+      </Box>
+      <Box component="section">
+        <CardBlog />
       </Box>
       <Box component="section">
         <Grid container spacing={4}>

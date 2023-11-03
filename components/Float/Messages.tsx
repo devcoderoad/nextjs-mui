@@ -3,7 +3,7 @@ import React from 'react'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
 
-import NotificationsIcon from '@mui/icons-material/NotificationsOutlined'
+import ChatsIcon from '@mui/icons-material/ChatBubbleOutlineRounded'
 
 import {
   Box,
@@ -19,9 +19,9 @@ import {
 } from '@mui/material'
 
 /* Components */
-import Messages from '@components/Message/System'
+import Messages from '@components/Message/User'
 
-export default function FloatMessages({
+export default function FloatNotify({
   show,
   items,
 }: {
@@ -49,7 +49,7 @@ export default function FloatMessages({
     <>
       <IconButton color="inherit" onClick={handleClick}>
         <Badge badgeContent={4} color="error">
-          <NotificationsIcon />
+          <ChatsIcon />
         </Badge>
       </IconButton>
       <Popover
@@ -99,7 +99,7 @@ export default function FloatMessages({
             sx={{ a: { textDecoration: 'none' } }}
           >
             <Box my={1} mx={2} component="span">
-              Notifications:
+              Messages:
             </Box>
             <Box my={1} mx={2} component="span">
               <a href="#">Mark all read</a>

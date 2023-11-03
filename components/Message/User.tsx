@@ -7,36 +7,96 @@ export interface OwnProps {
   title: string
   text: string
   timeStamp: string
+  type?:
+    | 'primary'
+    | 'secondary'
+    | 'default'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
 }
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    backgroundColor: '#44b700',
-    color: '#44b700',
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.8)',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}))
+export type OwnBadgeProps = {
+  backgroundColor: string
+  color: string
+}
+
+const StyledBadge = styled(Badge)(
+  ({
+    color,
+  }: {
+    color:
+      | 'primary'
+      | 'secondary'
+      | 'default'
+      | 'error'
+      | 'info'
+      | 'success'
+      | 'warning'
+  }) => {
+    const defaultColor = {
+      primary: {
+        backgroundColor: 'primary.main',
+        color: 'primary.main',
+      },
+      secondary: {
+        backgroundColor: 'secondary.main',
+        color: 'secondary.main',
+      },
+      default: {
+        backgroundColor: 'default.main',
+        color: 'default.main',
+      },
+      error: {
+        backgroundColor: '#ff0000',
+        color: '#ff0000',
+      },
+      info: {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+      },
+      success: {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+      },
+      warning: {
+        backgroundColor: '#ff9900',
+        color: '#ff9900',
+      },
+    }
+
+    const badgeTheme = defaultColor[color]
+
+    return {
+      '& .MuiBadge-badge': {
+        ...badgeTheme,
+        boxShadow: '0 0 0 2px rgba(255,255,255, .75)',
+        '&::after': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          borderRadius: '50%',
+          animation: 'ripple 1.2s infinite ease-in-out',
+          border: '1px solid currentColor',
+          content: '""',
+        },
+      },
+      '@keyframes ripple': {
+        '0%': {
+          transform: 'scale(.8)',
+          opacity: 1,
+        },
+        '100%': {
+          transform: 'scale(2.4)',
+          opacity: 0,
+        },
+      },
+    }
+  }
+)
 
 export default function MessageUser({
   items = [
@@ -44,8 +104,9 @@ export default function MessageUser({
       id: 1,
       author: 'Mr. Dimsum',
       title: 'Completely synergize resource taxing relationships',
-      text: 'Interactively coordinate proactive e-commerce via process-centric thinking. Completely pursue scalable customer service through sustainable potentialities. Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services. Seamlessly empower fully researched growth strategies and interoperable internal or sources.',
+      text: 'Interactively coordinate proactive e-commerce via process-centric thinking.',
       timeStamp: '21 Second Ago',
+      type: 'success',
     },
     {
       id: 2,
@@ -54,6 +115,7 @@ export default function MessageUser({
         'Objectively innovate empowered manufactured products whereas parallel',
       text: 'Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures.',
       timeStamp: '4 Hour Ago',
+      type: 'warning',
     },
     {
       id: 3,
@@ -62,6 +124,7 @@ export default function MessageUser({
         'Proactively envisioned multimedia based expertise and cross-media growth strategies',
       text: 'Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.',
       timeStamp: '1 Day Ago',
+      type: 'info',
     },
     {
       id: 4,
@@ -70,6 +133,16 @@ export default function MessageUser({
         'Phosfluorescently engage worldwide methodologies with web-enabled technology',
       text: 'Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.',
       timeStamp: '3 Days Ago',
+      type: 'warning',
+    },
+    {
+      id: 5,
+      author: 'Gaston Nick',
+      title:
+        'Phosfluorescently engage worldwide methodologies with web-enabled technology',
+      text: 'Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.',
+      timeStamp: '4 Days Ago',
+      type: 'error',
     },
   ],
 }: {
@@ -83,14 +156,13 @@ export default function MessageUser({
           <Grid
             key={item.id}
             container
-            spacing={2}
-            m={0.5}
-            pr={4}
+            spacing={0.5}
+            m={1}
             sx={{
               bgColor: 'secondary.main',
             }}
           >
-            <Grid item component="div">
+            <Grid item component="div" pr={1}>
               <Avatar
                 sx={{
                   borderWidth: '1px',
@@ -103,29 +175,35 @@ export default function MessageUser({
               >
                 {item.author.slice(0, 1)}
                 <StyledBadge
-                  color="success"
+                  color={item.type}
                   overlap="circular"
                   anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                   variant="dot"
                 />
               </Avatar>
             </Grid>
-            <Grid item xs container wrap="wrap">
-              <Typography
-                sx={{ fontWeight: '600' }}
-                variant="caption"
-                component={'p'}
-              >
-                {item.author}
-              </Typography>
-              <Box sx={{ width: '100%', lineHeight: 0.5, mb: 0.5 }}>
-                <Typography variant="caption" color="secondary.main">
-                  <AccessTimeIcon
-                    sx={{ fontSize: 14, verticalAlign: 'middle', mr: 0.5 }}
-                  />
-                  {item.timeStamp}
-                </Typography>
-              </Box>
+            <Grid item xs container wrap="wrap" pr={4}>
+              <Grid container justifyContent={'space-between'}>
+                <Grid item>
+                  <Typography
+                    sx={{ fontWeight: '600' }}
+                    variant="body2"
+                    component={'p'}
+                  >
+                    {item.author}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Box sx={{ width: '100%', lineHeight: 0.5, mb: 0.5 }}>
+                    <Typography variant="caption" color="secondary.main">
+                      <AccessTimeIcon
+                        sx={{ fontSize: 14, verticalAlign: 'middle', mr: 0.5 }}
+                      />
+                      {item.timeStamp}
+                    </Typography>
+                  </Box>
+                </Grid>
+              </Grid>
               <Typography
                 sx={{ lineHeight: 1.25, fontWeight: '300', mb: 0.5 }}
                 variant="body1"
@@ -133,11 +211,7 @@ export default function MessageUser({
               >
                 {item.title}
               </Typography>
-              <Typography
-                sx={{ mt: 0.5 }}
-                variant="body2"
-                color="secondary.main"
-              >
+              <Typography variant="body2" color="secondary.main">
                 {item.text}
               </Typography>
             </Grid>
