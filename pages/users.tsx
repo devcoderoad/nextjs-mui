@@ -132,7 +132,7 @@ export default function Page() {
     createData('Burger', 356, 16.0, 49, 3.9),
   ]
   return (
-    <DashboardLayout>
+    <DashboardLayout breadcrumb={[{ url: '/users', name: 'Users' }]}>
       <Toolbar disableGutters component="nav">
         <Link
           href="/profile"

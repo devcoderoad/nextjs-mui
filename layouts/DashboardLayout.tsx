@@ -249,12 +249,23 @@ function DashboardContent(props: OwnProps): JSX.Element {
               justifyContent: 'center',
             },
           },
+          '.MuiButtonBase-root': {
+            svg: { transition: 'transform .2s ease' },
+            '&:hover': {
+              svg: {
+                transform: 'scale(1.2)',
+                color: 'secondary.main',
+              },
+              backgroundColor: 'transparent',
+            },
+          },
         },
       },
       toolbar: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        // background: 'transparent',
         px: [1],
         a: {
           transition: 'all .5s ease',
@@ -269,8 +280,9 @@ function DashboardContent(props: OwnProps): JSX.Element {
         pr: '24px',
         boxShadow: 'none',
         textTransform: 'uppercase',
-        backgroundColor: theme.palette.mode === 'dark' ? '#232323' : 'white',
+        // backgroundColor: theme.palette.mode === 'dark' ? '#232323' : 'white',
         color: theme.palette.mode === 'dark' ? 'white' : 'gray',
+        backgroundColor: 'transparent',
       },
     }),
     [theme.palette.mode]

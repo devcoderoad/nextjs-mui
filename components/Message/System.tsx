@@ -103,26 +103,21 @@ export default function MessageSystem({
   items?: OwnProps[]
 }): React.ReactElement {
   const IconMap = (category: string, type: string) => {
-    const styles = {
+    const css = {
       verticalAlign: 'middle',
       fontSize: 'large',
       color: type,
     }
-    const item = {
-      business: <BusinessIcon sx={styles} />,
-      system: <SystemSecurityUpdateIcon sx={styles} />,
-      notification: <NotificationsIcon sx={styles} />,
-      document: <DocumentScannerIcon sx={styles} />,
-      approval: <ApprovalIcon sx={styles} />,
-      journal: <BookOnlineIcon sx={styles} />,
+    const item: any = {
+      business: <BusinessIcon sx={css} />,
+      system: <SystemSecurityUpdateIcon sx={css} />,
+      notification: <NotificationsIcon sx={css} />,
+      document: <DocumentScannerIcon sx={css} />,
+      approval: <ApprovalIcon sx={css} />,
+      journal: <BookOnlineIcon sx={css} />,
     }
     return item[category]
   }
-
-  // const Icons = (category: any) => {
-  //   return IconMap[category as any]
-  // }
-  // console.log(IconMap['system'])
 
   return (
     <Box
@@ -130,6 +125,9 @@ export default function MessageSystem({
         '.rootMessage:nth-of-type(odd)': {
           backgroundColor: '#F3F3F3',
           borderBottom: '1px solid #F3F3F3',
+        },
+        '.rootMessage': {
+          '&:hover': { backgroundColor: '#F7F7F7' },
         },
       }}
     >
@@ -141,7 +139,8 @@ export default function MessageSystem({
               <Icon
                 color={item.type}
                 sx={{
-                  // backgroundColor: `${item.type}.light`,
+                  // backgroundImage: 'linear-gradient(24deg, #000 0%, #fff 10%)',
+                  backgroundColor: 'rgba(255,255,255, .35)',
                   borderRadius: '50px',
                   borderWidth: '1px',
                   borderColor: `${item.type}.dark`,
@@ -152,16 +151,6 @@ export default function MessageSystem({
                   width: '40px',
                 }}
               >
-                {/* <DoneOutlineIcon
-                  sx={{ verticalAlign: 'middle' }}
-                  fontSize="small"
-                  color={item.type}
-                /> */}
-                {/* <DoneOutlineIcon
-                  sx={{ verticalAlign: 'middle' }}
-                  fontSize="small"
-                  color={item.type}
-                /> */}
                 {IconMap(item.category, item.type)}
               </Icon>
             </Grid>

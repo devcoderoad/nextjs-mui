@@ -3,20 +3,9 @@ import React from 'react'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
 
-import ChatsIcon from '@mui/icons-material/ChatBubbleOutlineRounded'
+import MessageIcon from '@mui/icons-material/MessageOutlined'
 
-import {
-  Box,
-  Fab,
-  Button,
-  Fade,
-  Grid,
-  Avatar,
-  IconButton,
-  Badge,
-  Divider,
-  styled,
-} from '@mui/material'
+import { Box, Grid, IconButton, Badge, Divider, styled } from '@mui/material'
 
 /* Components */
 import Messages from '@components/Message/User'
@@ -49,7 +38,7 @@ export default function FloatNotify({
     <>
       <IconButton color="inherit" onClick={handleClick}>
         <Badge badgeContent={4} color="error">
-          <ChatsIcon />
+          <MessageIcon />
         </Badge>
       </IconButton>
       <Popover

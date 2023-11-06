@@ -157,9 +157,11 @@ export default function MessageUser({
             key={item.id}
             container
             spacing={0.5}
-            m={1}
+            m={0}
+            p={1}
             sx={{
               bgColor: 'secondary.main',
+              '&:hover': { backgroundColor: '#F7F7F7' },
             }}
           >
             <Grid item component="div" pr={1}>
