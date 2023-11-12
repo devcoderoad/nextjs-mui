@@ -10,15 +10,34 @@ import CardsIcon from '@mui/icons-material/CardMembership'
 import AccountIcon from '@mui/icons-material/AccountCircle'
 import BadgeIcon from '@mui/icons-material/Badge'
 
+/* Tabler-icons  */
+import { IconFile, IconLayoutDashboard } from '@tabler/icons-react'
+import { IconChartBar } from '@tabler/icons-react'
+import { IconShoppingCart } from '@tabler/icons-react'
+import { IconUsers } from '@tabler/icons-react'
+import { IconCards } from '@tabler/icons-react'
+import { IconForms } from '@tabler/icons-react'
+import { IconEPassport } from '@tabler/icons-react'
+import { IconBoxMultiple } from '@tabler/icons-react'
+import { IconUserCircle } from '@tabler/icons-react'
+import { IconPhoto } from '@tabler/icons-react'
+import { IconTools } from '@tabler/icons-react'
+import { IconLayoutBottombarCollapse } from '@tabler/icons-react'
+import { IconUserScan } from '@tabler/icons-react'
+import { IconShoppingBagCheck } from '@tabler/icons-react'
+import { IconAlbum } from '@tabler/icons-react'
+
 /* Documentation Icons */
 import ApiIcon from '@mui/icons-material/Api'
 import PersonPinIcon from '@mui/icons-material/PersonPin'
 
 /* Secondary Icons */
-// import AssessmentIcon from '@mui/icons-material/Assessment'
-// import SummarizeIcon from '@mui/icons-material/Summarize'
-// import ExpandLess from '@mui/icons-material/ExpandLess'
-// import ExpandMore from '@mui/icons-material/ExpandMore'
+
+import AssessmentIcon from '@mui/icons-material/Assessment'
+import SummarizeIcon from '@mui/icons-material/Summarize'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+
 import StarBorder from '@mui/icons-material/StarBorder'
 import TabIcon from '@mui/icons-material/TabUnselected'
 import PagesIcon from '@mui/icons-material/PagesOutlined'
@@ -125,70 +144,70 @@ const routePage = {
 const routeDashboard = {
   dashboard: {
     name: 'Dashboard',
-    icon: <DashboardIcon />,
+    icon: <IconLayoutDashboard />,
     href: '/dashboard',
     url: '/dashboard',
     to: '/dashboard',
   },
   chart: {
     name: 'Charts',
-    icon: <BarChartIcon />,
+    icon: <IconChartBar />,
     href: '/chart',
     url: '/chart',
     to: '/chart',
   },
   card: {
     name: 'Cards',
-    icon: <CardsIcon />,
+    icon: <IconCards />,
     href: '/card',
     url: '/card',
     to: '/card',
   },
   signin: {
     name: 'Users',
-    icon: <PeopleIcon />,
+    icon: <IconUsers />,
     href: '/users',
     url: '/users',
     to: '/users',
   },
   pricing: {
     name: 'Pricing',
-    icon: <ShoppingCartIcon />,
+    icon: <IconShoppingCart />,
     href: '/pricing',
     url: '/pricing',
     to: '/pricing',
   },
   forms: {
     name: 'Forms',
-    icon: <AppRegistration />,
+    icon: <IconForms />,
     href: '/form/form',
     url: '/form',
     to: '/form',
   },
   reports: {
     name: 'Reports',
-    icon: <CardTravelIcon />,
+    icon: <IconEPassport />,
     href: '/reports',
     url: '/reports',
     to: '/reports',
   },
   blogs: {
     name: 'Blogs',
-    icon: <LayersIcon />,
+    icon: <IconBoxMultiple />,
     href: '/blog',
     url: '/blog',
     to: '/blog',
   },
   profile: {
     name: 'Profile',
-    icon: <AccountIcon />,
+    icon: <IconUserCircle />,
     href: '/profile',
     url: '/profile',
     to: '/profile',
   },
   album: {
     name: 'Album',
-    icon: <BadgeIcon />,
+    icon: <IconPhoto />,
     href: '/album',
     url: '/album',
     to: '/album',
@@ -199,42 +218,42 @@ const routeDashboard = {
 const routeSecondary = {
   widgets: {
     name: 'Widgets',
-    icon: <TabIcon fontSize="small" />,
+    icon: <IconTools />,
     href: '/widgets',
     url: '/widgets',
     to: '/widgets',
   },
   tabs: {
     name: 'Tabs',
-    icon: <StarBorder fontSize="small" />,
+    icon: <IconLayoutBottombarCollapse />,
     href: '/tabs',
     url: '/tabs',
     to: '/tabs',
   },
   filter: {
     name: 'Landing',
-    icon: <PagesIcon fontSize="small" />,
+    icon: <IconFile />,
     href: '/landing/filter',
     url: '/landing/filter',
     to: '/landing/filter',
   },
   about: {
     name: 'About',
-    icon: <UserIcon fontSize="small" />,
+    icon: <IconUserScan />,
     href: '/about',
     url: '/about',
     to: '/about',
   },
   checkout: {
     name: 'Checkout',
-    icon: <ShopIcon fontSize="small" />,
+    icon: <IconShoppingBagCheck />,
     href: '/checkout',
     url: '/checkout',
     to: '/checkout',
   },
   gallery: {
     name: 'Gallery',
-    icon: <GalleryIcon fontSize="small" />,
+    icon: <IconAlbum />,
     href: '/gallery',
     url: '/gallery',
     to: '/gallery',

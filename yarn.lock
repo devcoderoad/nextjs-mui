@@ -450,6 +450,19 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tabler/icons-react@^2.40.0":
+  version "2.40.0"
+  resolved "https://registry.npmjs.org/@tabler/icons-react/-/icons-react-2.40.0.tgz#14efb60f0d841689c1ddf5691646dbfc3fa01901"
+  integrity sha512-C+dDOZowFbwI3LGQP0fdua+hOPkGkW7XeMcRXTSdEKc5fD75W6zRO5nXnWivIMRKsi/Y26EDmnQo15N8JX378w==
+  dependencies:
+    "@tabler/icons" "2.40.0"
+    prop-types "^15.7.2"
+
+"@tabler/icons@2.40.0":
+  version "2.40.0"
+  resolved "https://registry.npmjs.org/@tabler/icons/-/icons-2.40.0.tgz#96cecc990a03412b88194ce3765280d2e63c1be6"
+  integrity sha512-VqKsBSX159cLFTnCzkCmGhZtSPJHNN0lM2sC4xe0HPOfPUnjiex7rDHDdut4oe4iKRecDDpwXwM9BcU6xCPlCg==
+
 "@types/cookie@^0.4.1":
   version "0.4.1"
   resolved "https://registry.npmjs.org/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
@@ -2626,7 +2639,7 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==

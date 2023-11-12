@@ -3,7 +3,7 @@ import React from 'react'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
 
-import NotificationsIcon from '@mui/icons-material/NotificationsActiveOutlined'
+import { IconBellRinging } from '@tabler/icons-react'
 
 import {
   Box,
@@ -49,7 +49,7 @@ export default function FloatMessages({
     <>
       <IconButton color="inherit" onClick={handleClick}>
         <Badge badgeContent={4} color="error">
-          <NotificationsIcon />
+          <IconBellRinging />
         </Badge>
       </IconButton>
       <Popover

@@ -159,10 +159,9 @@ export default function MessageUser({
             spacing={0.5}
             m={0}
             p={1}
-            sx={{
-              bgColor: 'secondary.main',
-              '&:hover': { backgroundColor: '#F7F7F7' },
-            }}
+            // sx={{
+            //   '&:hover': { backgroundColor: '#F6F6F6' },
+            // }}
           >
             <Grid item component="div" pr={1}>
               <Avatar
@@ -184,7 +183,7 @@ export default function MessageUser({
                 />
               </Avatar>
             </Grid>
-            <Grid item xs container wrap="wrap" pr={4}>
+            <Grid item xs container wrap="wrap" pr={2}>
               <Grid container justifyContent={'space-between'}>
                 <Grid item>
                   <Typography

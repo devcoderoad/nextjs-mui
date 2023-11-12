@@ -16,6 +16,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@tabler/icons-react": "^2.40.0",
     "gray-matter": "^4.0.3",
     "markdown-to-jsx": "^7.1.7",
     "next": "^13.5.3",

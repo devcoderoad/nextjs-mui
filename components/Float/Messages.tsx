@@ -3,7 +3,8 @@ import React from 'react'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
 
-import MessageIcon from '@mui/icons-material/MessageOutlined'
+// import MessageIcon from '@mui/icons-material/MessageOutlined'
+import { IconMessage } from '@tabler/icons-react'
 
 import { Box, Grid, IconButton, Badge, Divider, styled } from '@mui/material'
 
@@ -38,7 +39,7 @@ export default function FloatNotify({
     <>
       <IconButton color="inherit" onClick={handleClick}>
         <Badge badgeContent={4} color="error">
-          <MessageIcon />
+          <IconMessage />
         </Badge>
       </IconButton>
       <Popover

@@ -232,7 +232,7 @@ export const globalStyles = css`
   [data-theme='dark'] {
     body {
       /* background-color: #121212; */
-      color: #fff;
+      color: #ffffff;
     }
   }
 `

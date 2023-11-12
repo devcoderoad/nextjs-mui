@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import Stack from '@mui/material/Stack'
+// import Slide from '@mui/material/Slide'
 
 import {
   Container,
@@ -24,17 +25,22 @@ import {
   Badge,
   Avatar,
   Popover,
+  Slide,
 } from '@mui/material'
+
+import useScrollTrigger from '@mui/material/useScrollTrigger'
 
 /* Icons */
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import SearchIcon from '@mui/icons-material/Search'
-import HomeIcon from '@mui/icons-material/HomeOutlined'
-import AccountIcon from '@mui/icons-material/AccountCircle'
-import SettingIcon from '@mui/icons-material/Settings'
-import LogoutIcon from '@mui/icons-material/LogoutRounded'
-import WindowIcon from '@mui/icons-material/WindowOutlined'
-import NotificationsIcon from '@mui/icons-material/Notifications'
+
+/* Tabler Icons */
+import { IconApps } from '@tabler/icons-react'
+import { IconLogout } from '@tabler/icons-react'
+import { IconSettingsCog } from '@tabler/icons-react'
+import { IconUserCircle } from '@tabler/icons-react'
+import { IconSearch } from '@tabler/icons-react'
+import { IconHome } from '@tabler/icons-react'
+import { IconChevronLeft } from '@tabler/icons-react'
 
 /* Components */
 import {
@@ -69,6 +75,16 @@ interface OwnProps extends CommonProps {
     name?: string
     url?: string
   }[]
+  window?: () => Window
+}
+
+interface ScrollProps {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window?: () => Window
+  children: React.ReactElement
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -140,6 +156,15 @@ function DashboardContent(props: OwnProps): JSX.Element {
       boxSearch: {
         '& .MuiTextField-root': { m: 2, width: '12ch' },
       },
+      openFormBox: {
+        // '.MuiIconButton-root, .MuiInputBase-input': {
+        // borderRadius: 0,
+        // backgroundColor: 'white',
+        // borderRightRadius: 0,
+        // borderRightBottomRadius: 0,
+        // },
+        // boxShadow: '0 .3rem .8rem rgba(0, 0, 0, .12)',
+      },
       drawer: {
         boxShadow: '0 .3rem .8rem rgba(0, 0, 0, .12)',
         transition: 'all .2s ease-out',
@@ -160,8 +185,8 @@ function DashboardContent(props: OwnProps): JSX.Element {
         borderWidth: 0,
         borderStyle: 'none',
         borderColor: 'none',
-        borderTop: '1px solid #000',
-        borderLeft: '1px solid #000',
+        borderTop: '0.5px solid #000',
+        borderLeft: '0.5px solid #000',
         transform: 'rotate(135deg) translate(7px,7px)',
       },
       menuPaperProps: {
@@ -278,15 +303,55 @@ function DashboardContent(props: OwnProps): JSX.Element {
       },
       toolbarNav: {
         pr: '24px',
-        boxShadow: 'none',
+        // boxShadow: 'none',
+        // shadow: 2,
         textTransform: 'uppercase',
-        // backgroundColor: theme.palette.mode === 'dark' ? '#232323' : 'white',
+        backgroundColor: theme.palette.mode === 'dark' ? '#232323' : 'white',
         color: theme.palette.mode === 'dark' ? 'white' : 'gray',
-        backgroundColor: 'transparent',
+        // backgroundColor: 'transparent',
       },
     }),
     [theme.palette.mode]
   )
+
+  // const [scrollDir, setScrollDir] = React.useState('scrolling down')
+
+  // React.useEffect(() => {
+  //   const threshold = 0
+  //   let lastScrollY = window.pageYOffset
+  //   let ticking = false
+
+  //   const updateScrollDir = () => {
+  //     const scrollY = window.pageYOffset
+
+  //     if (Math.abs(scrollY - lastScrollY) < threshold) {
+  //       ticking = false
+  //       return
+  //     }
+  //     setScrollDir(scrollY > lastScrollY ? 'scrolling down' : 'scrolling up')
+  //     lastScrollY = scrollY > 0 ? scrollY : 0
+  //     ticking = false
+  //   }
+
+  //   const onScroll = () => {
+  //     if (!ticking) {
+  //       window.requestAnimationFrame(updateScrollDir)
+  //       ticking = true
+  //     }
+  //   }
+
+  //   window.addEventListener('scroll', onScroll)
+  //   console.log(scrollDir)
+  //   // console.log(window)
+
+  //   return () => window.removeEventListener('scroll', onScroll)
+  // }, [scrollDir])
+
+  // const trigger = useScrollTrigger({
+  //   target: window ? window() : undefined,
+  // })
+
+  // console.log(trigger)
 
   React.useEffect(() => {
     const drawer = JSON.parse(localStorage.getItem('finDash') as string)
@@ -329,6 +394,22 @@ function DashboardContent(props: OwnProps): JSX.Element {
 
   const handleChange = (event: any) => {
     /* setAuth(event.target.checked) */
+  }
+
+  function HideOnScroll(props: ScrollProps) {
+    const { children, window } = props
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    // This is only being set here because the demo is in an iframe.
+    const trigger = useScrollTrigger({
+      target: window ? window() : undefined,
+    })
+
+    return (
+      <Slide appear={false} direction="down" in={!trigger}>
+        {children}
+      </Slide>
+    )
   }
 
   const handleMenuProfile = (event: React.MouseEvent<HTMLElement>) => {
@@ -377,6 +458,8 @@ function DashboardContent(props: OwnProps): JSX.Element {
   const handleLogout = () => {
     signOut({ callbackUrl: '/' })
   }
+  // console.log({ trigger })
+  // console.log({ props })
 
   return (
     <Box
@@ -390,11 +473,13 @@ function DashboardContent(props: OwnProps): JSX.Element {
       <AppBar
         position="absolute"
         open={open}
-        enableColorOnDark
         elevation={0}
-        color="primary"
-        style={{ backgroundColor: 'transparent' }}
+        // elevation={!!trigger ? 4 : 0}
+        // enableColorOnDark
+        // color="primary"
       >
+        {/* <Slide appear={false} direction="down" in={!trigger}> */}
+        {/* <HideOnScroll {...props}> */}
         <Toolbar sx={style.toolbarNav} component={'nav'}>
           <Box
             display="flex"
@@ -425,7 +510,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
                 ml: 0,
               }}
             >
-              <HomeIcon fontSize="small" />
+              <IconHome />
             </IconButton>
             {breadcrumb &&
               breadcrumb.map((item, i) => {
@@ -455,31 +540,19 @@ function DashboardContent(props: OwnProps): JSX.Element {
                   </Box>
                 )
               })}
-            {/* <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              sx={style.dividerArrow}
-            />
-            <Typography
-              component="a"
-              href={breadcrumb.url}
-              variant="subtitle1"
-              color="inherit"
-              noWrap
-              sx={{ textDecoration: 'none' }}
-            >
-              {breadcrumb.name}
-            </Typography> */}
           </Box>
           <Stack spacing={{ md: 0 }} direction="row">
             <ClickAwayListener onClickAway={() => setSearchOpen(false)}>
-              <Box display={'flex'} alignItems={'center'}>
+              <Box
+                display={'flex'}
+                alignItems={'center'}
+                sx={searchOpen ? style.openFormBox : null}
+              >
                 <IconButton
                   color="inherit"
                   onClick={() => setSearchOpen(!searchOpen)}
                 >
-                  <SearchIcon fontSize="medium" />
+                  <IconSearch fontSize="medium" />
                 </IconButton>
                 {searchOpen ? (
                   <Box
@@ -504,7 +577,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
               aria-haspopup="true"
               onClick={handleMenuWidget}
             >
-              <WindowIcon />
+              <IconApps />
             </IconButton>
             {user ? (
               <Box
@@ -588,21 +661,23 @@ function DashboardContent(props: OwnProps): JSX.Element {
             </MenuItem>
             <MenuItem dense component="div">
               <Link href="/profile">
-                <AccountIcon /> Profile
+                <IconUserCircle size={20} strokeWidth={1.5} /> Profile
               </Link>
             </MenuItem>
             <MenuItem dense component="div">
               <Link href="/setting">
-                <SettingIcon /> Settings
+                <IconSettingsCog size={20} strokeWidth={1.5} /> Settings
               </Link>
             </MenuItem>
             <MenuItem dense component="div">
               <Link onClick={handleLogout}>
-                <LogoutIcon /> Logout
+                <IconLogout size={20} strokeWidth={1.5} /> Logout
               </Link>
             </MenuItem>
           </Popover>
         </Toolbar>
+        {/* </HideOnScroll> */}
+        {/* </Slide> */}
       </AppBar>
       <Drawer
         variant="permanent"
@@ -632,7 +707,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
               />
             </Link>
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <IconChevronLeft stroke={1} />
             </IconButton>
           </Toolbar>
           <Divider />

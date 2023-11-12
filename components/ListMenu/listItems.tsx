@@ -1,17 +1,16 @@
 import * as React from 'react'
-// import { Router } from 'next/router'
 import { useRouter } from 'next/router'
-import AssignmentIcon from '@mui/icons-material/Assignment'
-import AssessmentIcon from '@mui/icons-material/Assessment'
-import SummarizeIcon from '@mui/icons-material/Summarize'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
-import StarBorder from '@mui/icons-material/StarBorder'
-import TabIcon from '@mui/icons-material/TabUnselected'
-import PagesIcon from '@mui/icons-material/PagesOutlined'
-import UserIcon from '@mui/icons-material/VerifiedUser'
-import ShopIcon from '@mui/icons-material/Shop2'
-import GalleryIcon from '@mui/icons-material/BrowseGallery'
+
+/* Tabler icons */
+import {
+  IconAppWindow,
+  IconFolderQuestion,
+  IconShoppingCart,
+  IconWallet,
+  IconTags,
+  IconChevronDown,
+  IconChevronUp,
+} from '@tabler/icons-react'
 
 import {
   ListItemButton,
@@ -70,10 +69,10 @@ export const secondaryListItems = (compact = false) => {
       </ListSubheader>
       <ListItemButton dense onClick={handleClick}>
         <ListItemIcon>
-          <AssessmentIcon />
+          <IconAppWindow />
         </ListItemIcon>
-        <ListItemText primary={'Other Pages'} />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemText primary={'Pages'} />
+        {open ? <IconChevronUp stroke={1} /> : <IconChevronDown stroke={1} />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
@@ -92,17 +91,25 @@ export const secondaryListItems = (compact = false) => {
           })}
         </List>
       </Collapse>
-      <ListItemButton dense>
+      <ListItemButton
+        dense
+        href={'/badges'}
+        selected={'/badges' === router.asPath}
+      >
         <ListItemIcon>
-          <AssignmentIcon />
+          <IconTags />
         </ListItemIcon>
-        <ListItemText primary="Last quarter" />
+        <ListItemText primary="Bagdes" />
       </ListItemButton>
-      <ListItemButton dense>
+      <ListItemButton
+        dense
+        href={'/sales'}
+        selected={'/sales' === router.asPath}
+      >
         <ListItemIcon>
-          <SummarizeIcon />
+          <IconWallet />
         </ListItemIcon>
-        <ListItemText primary="Year-end sale" />
+        <ListItemText primary="Sales" />
       </ListItemButton>
     </React.Fragment>
   )
@@ -117,7 +124,7 @@ export const thirdListItems = (compact = false) => {
       </ListSubheader>
       <ListItemButton dense href={'/faqs'} selected={'/faqs' === router.asPath}>
         <ListItemIcon>
-          <AssignmentIcon />
+          <IconFolderQuestion />
         </ListItemIcon>
         <ListItemText primary="FAQs" />
       </ListItemButton>
@@ -127,7 +134,7 @@ export const thirdListItems = (compact = false) => {
         selected={'/commerce' === router.asPath}
       >
         <ListItemIcon>
-          <AssessmentIcon />
+          <IconShoppingCart />
         </ListItemIcon>
         <ListItemText primary="Commerce" />
       </ListItemButton>

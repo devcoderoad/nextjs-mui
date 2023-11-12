@@ -6,6 +6,8 @@ import OutputIcon from '@mui/icons-material/OutputOutlined'
 import SummarizeIcon from '@mui/icons-material/SummarizeOutlined'
 import ReportIcon from '@mui/icons-material/ReportOutlined'
 
+import { IconScale } from '@tabler/icons-react'
+
 import {
   Grid,
   Stack,
@@ -113,7 +115,7 @@ function BalanceCard() {
                     </Typography>
                   </Grid>
                   <Grid item sm={12} md={3} textAlign="right">
-                    <BalanceIcon fontSize="large" />
+                    <IconScale size={46} stroke={1.25} />
                   </Grid>
                   <Grid item sm={12} md={12}>
                     <Typography variant="h5" component="h5">

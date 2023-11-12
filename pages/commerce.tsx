@@ -24,6 +24,9 @@ import { constant } from '@config/constants'
 
 /* Components */
 import Copyright from '@components/Copyright'
+import { Stack } from '@mui/system'
+import { AddShoppingCart } from '@mui/icons-material'
+import { Paper } from '@mui/material'
 
 const tiers = [
   {
@@ -98,99 +101,7 @@ const footers = [
 function PricingContent() {
   return (
     <React.Fragment>
-      <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
-      />
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="primary"
-        elevation={0}
-        sx={{
-          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
-        }}
-      >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            <Link
-              href="/"
-              sx={{
-                transition: 'all .5s ease',
-                verticalAlign: 'middle',
-                ml: 1.5,
-                ':hover': {
-                  filter: 'brightness(1.35);',
-                },
-              }}
-            >
-              <img
-                src="/logo-white.svg"
-                alt={constant.siteName}
-                height={24}
-                style={{ verticalAlign: 'middle' }}
-              />
-            </Link>
-          </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Features
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Support
-            </Link>
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
-      {/* Hero unit */}
-      <Container
-        disableGutters
-        maxWidth="sm"
-        component="main"
-        sx={{ pt: 8, pb: 6 }}
-      >
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default MUI components with
-          little customization.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main">
+      <Container maxWidth="md" sx={{ my: 5 }}>
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -242,13 +153,22 @@ function PricingContent() {
                       <Typography
                         component="li"
                         variant="subtitle1"
-                        align="center"
+                        align="left"
                         key={line}
                       >
                         {line}
                       </Typography>
                     ))}
                   </ul>
+                  <Stack alignItems={'center'}>
+                    <Button
+                      variant="outlined"
+                      startIcon={<AddShoppingCart />}
+                      sx={{ borderRadius: 10 }}
+                    >
+                      Add to Cart
+                    </Button>
+                  </Stack>
                 </CardContent>
                 <CardActions>
                   <Button fullWidth /* variant={tier.buttonVariant} */>
@@ -261,36 +181,52 @@ function PricingContent() {
         </Grid>
       </Container>
       {/* Footer */}
-      <Container
-        maxWidth="md"
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-        }}
-      >
+      <Container maxWidth="md" component="footer">
         <Grid container spacing={4} justifyContent="space-evenly">
           {footers.map((footer: any) => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item: any) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <Paper sx={{ py: 3, px: 2 }}>
+                <Typography variant="h6" color="text.primary" gutterBottom>
+                  {footer.title}
+                </Typography>
+                <ul
+                  style={{
+                    padding: 0,
+                    listStyle: 'none',
+                    margin: '.88rem 0',
+                  }}
+                >
+                  {footer.description.map((item: any) => (
+                    <li key={item}>
+                      <Link
+                        href="#"
+                        variant="subtitle1"
+                        color="text.secondary"
+                        sx={{
+                          textDecoration: 'none',
+                        }}
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Grid item>
+                  <Stack alignItems={'center'}>
+                    <Button
+                      variant="outlined"
+                      startIcon={<AddShoppingCart />}
+                      sx={{ borderRadius: 10 }}
+                    >
+                      Add to Cart
+                    </Button>
+                  </Stack>
+                </Grid>
+              </Paper>
             </Grid>
           ))}
         </Grid>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
-      {/* End footer */}
     </React.Fragment>
   )
 }

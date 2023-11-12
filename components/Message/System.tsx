@@ -12,14 +12,19 @@ import {
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
 /* Icons */
-import DoneOutlineIcon from '@mui/icons-material/DoneRounded'
-import BusinessIcon from '@mui/icons-material/Business'
-import SystemSecurityUpdateIcon from '@mui/icons-material/SystemSecurityUpdate'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner'
-import ApprovalIcon from '@mui/icons-material/Approval'
-import BookOnlineIcon from '@mui/icons-material/BookOnline'
-import { Category } from '@mui/icons-material'
+// import BusinessIcon from '@mui/icons-material/Business'
+// import SystemSecurityUpdateIcon from '@mui/icons-material/SystemSecurityUpdate'
+// import NotificationsIcon from '@mui/icons-material/Notifications'
+// import DocumentScannerIcon from '@mui/icons-material/DocumentScanner'
+// import ApprovalIcon from '@mui/icons-material/Approval'
+// import BookOnlineIcon from '@mui/icons-material/BookOnline'
+
+import { IconHomeStats } from '@tabler/icons-react'
+import { IconHomeShield } from '@tabler/icons-react'
+import { IconBellRinging } from '@tabler/icons-react'
+import { IconScan } from '@tabler/icons-react'
+import { IconEyeCheck } from '@tabler/icons-react'
+import { IconBookUpload } from '@tabler/icons-react'
 
 export interface OwnProps {
   id: number
@@ -105,16 +110,16 @@ export default function MessageSystem({
   const IconMap = (category: string, type: string) => {
     const css = {
       verticalAlign: 'middle',
-      fontSize: 'large',
       color: type,
+      strokeWidth: 1.25,
     }
     const item: any = {
-      business: <BusinessIcon sx={css} />,
-      system: <SystemSecurityUpdateIcon sx={css} />,
-      notification: <NotificationsIcon sx={css} />,
-      document: <DocumentScannerIcon sx={css} />,
-      approval: <ApprovalIcon sx={css} />,
-      journal: <BookOnlineIcon sx={css} />,
+      business: <IconHomeStats style={css} />,
+      system: <IconHomeShield style={css} />,
+      notification: <IconBellRinging style={css} />,
+      document: <IconScan style={css} />,
+      approval: <IconEyeCheck style={css} />,
+      journal: <IconBookUpload style={css} />,
     }
     return item[category]
   }
@@ -127,7 +132,7 @@ export default function MessageSystem({
           borderBottom: '1px solid #F3F3F3',
         },
         '.rootMessage': {
-          '&:hover': { backgroundColor: '#F7F7F7' },
+          '&:hover': { backgroundColor: '#F6F6F6' },
         },
       }}
     >
@@ -141,6 +146,8 @@ export default function MessageSystem({
                 sx={{
                   // backgroundImage: 'linear-gradient(24deg, #000 0%, #fff 10%)',
                   backgroundColor: 'rgba(255,255,255, .35)',
+                  // backgroundImage:
+                  //   'linear-gradient(52deg,#1c7ed6 3%, #22b8cf 97%)',
                   borderRadius: '50px',
                   borderWidth: '1px',
                   borderColor: `${item.type}.dark`,
