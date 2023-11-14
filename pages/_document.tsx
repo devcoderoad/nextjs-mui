@@ -7,11 +7,12 @@ import Document, {
   DocumentProps,
   DocumentContext,
 } from 'next/document'
+
 import createEmotionServer from '@emotion/server/create-instance'
 import { AppType } from 'next/app'
 import { roboto } from '@src/theme'
 import createEmotionCache from '@src/createEmotionCache'
-// import { getInitColorSchemeScript } from '@mui/material/styles'
+import { getInitColorSchemeScript } from '@mui/material/styles'
 
 import { MUIAppProps } from './_app'
 
@@ -30,6 +31,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         {emotionStyleTags}
       </Head>
       <body>
+        {/* {getInitColorSchemeScript()} */}
         <Main />
         <NextScript />
       </body>

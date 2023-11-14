@@ -18,6 +18,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import Container from '@mui/material/Container'
+import Rating from '@mui/material/Rating'
 
 /* Config */
 import { constant } from '@config/constants'
@@ -25,8 +26,8 @@ import { constant } from '@config/constants'
 /* Components */
 import Copyright from '@components/Copyright'
 import { Stack } from '@mui/system'
-import { AddShoppingCart } from '@mui/icons-material'
-import { Paper } from '@mui/material'
+import { AddShoppingCart, Image } from '@mui/icons-material'
+import { Badge, ImageList, ImageListItem, Paper } from '@mui/material'
 
 const tiers = [
   {
@@ -99,6 +100,31 @@ const footers = [
 ]
 
 function PricingContent() {
+  const [fetchProducts, setFetchProducts] = React.useState<{
+    products: []
+    total: number
+    skip: number
+    limit: number
+  } | null>(null)
+
+  React.useEffect(() => {
+    let ignore = false
+    async function startFetching() {
+      const json = await fetch(
+        'https://dummyjson.com/products/search?q=bag'
+      ).then((item) => item.json())
+      if (!ignore) {
+        setFetchProducts(json)
+      }
+    }
+    startFetching()
+    return () => {
+      ignore = true
+    }
+  }, [])
+
+  // console.log(fetchProducts)
+
   return (
     <React.Fragment>
       <Container maxWidth="md" sx={{ my: 5 }}>
@@ -225,6 +251,91 @@ function PricingContent() {
               </Paper>
             </Grid>
           ))}
+        </Grid>
+      </Container>
+      <Container maxWidth="md" sx={{ my: 5 }}>
+        <Grid container spacing={2}>
+          {fetchProducts &&
+            fetchProducts?.products?.map((product: any) => (
+              <Grid
+                key={`${product?.id}`}
+                item
+                // maxWidth={'33.33%'}
+                width={'33.33%'}
+              >
+                <Paper sx={{ padding: 2 }}>
+                  <Box>
+                    {/* <Image src={product.thumbnail} alt={product.title} /> */}
+                    <h4 style={{ margin: 0 }}>{product?.title}</h4>
+                    <img
+                      src={product.thumbnail}
+                      alt={product.title}
+                      style={{ maxWidth: '100%' }}
+                    />
+                    {/* <ImageList
+                      sx={{ width: 500, height: 450 }}
+                      variant="quilted"
+                      cols={4}
+                      rowHeight={121}
+                    >
+                      {product.images.map((item: any) => (
+                        <ImageListItem key={item}>
+                          <img
+                            srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                            src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                            alt={product.title + item}
+                            loading="lazy"
+                          />
+                        </ImageListItem>
+                      ))}
+                    </ImageList> */}
+                  </Box>
+                  <Typography fontSize="small" component={'p'} my={1}>
+                    {product?.description}
+                  </Typography>
+                  <Box
+                    mx="auto"
+                    alignItems={'center'}
+                    display={'flex'}
+                    marginY={1}
+                  >
+                    <span
+                      style={{
+                        fontSize: '.88rem',
+                        marginRight: '.33rem',
+                      }}
+                    >
+                      {product.rating}
+                    </span>
+                    <Rating
+                      name="read-only"
+                      size="small"
+                      value={product.rating}
+                      readOnly
+                    />
+                  </Box>
+                  <Stack
+                    direction={'row'}
+                    // alignContent={'space-between'}
+                    // justifyContent={'space-evenly'}
+                  >
+                    <Button variant="outlined" color="secondary" size="small">
+                      {product.category}
+                    </Button>
+                    <Box mx="auto">
+                      <Button
+                        color={'primary'}
+                        variant="text"
+                        startIcon={<AddShoppingCart fontSize="small" />}
+                        size="small"
+                      >
+                        Add
+                      </Button>
+                    </Box>
+                  </Stack>
+                </Paper>
+              </Grid>
+            ))}
         </Grid>
       </Container>
     </React.Fragment>

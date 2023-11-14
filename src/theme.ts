@@ -52,6 +52,25 @@ export const getThemeTokens: ThemeOptions = {
         // The props to change the default for.
         disableRipple: true, // No more ripple, on the whole application 💣!
       },
+      styleOverrides: {
+        root: {
+          disableRipple: true,
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: true, // No more ripple, on the whole application 💣!
+      },
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.variant === 'text' &&
+            ownerState.color === 'primary' && {
+              '&:hover': { backgroundColor: 'transparent', color: '#202020' },
+            }),
+        }),
+      },
     },
     MuiIconButton: {
       defaultProps: {
@@ -223,6 +242,28 @@ export const darkTheme = createTheme({
 
 export const globalStyles = css`
   :root {
+    --mui-palette-primary-main: #1976d2;
+    --mui-palette-primary-light: #42a5f5;
+    --mui-palette-primary-dark: #1565c0;
+    --mui-palette-primary-contrastText: #fff;
+
+    --blue-primary: #1c7ed6;
+    --green-primary: #22b8cf;
+
+    --pink-primary: #e64980;
+    --orange-primary: #fd7e14;
+
+    --gradient-primary: linear-gradient(
+      52deg,
+      var(--blue-primary) 3%,
+      var(--green-primary) 97%
+    );
+    --gradient-warning: linear-gradient(
+      45deg,
+      var(--pink-primary) 3%,
+      var(--orange-primary) 97%
+    );
+
     body {
       /* background-color: #fff; */
       color: #121212;
