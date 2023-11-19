@@ -30,8 +30,7 @@ import {
 
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
-/* Icons */
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+/* ================ Icons ================ */
 
 /* Tabler Icons */
 import { IconApps } from '@tabler/icons-react'
@@ -41,6 +40,8 @@ import { IconUserCircle } from '@tabler/icons-react'
 import { IconSearch } from '@tabler/icons-react'
 import { IconHome } from '@tabler/icons-react'
 import { IconChevronLeft } from '@tabler/icons-react'
+
+/* ================ Components ================ */
 
 /* Components */
 import {
@@ -406,8 +407,15 @@ function DashboardContent(props: OwnProps): JSX.Element {
     })
 
     return (
-      <Slide appear={false} direction="down" in={!trigger}>
-        {children}
+      <Slide
+        appear={true}
+        direction="down"
+        in={!!trigger}
+        addEndListener={(e) => console.log(e)}
+      >
+        <Box position={'fixed'} zIndex={2}>
+          {children}
+        </Box>
       </Slide>
     )
   }
@@ -479,7 +487,6 @@ function DashboardContent(props: OwnProps): JSX.Element {
         // color="primary"
       >
         {/* <Slide appear={false} direction="down" in={!trigger}> */}
-        {/* <HideOnScroll {...props}> */}
         <Toolbar sx={style.toolbarNav} component={'nav'}>
           <Box
             display="flex"
@@ -759,6 +766,11 @@ function DashboardContent(props: OwnProps): JSX.Element {
             content={{ title: '', description: '', type: '' }}
           />
           <FloatConfig />
+          <HideOnScroll>
+            <>
+              <b>Scroll</b>
+            </>
+          </HideOnScroll>
           {children}
           <Copyright />
           <ScrollToTop />

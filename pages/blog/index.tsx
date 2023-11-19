@@ -80,20 +80,46 @@ const mainFeaturedPost = {
 
 const featuredPosts = [
   {
-    title: 'Featured post',
+    title:
+      'Filter robusta chicory irish caramelization fair trade redeye extra',
     date: 'Nov 12, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Decaffeinated organic aromatic extra  latte black galão caffeine, caramelization iced turkish sugar affogato, mazagran dark, kopi-luwak spoon affogato cup beans.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
   },
   {
-    title: 'Post title',
+    title: 'Black as grinder grounds doppio, flavour robust, id variety',
     date: 'Nov 11, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Filter robusta chicory irish caramelization fair trade redeye extra chicory, crema crema redeye, cultivar decaffeinated caramelization that spoon.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
+  },
+  {
+    title: 'Americano, in organic dark, a variety sweet',
+    date: 'Nov 11, 2022',
+    description:
+      'Cup turkish, and flavour in froth et, sweet, fair trade whipped kopi-luwak shop, dark rich barista java a, doppio aroma dark irish latte.',
+    image: 'https://source.unsplash.com/random',
+    imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
+  },
+  {
+    title:
+      'Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica',
+    date: 'Nov 11, 2022',
+    description:
+      'Shop medium, whipped roast, cappuccino, affogato milk skinny aged, pumpkin spice black cup rich, at, iced cortado kopi-luwak breve filter.',
+    image: 'https://source.unsplash.com/random',
+    imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
   },
 ]
 

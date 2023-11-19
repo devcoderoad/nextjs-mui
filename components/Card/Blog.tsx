@@ -1,5 +1,13 @@
 import { useMemo } from 'react'
-import { Button, Box, Typography, Container, Grid, Stack } from '@mui/material'
+import {
+  Button,
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Stack,
+  Theme,
+} from '@mui/material'
 
 // import GitHubIcon from '@mui/icons-material/GitHub'
 // import FacebookIcon from '@mui/icons-material/Facebook'
@@ -8,43 +16,49 @@ import { Button, Box, Typography, Container, Grid, Stack } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import VisibilityIcon from '@mui/icons-material/VisibilityOutlined'
 import AccessTimeIcon from '@mui/icons-material/AccessTimeOutlined'
+/* 
+Black as grinder grounds doppio, flavour robust, id variety, black ristretto aromatic, strong grinder cultivar french press iced robust. Filter robusta chicory irish caramelization fair trade redeye extra chicory, crema crema redeye, cultivar decaffeinated caramelization that spoon. Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica. Cup turkish, and flavour in froth et, sweet, fair trade whipped kopi-luwak shop, dark rich barista java a, doppio aroma dark irish latte.
 
+Decaffeinated organic aromatic extra  latte black galão caffeine, caramelization iced turkish sugar affogato, mazagran dark, kopi-luwak spoon affogato cup beans. Shop medium, whipped roast, cappuccino, affogato milk skinny aged, pumpkin spice black cup rich, at, iced cortado kopi-luwak breve filter. Americano, in organic dark, a variety sweet, whipped single shot mazagran, extra  barista chicory body, fair trade, dripper so whipped acerbic foam. Java con panna sweet foam body viennese single origin foam half and half irish carajillo redeye milk.
+ */
 const featuredPosts = [
   {
-    title: 'Featured post',
+    title:
+      'Filter robusta chicory irish caramelization fair trade redeye extra',
     date: 'Nov 12, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Decaffeinated organic aromatic extra  latte black galão caffeine, caramelization iced turkish sugar affogato, mazagran dark, kopi-luwak spoon affogato cup beans.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
     like: 275,
     view: '66.3k',
   },
   {
-    title: 'Post title',
+    title: 'Black as grinder grounds doppio, flavour robust, id variety',
     date: 'Nov 11, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Filter robusta chicory irish caramelization fair trade redeye extra chicory, crema crema redeye, cultivar decaffeinated caramelization that spoon.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
     like: 275,
     view: '66.3k',
   },
   {
-    title: 'Post title',
+    title: 'Americano, in organic dark, a variety sweet',
     date: 'Nov 11, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Cup turkish, and flavour in froth et, sweet, fair trade whipped kopi-luwak shop, dark rich barista java a, doppio aroma dark irish latte.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
     like: 275,
     view: '66.3k',
   },
   {
-    title: 'Post title',
+    title:
+      'Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica',
     date: 'Nov 11, 2022',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Shop medium, whipped roast, cappuccino, affogato milk skinny aged, pumpkin spice black cup rich, at, iced cortado kopi-luwak breve filter.',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
     like: 275,
@@ -123,6 +137,43 @@ export default function BlogCard() {
   //   }),
   //   []
   // )
+  const cssFeatured = useMemo(() => {
+    return {
+      backgroundPosition: 'top center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      overflow: 'hidden',
+      zIndex: 1,
+      transition: 'all ease .5s',
+      '.boxHover': {
+        transition: 'linear .15s',
+        transform: 'translateY(10px)',
+        opacity: 0,
+        color: 'white',
+        paddingX: 2,
+        position: 'absolute',
+        bottom: 0,
+        ':before': {
+          content: '" "',
+          position: 'absolute',
+          top: -80,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: -1,
+          backgroundImage:
+            'linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.95))',
+        },
+      },
+      ':hover': {
+        '.boxHover': {
+          transform: 'translateY(0)',
+          opacity: 1,
+        },
+      },
+    }
+  }, [])
+
   return (
     <Container maxWidth="xl" component="main">
       <Grid container spacing={5} paddingTop={9} paddingBottom={9}>
@@ -134,47 +185,24 @@ export default function BlogCard() {
               position="relative"
               marginBottom={0.75}
               minHeight="230px"
-              sx={{
-                backgroundImage: `url(${post.image})`,
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                overflow: 'hidden',
-                zIndex: 1,
-                transition: 'all ease .5s',
-                '.boxHover': {
-                  transition: 'linear .15s',
-                  transform: 'translateY(10px)',
-                  opacity: 0,
-                  color: 'white',
-                  paddingX: 2,
-                  position: 'absolute',
-                  bottom: 0,
-                  ':before': {
-                    content: '" "',
-                    position: 'absolute',
-                    top: '-20px',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    zIndex: -1,
-                    backgroundImage:
-                      'linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.95))',
-                  },
-                },
-                ':hover': {
-                  '.boxHover': {
-                    transform: 'translateY(0)',
-                    opacity: 1,
-                  },
-                },
+              sx={cssFeatured}
+              style={{
+                backgroundImage: `url(${post?.image})`,
               }}
             >
               <Box className="boxHover">
-                <Typography component="h4" fontWeight={'600'} fontSize={18}>
+                <Typography
+                  component="h4"
+                  fontWeight={'600'}
+                  fontSize={18}
+                  lineHeight={1.1}
+                  mb={1}
+                >
                   {post.title}
                 </Typography>
-                <Box component="p">{post.description}</Box>
+                <Typography variant="body2" paragraph>
+                  {post.description}
+                </Typography>
               </Box>
             </Box>
             <Stack
@@ -211,15 +239,6 @@ export default function BlogCard() {
           </Grid>
         ))}
       </Grid>
-      {/* <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the staff" posts={posts} />
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </Grid> */}
     </Container>
   )
 }

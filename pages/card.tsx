@@ -40,9 +40,54 @@ export default function Page() {
       'https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&h=720&q=80',
     author: 'Jack Bachmall',
     createdAt: '11 January, 2023',
+    category: 'Coffee Latte',
     date: '11 January, 2023',
     imageLabel: 'Image Label',
   }
+  const featuredNews = [
+    {
+      title:
+        'Filter robusta chicory irish caramelization fair trade redeye extra',
+      date: 'Nov 12, 2022',
+      description:
+        'Decaffeinated organic aromatic extra  latte black galão caffeine, caramelization iced turkish sugar affogato, mazagran dark, kopi-luwak spoon affogato cup beans.',
+      image: 'https://source.unsplash.com/random',
+      imageLabel: 'Image Text',
+      like: 275,
+      view: '66.3k',
+    },
+    {
+      title: 'Black as grinder grounds doppio, flavour robust, id variety',
+      date: 'Nov 11, 2022',
+      description:
+        'Filter robusta chicory irish caramelization fair trade redeye extra chicory, crema crema redeye, cultivar decaffeinated caramelization that spoon.',
+      image: 'https://source.unsplash.com/random',
+      imageLabel: 'Image Text',
+      like: 275,
+      view: '66.3k',
+    },
+    {
+      title: 'Americano, in organic dark, a variety sweet',
+      date: 'Nov 11, 2022',
+      description:
+        'Cup turkish, and flavour in froth et, sweet, fair trade whipped kopi-luwak shop, dark rich barista java a, doppio aroma dark irish latte.',
+      image: 'https://source.unsplash.com/random',
+      imageLabel: 'Image Text',
+      like: 275,
+      view: '66.3k',
+    },
+    {
+      title:
+        'Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica',
+      date: 'Nov 11, 2022',
+      description:
+        'Shop medium, whipped roast, cappuccino, affogato milk skinny aged, pumpkin spice black cup rich, at, iced cortado kopi-luwak breve filter.',
+      image: 'https://source.unsplash.com/random',
+      imageLabel: 'Image Text',
+      like: 275,
+      view: '66.3k',
+    },
+  ]
   return (
     <DashboardLayout breadcrumb={[{ name: 'Cards', url: '/card' }]}>
       <Typography variant="h6" marginTop={2}>
@@ -118,7 +163,7 @@ export default function Page() {
                       mr: 0.5,
                     }}
                   />
-                  {post.description}
+                  {post.category}
                   <PublishIcon
                     fontSize="small"
                     sx={{
