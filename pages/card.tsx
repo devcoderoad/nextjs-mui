@@ -21,13 +21,24 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import CardMedias from '@components/Card/Medias'
 import CardBlog from '@components/Card/Blog'
-
+import {
+  IconClock,
+  IconClock2,
+  IconClockHour12,
+  IconUser,
+  IconUserCircle,
+} from '@tabler/icons-react'
+/* 
+Sweet instant irish cultivar that, acerbic coffee robusta in, whipped caramelization half and half to go medium white cultivar. Single origin rich espresso rich mug affogato, single origin, est extra  redeye brewed aged caffeine redeye. Viennese arabica so fair trade café au lait et coffee redeye galão skinny sugar saucer white frappuccino froth grounds coffee. And skinny mazagran body ristretto kopi-luwak robusta in shop et percolator mug spoon decaffeinated. Filter, con panna, half and half blue mountain, dark breve, froth, robust steamed extraction, to go foam chicory caffeine plunger pot.
+*/
 export default function Page() {
   const post = {
-    title: 'lorem ipsum dolor sit amet',
-    description: 'lorem ipsum dolor sit amet',
+    title: 'Sweet instant irish cultivar that',
+    description:
+      'Sweet instant irish cultivar that, acerbic coffee robusta in, whipped caramelization half and half to go medium white cultivar. Single origin rich espresso rich mug affogato, single origin, est extra  redeye brewed aged caffeine redeye.',
     image:
       'https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&h=720&q=80',
+    author: 'Jack Bachmall',
     createdAt: '11 January, 2023',
     date: '11 January, 2023',
     imageLabel: 'Image Label',
@@ -193,13 +204,39 @@ export default function Page() {
               <CardActionArea component="a" href="#">
                 <Card sx={{ display: 'flex' }}>
                   <CardContent sx={{ flex: 1 }}>
-                    <Typography component="h3" variant="h6">
+                    <Typography
+                      component="h3"
+                      variant="h6"
+                      color="secondary.main"
+                      fontWeight={'500'}
+                    >
                       {post.title}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography variant="caption" color="secondary.main">
+                      <IconClock
+                        size={16}
+                        style={{
+                          verticalAlign: 'text-top',
+                          marginRight: '.25rem',
+                        }}
+                      />
                       {post.date}
+                      <IconUser
+                        size={16}
+                        style={{
+                          verticalAlign: 'text-top',
+                          marginRight: '.25rem',
+                          marginLeft: '.25rem',
+                        }}
+                      />
+                      {post.author}
                     </Typography>
-                    <Typography variant="subtitle2" paragraph>
+                    <Typography
+                      variant="subtitle2"
+                      paragraph
+                      my={1}
+                      color={'secondary.dark'}
+                    >
                       {post.description}
                     </Typography>
                     <Typography variant="caption" color="primary">

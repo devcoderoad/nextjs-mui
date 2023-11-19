@@ -742,11 +742,18 @@ function DashboardContent(props: OwnProps): JSX.Element {
               ? theme.palette.grey[100]
               : theme.palette.grey[900],
           flexGrow: 1,
-          height: '100vh',
-          overflow: 'auto',
         }}
       >
-        <Container maxWidth="xl" sx={{ mt: 2, mb: 4, pt: 6 }}>
+        <Container
+          maxWidth="xl"
+          sx={{
+            // height: '100%',
+            minHeight: '100vh',
+            mt: 2,
+            mb: 4,
+            pt: 6,
+          }}
+        >
           <AlertBar
             hidden={false}
             content={{ title: '', description: '', type: '' }}

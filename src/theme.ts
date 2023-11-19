@@ -64,7 +64,13 @@ export const getThemeTokens: ThemeOptions = {
         disableRipple: true, // No more ripple, on the whole application 💣!
       },
       styleOverrides: {
-        root: ({ ownerState }) => ({
+        root: ({ ownerState, theme }) => ({
+          // boxShadow: 'none',
+          borderRadius: 20,
+          // ...(ownerState.variant === 'contained' &&
+          //   ownerState.color === 'info' && {
+          //     color: '#fff',
+          //   }),
           ...(ownerState.variant === 'text' &&
             ownerState.color === 'primary' && {
               '&:hover': { backgroundColor: 'transparent', color: '#202020' },
@@ -263,6 +269,12 @@ export const globalStyles = css`
       var(--pink-primary) 3%,
       var(--orange-primary) 97%
     );
+
+    --drop-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.1), 0px 3px 14px 2px rgba(0, 0, 0, 0.1);
+
+    --drop-shadow-light: 0px 5px 5px -3px rgba(0, 0, 0, 0.1),
+      0px 4px 4px 1px rgba(0, 0, 0, 0.1), 0px 3px 10px 2px rgba(0, 0, 0, 0.1);
 
     body {
       /* background-color: #fff; */

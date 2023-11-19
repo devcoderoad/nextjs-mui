@@ -240,6 +240,7 @@ function PricingContent() {
                 <Grid item>
                   <Stack alignItems={'center'}>
                     <Button
+                      size="small"
                       variant="outlined"
                       startIcon={<AddShoppingCart />}
                       sx={{ borderRadius: 10 }}
@@ -263,7 +264,7 @@ function PricingContent() {
                 // maxWidth={'33.33%'}
                 width={'33.33%'}
               >
-                <Paper sx={{ padding: 2 }}>
+                <Paper sx={{ padding: 2, minHeight: '100%' }} elevation={0}>
                   <Box>
                     {/* <Image src={product.thumbnail} alt={product.title} /> */}
                     <h4 style={{ margin: 0 }}>{product?.title}</h4>

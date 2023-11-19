@@ -35,6 +35,8 @@ import {
   IconBrandLinkedin,
   IconBrandGithub,
   IconBrandFacebook,
+  IconRecordMail,
+  IconAt,
 } from '@tabler/icons-react'
 import {
   Avatar,
@@ -301,7 +303,9 @@ function PricingContent() {
                     width: '130px',
                     height: '130px',
                     mx: 'auto',
-                    border: '1px solid white',
+                    borderWidth: '2px',
+                    borderStyle: 'dashed',
+                    borderColor: 'white',
                   }}
                 />
                 <Typography component={'h5'} mt={2} fontWeight={600}>
@@ -309,6 +313,17 @@ function PricingContent() {
                     Curtis Biafrah Amarek
                   </a>
                 </Typography>
+                <Box color={'secondary.dark'}>
+                  <Button
+                    startIcon={<IconAt size={16} />}
+                    color="secondary"
+                    sx={{ textTransform: 'lowercase', mt: 1 }}
+                    variant="outlined"
+                    size="small"
+                  >
+                    admin@admin.org
+                  </Button>
+                </Box>
               </Stack>
             </Box>
             <Box
@@ -317,7 +332,11 @@ function PricingContent() {
               sx={{ zIndex: 1, position: 'relative', px: 3 }}
             >
               <Stack rowGap={1} pt={3} pb={3}>
-                <Typography fontSize={'1.5rem'} fontWeight={800}>
+                <Typography
+                  fontSize={'1.5rem'}
+                  fontWeight={600}
+                  color="secondary.main"
+                >
                   Web Administrator
                 </Typography>
                 <Typography component="p" marginY={2} color="secondary">

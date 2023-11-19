@@ -90,86 +90,6 @@ const featuredPosts = [
     like: 275,
     view: '66.3k',
   },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
 ]
 
 export default function BlogCard() {
@@ -233,17 +153,13 @@ export default function BlogCard() {
                   ':before': {
                     content: '" "',
                     position: 'absolute',
-                    top: 0,
+                    top: '-20px',
                     bottom: 0,
                     left: 0,
                     right: 0,
                     zIndex: -1,
                     backgroundImage:
-                      'linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.95))',
-                    // transform: "translate(-20px, -20px)",
-                    // boxShadow:
-                    //   "0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%)",
-                    // backgroundColor: `rgba(0,0,0,0.75)`,
+                      'linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.95))',
                   },
                 },
                 ':hover': {
@@ -255,7 +171,9 @@ export default function BlogCard() {
               }}
             >
               <Box className="boxHover">
-                <Typography component="h4">{post.title}</Typography>
+                <Typography component="h4" fontWeight={'600'} fontSize={18}>
+                  {post.title}
+                </Typography>
                 <Box component="p">{post.description}</Box>
               </Box>
             </Box>
