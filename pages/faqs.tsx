@@ -229,8 +229,13 @@ export default function Page() {
       <Paper sx={{ my: 3 }}>
         <Faqs items={tiers} />
       </Paper>
-      <Paper sx={{ mb: 3 }}>
-        <FaqAccordion />
+      <Paper sx={{ p: 2 }}>
+        <Typography p={3} component="h4" fontSize={22} fontWeight={600}>
+          Frequently Asked Questions
+        </Typography>
+        <Box m={2} width={'75%'}>
+          <FaqAccordion />
+        </Box>
       </Paper>
     </DashboardLayout>
   )

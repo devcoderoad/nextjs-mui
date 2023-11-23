@@ -176,7 +176,23 @@ export default function BlogCard() {
 
   return (
     <Container maxWidth="xl" component="main">
-      <Grid container spacing={5} paddingTop={9} paddingBottom={9}>
+      <Grid
+        container
+        spacing={5}
+        paddingTop={9}
+        paddingBottom={9}
+        sx={{
+          '.stackBlog': {
+            display: 'none',
+          },
+          ':hover': {
+            display: 'block',
+          },
+          '.MuiGrid-item': {
+            borderRadius: '20px',
+          },
+        }}
+      >
         {featuredPosts.map((post: any, i: number) => (
           <Grid item key={post + i} lg={3}>
             <Box
@@ -209,6 +225,7 @@ export default function BlogCard() {
               direction="row"
               justifyContent="space-between"
               alignItems="flex-start"
+              className="stackBlog"
             >
               <Box>
                 <Button

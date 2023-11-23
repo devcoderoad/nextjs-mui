@@ -132,9 +132,12 @@ const Drawer = styled(MuiDrawer, {
   },
 }))
 
-function DashboardContent(props: OwnProps): JSX.Element {
-  const { breadcrumb = [{ name: 'Dashboard', url: '/dashboard' }], children } =
-    props
+function DashboardContent(props: OwnProps & ScrollProps): JSX.Element {
+  const {
+    breadcrumb = [{ name: 'Dashboard', url: '/dashboard' }],
+    children,
+    window,
+  } = props
   const { data: session, status } = useSession()
 
   const theme = useTheme()
@@ -411,7 +414,7 @@ function DashboardContent(props: OwnProps): JSX.Element {
         appear={true}
         direction="down"
         in={!!trigger}
-        addEndListener={(e) => console.log(e)}
+        // addEndListener={(e) => console.log(e)}
       >
         <Box position={'fixed'} zIndex={2}>
           {children}
@@ -468,6 +471,12 @@ function DashboardContent(props: OwnProps): JSX.Element {
   }
   // console.log({ trigger })
   // console.log({ props })
+
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  })
+
+  console.log(trigger)
 
   return (
     <Box

@@ -92,7 +92,7 @@ function BalanceCard() {
                       : '2px solid #f2f2f2',
                     p: 2,
                     borderRadius: '12px',
-                    color: isDark ? 'grey.400' : 'white',
+                    color: isDark ? 'grey.100' : 'white',
                     transition: '.5s ease',
                     boxShadow: isDark
                       ? '0 2px 6px 0 rgb(10 10 50 / 65%), 0 2px 6px 0 rgb(0 0 0 / 54%)'
@@ -100,8 +100,7 @@ function BalanceCard() {
                     backgroundColor: isDark
                       ? 'primary.dark'
                       : `${item.variant}.main`,
-                    backgroundImage:
-                      'linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0))',
+                    backgroundImage: 'var(--gradient-info)',
                     ':hover': {
                       boxShadow: isDark
                         ? '0 2px 12px 0 rgb(0 0 0 / 75%), 0 2px 12px 0 rgb(0 0 0 / 94%)'

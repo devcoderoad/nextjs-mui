@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@mui/material'
 
+/* MUI Icons */
 import ChatIcon from '@mui/icons-material/ChatOutlined'
 import MapIcon from '@mui/icons-material/MapOutlined'
 import EmailIcon from '@mui/icons-material/EmailOutlined'
@@ -19,6 +20,14 @@ import MoreIcon from '@mui/icons-material/MoreVert'
 import RefreshIcon from '@mui/icons-material/RefreshOutlined'
 import CachedIcon from '@mui/icons-material/CachedOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
+
+/* Tabler */
+import {
+  IconMessage,
+  IconPhone,
+  IconMail,
+  IconMapPin,
+} from '@tabler/icons-react'
 
 export default function Component(props: any) {
   const { items, cog = false } = props
@@ -93,7 +102,7 @@ export default function Component(props: any) {
           width: '80px',
           height: '80px',
           border: 2,
-          mb: 1,
+          my: 1,
         }}
       />
       <Typography component="h4" variant="subtitle1">
@@ -108,8 +117,8 @@ export default function Component(props: any) {
         Web Administrator
       </Typography>
       <Typography component="div" variant="subtitle2" color="secondary">
-        <MapIcon sx={{ verticalAlign: 'middle', fontSize: '1.25rem' }} />{' '}
-        Memphis, Tennessee
+        <IconMapPin size={18} style={{ verticalAlign: 'middle' }} /> Memphis,
+        Tennessee
       </Typography>
       <Divider flexItem textAlign="center" variant="middle" sx={{ mt: 2 }} />
       <Box
@@ -118,13 +127,25 @@ export default function Component(props: any) {
           button: { borderRadius: '50px', px: 1.5, mr: 0.75 },
         }}
       >
-        <Button startIcon={<EmailIcon />} variant="outlined" size="small">
+        <Button
+          startIcon={<IconMail size={18} />}
+          variant="contained"
+          size="small"
+        >
           Email
         </Button>
-        <Button startIcon={<PhoneIcon />} variant="outlined" size="small">
+        <Button
+          startIcon={<IconPhone size={18} />}
+          variant="contained"
+          size="small"
+        >
           Phone
         </Button>
-        <Button startIcon={<ChatIcon />} variant="outlined" size="small">
+        <Button
+          startIcon={<IconMessage size={18} />}
+          variant="contained"
+          size="small"
+        >
           Chat
         </Button>
       </Box>

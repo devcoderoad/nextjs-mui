@@ -4,6 +4,14 @@ import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import {
+  IconConfetti,
+  IconServerCog,
+  IconSettings,
+  IconShieldLock,
+  IconUser,
+  IconUserSquareRounded,
+} from '@tabler/icons-react'
 
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false)
@@ -24,15 +32,16 @@ export default function ControlledAccordions() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+          <IconSettings color="green" />
+          <Typography sx={{ width: '33%', flexShrink: 0, ml: 1 }}>
             General settings
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
+          <Typography sx={{ color: 'secondary.main' }}>
             I am an accordion
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography paragraph variant="body2">
             Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
             Aliquam eget maximus est, id dignissim quam.
           </Typography>
@@ -47,13 +56,16 @@ export default function ControlledAccordions() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
+          <IconUserSquareRounded color="blue" />
+          <Typography sx={{ width: '33%', flexShrink: 0, ml: 1 }}>
+            Users
+          </Typography>
+          <Typography sx={{ color: 'secondary.main' }}>
             You are currently not an owner
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography paragraph variant="body2">
             Donec placerat, lectus sed mattis semper, neque lectus feugiat
             lectus, varius pulvinar diam eros in elit. Pellentesque convallis
             laoreet laoreet.
@@ -69,15 +81,16 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+          <IconServerCog color="red" />
+          <Typography sx={{ width: '33%', flexShrink: 0, ml: 1 }}>
             Advanced settings
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
+          <Typography sx={{ color: 'secondary.main' }}>
             Filtering has been entirely disabled for whole web server
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography paragraph variant="body2">
             Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
             sit amet egestas eros, vitae egestas augue. Duis vel est augue.
           </Typography>
@@ -92,14 +105,20 @@ export default function ControlledAccordions() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+          <IconShieldLock color="orange" />
+          <Typography sx={{ width: '33%', flexShrink: 0, ml: 1 }}>
             Personal data
+          </Typography>
+          <Typography sx={{ color: 'secondary.main' }}>
+            Account privacy and security
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography paragraph variant="body2">
             Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
+            sit amet egestas eros, vitae egestas augue. Duis vel est augue. Nunc
+            vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+            amet egestas eros, vitae egestas augue. Duis vel est augue.
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -62,11 +62,12 @@ export const getThemeTokens: ThemeOptions = {
       defaultProps: {
         // The props to change the default for.
         disableRipple: true, // No more ripple, on the whole application 💣!
+        disableElevation: true,
       },
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
           // boxShadow: 'none',
-          borderRadius: 20,
+          borderRadius: 5,
           // ...(ownerState.variant === 'contained' &&
           //   ownerState.color === 'info' && {
           //     color: '#fff',
@@ -253,12 +254,14 @@ export const globalStyles = css`
     --mui-palette-primary-dark: #1565c0;
     --mui-palette-primary-contrastText: #fff;
 
+    /* Colors */
     --blue-primary: #1c7ed6;
     --green-primary: #22b8cf;
 
     --pink-primary: #e64980;
     --orange-primary: #fd7e14;
 
+    /* Gradients */
     --gradient-primary: linear-gradient(
       52deg,
       var(--blue-primary) 3%,
@@ -269,7 +272,10 @@ export const globalStyles = css`
       var(--pink-primary) 3%,
       var(--orange-primary) 97%
     );
+    --gradient-success: linear-gradient(15deg, #4c6ef5 0%, #15aabf 100%);
+    --gradient-info: linear-gradient(45deg, #4c6ef5 0%, #15aabf 100%);
 
+    /* Shadows / Box Shadow */
     --drop-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1),
       0px 8px 10px 1px rgba(0, 0, 0, 0.1), 0px 3px 14px 2px rgba(0, 0, 0, 0.1);
 

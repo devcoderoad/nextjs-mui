@@ -21,13 +21,7 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import CardMedias from '@components/Card/Medias'
 import CardBlog from '@components/Card/Blog'
-import {
-  IconClock,
-  IconClock2,
-  IconClockHour12,
-  IconUser,
-  IconUserCircle,
-} from '@tabler/icons-react'
+import { IconClock, IconUser } from '@tabler/icons-react'
 /* 
 Sweet instant irish cultivar that, acerbic coffee robusta in, whipped caramelization half and half to go medium white cultivar. Single origin rich espresso rich mug affogato, single origin, est extra  redeye brewed aged caffeine redeye. Viennese arabica so fair trade café au lait et coffee redeye galão skinny sugar saucer white frappuccino froth grounds coffee. And skinny mazagran body ristretto kopi-luwak robusta in shop et percolator mug spoon decaffeinated. Filter, con panna, half and half blue mountain, dark breve, froth, robust steamed extraction, to go foam chicory caffeine plunger pot.
 */
@@ -94,15 +88,6 @@ export default function Page() {
         Cards
       </Typography>
       <Box component="section">
-        <Grid container mb={4} spacing={2}>
-          {[0, 1, 2, 3].map((_, i) => (
-            <Grid item key={i++} sm={12} md={6} lg={3}>
-              <CardMedias />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-      <Box component="section" my={6}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Paper
@@ -173,12 +158,19 @@ export default function Page() {
                   />
                   {post.createdAt}
                 </Box>
-                <Box component="p" color="white">
-                  Leverage agile frameworks to provide a robust synopsis for
-                  high level overviews. Iterative approaches to corporate
-                  strategy foster collaborative thinking to further the overall
-                  value proposition.
-                  <Button endIcon={<ReadIcon />} color="primary">
+                <Box color="white">
+                  <Typography variant="body2" mb={2}>
+                    Leverage agile frameworks to provide a robust synopsis for
+                    high level overviews. Iterative approaches to corporate
+                    strategy foster collaborative thinking to further the
+                    overall value proposition.
+                  </Typography>
+                  <Button
+                    size="small"
+                    endIcon={<ReadIcon />}
+                    color="secondary"
+                    variant="contained"
+                  >
                     Read More
                   </Button>
                 </Box>
@@ -237,6 +229,15 @@ export default function Page() {
               ))}
             </Grid>
           </Grid>
+        </Grid>
+      </Box>
+      <Box component="section" my={6}>
+        <Grid container mb={4} spacing={2}>
+          {[0, 1, 2, 3].map((_, i) => (
+            <Grid item key={i++} sm={12} md={6} lg={3}>
+              <CardMedias />
+            </Grid>
+          ))}
         </Grid>
       </Box>
       <Box component="section">

@@ -65,7 +65,7 @@ export default function Page() {
               <Button
                 size="small"
                 variant="contained"
-                color="success"
+                sx={{ backgroundImage: 'var(--gradient-warning)' }}
                 endIcon={<AddCardIcon />}
               >
                 Add Account
