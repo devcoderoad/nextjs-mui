@@ -84,7 +84,7 @@ export default function Page() {
   ]
   return (
     <DashboardLayout breadcrumb={[{ name: 'Cards', url: '/card' }]}>
-      <Typography variant="h6" marginTop={2}>
+      <Typography variant="h5" mb={2} mt={2}>
         Cards
       </Typography>
       <Box component="section">
@@ -158,7 +158,7 @@ export default function Page() {
                   />
                   {post.createdAt}
                 </Box>
-                <Box color="white">
+                <Box color="white" pb={2}>
                   <Typography variant="body2" mb={2}>
                     Leverage agile frameworks to provide a robust synopsis for
                     high level overviews. Iterative approaches to corporate
@@ -241,9 +241,15 @@ export default function Page() {
         </Grid>
       </Box>
       <Box component="section">
+        <Typography variant="h5" mb={2}>
+          Blog Card
+        </Typography>
         <CardBlog />
       </Box>
       <Box component="section">
+        <Typography variant="h5" mb={2}>
+          Article Card
+        </Typography>
         <Grid container spacing={4}>
           {[0, 1, 2, 3].map((_, i) => (
             <Grid key={i++} item xs={12} md={6}>

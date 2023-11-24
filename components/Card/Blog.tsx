@@ -16,13 +16,16 @@ import {
 import FavoriteIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import VisibilityIcon from '@mui/icons-material/VisibilityOutlined'
 import AccessTimeIcon from '@mui/icons-material/AccessTimeOutlined'
+
 /* 
 Black as grinder grounds doppio, flavour robust, id variety, black ristretto aromatic, strong grinder cultivar french press iced robust. Filter robusta chicory irish caramelization fair trade redeye extra chicory, crema crema redeye, cultivar decaffeinated caramelization that spoon. Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica. Cup turkish, and flavour in froth et, sweet, fair trade whipped kopi-luwak shop, dark rich barista java a, doppio aroma dark irish latte.
 
 Decaffeinated organic aromatic extra  latte black galão caffeine, caramelization iced turkish sugar affogato, mazagran dark, kopi-luwak spoon affogato cup beans. Shop medium, whipped roast, cappuccino, affogato milk skinny aged, pumpkin spice black cup rich, at, iced cortado kopi-luwak breve filter. Americano, in organic dark, a variety sweet, whipped single shot mazagran, extra  barista chicory body, fair trade, dripper so whipped acerbic foam. Java con panna sweet foam body viennese single origin foam half and half irish carajillo redeye milk.
  */
+
 const featuredPosts = [
   {
+    category: 'Coffee',
     title:
       'Filter robusta chicory irish caramelization fair trade redeye extra',
     date: 'Nov 12, 2022',
@@ -34,6 +37,7 @@ const featuredPosts = [
     view: '66.3k',
   },
   {
+    category: 'Beverage',
     title: 'Black as grinder grounds doppio, flavour robust, id variety',
     date: 'Nov 11, 2022',
     description:
@@ -44,6 +48,7 @@ const featuredPosts = [
     view: '66.3k',
   },
   {
+    category: 'Food & Snack',
     title: 'Americano, in organic dark, a variety sweet',
     date: 'Nov 11, 2022',
     description:
@@ -54,6 +59,7 @@ const featuredPosts = [
     view: '66.3k',
   },
   {
+    category: 'Desert',
     title:
       'Turkish, a milk as flavour crema, americano ut acerbic, brewed aroma java cinnamon frappuccino arabica',
     date: 'Nov 11, 2022',
@@ -65,7 +71,30 @@ const featuredPosts = [
     view: '66.3k',
   },
   {
-    title: 'Post title',
+    category: 'Recipe',
+    title: 'Instant latte fair trade barista arabica half',
+    date: 'Nov 11, 2022',
+    description:
+      'Instant latte fair trade barista arabica half and half blue mountain steamed robusta cortado fair trade.',
+    image: 'https://source.unsplash.com/random',
+    imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
+  },
+  {
+    category: 'Table',
+    title: 'White roast cultivar, id, robust and variety as aged robusta',
+    date: 'Nov 11, 2022',
+    description:
+      ' Crema aged mocha single origin mazagran frappuccino coffee, organic, mocha mazagran white roast cultivar, id, robust and variety as aged robusta.',
+    image: 'https://source.unsplash.com/random',
+    imageLabel: 'Image Text',
+    like: 275,
+    view: '66.3k',
+  },
+  {
+    category: 'Booking',
+    title: 'As a natural lead-in to additional content',
     date: 'Nov 11, 2022',
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
@@ -75,30 +104,11 @@ const featuredPosts = [
     view: '66.3k',
   },
   {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
+    category: 'Dinner',
+    title: 'Single origin in steamed instant beans',
+    date: 'Nov 24, 2023',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-    like: 275,
-    view: '66.3k',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11, 2022',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Aroma, shop robusta, single shot sugar that cappuccino, saucer and macchiato, a lungo, plunger pot dark frappuccino, single origin in steamed instant beans',
     image: 'https://source.unsplash.com/random',
     imageLabel: 'Image Text',
     like: 275,
@@ -107,36 +117,6 @@ const featuredPosts = [
 ]
 
 export default function BlogCard() {
-  // const cssCard = useMemo(
-  //   () => ({
-  //     background:
-  //       'url(https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80) top center no-repeat',
-  //     backgroundSize: 'cover',
-  //     position: 'relative',
-  //     display: 'block',
-  //     height: '100%',
-  //     minHeight: '320px',
-  //     zIndex: 0,
-  //     color: 'white',
-  //     textShadow: '2px 2px 15px #000000',
-  //     pl: '1rem',
-  //     pt: '1rem',
-  //     ':after': {
-  //       content: '" "',
-  //       position: 'absolute',
-  //       left: 0,
-  //       right: 0,
-  //       zIndex: 0,
-  //       width: '100%',
-  //       height: '100%',
-  //       top: 0,
-  //       bottom: 0,
-  //       background:
-  //         'linear-gradient(180deg,rgba(2,0,36,0) 15%,rgba(0,0,0,.8));',
-  //     },
-  //   }),
-  //   []
-  // )
   const cssFeatured = useMemo(() => {
     return {
       backgroundPosition: 'top center',
@@ -148,7 +128,7 @@ export default function BlogCard() {
       '.boxHover': {
         transition: 'linear .15s',
         transform: 'translateY(10px)',
-        opacity: 0,
+        // opacity: 0,
         color: 'white',
         paddingX: 2,
         position: 'absolute',
@@ -165,29 +145,32 @@ export default function BlogCard() {
             'linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.95))',
         },
       },
+      '.boxDesc': {
+        transition: 'opacity ease .275s, height ease .275s',
+        opacity: 0,
+        height: 0,
+      },
       ':hover': {
+        boxShadow: 'var(--drop-shadow)',
         '.boxHover': {
           transform: 'translateY(0)',
           opacity: 1,
+        },
+        '.boxDesc': {
+          opacity: 1,
+          height: 'auto',
         },
       },
     }
   }, [])
 
   return (
-    <Container maxWidth="xl" component="main">
+    <Container maxWidth="xl">
       <Grid
         container
-        spacing={5}
-        paddingTop={9}
-        paddingBottom={9}
+        spacing={[2, 2]}
+        my={2}
         sx={{
-          '.stackBlog': {
-            display: 'none',
-          },
-          ':hover': {
-            display: 'block',
-          },
           '.MuiGrid-item': {
             borderRadius: '20px',
           },
@@ -199,7 +182,7 @@ export default function BlogCard() {
               boxShadow={4}
               borderRadius={2}
               position="relative"
-              marginBottom={0.75}
+              // marginBottom={0.75}
               minHeight="230px"
               sx={cssFeatured}
               style={{
@@ -211,12 +194,12 @@ export default function BlogCard() {
                   component="h4"
                   fontWeight={'600'}
                   fontSize={18}
-                  lineHeight={1.1}
+                  lineHeight={1.25}
                   mb={1}
                 >
                   {post.title}
                 </Typography>
-                <Typography variant="body2" paragraph>
+                <Typography variant="body2" paragraph className="boxDesc">
                   {post.description}
                 </Typography>
               </Box>
@@ -231,6 +214,7 @@ export default function BlogCard() {
                 <Button
                   size="small"
                   variant="text"
+                  color="secondary"
                   startIcon={<AccessTimeIcon fontSize="small" />}
                 >
                   {post.date}
@@ -240,6 +224,7 @@ export default function BlogCard() {
                 <Button
                   size="small"
                   variant="text"
+                  color="secondary"
                   startIcon={<FavoriteIcon fontSize="small" />}
                 >
                   {post.view}
@@ -247,6 +232,7 @@ export default function BlogCard() {
                 <Button
                   size="small"
                   variant="text"
+                  color="secondary"
                   startIcon={<VisibilityIcon fontSize="small" />}
                 >
                   {post.like}

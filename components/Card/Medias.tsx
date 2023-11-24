@@ -4,7 +4,6 @@ import {
   Box,
   Typography,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
 } from '@mui/material'
@@ -13,7 +12,7 @@ export default function MediasCard() {
   const cssCard = useMemo(
     () => ({
       background:
-        'url(https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80) top center no-repeat',
+        'url(https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80) top center no-repeat',
       backgroundSize: 'cover',
       position: 'relative',
       display: 'block',
@@ -42,36 +41,50 @@ export default function MediasCard() {
   )
   return (
     <Card
-      sx={{ maxWidth: 585, border: 1, borderColor: '#bebebe' }}
+      sx={{
+        maxWidth: 585,
+        border: 1,
+        borderColor: '#bebebe',
+        borderRadius: '10px',
+        position: 'relative',
+        ':hover': {
+          boxShadow: 'var(--drop-shadow)',
+        },
+      }}
       elevation={0}
     >
       <CardMedia component="div" sx={cssCard}>
         <Box
           component="div"
-          sx={{ position: 'absolute', bottom: '.75rem', zIndex: 1 }}
+          sx={{ position: 'relative', bottom: '.75rem', zIndex: 1 }}
         >
-          <Typography variant="h5">Lizard</Typography>
-          <Typography component="span" variant="caption">
-            12 Active
-          </Typography>
-          <Box component="span" mx={1}>
-            |
+          <Box sx={{ position: 'absolute', top: 0 }}>
+            <Typography
+              variant="h6"
+              fontWeight={'500'}
+              fontSize={13}
+              mt={1}
+              mb={2}
+              color={'secondary'}
+              textTransform={'uppercase'}
+            >
+              Lizard
+            </Typography>
+            <Typography variant="h5" fontWeight={'600'} lineHeight={1.3}>
+              Ranging across all continents except Antarctica
+            </Typography>
           </Box>
-          <Typography component="span" variant="caption">
-            15 Pending
-          </Typography>
         </Box>
       </CardMedia>
-      <CardContent>
-        <Typography variant="subtitle2" color="text.secondary">
+      <CardContent sx={{ position: 'absolute', bottom: 0, zIndex: 1 }}>
+        <Typography variant="subtitle2" color="secondary.light" mb={2}>
           Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          species
         </Typography>
+        <Button size="small" variant="contained" color="secondary">
+          Learn More
+        </Button>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   )
 }
