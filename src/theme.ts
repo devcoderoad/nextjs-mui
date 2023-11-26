@@ -282,6 +282,13 @@ export const globalStyles = css`
     --drop-shadow-light: 0px 5px 5px -3px rgba(0, 0, 0, 0.1),
       0px 4px 4px 1px rgba(0, 0, 0, 0.1), 0px 3px 10px 2px rgba(0, 0, 0, 0.1);
 
+    --bg-gradient-bluish: linear-gradient(
+      -90deg,
+      #a258c1,
+      #0374bd 47%,
+      #29b9c9
+    );
+
     body {
       /* background-color: #fff; */
       color: #121212;

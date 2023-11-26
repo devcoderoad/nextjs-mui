@@ -126,8 +126,8 @@ export default function BlogCard() {
       zIndex: 1,
       transition: 'all ease .5s',
       '.boxHover': {
-        transition: 'linear .15s',
-        transform: 'translateY(10px)',
+        transition: 'transform ease .175s',
+        transform: 'translateY(12px)',
         // opacity: 0,
         color: 'white',
         paddingX: 2,
@@ -146,19 +146,18 @@ export default function BlogCard() {
         },
       },
       '.boxDesc': {
-        transition: 'opacity ease .275s, height ease .275s',
-        opacity: 0,
+        transition: 'opacity ease .275s, height ease .175s',
+        opacity: 1,
         height: 0,
       },
       ':hover': {
         boxShadow: 'var(--drop-shadow)',
         '.boxHover': {
           transform: 'translateY(0)',
-          opacity: 1,
         },
         '.boxDesc': {
           opacity: 1,
-          height: 'auto',
+          height: '100%',
         },
       },
     }

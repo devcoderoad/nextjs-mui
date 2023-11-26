@@ -173,7 +173,75 @@ export default function Page() {
               >
                 Default Full
               </Typography>
-              <Box>Widgets</Box>
+              <Paper
+                sx={{
+                  p: 2,
+                  color: '#fff',
+                  background: 'var(--bg-gradient-bluish)',
+                }}
+              >
+                <Grid container spacing={[10, 10]}>
+                  <Grid item xl={8}>
+                    <Typography
+                      component={'h1'}
+                      fontSize={22}
+                      fontWeight={'bold'}
+                    >
+                      Get Yours Now
+                    </Typography>
+                    <Typography>Ultimate Price</Typography>
+                    <Stack
+                      mt={2}
+                      direction={'row'}
+                      gap={[1, 1]}
+                      sx={{
+                        '.MuiIconButton-root': {
+                          border: '0.5px solid #f2f2f2',
+                          boxShadow: 'var(--drop-shadow)',
+                          '&:hover': {
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            boxShadow: 'var(--drop-shadow-light)',
+                          },
+                        },
+                      }}
+                    >
+                      <IconButton>
+                        <IconBrandGithub color={'white'} stroke={1} />
+                      </IconButton>
+                      <IconButton>
+                        <IconBrandFacebook color={'white'} stroke={1} />
+                      </IconButton>
+                      <IconButton>
+                        <IconBrandYoutube color={'white'} stroke={1} />
+                      </IconButton>
+                      <IconButton>
+                        <IconBrandTelegram color={'white'} stroke={1} />
+                      </IconButton>
+                    </Stack>
+                  </Grid>
+                  <Grid item xl={4}>
+                    <Typography fontSize={28} fontWeight={600}>
+                      Membership Only
+                    </Typography>
+                    <Typography mb={1}>New Features</Typography>
+                    <Button
+                      color="warning"
+                      size="small"
+                      sx={{
+                        color: 'white',
+                        backgroundImage: 'var(--gradient-warning)',
+                        border: '1px solid rgba(255,255,255, 0.1)',
+                        boxShadow: 'var(--drop-shadow)',
+                        '&:hover': {
+                          boxShadow: 'var(--drop-shadow-light)',
+                        },
+                      }}
+                    >
+                      Buy
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Paper>
             </Box>
             <Box marginBottom={2}>
               <Typography
