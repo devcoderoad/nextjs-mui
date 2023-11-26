@@ -14,42 +14,8 @@ import { constant } from '@config/constants'
 /* Routes */
 import { routePage, routeDocumentation } from '@config/routes'
 
-const styled = {
-  height: '100%',
-  position: 'relative',
-  padding: '2rem 0rem',
-  zIndex: '0',
-  overflow: 'hidden',
-  '::before, ::after': {
-    content: '" "',
-    backgroundColor: 'secondary.light',
-    position: 'absolute',
-    zIndex: '-1',
-    borderRadius: '20px',
-    bottom: 0,
-    transform: 'rotate(-45deg)',
-  },
-  '::before': {
-    top: '-30rem',
-    right: '-10rem',
-    width: '1152px',
-    height: '980px',
-  },
-  '::after': {
-    left: '-10rem',
-    width: '1024px',
-    height: '780px',
-  },
-}
-
-const styledCard = {
-  boxShadow: '1',
-  borderRadius: '10px',
-  minHeight: 240,
-  p: 5,
-  backgroundColor: 'white',
-  ':hover': { boxShadow: '3' },
-}
+/* Styles */
+import { styledBox, styledPaper, styledCard } from '@src/styles'
 
 const styledH = {
   display: 'block',
@@ -59,7 +25,7 @@ const styledH = {
 
 export default function Home() {
   return (
-    <Box maxWidth="xxl" sx={styled}>
+    <Box maxWidth="xxl" sx={styledBox}>
       <Container maxWidth="lg">
         <Box sx={{ marginBottom: '2rem' }}>
           <Link
@@ -90,7 +56,7 @@ export default function Home() {
             Material UI Financial Dashboard Administrator Theme
           </Typography>
           <div>A premium Theme for your Next.js Website Application</div>
-          <Paper>
+          <Paper sx={styledPaper}>
             <Box padding={2} mt={2}>
               <Grid>
                 <Grid item>
@@ -115,36 +81,28 @@ export default function Home() {
           <Typography color="primary" variant="h4" sx={styledH}>
             Pages
           </Typography>
-          <Box marginY={4}>
+          <Box marginY={4} mx="auto">
             <Grid
-              maxWidth="lg"
               container
-              spacing={{ xs: 2, md: 3 }}
+              spacing={{ xs: 2, lg: 2 }}
               columns={{ xs: 1, sm: 8, md: 12 }}
             >
               {Object.values(routePage).map((route) => {
                 return (
                   route.href !== '/' && (
                     <Grid key={route.name} item xs={2} sm={4} md={4}>
-                      <Link
-                        href={route.href}
-                        underline="none"
-                        // sx={{
-                        //   textDecoration: 'none',
-                        //   ':hover': { color: 'primary.light' },
-                        // }}
-                      >
+                      <Link href={route.href} underline="none">
                         <Box
                           sx={{
                             boxShadow: '1',
-                            p: 5,
+                            p: 4,
                             borderRadius: '.5rem',
                             backgroundColor: 'white',
                             ':hover': { boxShadow: '3' },
                           }}
                         >
                           <Typography variant="h5">{route.name}</Typography>
-                          <Box>{route.text}</Box>
+                          <Typography variant="body2">{route.text}</Typography>
                         </Box>
                       </Link>
                     </Grid>

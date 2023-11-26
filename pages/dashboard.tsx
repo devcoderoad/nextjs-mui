@@ -35,45 +35,10 @@ import Cog from '@components/Cog/Default'
 import shadows from '@mui/material/styles/shadows'
 import { IconCoin } from '@tabler/icons-react'
 
-export default function Page() {
-  const cssTraffic = {
-    p: 2,
-    position: 'relative',
-    zIndex: 0,
-    overflow: 'hidden',
-    '&:before': {
-      content: '" "',
-      position: 'absolute',
-      top: '0rem',
-      right: '0rem',
-      width: '25px',
-      height: '25px',
-      backgroundColor: '#ffffff',
-      border: '2px solid #cdcdcd',
-      opacity: 0.25,
-      transform: 'rotate(-40deg) translate(2px,2px)',
-      borderRadius: '50%',
-      zIndex: -1,
-    },
-    '&:after': {
-      content: '" "',
-      position: 'absolute',
-      bottom: '-1.95rem',
-      right: '-1.95rem',
-      width: '80px',
-      height: '80px',
-      transform: 'rotate(-40deg) scale(1)',
-      borderRadius: '50%',
-      opacity: '0.5',
-      backgroundImage:
-        'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQoU2NkIBIwEqmOgXyFU6dObQDZkp2dDaZhAMVEmCKYJLJi8hSCTCLKanwhQL6vcZkKAMbtEAuAaq67AAAAAElFTkSuQmCC)',
-      backgroundPosition: 'top center',
-      backgroundRepeat: 'repeat',
-      backgroundAttachment: 'scroll',
-      zIndex: -1,
-    },
-  }
+/* Styles */
+import { styledPaper } from '@src/styles'
 
+export default function Page() {
   return (
     <DashboardLayout>
       <DashboardToolbar />
@@ -81,7 +46,7 @@ export default function Page() {
         <Grid item xs={12}>
           <Grid container spacing={2} columns={12}>
             <Grid item md={4} xs={12}>
-              <Paper sx={cssTraffic}>
+              <Paper sx={styledPaper}>
                 <Typography color="secondary">
                   <Badge
                     color="secondary"
@@ -104,10 +69,10 @@ export default function Page() {
               </Paper>
             </Grid>
             <Grid item md={4} xs={12}>
-              <Paper sx={cssTraffic}>
+              <Paper sx={styledPaper}>
                 <Typography color="secondary">
                   <Badge
-                    color="secondary"
+                    color="warning"
                     badgeContent=" "
                     variant="dot"
                     sx={{ mr: 1.25, verticalAlign: 'middle' }}
@@ -115,19 +80,19 @@ export default function Page() {
                   Paid Search Traffic
                 </Typography>
                 <Typography
-                  color={'primary'}
+                  color={'orange'}
                   component={'h2'}
                   fontSize={'34px'}
                   fontWeight={'900'}
                   sx={{ display: 'inline', mr: 0.5 }}
                 >
-                  278%
+                  45%
                 </Typography>
-                <small style={{ color: 'red' }}>-17%</small>
+                <small style={{ color: 'green' }}>+4%</small>
               </Paper>
             </Grid>
             <Grid item md={4} xs={12}>
-              <Paper sx={cssTraffic}>
+              <Paper sx={styledPaper}>
                 <Typography color="secondary">
                   <Badge
                     color="secondary"

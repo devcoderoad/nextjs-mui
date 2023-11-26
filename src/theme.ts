@@ -289,6 +289,8 @@ export const globalStyles = css`
       #29b9c9
     );
 
+    --img-paper-dot: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQoU2NkIBIwEqmOgXyFU6dObQDZkp2dDaZhAMVEmCKYJLJi8hSCTCLKanwhQL6vcZkKAMbtEAuAaq67AAAAAElFTkSuQmCC');
+
     body {
       /* background-color: #fff; */
       color: #121212;
