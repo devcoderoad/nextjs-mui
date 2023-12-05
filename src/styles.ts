@@ -29,7 +29,7 @@ const styledBox: CSSProperties = {
 }
 
 const styledPaper: CSSProperties = {
-  padding: 3,
+  padding: '.75rem 1.5rem',
   position: 'relative',
   zIndex: 0,
   overflow: 'hidden',

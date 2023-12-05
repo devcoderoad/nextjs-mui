@@ -1,14 +1,30 @@
 import * as React from 'react'
 
+/* MUI */
 import { Box, Button, IconButton, Divider, Popover, Stack } from '@mui/material'
 
-import MoreIcon from '@mui/icons-material/MoreVert'
-import RefreshIcon from '@mui/icons-material/RefreshOutlined'
-import CachedIcon from '@mui/icons-material/CachedOutlined'
-import OffIcon from '@mui/icons-material/HighlightOffOutlined'
+/* Icons */
+import {
+  IconRefresh,
+  IconRotateClockwise,
+  IconOutbound,
+  IconDotsVertical,
+} from '@tabler/icons-react'
 
-export default function Component(props: any) {
-  const { type = '', mode = '', children = null } = props
+interface TCogDefault {
+  type?: string[] | undefined
+  mode?: string[] | undefined
+}
+
+type ActionProps = {
+  onClose?(): void // on close popup
+  onRefresh?(): void // on refresh function
+  onReload?(): void // on reload function
+  onRemove?(): void // on remove function
+}
+
+export default function Component(props: TCogDefault & ActionProps) {
+  const { type = '', mode = '', onClose, onRefresh, onReload, onRemove } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
   const stack = type ? 'row' : 'column'
   const divider = stack === 'row' ? 'vertical' : 'horizontal'
@@ -19,6 +35,21 @@ export default function Component(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null)
+    onClose?.()
+  }
+
+  const handleRefresh = () => {
+    onRefresh?.()
+    handleClose()
+  }
+
+  const handleReload = () => {
+    onReload?.()
+    handleClose()
+  }
+  const handleRemove = () => {
+    onRemove?.()
+    handleClose()
   }
 
   const open = Boolean(anchorEl)
@@ -27,7 +58,7 @@ export default function Component(props: any) {
   return (
     <Box alignSelf="start">
       <IconButton aria-describedby={id} onClick={handleClick}>
-        <MoreIcon />
+        <IconDotsVertical size={18} />
       </IconButton>
       <Popover
         marginThreshold={0}
@@ -51,13 +82,28 @@ export default function Component(props: any) {
           padding={1}
           divider={<Divider orientation={divider} flexItem />}
         >
-          <Button variant="text" startIcon={<RefreshIcon />}>
+          <Button
+            variant="text"
+            startIcon={<IconRefresh size={18} />}
+            size="small"
+            onClick={handleRefresh}
+          >
             Refresh
           </Button>
-          <Button variant="text" startIcon={<CachedIcon />}>
+          <Button
+            variant="text"
+            startIcon={<IconRotateClockwise size={18} />}
+            size="small"
+            onClick={handleReload}
+          >
             Reload
           </Button>
-          <Button variant="text" startIcon={<OffIcon />}>
+          <Button
+            variant="text"
+            startIcon={<IconOutbound size={18} />}
+            size="small"
+            onClick={handleRemove}
+          >
             Remove
           </Button>
         </Stack>

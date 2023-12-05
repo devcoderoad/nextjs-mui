@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Avatar,
   Box,
@@ -9,28 +9,38 @@ import {
   Popover,
   Stack,
   Typography,
+  ButtonPropsVariantOverrides,
 } from '@mui/material'
 
+import { OverridableStringUnion } from '@mui/types'
+
 /* MUI Icons */
-import ChatIcon from '@mui/icons-material/ChatOutlined'
-import MapIcon from '@mui/icons-material/MapOutlined'
-import EmailIcon from '@mui/icons-material/EmailOutlined'
-import PhoneIcon from '@mui/icons-material/PhoneIphoneOutlined'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import RefreshIcon from '@mui/icons-material/RefreshOutlined'
 import CachedIcon from '@mui/icons-material/CachedOutlined'
 import OffIcon from '@mui/icons-material/HighlightOffOutlined'
 
-/* Tabler */
+/* Tabler Icons */
 import {
   IconMessage,
   IconPhone,
   IconMail,
   IconMapPin,
+  IconDotsVertical,
 } from '@tabler/icons-react'
 
-export default function Component(props: any) {
-  const { items, cog = false } = props
+interface OwnProp {
+  variant?: OverridableStringUnion<
+    'outlined' | 'contained' | 'text',
+    ButtonPropsVariantOverrides
+  >
+  type?: 'primary' | 'warning' | 'info' | 'success'
+  cog?: boolean
+  items?: string[]
+}
+
+export default function Component(props: OwnProp) {
+  const { items, cog = false, type = 'primary', variant = 'outlined' } = props
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleClick = (event: any) => {
@@ -47,7 +57,7 @@ export default function Component(props: any) {
   return (
     <Paper
       sx={{
-        p: 2,
+        p: 1,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -57,7 +67,7 @@ export default function Component(props: any) {
       {cog ? (
         <Box alignSelf="end">
           <IconButton aria-describedby={id} onClick={handleClick}>
-            <MoreIcon />
+            <IconDotsVertical size={18} />
           </IconButton>
           <Popover
             marginThreshold={0}
@@ -99,10 +109,11 @@ export default function Component(props: any) {
       <Avatar
         src="https://images.unsplash.com/photo-1609010697446-11f2155278f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=340&h=340&q=80"
         sx={{
-          width: '80px',
-          height: '80px',
+          width: '84px',
+          height: '84px',
           border: 2,
-          my: 1,
+          mt: 1.7,
+          mb: 1,
         }}
       />
       <Typography component="h4" variant="subtitle1">
@@ -120,30 +131,33 @@ export default function Component(props: any) {
         <IconMapPin size={18} style={{ verticalAlign: 'middle' }} /> Memphis,
         Tennessee
       </Typography>
-      <Divider flexItem textAlign="center" variant="middle" sx={{ mt: 2 }} />
+      <Divider flexItem textAlign="center" variant="middle" sx={{ my: 1 }} />
       <Box
         sx={{
-          my: 2,
+          my: 1,
           button: { borderRadius: '50px', px: 1.5, mr: 0.75 },
         }}
       >
         <Button
           startIcon={<IconMail size={18} />}
-          variant="contained"
+          variant={variant}
+          color={type}
           size="small"
         >
           Email
         </Button>
         <Button
           startIcon={<IconPhone size={18} />}
-          variant="contained"
+          variant={variant}
+          color={type}
           size="small"
         >
           Phone
         </Button>
         <Button
           startIcon={<IconMessage size={18} />}
-          variant="contained"
+          variant={variant}
+          color={type}
           size="small"
         >
           Chat

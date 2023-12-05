@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Button,
   Container,
@@ -8,10 +9,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-
-import PhoneIcon from '@mui/icons-material/Phone'
-import PhoneMissedIcon from '@mui/icons-material/PhoneMissed'
-import PersonPinIcon from '@mui/icons-material/PersonPin'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
@@ -26,7 +23,16 @@ import {
   IconBrandGithub,
   IconBrandTelegram,
   IconBrandYoutube,
+  IconHourglass,
+  IconHourglassHigh,
+  IconHourglassLow,
+  IconShoppingCart,
 } from '@tabler/icons-react'
+
+/* Components */
+import CardStatsDefault from '@components/Stats/Default'
+import CardStatsBadged from '@components/Stats/Badge'
+import BadgeDefault from '@components/Badge/Default'
 
 export default function Page() {
   return (
@@ -250,9 +256,26 @@ export default function Page() {
                 component="h4"
                 variant="subtitle2"
               >
-                Rounded
+                Statistic
               </Typography>
-              <Box>Widgets</Box>
+              <Box maxWidth={'sm'}>
+                <CardStatsDefault
+                  title="Total Views"
+                  total={2313}
+                  items={[{ name: 'Global', value: 90, type: 'primary' }]}
+                  type="primary"
+                />
+                <CardStatsDefault
+                  title="Total Views"
+                  total={125}
+                  items={[
+                    { name: 'Global', value: 90, type: 'primary' },
+                    { name: 'Australia', value: 10, type: 'info' },
+                    { name: 'Finland', value: 25, type: 'success' },
+                  ]}
+                  type="primary"
+                />
+              </Box>
             </Box>
             <Box marginBottom={2}>
               <Typography
@@ -261,9 +284,11 @@ export default function Page() {
                 component="h4"
                 variant="subtitle2"
               >
-                Rounded Full
+                Statistic Badge
               </Typography>
-              <Box>Widgets</Box>
+              <Box>
+                <CardStatsBadged />
+              </Box>
             </Box>
             <Box marginBottom={2}>
               <Typography
@@ -274,7 +299,47 @@ export default function Page() {
               >
                 Icon
               </Typography>
-              <Box>Widgets</Box>
+              <Stack direction={'row'} spacing={1}>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-primary)',
+                  }}
+                >
+                  <IconHourglassHigh color="white" stroke={1.1} />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-warning)',
+                  }}
+                >
+                  <IconHourglass color="white" stroke={1.1} />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-primary)',
+                  }}
+                >
+                  <IconShoppingCart color="white" stroke={1.1} />
+                </IconButton>
+              </Stack>
             </Box>
             <Box marginBottom={2}>
               <Typography
@@ -283,9 +348,11 @@ export default function Page() {
                 component="h4"
                 variant="subtitle2"
               >
-                Icon Full
+                Badges
               </Typography>
-              <Box>Widgets</Box>
+              <Box>
+                <BadgeDefault />
+              </Box>
             </Box>
             <Box marginBottom={2}>
               <Typography

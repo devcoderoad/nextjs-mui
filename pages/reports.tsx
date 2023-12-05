@@ -14,7 +14,7 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import CardMedias from '@components/Card/Medias'
 
-export default function Page() {
+function PageContent() {
   const post = {
     title: 'lorem ipsum dolor sit amet',
     description: 'lorem ipsum dolor sit amet',
@@ -24,25 +24,18 @@ export default function Page() {
     date: '20 June 2023',
   }
   return (
-    <DashboardLayout>
-      <Typography variant="h6">Reports</Typography>
+    <Box my={2}>
+      <Typography variant="h6" mb={1}>
+        Reports
+      </Typography>
       <Box component="section">
-        <Paper
-          sx={{
-            p: 2,
-            display: 'flex',
-            flexDirection: 'row',
-            mb: 4,
-          }}
-        >
-          <Grid container mb={4} spacing={2}>
-            {[0, 1, 2, 3].map((_, i) => (
-              <Grid key={i++} item sm={12} md={6} lg={3}>
-                <CardMedias />
-              </Grid>
-            ))}
-          </Grid>
-        </Paper>
+        <Grid container mb={4} spacing={2}>
+          {[0, 1, 2, 3].map((_, i) => (
+            <Grid key={i++} item sm={12} md={6} lg={3}>
+              <CardMedias />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
       <Box component="section">
         <Grid container spacing={4}>
@@ -118,6 +111,22 @@ export default function Page() {
           </Grid>
         </Grid>
       </Box>
+    </Box>
+  )
+}
+
+export default function Page() {
+  const post = {
+    title: 'lorem ipsum dolor sit amet',
+    description: 'lorem ipsum dolor sit amet',
+    image:
+      'https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&h=720&q=80',
+    imageLabel: 'lorem ipsum dolor sit amet',
+    date: '20 June 2023',
+  }
+  return (
+    <DashboardLayout>
+      <PageContent />
     </DashboardLayout>
   )
 }

@@ -164,83 +164,81 @@ export default function BlogCard() {
   }, [])
 
   return (
-    <Container maxWidth="xl">
-      <Grid
-        container
-        spacing={[2, 2]}
-        my={2}
-        sx={{
-          '.MuiGrid-item': {
-            borderRadius: '20px',
-          },
-        }}
-      >
-        {featuredPosts.map((post: any, i: number) => (
-          <Grid item key={post + i} lg={3}>
-            <Box
-              boxShadow={4}
-              borderRadius={2}
-              position="relative"
-              // marginBottom={0.75}
-              minHeight="230px"
-              sx={cssFeatured}
-              style={{
-                backgroundImage: `url(${post?.image})`,
-              }}
-            >
-              <Box className="boxHover">
-                <Typography
-                  component="h4"
-                  fontWeight={'600'}
-                  fontSize={18}
-                  lineHeight={1.25}
-                  mb={1}
-                >
-                  {post.title}
-                </Typography>
-                <Typography variant="body2" paragraph className="boxDesc">
-                  {post.description}
-                </Typography>
-              </Box>
+    <Grid
+      container
+      spacing={[2, 2]}
+      my={2}
+      sx={{
+        '.MuiGrid-item': {
+          borderRadius: '20px',
+        },
+      }}
+    >
+      {featuredPosts.map((post: any, i: number) => (
+        <Grid item key={post + i} lg={3}>
+          <Box
+            boxShadow={4}
+            borderRadius={2}
+            position="relative"
+            // marginBottom={0.75}
+            minHeight="230px"
+            sx={cssFeatured}
+            style={{
+              backgroundImage: `url(${post?.image})`,
+            }}
+          >
+            <Box className="boxHover">
+              <Typography
+                component="h4"
+                fontWeight={'600'}
+                fontSize={18}
+                lineHeight={1.25}
+                mb={1}
+              >
+                {post.title}
+              </Typography>
+              <Typography variant="body2" paragraph className="boxDesc">
+                {post.description}
+              </Typography>
             </Box>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="flex-start"
-              className="stackBlog"
-            >
-              <Box>
-                <Button
-                  size="small"
-                  variant="text"
-                  color="secondary"
-                  startIcon={<AccessTimeIcon fontSize="small" />}
-                >
-                  {post.date}
-                </Button>
-              </Box>
-              <Box>
-                <Button
-                  size="small"
-                  variant="text"
-                  color="secondary"
-                  startIcon={<FavoriteIcon fontSize="small" />}
-                >
-                  {post.view}
-                </Button>
-                <Button
-                  size="small"
-                  variant="text"
-                  color="secondary"
-                  startIcon={<VisibilityIcon fontSize="small" />}
-                >
-                  {post.like}
-                </Button>
-              </Box>
-            </Stack>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+          </Box>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            className="stackBlog"
+          >
+            <Box>
+              <Button
+                size="small"
+                variant="text"
+                color="secondary"
+                startIcon={<AccessTimeIcon fontSize="small" />}
+              >
+                {post.date}
+              </Button>
+            </Box>
+            <Box>
+              <Button
+                size="small"
+                variant="text"
+                color="secondary"
+                startIcon={<FavoriteIcon fontSize="small" />}
+              >
+                {post.view}
+              </Button>
+              <Button
+                size="small"
+                variant="text"
+                color="secondary"
+                startIcon={<VisibilityIcon fontSize="small" />}
+              >
+                {post.like}
+              </Button>
+            </Box>
+          </Stack>
+        </Grid>
+      ))}
+    </Grid>
   )
 }

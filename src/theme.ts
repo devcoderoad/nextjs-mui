@@ -256,10 +256,14 @@ export const globalStyles = css`
 
     /* Colors */
     --blue-primary: #1c7ed6;
+    --blue-primary-rgb: 28, 126, 214;
     --green-primary: #22b8cf;
+    --green-primary-rgb: 34, 184, 207;
 
     --pink-primary: #e64980;
+    --pink-primary-rgb: 230, 73, 128;
     --orange-primary: #fd7e14;
+    --orange-primary-rgb: 253, 126, 20;
 
     /* Gradients */
     --gradient-primary: linear-gradient(
@@ -290,6 +294,14 @@ export const globalStyles = css`
     );
 
     --img-paper-dot: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQoU2NkIBIwEqmOgXyFU6dObQDZkp2dDaZhAMVEmCKYJLJi8hSCTCLKanwhQL6vcZkKAMbtEAuAaq67AAAAAElFTkSuQmCC');
+
+    --alpha-bg-primary: rgba(var(--orange-primary-rgb), 0.75);
+    --alpha-bg-success: rgba(var(--green-primary-rgb), 0.75);
+    --alpha-bg-warning: rgba(var(--orange-primary-rgb), 0.75);
+
+    /* --alpha-bg-primary: rgba(var(--blue-primary), 0.8);
+    --alpha-bg-success: rgba(var(--green-primary), 0.8);
+    --alpha-bg-warning: rgba(var(--orange-primary), 0.8); */
 
     body {
       /* background-color: #fff; */

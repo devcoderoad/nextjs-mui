@@ -10,6 +10,7 @@ import {
   IconTags,
   IconChevronDown,
   IconChevronUp,
+  IconFlagQuestion,
 } from '@tabler/icons-react'
 
 import {
@@ -137,6 +138,16 @@ export const thirdListItems = (compact = false) => {
           <IconShoppingCart />
         </ListItemIcon>
         <ListItemText primary="Commerce" />
+      </ListItemButton>
+      <ListItemButton
+        dense
+        href={'/documentation'}
+        selected={'/docs' === router.asPath}
+      >
+        <ListItemIcon>
+          <IconFlagQuestion />
+        </ListItemIcon>
+        <ListItemText primary="Documentation" />
       </ListItemButton>
     </React.Fragment>
   )

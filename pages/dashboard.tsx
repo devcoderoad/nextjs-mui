@@ -13,14 +13,8 @@ import {
   Popover,
   Stack,
   Badge,
+  LinearProgress,
 } from '@mui/material'
-
-/* Icons */
-import MoreIcon from '@mui/icons-material/MoreVert'
-import RefreshIcon from '@mui/icons-material/RefreshOutlined'
-import CachedIcon from '@mui/icons-material/CachedOutlined'
-import OffIcon from '@mui/icons-material/HighlightOffOutlined'
-import AddCardIcon from '@mui/icons-material/AddCardOutlined'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
@@ -33,18 +27,24 @@ import AvatarProfile from '@components/Avatar/Profile'
 import Cog from '@components/Cog/Default'
 
 import shadows from '@mui/material/styles/shadows'
-import { IconCoin } from '@tabler/icons-react'
+/* Icons */
+import { IconCoin, IconUsers, IconFolderPlus } from '@tabler/icons-react'
+
+/* Components */
+import CardStatsDefault from '@components/Stats/Default'
+import CardStatsBadged from '@components/Stats/Badge'
 
 /* Styles */
 import { styledPaper } from '@src/styles'
 
-export default function Page() {
+function Page() {
   return (
-    <DashboardLayout>
+    <>
       <DashboardToolbar />
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Grid container spacing={2} columns={12}>
+        <Grid item xs={12} sm={12} xl={12}>
+          <CardStatsBadged />
+          {/* <Grid container spacing={2} columns={12}>
             <Grid item md={4} xs={12}>
               <Paper sx={styledPaper}>
                 <Typography color="secondary">
@@ -52,14 +52,14 @@ export default function Page() {
                     color="secondary"
                     badgeContent=" "
                     variant="dot"
-                    sx={{ mr: 1.25, verticalAlign: 'middle' }}
+                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
                   />
                   Organic Search Traffic
                 </Typography>
                 <Typography
                   color={'primary'}
                   component={'h2'}
-                  fontSize={'34px'}
+                  fontSize={'28px'}
                   fontWeight={'900'}
                   sx={{ display: 'inline', mr: 0.5 }}
                 >
@@ -75,14 +75,14 @@ export default function Page() {
                     color="warning"
                     badgeContent=" "
                     variant="dot"
-                    sx={{ mr: 1.25, verticalAlign: 'middle' }}
+                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
                   />
                   Paid Search Traffic
                 </Typography>
                 <Typography
                   color={'orange'}
                   component={'h2'}
-                  fontSize={'34px'}
+                  fontSize={'28px'}
                   fontWeight={'900'}
                   sx={{ display: 'inline', mr: 0.5 }}
                 >
@@ -95,31 +95,31 @@ export default function Page() {
               <Paper sx={styledPaper}>
                 <Typography color="secondary">
                   <Badge
-                    color="secondary"
+                    color="info"
                     badgeContent=" "
                     variant="dot"
-                    sx={{ mr: 1.25, verticalAlign: 'middle' }}
+                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
                   />
                   Backlinks
                 </Typography>
                 <Typography
-                  color={'primary'}
+                  color={'#2e9cf2'}
                   component={'h2'}
-                  fontSize={'34px'}
+                  fontSize={'28px'}
                   fontWeight={'900'}
                   sx={{ display: 'inline', mr: 0.5 }}
                 >
                   278%
                 </Typography>
-                <small style={{ color: 'red' }}>-17%</small>
+                <small style={{ color: '#2e9cf2' }}>-17%</small>
               </Paper>
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item xs={12} sm={12} lg={4}>
           <Grid container wrap="wrap" spacing={5} columns={12}>
             <Grid item xs={24}>
-              <AvatarProfile cog={true} />
+              <AvatarProfile variant="contained" cog={true} />
             </Grid>
           </Grid>
         </Grid>
@@ -133,43 +133,69 @@ export default function Page() {
             }}
           >
             <Box display="flex" justifyContent="space-between" marginBottom={1}>
-              <Typography component="h6" variant="h5" color="secondary">
+              <Typography variant="h5" color="secondary">
                 Linked Accounts
               </Typography>
               <Cog />
             </Box>
             <Balance />
-            <Box marginY={2}>
-              <Stack direction={'row'} justifyContent={'space-between'}>
-                <Button
-                  size="small"
-                  variant="contained"
-                  sx={{ backgroundImage: 'var(--gradient-warning)' }}
-                  startIcon={<AddCardIcon />}
-                >
-                  Add Account
-                </Button>
-
-                <Button
-                  size="small"
-                  variant="outlined"
-                  startIcon={<IconCoin stroke={1.2} />}
-                >
-                  Withdrawal
-                </Button>
-              </Stack>
-
-              {/* <GroupButton /> */}
+            <Box display="flex" justifyContent="space-between" marginTop={3}>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<IconCoin size={18} />}
+              >
+                Withdrawal
+              </Button>
+              <Button
+                size="small"
+                variant="contained"
+                sx={{ backgroundImage: 'var(--gradient-warning)' }}
+                startIcon={<IconFolderPlus size={18} />}
+              >
+                Add Account
+              </Button>
             </Box>
           </Paper>
         </Grid>
-
+        <Grid item xs={12} xl={4}>
+          <CardStatsDefault
+            title="Total Views"
+            total={9991}
+            items={[
+              { name: 'Swedia', value: 12, type: 'success' },
+              // { name: 'Global', value: 20, type: 'warning' },
+              // { name: 'Finland', value: 88, type: 'info' },
+              // { name: 'Italy', value: 20, type: 'primary' },
+            ]}
+            type="primary"
+          />
+        </Grid>
+        <Grid item xs={12} xl={4}>
+          <CardStatsDefault
+            title="Total Views"
+            total={2313}
+            items={[{ name: 'Global', value: 90, type: 'primary' }]}
+            type="primary"
+          />
+        </Grid>
+        <Grid item xs={12} xl={4}>
+          <CardStatsDefault type="warning" total={1001} />
+        </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
             <Orders />
           </Paper>
         </Grid>
       </Grid>
+    </>
+  )
+}
+
+export default function Dashboard() {
+  return (
+    <DashboardLayout>
+      <Page />
     </DashboardLayout>
   )
 }

@@ -1,7 +1,15 @@
 import React from 'react'
-import { Grid, Avatar, Typography, Badge, styled, Box } from '@mui/material'
+import {
+  Grid,
+  Avatar,
+  Typography,
+  Badge,
+  styled,
+  Box,
+  BadgeOwnProps,
+} from '@mui/material'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
-export interface OwnProps {
+export interface OwnProps extends BadgeOwnProps {
   id: number
   author: string
   title: string
@@ -23,18 +31,7 @@ export type OwnBadgeProps = {
 }
 
 const StyledBadge = styled(Badge)(
-  ({
-    color,
-  }: {
-    color:
-      | 'primary'
-      | 'secondary'
-      | 'default'
-      | 'error'
-      | 'info'
-      | 'success'
-      | 'warning'
-  }) => {
+  ({ color }: { color: Extract<'type', OwnProps> }) => {
     const defaultColor = {
       primary: {
         backgroundColor: 'primary.main',
@@ -70,7 +67,7 @@ const StyledBadge = styled(Badge)(
 
     return {
       '& .MuiBadge-badge': {
-        ...badgeTheme,
+        badgeTheme,
         boxShadow: '0 0 0 2px rgba(255,255,255, .75)',
         '&::after': {
           position: 'absolute',
@@ -152,7 +149,7 @@ export default function MessageUser({
     <>
       {items &&
         items.length &&
-        items.map((item: any) => (
+        items.map((item: OwnProps) => (
           <Grid
             key={item.id}
             container

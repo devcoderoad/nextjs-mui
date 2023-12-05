@@ -8,6 +8,8 @@ import {
   Popover,
   Stack,
   Badge,
+  Alert,
+  Snackbar,
 } from '@mui/material'
 
 import Table from '@mui/material/Table'
@@ -16,13 +18,9 @@ import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 
+/* Components */
 import Title from './Title'
-
-/* Icons */
-import MoreIcon from '@mui/icons-material/MoreVert'
-import RefreshIcon from '@mui/icons-material/RefreshOutlined'
-import CachedIcon from '@mui/icons-material/CachedOutlined'
-import OffIcon from '@mui/icons-material/HighlightOffOutlined'
+import CogDefault from './Cog/Default'
 
 // Generate Order Data
 function createData({
@@ -61,7 +59,7 @@ const rows = [
     name: 'Paul McCartney',
     shipTo: 'London, UK',
     paymentMethod: 'VISA ⠀•••• 2574',
-    status: 'success',
+    status: 'primary',
     amount: '866.99',
   }),
   createData({
@@ -79,7 +77,7 @@ const rows = [
     name: 'Michael Jackson',
     shipTo: 'Gary, IN',
     paymentMethod: 'AMEX ⠀•••• 2000',
-    status: 'primary',
+    status: 'success',
     amount: '654.39',
   }),
   createData({
@@ -88,7 +86,7 @@ const rows = [
     name: 'Bruce Springsteen',
     shipTo: 'Long Branch, NJ',
     paymentMethod: 'VISA ⠀•••• 5919',
-    status: 'danger',
+    status: 'secondary',
     amount: '212.79',
   }),
 ]
@@ -99,6 +97,7 @@ function preventDefault(event: any) {
 
 export default function Orders() {
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const [openSnack, setOpenSnack] = React.useState(false)
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
@@ -106,6 +105,22 @@ export default function Orders() {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleCog = (type: string, id: number) => {
+    console.log({ type, data: id })
+    setOpenSnack(true)
+  }
+
+  const handleCloseSnack = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpenSnack(false)
   }
 
   const open = Boolean(anchorEl)
@@ -118,42 +133,7 @@ export default function Orders() {
           <Title>Recent Orders</Title>
         </Box>
         <Box>
-          <IconButton aria-describedby={id} onClick={handleClick}>
-            <MoreIcon />
-          </IconButton>
-          <Popover
-            marginThreshold={0}
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            elevation={2}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <Stack
-              direction="column"
-              spacing={1}
-              padding={1}
-              divider={<Divider orientation="horizontal" flexItem />}
-            >
-              <Button variant="text" size="small" startIcon={<RefreshIcon />}>
-                Refresh
-              </Button>
-              <Button variant="text" size="small" startIcon={<CachedIcon />}>
-                Reload
-              </Button>
-              <Button variant="text" size="small" startIcon={<OffIcon />}>
-                Remove
-              </Button>
-            </Stack>
-          </Popover>
+          <CogDefault />
         </Box>
       </Box>
       <Box marginTop={2} marginBottom={2}>
@@ -193,26 +173,30 @@ export default function Orders() {
                 <TableCell>{row.shipTo}</TableCell>
                 <TableCell>{row.paymentMethod}</TableCell>
                 <TableCell>{`$${row.amount}`}</TableCell>
-                {/* <TableCell align="center">
+                <TableCell align="center">
                   <Badge color={row.status} badgeContent={row.status} />
-                </TableCell> */}
-                <TableCell>
-                  <Stack spacing={0.5} direction="row">
-                    <Button variant="outlined" size="small">
-                      Edit
-                    </Button>
-                    <Button variant="outlined" size="small">
-                      Update
-                    </Button>
-                    <Button variant="outlined" size="small">
-                      View
-                    </Button>
-                  </Stack>
+                </TableCell>
+                <TableCell align="center">
+                  <CogDefault
+                    onRefresh={() => handleCog('refresh', row.id)}
+                    onReload={() => handleCog('reload', row.id)}
+                    onRemove={() => handleCog('reload', row.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <Snackbar
+          open={openSnack}
+          autoHideDuration={3000}
+          onClose={handleCloseSnack}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert severity="warning" sx={{ width: '100%' }} elevation={8}>
+            This is a success message!
+          </Alert>
+        </Snackbar>
       </Box>
       <Link color="primary" href="#" onClick={preventDefault}>
         See more orders

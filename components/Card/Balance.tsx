@@ -1,12 +1,13 @@
 import * as React from 'react'
 
-import BalanceIcon from '@mui/icons-material/BalanceOutlined'
-import MoreIcon from '@mui/icons-material/MoreVert'
-import OutputIcon from '@mui/icons-material/OutputOutlined'
-import SummarizeIcon from '@mui/icons-material/SummarizeOutlined'
-import ReportIcon from '@mui/icons-material/ReportOutlined'
-
-import { IconScale } from '@tabler/icons-react'
+/* Icons */
+import {
+  IconWalletOff,
+  IconFileInvoice,
+  IconTransferOut,
+  IconDotsVertical,
+  IconScale,
+} from '@tabler/icons-react'
 
 import {
   Grid,
@@ -24,6 +25,7 @@ function BalanceCard (props: any) {
   const { post } = props;
 }
 */
+
 function BalanceCard() {
   const theme = useTheme()
 
@@ -142,7 +144,7 @@ function BalanceCard() {
                           onClick={handleTraxMenu}
                           aria-expanded={anchorEl ? 'true' : undefined}
                         >
-                          <MoreIcon fontSize="medium" sx={{ color: 'white' }} />
+                          <IconDotsVertical size={18} color="white" />
                         </IconButton>
                         <Popover
                           keepMounted
@@ -168,9 +170,12 @@ function BalanceCard() {
                               py={0.5}
                               px={0}
                             >
-                              <OutputIcon
-                                fontSize="medium"
-                                sx={{ verticalAlign: 'middle', mr: 0.5 }}
+                              <IconTransferOut
+                                size={18}
+                                style={{
+                                  verticalAlign: 'middle',
+                                  marginRight: '0.5rem',
+                                }}
                               />
                               Transfer
                             </Link>
@@ -183,9 +188,12 @@ function BalanceCard() {
                               py={0.5}
                               px={0}
                             >
-                              <SummarizeIcon
-                                fontSize="medium"
-                                sx={{ verticalAlign: 'middle', mr: 0.5 }}
+                              <IconFileInvoice
+                                size={18}
+                                style={{
+                                  verticalAlign: 'middle',
+                                  marginRight: '0.5rem',
+                                }}
                               />
                               Statement
                             </Link>
@@ -198,9 +206,12 @@ function BalanceCard() {
                               py={0.5}
                               px={0}
                             >
-                              <ReportIcon
-                                fontSize="medium"
-                                sx={{ verticalAlign: 'middle', mr: 0.5 }}
+                              <IconWalletOff
+                                size={18}
+                                style={{
+                                  verticalAlign: 'middle',
+                                  marginRight: '0.5rem',
+                                }}
                               />
                               Freeze Account
                             </Link>

@@ -65,18 +65,18 @@ import { signOut, useSession } from 'next-auth/react'
 
 /* routes */
 import { routeSecondary } from '@config/routes'
+import { PropsWithChildren } from 'react'
 
 const drawerWidth = 240
 
-interface OwnProps extends CommonProps {
+interface OwnProps {
+  // children?: React.ReactElement | null | undefined
   open?: boolean
   theme?: any
-  children: React.ReactNode
   breadcrumb?: {
     name?: string
     url?: string
   }[]
-  window?: () => Window
 }
 
 interface ScrollProps {
@@ -85,7 +85,7 @@ interface ScrollProps {
    * You won't need it on your project.
    */
   window?: () => Window
-  children: React.ReactElement
+  children?: React.ReactElement
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -132,7 +132,9 @@ const Drawer = styled(MuiDrawer, {
   },
 }))
 
-function DashboardContent(props: OwnProps & ScrollProps): JSX.Element {
+function DashboardContent(
+  props: PropsWithChildren<OwnProps & ScrollProps & CommonProps>
+) {
   const {
     breadcrumb = [{ name: 'Dashboard', url: '/dashboard' }],
     children,
@@ -416,7 +418,7 @@ function DashboardContent(props: OwnProps & ScrollProps): JSX.Element {
         in={!!trigger}
         // addEndListener={(e) => console.log(e)}
       >
-        <Box position={'fixed'} zIndex={2}>
+        <Box position={'fixed'} zIndex={1}>
           {children}
         </Box>
       </Slide>
@@ -476,7 +478,7 @@ function DashboardContent(props: OwnProps & ScrollProps): JSX.Element {
     target: window ? window() : undefined,
   })
 
-  console.log(trigger)
+  // console.log(trigger)
 
   return (
     <Box
@@ -790,7 +792,9 @@ function DashboardContent(props: OwnProps & ScrollProps): JSX.Element {
   )
 }
 
-export default function DashboardLayout({ children, ...rest }: OwnProps) {
-  // const { children, ...rest } = props
+export default function DashboardLayout(
+  props: PropsWithChildren<OwnProps & ScrollProps & CommonProps>
+) {
+  const { children, ...rest } = props
   return <DashboardContent {...rest}>{children}</DashboardContent>
 }
