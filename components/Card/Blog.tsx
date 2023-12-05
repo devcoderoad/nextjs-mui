@@ -175,7 +175,7 @@ export default function BlogCard() {
       }}
     >
       {featuredPosts.map((post: any, i: number) => (
-        <Grid item key={post + i} lg={3}>
+        <Grid item key={post + i} lg={3} component={'article'}>
           <Box
             boxShadow={4}
             borderRadius={2}

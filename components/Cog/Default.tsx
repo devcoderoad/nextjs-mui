@@ -11,9 +11,16 @@ import {
   IconDotsVertical,
 } from '@tabler/icons-react'
 
+enum ESize {
+  sm = 'small',
+  md = 'medium',
+  lg = 'large',
+  xl = 'xlarge',
+}
 interface TCogDefault {
   type?: string[] | undefined
   mode?: string[] | undefined
+  size?: ESize | undefined
 }
 
 type ActionProps = {
@@ -24,7 +31,15 @@ type ActionProps = {
 }
 
 export default function Component(props: TCogDefault & ActionProps) {
-  const { type = '', mode = '', onClose, onRefresh, onReload, onRemove } = props
+  const {
+    type = '',
+    mode = '',
+    size = 'sm',
+    onClose,
+    onRefresh,
+    onReload,
+    onRemove,
+  } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
   const stack = type ? 'row' : 'column'
   const divider = stack === 'row' ? 'vertical' : 'horizontal'

@@ -10,7 +10,7 @@ import {
   IconTags,
   IconChevronDown,
   IconChevronUp,
-  IconFlagQuestion,
+  IconReportSearch,
 } from '@tabler/icons-react'
 
 import {
@@ -145,7 +145,7 @@ export const thirdListItems = (compact = false) => {
         selected={'/docs' === router.asPath}
       >
         <ListItemIcon>
-          <IconFlagQuestion />
+          <IconReportSearch />
         </ListItemIcon>
         <ListItemText primary="Documentation" />
       </ListItemButton>

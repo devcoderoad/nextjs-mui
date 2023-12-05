@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Box,
   Button,
@@ -8,6 +9,8 @@ import {
   CardMedia,
   Grid,
   Paper,
+  IconButton,
+  Stack,
 } from '@mui/material'
 
 /* Icons */
@@ -16,12 +19,19 @@ import BadgeIcon from '@mui/icons-material/FolderOpenTwoTone'
 import PublishIcon from '@mui/icons-material/TimerTwoTone'
 import ReadIcon from '@mui/icons-material/ChevronRightTwoTone'
 
+/* Tabler Icons */
+import { IconCheckupList, IconClock, IconUser } from '@tabler/icons-react'
+
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
+
 /* Components */
 import CardMedias from '@components/Card/Medias'
 import CardBlog from '@components/Card/Blog'
-import { IconClock, IconUser } from '@tabler/icons-react'
+
+/* Toolbar */
+import ToolbarConfig from '@components/Toolbar/Config'
+
 /* 
 Sweet instant irish cultivar that, acerbic coffee robusta in, whipped caramelization half and half to go medium white cultivar. Single origin rich espresso rich mug affogato, single origin, est extra  redeye brewed aged caffeine redeye. Viennese arabica so fair trade café au lait et coffee redeye galão skinny sugar saucer white frappuccino froth grounds coffee. And skinny mazagran body ristretto kopi-luwak robusta in shop et percolator mug spoon decaffeinated. Filter, con panna, half and half blue mountain, dark breve, froth, robust steamed extraction, to go foam chicory caffeine plunger pot.
 */
@@ -83,233 +93,290 @@ export default function Page() {
     },
   ]
   return (
-    <DashboardLayout breadcrumb={[{ name: 'Cards', url: '/card' }]}>
-      <Typography variant="h5" mb={2} mt={2}>
-        Cards
-      </Typography>
-      <Box component="section">
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Paper
-              sx={{
-                p: 2,
-                background: `url(${post.image}) top center no-repeat`,
-                backgroundSize: 'cover',
-                position: 'relative',
-                display: 'block',
-                height: '100%',
-                minHeight: '320px',
-                zIndex: 0,
-                color: 'white',
-                ':before': {
-                  content: '" "',
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  zIndex: -1,
-                  width: '100%',
-                  heigth: '100%',
-                  top: 0,
-                  bottom: 0,
-                  background:
-                    'linear-gradient(180deg,rgba(2,0,36,0) 25%,rgba(0,0,0,.8));',
-                },
-              }}
-            >
-              <Box sx={{ position: 'absolute', bottom: '0' }}>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  sx={{
-                    position: 'relative',
-                    ':before': {
-                      content: '" "',
-                      height: '2px',
-                      width: '5%',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      bottom: '-0.25rem',
-                    },
-                  }}
-                >
-                  Image of the cards
-                </Typography>
-                <Box
-                  component="p"
-                  fontSize="small"
-                  sx={{
-                    textTransform: 'capitalize',
-                  }}
-                >
-                  <BadgeIcon
-                    fontSize="small"
+    <DashboardLayout breadcrumb={[{ url: '/card', name: 'Cards' }]}>
+      <React.Fragment>
+        <Typography variant="h5" mb={2} mt={2}>
+          Cards
+        </Typography>
+        <Box component="section">
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6} component={'article'}>
+              <Paper
+                sx={{
+                  p: 2,
+                  background: `url(${post.image}) top center no-repeat`,
+                  backgroundSize: 'cover',
+                  position: 'relative',
+                  display: 'block',
+                  height: '100%',
+                  minHeight: '320px',
+                  zIndex: 0,
+                  color: 'white',
+                  ':before': {
+                    content: '" "',
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    zIndex: -1,
+                    width: '100%',
+                    heigth: '100%',
+                    top: 0,
+                    bottom: 0,
+                    background:
+                      'linear-gradient(180deg,rgba(2,0,36,0) 25%,rgba(0,0,0,.8));',
+                  },
+                }}
+              >
+                <Box sx={{ position: 'absolute', bottom: '0' }}>
+                  <Typography
+                    component="h5"
+                    variant="h5"
                     sx={{
-                      verticalAlign: 'middle',
-                      mr: 0.5,
-                    }}
-                  />
-                  {post.category}
-                  <PublishIcon
-                    fontSize="small"
-                    sx={{
-                      verticalAlign: 'middle',
-                      mx: 0.5,
-                    }}
-                  />
-                  {post.createdAt}
-                </Box>
-                <Box color="white" pb={2}>
-                  <Typography variant="body2" mb={2}>
-                    Leverage agile frameworks to provide a robust synopsis for
-                    high level overviews. Iterative approaches to corporate
-                    strategy foster collaborative thinking to further the
-                    overall value proposition.
-                  </Typography>
-                  <Button
-                    size="small"
-                    endIcon={<ReadIcon />}
-                    color="secondary"
-                    variant="contained"
-                  >
-                    Read More
-                  </Button>
-                </Box>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Grid container spacing={4}>
-              {[0, 1].map((_, i) => (
-                <Grid key={i++} item xs={12} md={6}>
-                  <Paper
-                    sx={{
-                      p: 2,
-                      background: `url(${post.image}) top center no-repeat`,
-                      backgroundSize: 'cover',
                       position: 'relative',
-                      display: 'block',
-                      height: '100%',
-                      minHeight: '320px',
-                      zIndex: 0,
-                      color: 'white',
-                      textShadow: '2px 2px 15px #000000',
                       ':before': {
                         content: '" "',
+                        height: '2px',
+                        width: '5%',
+                        backgroundColor: '#ffffff',
                         position: 'absolute',
-                        left: 0,
-                        right: 0,
-                        zIndex: -1,
-                        width: '100%',
-                        heigth: '100%',
-                        top: 0,
-                        bottom: 0,
-                        background:
-                          'linear-gradient(180deg,rgba(2,0,36,0) 15%,rgba(0,0,0,.8));',
+                        bottom: '-0.25rem',
                       },
                     }}
                   >
-                    <Box>
-                      <Button
-                        variant="contained"
-                        disableElevation
-                        color="primary"
-                        startIcon={<StarIcon />}
-                      >
-                        1.2
-                      </Button>
-                    </Box>
-                    <Box sx={{ position: 'absolute', bottom: '1rem' }}>
-                      <Typography component="h4" variant="h5">
-                        Image of the cards
-                      </Typography>
-                      <Box component="span">{post.description}</Box>
-                    </Box>
-                  </Paper>
-                </Grid>
-              ))}
+                    Image of the cards
+                  </Typography>
+                  <Box
+                    component="p"
+                    fontSize="small"
+                    sx={{
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    <BadgeIcon
+                      fontSize="small"
+                      sx={{
+                        verticalAlign: 'middle',
+                        mr: 0.5,
+                      }}
+                    />
+                    {post.category}
+                    <PublishIcon
+                      fontSize="small"
+                      sx={{
+                        verticalAlign: 'middle',
+                        mx: 0.5,
+                      }}
+                    />
+                    {post.createdAt}
+                  </Box>
+                  <Box color="white" pb={2}>
+                    <Typography variant="body2" mb={2}>
+                      Leverage agile frameworks to provide a robust synopsis for
+                      high level overviews. Iterative approaches to corporate
+                      strategy foster collaborative thinking to further the
+                      overall value proposition.
+                    </Typography>
+                    <Button
+                      size="small"
+                      endIcon={<ReadIcon />}
+                      color="secondary"
+                      variant="contained"
+                    >
+                      Read More
+                    </Button>
+                  </Box>
+                </Box>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Grid container spacing={4}>
+                {[0, 1].map((_, i) => (
+                  <Grid key={i++} item xs={12} md={6} component={'article'}>
+                    <Paper
+                      sx={{
+                        p: 2,
+                        background: `url(${post.image}) top center no-repeat`,
+                        backgroundSize: 'cover',
+                        position: 'relative',
+                        display: 'block',
+                        height: '100%',
+                        minHeight: '320px',
+                        zIndex: 0,
+                        color: 'white',
+                        textShadow: '2px 2px 15px #000000',
+                        ':before': {
+                          content: '" "',
+                          position: 'absolute',
+                          left: 0,
+                          right: 0,
+                          zIndex: -1,
+                          width: '100%',
+                          heigth: '100%',
+                          top: 0,
+                          bottom: 0,
+                          background:
+                            'linear-gradient(180deg,rgba(2,0,36,0) 15%,rgba(0,0,0,.8));',
+                        },
+                      }}
+                    >
+                      <Box>
+                        <Button
+                          variant="contained"
+                          disableElevation
+                          color="primary"
+                          startIcon={<StarIcon />}
+                        >
+                          1.2
+                        </Button>
+                      </Box>
+                      <Box sx={{ position: 'absolute', bottom: '1rem' }}>
+                        <Typography component="h4" variant="h5">
+                          Image of the cards
+                        </Typography>
+                        <Box component="span">{post.description}</Box>
+                      </Box>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Box>
-      <Box component="section" my={6}>
-        <Grid container mb={4} spacing={2}>
-          {[0, 1, 2, 3].map((_, i) => (
-            <Grid item key={i++} sm={12} md={6} lg={3}>
-              <CardMedias />
+        </Box>
+        <Box component="section" my={6}>
+          <Grid container mb={4} spacing={2}>
+            {[0, 1, 2, 3].map((_, i) => (
+              <Grid item key={i++} sm={12} md={6} lg={3}>
+                <CardMedias />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        <Box component="section">
+          <Typography variant="h5" mb={2}>
+            Blog Card
+          </Typography>
+          <CardBlog />
+        </Box>
+        <Box component="section">
+          <Typography variant="h5" mb={2}>
+            Article Card
+          </Typography>
+          <Grid container spacing={4}>
+            {[0, 1, 2, 3].map((_, i) => (
+              <Grid key={i++} item xs={12} md={6} component={'article'}>
+                <CardActionArea component="a" href="#">
+                  <Card sx={{ display: 'flex' }}>
+                    <CardContent sx={{ flex: 1 }}>
+                      <Typography
+                        component="h3"
+                        variant="h6"
+                        color="secondary.main"
+                        fontWeight={'500'}
+                      >
+                        {post.title}
+                      </Typography>
+                      <Typography variant="caption" color="secondary.main">
+                        <IconClock
+                          size={16}
+                          style={{
+                            verticalAlign: 'text-top',
+                            marginRight: '.25rem',
+                          }}
+                        />
+                        {post.date}
+                        <IconUser
+                          size={16}
+                          style={{
+                            verticalAlign: 'text-top',
+                            marginRight: '.25rem',
+                            marginLeft: '.25rem',
+                          }}
+                        />
+                        {post.author}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        paragraph
+                        my={1}
+                        color={'secondary.dark'}
+                      >
+                        {post.description}
+                      </Typography>
+                      <Typography variant="caption" color="primary">
+                        Continue reading...
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      sx={{
+                        width: 160,
+                        display: { xs: 'none', sm: 'block' },
+                      }}
+                      image={post.image}
+                      alt={post.imageLabel}
+                    />
+                  </Card>
+                </CardActionArea>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        <Box component="section" my={3}>
+          <Typography variant="h5" mb={2}>
+            Dashboard Toolbar
+          </Typography>
+          <Grid container spacing={4} gap={0}>
+            <Grid item xl={3}>
+              <ToolbarConfig title="Widgets with Actions" size="sm">
+                <Box mx="auto" textAlign={'center'} py={4}>
+                  <Typography
+                    fontSize={22}
+                    fontWeight={500}
+                    color={'info.main'}
+                  >
+                    Earnings
+                  </Typography>
+                  <Typography fontSize={48} fontWeight={800} color={'primary'}>
+                    $1020
+                  </Typography>
+                  <Button variant="outlined" size="small" color="info">
+                    +13% since last week
+                  </Button>
+                </Box>
+              </ToolbarConfig>
             </Grid>
-          ))}
-        </Grid>
-      </Box>
-      <Box component="section">
-        <Typography variant="h5" mb={2}>
-          Blog Card
-        </Typography>
-        <CardBlog />
-      </Box>
-      <Box component="section">
-        <Typography variant="h5" mb={2}>
-          Article Card
-        </Typography>
-        <Grid container spacing={4}>
-          {[0, 1, 2, 3].map((_, i) => (
-            <Grid key={i++} item xs={12} md={6}>
-              <CardActionArea component="a" href="#">
-                <Card sx={{ display: 'flex' }}>
-                  <CardContent sx={{ flex: 1 }}>
-                    <Typography
-                      component="h3"
-                      variant="h6"
-                      color="secondary.main"
-                      fontWeight={'500'}
-                    >
-                      {post.title}
-                    </Typography>
-                    <Typography variant="caption" color="secondary.main">
-                      <IconClock
-                        size={16}
-                        style={{
-                          verticalAlign: 'text-top',
-                          marginRight: '.25rem',
-                        }}
-                      />
-                      {post.date}
-                      <IconUser
-                        size={16}
-                        style={{
-                          verticalAlign: 'text-top',
-                          marginRight: '.25rem',
-                          marginLeft: '.25rem',
-                        }}
-                      />
-                      {post.author}
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      paragraph
-                      my={1}
-                      color={'secondary.dark'}
-                    >
-                      {post.description}
-                    </Typography>
-                    <Typography variant="caption" color="primary">
-                      Continue reading...
-                    </Typography>
-                  </CardContent>
-                  <CardMedia
-                    component="img"
+            <Grid item xl={3}>
+              <ToolbarConfig title="Widgets with Configuration" size="sm">
+                <Stack
+                  direction={'row'}
+                  spacing={[2]}
+                  gap={0}
+                  py={2}
+                  justifyContent={'space-evenly'}
+                >
+                  <IconButton
+                    size="large"
                     sx={{
-                      width: 160,
-                      display: { xs: 'none', sm: 'block' },
+                      backgroundColor: 'rgba(0,0,0, 0.111)',
+                      marginY: 2,
+                      ':hover': { backgroundColor: 'rgba(0,0,0, 0.199)' },
                     }}
-                    image={post.image}
-                    alt={post.imageLabel}
-                  />
-                </Card>
-              </CardActionArea>
+                  >
+                    <IconCheckupList
+                      size={42}
+                      stroke={1.5}
+                      color={'rgba(0,0,0, 0.299)'}
+                    />
+                  </IconButton>
+                  <Typography paragraph variant="body2">
+                    Get exclusively features updates on permanent membership!
+                  </Typography>
+                </Stack>
+              </ToolbarConfig>
             </Grid>
-          ))}
-        </Grid>
-      </Box>
+          </Grid>
+        </Box>
+      </React.Fragment>
     </DashboardLayout>
   )
 }

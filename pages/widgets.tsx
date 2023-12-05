@@ -258,24 +258,36 @@ export default function Page() {
               >
                 Statistic
               </Typography>
-              <Box maxWidth={'sm'}>
-                <CardStatsDefault
-                  title="Total Views"
-                  total={2313}
-                  items={[{ name: 'Global', value: 90, type: 'primary' }]}
-                  type="primary"
-                />
-                <CardStatsDefault
-                  title="Total Views"
-                  total={125}
-                  items={[
-                    { name: 'Global', value: 90, type: 'primary' },
-                    { name: 'Australia', value: 10, type: 'info' },
-                    { name: 'Finland', value: 25, type: 'success' },
-                  ]}
-                  type="primary"
-                />
-              </Box>
+              <Grid
+                container
+                direction={'row'}
+                justifyContent={'space-evenly'}
+                gap={0}
+                spacing={[1, 2]}
+              >
+                <Grid item xl={6}>
+                  <CardStatsDefault
+                    title="Total Views"
+                    total={125}
+                    items={[
+                      { name: 'Global', value: 90, type: 'primary' },
+                      { name: 'Australia', value: 10, type: 'info' },
+                      { name: 'Finland', value: 25, type: 'success' },
+                    ]}
+                    type="primary"
+                    size="xl"
+                  />
+                </Grid>
+                <Grid item xl={6}>
+                  <CardStatsDefault
+                    title="Total Views"
+                    total={2313}
+                    items={[{ name: 'Global', value: 90, type: 'primary' }]}
+                    type="primary"
+                    size="xl"
+                  />
+                </Grid>
+              </Grid>
             </Box>
             <Box marginBottom={2}>
               <Typography

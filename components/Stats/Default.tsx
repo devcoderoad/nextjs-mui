@@ -42,6 +42,7 @@ interface OwnProps {
     LinearProgressPropsColorOverrides
   >
   items?: TItems[]
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 function Component({
@@ -55,6 +56,7 @@ function Component({
       type: 'warning',
     },
   ],
+  size = 'sm',
   ...rest
 }: OwnProps) {
   const kFormatter = (num: number) => {
@@ -65,11 +67,12 @@ function Component({
 
   const statStyle = useMemo(() => {
     return {
-      p: 2,
+      padding: 2,
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
       overflow: 'hidden',
+      margin: 'auto',
       zIndex: 0,
       ':before': {
         top: '-0.5rem',
@@ -89,54 +92,56 @@ function Component({
   }, [])
 
   return (
-    <Paper sx={statStyle} {...rest}>
-      <Box>
-        <Stack direction={'row'} justifyContent={'space-between'}>
-          <Typography variant="body2" color={'secondary'}>
-            {title}
+    <Box maxWidth={size} {...rest}>
+      <Paper sx={statStyle}>
+        <Box>
+          <Stack direction={'row'} justifyContent={'space-between'}>
+            <Typography variant="body2" color={'secondary'}>
+              {title}
+            </Typography>
+            <IconUsers color="#929292" size={18} />
+          </Stack>
+          <Typography variant="h5" color={`${type}.main`}>
+            {kFormatter(total)}
           </Typography>
-          <IconUsers color="#929292" size={18} />
-        </Stack>
-        <Typography variant="h5" color={`${type}.main`}>
-          {kFormatter(total)}
-        </Typography>
-      </Box>
-      <Grid
-        container
-        spacing={[0, 1]}
-        gap={0}
-        direction={'row'}
-        alignItems={'center'}
-        justifyContent={'space-between'}
-      >
-        {items.length > 0
-          ? items.map((item, i) => {
-              return (
-                <React.Fragment key={i}>
-                  <Grid item xl={2} textAlign={'right'} overflow={'hidden'}>
-                    <Typography variant="caption" color={'secondary'}>
-                      {item?.name}
-                    </Typography>
-                  </Grid>
-                  <Grid item xl={9}>
-                    <LinearProgress
-                      sx={{ height: 5, verticalAlign: 'middle' }}
-                      variant="determinate"
-                      value={item?.value}
-                      color={item?.type}
-                    />
-                  </Grid>
-                  <Grid item xl={1} textAlign={'right'}>
-                    <Typography variant="caption" color={'secondary'}>
-                      {item?.value}
-                    </Typography>
-                  </Grid>
-                </React.Fragment>
-              )
-            })
-          : ''}
-      </Grid>
-    </Paper>
+        </Box>
+        <Grid
+          container
+          spacing={[0, 1]}
+          gap={0}
+          direction={'row'}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+          {items.length > 0
+            ? items.map((item, i) => {
+                return (
+                  <React.Fragment key={i}>
+                    <Grid item xl={2} textAlign={'right'} overflow={'hidden'}>
+                      <Typography variant="caption" color={'secondary'}>
+                        {item?.name}
+                      </Typography>
+                    </Grid>
+                    <Grid item xl={9}>
+                      <LinearProgress
+                        sx={{ height: 5, verticalAlign: 'middle' }}
+                        variant="determinate"
+                        value={item?.value}
+                        color={item?.type}
+                      />
+                    </Grid>
+                    <Grid item xl={1} textAlign={'right'}>
+                      <Typography variant="caption" color={'secondary'}>
+                        {item?.value}
+                      </Typography>
+                    </Grid>
+                  </React.Fragment>
+                )
+              })
+            : ''}
+        </Grid>
+      </Paper>
+    </Box>
   )
 }
 

@@ -52,6 +52,7 @@ export default function MediasCard() {
         },
       }}
       elevation={0}
+      component={'article'}
     >
       <CardMedia component="div" sx={cssCard}>
         <Box
