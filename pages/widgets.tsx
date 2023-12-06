@@ -16,16 +16,23 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import Cog from '@components/Cog/Default'
 import TabsDefault from '@components/Tabs/Default'
+import ToolbarDashboard from '@components/Toolbar/Dashboard'
+import ToolbarConfig from '@components/Toolbar/Config'
 import Messages from '@components/Message/User'
 import System from '@components/Message/System'
 import {
+  IconAccessPoint,
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandTelegram,
   IconBrandYoutube,
+  IconCheckupList,
+  IconClick,
+  IconDisabled,
+  IconEye,
   IconHourglass,
   IconHourglassHigh,
-  IconHourglassLow,
+  IconLeafOff,
   IconShoppingCart,
 } from '@tabler/icons-react'
 
@@ -33,6 +40,7 @@ import {
 import CardStatsDefault from '@components/Stats/Default'
 import CardStatsBadged from '@components/Stats/Badge'
 import BadgeDefault from '@components/Badge/Default'
+import React from 'react'
 
 export default function Page() {
   return (
@@ -267,6 +275,7 @@ export default function Page() {
               >
                 <Grid item xl={6}>
                   <CardStatsDefault
+                    icon={<IconEye color="#929292" size={18} />}
                     title="Total Views"
                     total={125}
                     items={[
@@ -373,9 +382,87 @@ export default function Page() {
                 component="h4"
                 variant="subtitle2"
               >
-                Icon Rounded
+                Configuration
               </Typography>
-              <Box>Widgets</Box>
+              <Box>
+                <Stack direction={'row'} spacing={4}>
+                  <Box maxWidth={'sm'}>
+                    <ToolbarConfig title={'Configuration Widget'}>
+                      <React.Fragment>
+                        <Box py={3}>
+                          <Typography variant="body2" mb={1}>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing
+                            elit. Esse, nostrum omnis. Lorem, ipsum dolor sit
+                            amet consectetur adipisicing elit. Totam cupiditate,
+                            esse odio laboriosam cumque, dicta, debitis
+                            reiciendis ipsam animi dolores aspernatur! Enim!
+                          </Typography>
+                        </Box>
+                        <Stack direction={'row'} spacing={1}>
+                          <Button
+                            variant="outlined"
+                            size="small"
+                            startIcon={<IconClick stroke={1.5} size={22} />}
+                            color="error"
+                          >
+                            View More
+                          </Button>
+                          <Button
+                            color="error"
+                            variant="contained"
+                            size="small"
+                            startIcon={<IconLeafOff stroke={1.5} size={22} />}
+                          >
+                            Dispatch
+                          </Button>
+                        </Stack>
+                      </React.Fragment>
+                    </ToolbarConfig>
+                  </Box>
+                  <Box>
+                    <Paper
+                      sx={{
+                        // border: 1,
+                        // borderCollapse: 'separate',
+                        borderRadius: 2,
+                        borderColor: '#fefefe',
+                        boxShadow: 'var(--drop-shadow)',
+                      }}
+                    >
+                      <Box
+                        display={'flex'}
+                        justifyItems={'space-between'}
+                        alignItems={'center'}
+                      >
+                        <IconButton
+                          sx={{
+                            p: 2,
+                            background: 'var(--gradient-primary)',
+                            borderRadius: 2,
+                            mr: 2,
+                          }}
+                        >
+                          <IconAccessPoint color="white" stroke={1} size={44} />
+                        </IconButton>
+                        <Box>
+                          <Typography
+                            fontSize={18}
+                            fontWeight={600}
+                            color="secondary"
+                          >
+                            Check
+                          </Typography>
+                          <Typography variant="caption" color="secondary">
+                            connection settings
+                          </Typography>
+                        </Box>
+                        <Cog />
+                      </Box>
+                    </Paper>
+                  </Box>
+                </Stack>
+                {/* <ToolbarDashboard /> */}
+              </Box>
             </Box>
             <Box marginBottom={2}>
               <Typography
@@ -386,7 +473,63 @@ export default function Page() {
               >
                 Icon Rounded Background
               </Typography>
-              <Box>Widgets</Box>
+              <Box>
+                <Grid container spacing={2}>
+                  <Grid item xl={3}>
+                    <ToolbarConfig title="Widgets with Actions" size="sm">
+                      <Box mx="auto" textAlign={'center'} py={4}>
+                        <Typography
+                          fontSize={22}
+                          fontWeight={500}
+                          color={'info.main'}
+                        >
+                          Earnings
+                        </Typography>
+                        <Typography
+                          fontSize={48}
+                          fontWeight={800}
+                          color={'primary'}
+                        >
+                          $1020
+                        </Typography>
+                        <Button variant="outlined" size="small" color="info">
+                          +13% since last week
+                        </Button>
+                      </Box>
+                    </ToolbarConfig>
+                  </Grid>
+                  <Grid item xl={3}>
+                    <ToolbarConfig title="Widgets with Configuration" size="sm">
+                      <Stack
+                        direction={'row'}
+                        spacing={[2]}
+                        gap={0}
+                        py={2}
+                        justifyContent={'space-evenly'}
+                      >
+                        <IconButton
+                          size="large"
+                          sx={{
+                            backgroundColor: 'rgba(0,0,0, 0.111)',
+                            marginY: 2,
+                            ':hover': { backgroundColor: 'rgba(0,0,0, 0.199)' },
+                          }}
+                        >
+                          <IconCheckupList
+                            size={42}
+                            stroke={1.5}
+                            color={'rgba(0,0,0, 0.299)'}
+                          />
+                        </IconButton>
+                        <Typography paragraph variant="body2">
+                          Get exclusively features updates on permanent
+                          membership!
+                        </Typography>
+                      </Stack>
+                    </ToolbarConfig>
+                  </Grid>
+                </Grid>
+              </Box>
             </Box>
           </Paper>
         </Grid>

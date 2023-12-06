@@ -29,6 +29,7 @@ type TItems = {
 }
 
 interface OwnProps {
+  icon?: React.ReactElement
   title?: string | undefined
   total?: number | undefined
   type?: OverridableStringUnion<
@@ -57,6 +58,7 @@ function Component({
     },
   ],
   size = 'sm',
+  icon = <IconUsers color="#929292" size={18} />,
   ...rest
 }: OwnProps) {
   const kFormatter = (num: number) => {
@@ -99,7 +101,7 @@ function Component({
             <Typography variant="body2" color={'secondary'}>
               {title}
             </Typography>
-            <IconUsers color="#929292" size={18} />
+            {icon}
           </Stack>
           <Typography variant="h5" color={`${type}.main`}>
             {kFormatter(total)}
@@ -122,15 +124,15 @@ function Component({
                         {item?.name}
                       </Typography>
                     </Grid>
-                    <Grid item xl={9}>
+                    <Grid item xl={9} alignSelf={'center'}>
                       <LinearProgress
-                        sx={{ height: 5, verticalAlign: 'middle' }}
+                        sx={{ height: 4, verticalAlign: 'middle' }}
                         variant="determinate"
                         value={item?.value}
                         color={item?.type}
                       />
                     </Grid>
-                    <Grid item xl={1} textAlign={'right'}>
+                    <Grid item xl={1} textAlign={'left'}>
                       <Typography variant="caption" color={'secondary'}>
                         {item?.value}
                       </Typography>

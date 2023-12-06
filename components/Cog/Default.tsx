@@ -20,7 +20,7 @@ enum ESize {
 interface TCogDefault {
   type?: string[] | undefined
   mode?: string[] | undefined
-  size?: ESize | undefined
+  size?: ESize | unknown
 }
 
 type ActionProps = {
