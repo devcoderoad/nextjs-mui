@@ -16,7 +16,7 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import Cog from '@components/Cog/Default'
 import TabsDefault from '@components/Tabs/Default'
-import ToolbarDashboard from '@components/Toolbar/Dashboard'
+import DashboardBreadcrumb from '@components/Toolbar/Breadcrumb'
 import ToolbarConfig from '@components/Toolbar/Config'
 import Messages from '@components/Message/User'
 import System from '@components/Message/System'
@@ -33,6 +33,7 @@ import {
   IconHourglass,
   IconHourglassHigh,
   IconLeafOff,
+  IconOutbound,
   IconShoppingCart,
 } from '@tabler/icons-react'
 
@@ -393,9 +394,7 @@ export default function Page() {
                           <Typography variant="body2" mb={1}>
                             Lorem, ipsum dolor sit amet consectetur adipisicing
                             elit. Esse, nostrum omnis. Lorem, ipsum dolor sit
-                            amet consectetur adipisicing elit. Totam cupiditate,
-                            esse odio laboriosam cumque, dicta, debitis
-                            reiciendis ipsam animi dolores aspernatur! Enim!
+                            amet consectetur adipisicing elit.
                           </Typography>
                         </Box>
                         <Stack direction={'row'} spacing={1}>
@@ -422,8 +421,6 @@ export default function Page() {
                   <Box>
                     <Paper
                       sx={{
-                        // border: 1,
-                        // borderCollapse: 'separate',
                         borderRadius: 2,
                         borderColor: '#fefefe',
                         boxShadow: 'var(--drop-shadow)',
@@ -460,8 +457,46 @@ export default function Page() {
                       </Box>
                     </Paper>
                   </Box>
+                  <Box>
+                    <Paper
+                      sx={{
+                        borderRadius: 2,
+                        borderColor: '#fefefe',
+                        boxShadow: 'var(--drop-shadow)',
+                      }}
+                    >
+                      <Box
+                        display={'flex'}
+                        justifyItems={'space-between'}
+                        alignItems={'center'}
+                        sx={{
+                          background: 'var(--alpha-bg-success)',
+                        }}
+                      >
+                        <IconButton
+                          sx={{
+                            p: 2,
+                            background: 'var(--gradient-success)',
+                            borderRadius: 2,
+                            mr: 2,
+                          }}
+                        >
+                          <IconOutbound color="white" stroke={1} size={44} />
+                        </IconButton>
+                        <Box>
+                          <Typography fontSize={18} fontWeight={600}>
+                            Sign Off
+                          </Typography>
+                          <Typography variant="caption">
+                            connection settings
+                          </Typography>
+                        </Box>
+                        <Cog />
+                      </Box>
+                    </Paper>
+                  </Box>
                 </Stack>
-                {/* <ToolbarDashboard /> */}
+                {/* <DashboardBreadcrumb /> */}
               </Box>
             </Box>
             <Box marginBottom={2}>
@@ -471,7 +506,7 @@ export default function Page() {
                 component="h4"
                 variant="subtitle2"
               >
-                Icon Rounded Background
+                Paper Cards
               </Typography>
               <Box>
                 <Grid container spacing={2}>
@@ -510,7 +545,7 @@ export default function Page() {
                         <IconButton
                           size="large"
                           sx={{
-                            backgroundColor: 'rgba(0,0,0, 0.111)',
+                            backgroundColor: 'var(--alpha-bg-secondary)',
                             marginY: 2,
                             ':hover': { backgroundColor: 'rgba(0,0,0, 0.199)' },
                           }}

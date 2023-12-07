@@ -22,7 +22,7 @@ import DashboardLayout from '@layouts/DashboardLayout'
 /* Components */
 import Balance from '@components/Card/Balance'
 import Orders from '@components/Orders'
-import DashboardToolbar from '@components/Toolbar/Dashboard'
+import DashboardBreadcrumb from '@components/Toolbar/Breadcrumb'
 import AvatarProfile from '@components/Avatar/Profile'
 import Cog from '@components/Cog/Default'
 
@@ -40,7 +40,7 @@ import { styledPaper } from '@src/styles'
 function Page() {
   return (
     <>
-      <DashboardToolbar />
+      <DashboardBreadcrumb />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} xl={12}>
           <CardStatsBadged />

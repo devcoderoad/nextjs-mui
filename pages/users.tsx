@@ -133,46 +133,48 @@ export default function Page() {
   ]
   return (
     <DashboardLayout breadcrumb={[{ url: '/users', name: 'Users' }]}>
-      <Toolbar disableGutters component="nav">
-        <Link
-          href="/profile"
-          variant="subtitle2"
-          color="secondary.main"
-          sx={{
-            textDecoration: 'none',
-            mr: 2,
-            svg: { verticalAlign: 'middle', mr: 1 },
-          }}
-        >
-          <PersonIcon fontSize="small" />
-          Profile
-        </Link>
-        <Divider orientation="vertical" variant="middle" />
-        <Typography
-          variant="subtitle2"
-          color="secondary.main"
-          sx={{
-            textDecoration: 'none',
-            mr: 2,
-            svg: { verticalAlign: 'middle', mr: 1 },
-          }}
-        >
-          <PeopleAltIcon fontSize="small" />
-          New Signing
-        </Typography>
-      </Toolbar>
-      <Grid container spacing={2}>
-        {[0, 1, 2, 3].map((_, i) => (
-          <Grid key={i++} item xs={12} sm={12} lg={3}>
-            <AvatarProfile />
+      <React.Fragment>
+        <Toolbar disableGutters component="nav">
+          <Link
+            href="/profile"
+            variant="subtitle2"
+            color="secondary.main"
+            sx={{
+              textDecoration: 'none',
+              mr: 2,
+              svg: { verticalAlign: 'middle', mr: 1 },
+            }}
+          >
+            <PersonIcon fontSize="small" />
+            Profile
+          </Link>
+          <Divider orientation="vertical" variant="middle" />
+          <Typography
+            variant="subtitle2"
+            color="secondary.main"
+            sx={{
+              textDecoration: 'none',
+              mr: 2,
+              svg: { verticalAlign: 'middle', mr: 1 },
+            }}
+          >
+            <PeopleAltIcon fontSize="small" />
+            New Signing
+          </Typography>
+        </Toolbar>
+        <Grid container spacing={2}>
+          {[0, 1, 2, 3].map((_, i) => (
+            <Grid key={i++} item xs={12} sm={12} lg={3}>
+              <AvatarProfile />
+            </Grid>
+          ))}
+          <Grid item xs={12}>
+            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+              <Orders />
+            </Paper>
           </Grid>
-        ))}
-        <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Orders />
-          </Paper>
         </Grid>
-      </Grid>
+      </React.Fragment>
     </DashboardLayout>
   )
 }

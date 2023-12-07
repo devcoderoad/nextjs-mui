@@ -264,16 +264,32 @@ function PricingContent() {
                 // maxWidth={'33.33%'}
                 width={'33.33%'}
               >
-                <Paper sx={{ padding: 2, minHeight: '100%' }} elevation={0}>
-                  <Box>
-                    {/* <Image src={product.thumbnail} alt={product.title} /> */}
-                    <h4 style={{ margin: 0 }}>{product?.title}</h4>
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      style={{ maxWidth: '100%' }}
-                    />
-                    {/* <ImageList
+                <Paper
+                  sx={{
+                    padding: 2,
+                    minHeight: '100%',
+                    // display: 'flex',
+                    // flexDirection: 'column',
+                    // justifyContent: 'space-between',
+                  }}
+                  elevation={0}
+                >
+                  <Stack
+                    spacing={[0, 0]}
+                    gap={1}
+                    // justifyContent={'space-evenly'}
+                    // alignContent={'space-evenly'}
+                    // alignContent={'stretch'}
+                  >
+                    <Box>
+                      {/* <Image src={product.thumbnail} alt={product.title} /> */}
+                      <h4 style={{ margin: 0 }}>{product?.title}</h4>
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        style={{ maxWidth: '100%' }}
+                      />
+                      {/* <ImageList
                       sx={{ width: 500, height: 450 }}
                       variant="quilted"
                       cols={4}
@@ -290,49 +306,50 @@ function PricingContent() {
                         </ImageListItem>
                       ))}
                     </ImageList> */}
-                  </Box>
-                  <Typography fontSize="small" component={'p'} my={1}>
-                    {product?.description}
-                  </Typography>
-                  <Box
-                    mx="auto"
-                    alignItems={'center'}
-                    display={'flex'}
-                    marginY={1}
-                  >
-                    <span
-                      style={{
-                        fontSize: '.88rem',
-                        marginRight: '.33rem',
-                      }}
-                    >
-                      {product.rating}
-                    </span>
-                    <Rating
-                      name="read-only"
-                      size="small"
-                      value={product.rating}
-                      readOnly
-                    />
-                  </Box>
-                  <Stack
-                    direction={'row'}
-                    // alignContent={'space-between'}
-                    // justifyContent={'space-evenly'}
-                  >
-                    <Button variant="outlined" color="secondary" size="small">
-                      {product.category}
-                    </Button>
-                    <Box mx="auto">
-                      <Button
-                        color={'primary'}
-                        variant="text"
-                        startIcon={<AddShoppingCart fontSize="small" />}
-                        size="small"
-                      >
-                        Add
-                      </Button>
                     </Box>
+                    <Typography fontSize="small" component={'p'} my={1}>
+                      {product?.description}
+                    </Typography>
+                    <Box
+                      mx="auto"
+                      alignItems={'center'}
+                      display={'flex'}
+                      marginY={1}
+                    >
+                      <span
+                        style={{
+                          fontSize: '.88rem',
+                          marginRight: '.33rem',
+                        }}
+                      >
+                        {product.rating}
+                      </span>
+                      <Rating
+                        name="read-only"
+                        size="small"
+                        value={product.rating}
+                        readOnly
+                      />
+                    </Box>
+                    <Stack
+                      direction={'row'}
+                      // alignContent={'space-between'}
+                      // justifyContent={'space-evenly'}
+                    >
+                      <Button variant="outlined" color="secondary" size="small">
+                        {product.category}
+                      </Button>
+                      <Box mx="auto">
+                        <Button
+                          color={'primary'}
+                          variant="text"
+                          startIcon={<AddShoppingCart fontSize="small" />}
+                          size="small"
+                        >
+                          Add
+                        </Button>
+                      </Box>
+                    </Stack>
                   </Stack>
                 </Paper>
               </Grid>

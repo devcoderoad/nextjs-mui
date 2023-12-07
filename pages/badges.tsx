@@ -143,7 +143,11 @@ function PricingContent() {
   const styleBtnGradWarning = {
     borderRadius: 10,
     backgroundImage: 'var(--gradient-warning);',
-    // color: 'wheat',
+  }
+  const styleBtnGradSuccess = {
+    borderRadius: 10,
+    backgroundImage: 'var(--gradient-success);',
+    color: 'white',
   }
   const styleVcard = {
     position: 'relative',
@@ -195,6 +199,20 @@ function PricingContent() {
             <Button variant="contained" endIcon={<IconSend stroke={1.5} />}>
               Send
             </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              startIcon={<IconTrash stroke={1.5} />}
+            >
+              Delete
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              endIcon={<IconSend stroke={1.5} />}
+            >
+              Send
+            </Button>
           </Stack>
         </Box>
         <Divider sx={{ my: 3 }} />
@@ -224,23 +242,21 @@ function PricingContent() {
             <Button
               variant="outlined"
               startIcon={<IconTrash stroke={1.5} />}
-              sx={{ borderRadius: 10 }}
+              sx={styleBtnGradSuccess}
             >
               Delete
             </Button>
             <Button
               variant="contained"
               endIcon={<IconSend stroke={1.5} />}
-              disableElevation
-              sx={styleBtnGradPrimary}
+              sx={styleBtnGradWarning}
             >
               Send
             </Button>
             <Button
               variant="contained"
               endIcon={<IconSend stroke={1.5} />}
-              disableElevation
-              sx={styleBtnGradWarning}
+              sx={styleBtnGradPrimary}
             >
               Submit
             </Button>

@@ -1,5 +1,6 @@
 import { Roboto, Poppins } from 'next/font/google'
 import { ThemeOptions, createTheme } from '@mui/material/styles'
+import { alpha, hexToRgb, getContrastRatio } from '@mui/system'
 import { css } from '@mui/material'
 import { deepOrange } from '@mui/material/colors'
 
@@ -224,11 +225,6 @@ export const darkTheme = createTheme({
   },
   components: {
     MuiCard: {
-      defaultProps: {
-        // sx: {
-        //   borderColor: '#4e4e4e !important',
-        // },
-      },
       styleOverrides: {
         root: {
           borderColor: '#4e4e4e !important',
@@ -247,6 +243,14 @@ export const darkTheme = createTheme({
   // },
 })
 
+const colors = {
+  bluePrimary: '#1c7ed6',
+  greenPrimary: '#22b8cf',
+  pinkPrimary: '#e64980',
+  orangePrimary: '#fd7e14',
+  secondary: '#929292',
+}
+
 export const globalStyles = css`
   :root {
     --mui-palette-primary-main: #1976d2;
@@ -255,15 +259,11 @@ export const globalStyles = css`
     --mui-palette-primary-contrastText: #fff;
 
     /* Colors */
-    --blue-primary: #1c7ed6;
-    --blue-primary-rgb: 28, 126, 214;
-    --green-primary: #22b8cf;
-    --green-primary-rgb: 34, 184, 207;
-
-    --pink-primary: #e64980;
-    --pink-primary-rgb: 230, 73, 128;
-    --orange-primary: #fd7e14;
-    --orange-primary-rgb: 253, 126, 20;
+    --blue-primary: ${colors.bluePrimary};
+    --green-primary: ${colors.greenPrimary};
+    --pink-primary: ${colors.pinkPrimary};
+    --orange-primary: ${colors.orangePrimary};
+    --secondary: ${colors.secondary};
 
     /* Gradients */
     --gradient-primary: linear-gradient(
@@ -289,29 +289,25 @@ export const globalStyles = css`
     --bg-gradient-bluish: linear-gradient(
       -90deg,
       #a258c1,
-      #0374bd 47%,
+      #0374bd 27%,
       #29b9c9
     );
 
     --img-paper-dot: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQoU2NkIBIwEqmOgXyFU6dObQDZkp2dDaZhAMVEmCKYJLJi8hSCTCLKanwhQL6vcZkKAMbtEAuAaq67AAAAAElFTkSuQmCC');
 
-    --alpha-bg-primary: rgba(var(--orange-primary-rgb), 0.75);
-    --alpha-bg-success: rgba(var(--green-primary-rgb), 0.75);
-    --alpha-bg-warning: rgba(var(--orange-primary-rgb), 0.75);
-
-    /* --alpha-bg-primary: rgba(var(--blue-primary), 0.8);
-    --alpha-bg-success: rgba(var(--green-primary), 0.8);
-    --alpha-bg-warning: rgba(var(--orange-primary), 0.8); */
+    --alpha-bg-primary: ${alpha(colors.bluePrimary, 0.275)};
+    --alpha-bg-success: ${alpha(colors.greenPrimary, 0.275)};
+    --alpha-bg-info: ${alpha(colors.pinkPrimary, 0.275)};
+    --alpha-bg-warning: ${alpha(colors.orangePrimary, 0.275)};
+    --alpha-bg-secondary: ${alpha(colors.secondary, 0.275)};
 
     body {
-      /* background-color: #fff; */
       color: #121212;
     }
   }
 
   [data-theme='dark'] {
     body {
-      /* background-color: #121212; */
       color: #ffffff;
     }
   }
