@@ -37,6 +37,10 @@ import {
   IconBrandFacebook,
   IconRecordMail,
   IconAt,
+  IconDotsVertical,
+  IconEyeUp,
+  IconTrendingUp,
+  IconTrendingDown,
 } from '@tabler/icons-react'
 import {
   Avatar,
@@ -372,6 +376,160 @@ function PricingContent() {
                   </a>
                 </Stack>
               </Stack>
+            </Box>
+          </Stack>
+        </Box>
+        <Divider sx={{ my: 3 }} />
+        <Box>
+          <Typography color="secondary.main">Employeee</Typography>
+          <Stack spacing={1} direction={'row'}>
+            <Box maxWidth={'sm'}>
+              <Card
+                sx={{
+                  borderRadius: 3,
+                  color: 'white',
+                  background: 'var(--gradient-primary)',
+                }}
+              >
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      sx={{
+                        bgcolor: 'var(--green-primary)',
+                        boxShadow: 'var(--drop-shadow)',
+                      }}
+                      aria-label="recipe"
+                    >
+                      R
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <IconDotsVertical color="white" />
+                    </IconButton>
+                  }
+                  title={
+                    <Box color="white" fontSize={20}>
+                      Shrimp and Chorizo Paella
+                    </Box>
+                  }
+                  subheader={<Box color="white">September 14, 2016</Box>}
+                />
+                <CardContent sx={{ py: 0 }}>
+                  <Grid
+                    container
+                    direction={'row'}
+                    columns={12}
+                    alignContent={'space-evenly'}
+                    justifyContent={'space-around'}
+                  >
+                    <Grid item lg={9}>
+                      <Typography fontSize={32} fontWeight={600}>
+                        Match Point
+                      </Typography>
+                      <Typography variant="body1">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Necessitatibus, nemo consequatur!
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      lg={3}
+                      alignSelf={'center'}
+                      textAlign={'center'}
+                      sx={{ verticalAlign: 'middle' }}
+                    >
+                      <IconButton
+                        size="large"
+                        sx={{
+                          border: '1px solid white',
+                          bgcolor: 'var(--alpha-bg-primary)',
+                          ':hover': {
+                            bgcolor: 'var(--alpha-bg-green)',
+                          },
+                        }}
+                      >
+                        <IconTrendingUp color="white" />
+                      </IconButton>
+                      <Typography my={1}>+14%</Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Box>
+            <Box maxWidth={'sm'}>
+              <Card
+                sx={{
+                  borderRadius: 3,
+                  color: 'white',
+                  background: 'var(--gradient-primary)',
+                }}
+              >
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      sx={{
+                        bgcolor: 'var(--orange-primary)',
+                        boxShadow: 'var(--drop-shadow)',
+                      }}
+                      aria-label="recipe"
+                    >
+                      R
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <IconDotsVertical color="white" />
+                    </IconButton>
+                  }
+                  title={
+                    <Box color="white" fontSize={20}>
+                      Shrimp and Chorizo Paella
+                    </Box>
+                  }
+                  subheader={<Box color="white">September 14, 2016</Box>}
+                />
+                <CardContent sx={{ py: 0 }}>
+                  <Grid
+                    container
+                    direction={'row'}
+                    columns={12}
+                    alignContent={'space-evenly'}
+                    justifyContent={'space-around'}
+                  >
+                    <Grid item lg={9}>
+                      <Typography fontSize={32} fontWeight={600}>
+                        Match Point
+                      </Typography>
+                      <Typography variant="body1">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Necessitatibus, nemo consequatur!
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      lg={3}
+                      alignSelf={'center'}
+                      textAlign={'center'}
+                      sx={{ verticalAlign: 'middle' }}
+                    >
+                      <IconButton
+                        size="large"
+                        sx={{
+                          border: '1px solid white',
+                          bgcolor: 'var(--alpha-bg-warning)',
+                          ':hover': {
+                            bgcolor: 'var(--alpha-bg-info)',
+                          },
+                        }}
+                      >
+                        <IconTrendingDown color="white" />
+                      </IconButton>
+                      <Typography my={1}>+14%</Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
             </Box>
           </Stack>
         </Box>
