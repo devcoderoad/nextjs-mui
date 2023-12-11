@@ -249,6 +249,7 @@ const colors = {
   pinkPrimary: '#e64980',
   orangePrimary: '#fd7e14',
   secondary: '#929292',
+  error: deepOrange[900],
 }
 
 export const globalStyles = css`
@@ -264,6 +265,7 @@ export const globalStyles = css`
     --pink-primary: ${colors.pinkPrimary};
     --orange-primary: ${colors.orangePrimary};
     --secondary: ${colors.secondary};
+    --error: ${colors.error};
 
     /* Gradients */
     --gradient-primary: linear-gradient(
@@ -295,11 +297,12 @@ export const globalStyles = css`
 
     --img-paper-dot: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQoU2NkIBIwEqmOgXyFU6dObQDZkp2dDaZhAMVEmCKYJLJi8hSCTCLKanwhQL6vcZkKAMbtEAuAaq67AAAAAElFTkSuQmCC');
 
-    --alpha-bg-primary: ${alpha(colors.bluePrimary, 0.275)};
-    --alpha-bg-success: ${alpha(colors.greenPrimary, 0.275)};
-    --alpha-bg-info: ${alpha(colors.pinkPrimary, 0.275)};
-    --alpha-bg-warning: ${alpha(colors.orangePrimary, 0.275)};
-    --alpha-bg-secondary: ${alpha(colors.secondary, 0.275)};
+    --alpha-bg-primary: ${alpha(colors.bluePrimary, 0.25)};
+    --alpha-bg-success: ${alpha(colors.greenPrimary, 0.25)};
+    --alpha-bg-info: ${alpha(colors.pinkPrimary, 0.25)};
+    --alpha-bg-warning: ${alpha(colors.orangePrimary, 0.25)};
+    --alpha-bg-secondary: ${alpha(colors.secondary, 0.25)};
+    --alpha-bg-error: ${alpha(colors.error, 0.25)};
 
     body {
       color: #121212;

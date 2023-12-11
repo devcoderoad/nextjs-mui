@@ -22,6 +22,7 @@ import Messages from '@components/Message/User'
 import System from '@components/Message/System'
 import {
   IconAccessPoint,
+  IconArrowDownRight,
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandTelegram,
@@ -40,6 +41,7 @@ import {
 /* Components */
 import CardStatsDefault from '@components/Stats/Default'
 import CardStatsBadged from '@components/Stats/Badge'
+import CardStatsSummary from '@components/Stats/Summary'
 import BadgeDefault from '@components/Badge/Default'
 import React from 'react'
 
@@ -62,42 +64,123 @@ export default function Page() {
             }}
           >
             <Box marginBottom={2}>
-              <Grid container>
-                <Grid item md>
-                  <Typography
-                    marginBottom={1}
-                    color="secondary"
-                    component="h4"
-                    variant="subtitle2"
-                  >
-                    Messages
-                  </Typography>
-                  <Messages />
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Statistic
+              </Typography>
+              <Grid
+                container
+                direction={'row'}
+                justifyContent={'space-evenly'}
+                gap={0}
+                spacing={[1, 2]}
+              >
+                <Grid item xl={6}>
+                  <CardStatsDefault
+                    icon={<IconEye color="#929292" size={18} />}
+                    title="Total Views"
+                    total={125}
+                    items={[
+                      { name: 'Global', value: 90, type: 'primary' },
+                      { name: 'Australia', value: 10, type: 'info' },
+                      { name: 'Finland', value: 25, type: 'success' },
+                    ]}
+                    type="primary"
+                    size="xl"
+                  />
                 </Grid>
-                <Grid item md>
-                  <Typography
-                    marginBottom={1}
-                    color="secondary"
-                    component="h4"
-                    variant="subtitle2"
-                  >
-                    Notifications
-                  </Typography>
-                  <System />
+                <Grid item xl={6}>
+                  <CardStatsDefault
+                    title="Total Views"
+                    total={2313}
+                    items={[{ name: 'Global', value: 90, type: 'primary' }]}
+                    type="primary"
+                    size="xl"
+                  />
                 </Grid>
               </Grid>
             </Box>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={8} lg={9} marginY={4}>
-          <Paper
-            sx={{
-              p: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: 240,
-            }}
-          >
+            <Box marginBottom={2}>
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Statistic Badge
+              </Typography>
+              <Box>
+                <CardStatsBadged />
+              </Box>
+            </Box>
+            <Box marginBottom={2}>
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Icon
+              </Typography>
+              <Stack direction={'row'} spacing={1}>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-primary)',
+                  }}
+                >
+                  <IconHourglassHigh color="white" stroke={1.1} />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-warning)',
+                  }}
+                >
+                  <IconHourglass color="white" stroke={1.1} />
+                </IconButton>
+                <IconButton
+                  sx={{
+                    borderRadius: 'calc(0.5rem* 1 )',
+                    boxShadow: 'none',
+                    width: 'calc(2.75rem * 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--gradient-primary)',
+                  }}
+                >
+                  <IconShoppingCart color="white" stroke={1.1} />
+                </IconButton>
+              </Stack>
+            </Box>
+            <Box marginBottom={2}>
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Badges
+              </Typography>
+              <Box>
+                <BadgeDefault />
+              </Box>
+            </Box>
             <Box marginBottom={2}>
               <Typography
                 marginBottom={1}
@@ -257,124 +340,6 @@ export default function Page() {
                   </Grid>
                 </Grid>
               </Paper>
-            </Box>
-            <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Statistic
-              </Typography>
-              <Grid
-                container
-                direction={'row'}
-                justifyContent={'space-evenly'}
-                gap={0}
-                spacing={[1, 2]}
-              >
-                <Grid item xl={6}>
-                  <CardStatsDefault
-                    icon={<IconEye color="#929292" size={18} />}
-                    title="Total Views"
-                    total={125}
-                    items={[
-                      { name: 'Global', value: 90, type: 'primary' },
-                      { name: 'Australia', value: 10, type: 'info' },
-                      { name: 'Finland', value: 25, type: 'success' },
-                    ]}
-                    type="primary"
-                    size="xl"
-                  />
-                </Grid>
-                <Grid item xl={6}>
-                  <CardStatsDefault
-                    title="Total Views"
-                    total={2313}
-                    items={[{ name: 'Global', value: 90, type: 'primary' }]}
-                    type="primary"
-                    size="xl"
-                  />
-                </Grid>
-              </Grid>
-            </Box>
-            <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Statistic Badge
-              </Typography>
-              <Box>
-                <CardStatsBadged />
-              </Box>
-            </Box>
-            <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Icon
-              </Typography>
-              <Stack direction={'row'} spacing={1}>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-primary)',
-                  }}
-                >
-                  <IconHourglassHigh color="white" stroke={1.1} />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-warning)',
-                  }}
-                >
-                  <IconHourglass color="white" stroke={1.1} />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-primary)',
-                  }}
-                >
-                  <IconShoppingCart color="white" stroke={1.1} />
-                </IconButton>
-              </Stack>
-            </Box>
-            <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Badges
-              </Typography>
-              <Box>
-                <BadgeDefault />
-              </Box>
             </Box>
             <Box marginBottom={2}>
               <Typography
@@ -565,6 +530,72 @@ export default function Page() {
                   </Grid>
                 </Grid>
               </Box>
+            </Box>
+            <Box marginBottom={2}>
+              <Typography
+                marginBottom={1}
+                color="secondary"
+                component="h4"
+                variant="subtitle2"
+              >
+                Summary Cards
+              </Typography>
+              <Box>
+                <Stack direction={'row'} spacing={2}>
+                  <CardStatsSummary />
+                  <CardStatsSummary
+                    title="Profit"
+                    total={234}
+                    type="error"
+                    items={[{ name: 'decrease', value: 22, type: 'error' }]}
+                    icon={
+                      <IconArrowDownRight
+                        color="#929292"
+                        size={38}
+                        stroke={1}
+                      />
+                    }
+                  />
+                  <CardStatsSummary />
+                </Stack>
+              </Box>
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={8} lg={9} marginY={4}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: 240,
+            }}
+          >
+            <Box marginBottom={2}>
+              <Grid container>
+                <Grid item md>
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Messages
+                  </Typography>
+                  <Messages />
+                </Grid>
+                <Grid item md>
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Notifications
+                  </Typography>
+                  <System />
+                </Grid>
+              </Grid>
             </Box>
           </Paper>
         </Grid>

@@ -9,6 +9,7 @@ import PhoneIcon from '@mui/icons-material/Phone'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
+import { InputLabel } from '@mui/material'
 
 export default function Page() {
   return (
@@ -281,6 +282,49 @@ export default function Page() {
             <Button variant="contained">Submit</Button>
           </Box>
         </Box>
+      </Paper>
+
+      <Paper
+        sx={{
+          p: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          // minHeight: 240,
+        }}
+      >
+        <fieldset>
+          <legend>Fieldset</legend>
+          <form>
+            <InputLabel>
+              Fullname
+              <TextField name="Fullname" placeholder="Fullname" />
+            </InputLabel>
+            <InputLabel>
+              Address
+              <TextField name="Address" placeholder="Address" />
+            </InputLabel>
+            <Button variant="outlined" size="small">
+              Submit
+            </Button>
+          </form>
+        </fieldset>
+
+        <form>
+          <fieldset>
+            <legend>Choose your favorite monster</legend>
+
+            <input type="radio" id="kraken" name="monster" value="K" />
+            <label htmlFor="kraken">Kraken</label>
+            <br />
+
+            <input type="radio" id="sasquatch" name="monster" value="S" />
+            <label htmlFor="sasquatch">Sasquatch</label>
+            <br />
+
+            <input type="radio" id="mothman" name="monster" value="M" />
+            <label htmlFor="mothman">Mothman</label>
+          </fieldset>
+        </form>
       </Paper>
     </DashboardLayout>
   )
