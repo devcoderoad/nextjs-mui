@@ -35,6 +35,7 @@ export default function Page() {
         <Paper
           sx={{
             p: 4,
+            marginY: 4,
             display: 'flex',
             flexDirection: 'column',
             minHeight: 240,
@@ -294,12 +295,13 @@ export default function Page() {
                 />
               </Box>
             </Box>
-            <Box sx={{ marginBottom: '2rem', marginTop: '2rem' }}>
-              <Button variant="contained">Submit</Button>
-              <Button variant="contained">Submit</Button>
-              <Button variant="contained">Submit</Button>
-              <Button variant="contained">Submit</Button>
-              <Button variant="contained">Submit</Button>
+            <Box
+              sx={{ marginBottom: '2rem', marginTop: '2rem' }}
+              maxWidth={'sm'}
+            >
+              <Button size="large" variant="contained" fullWidth>
+                Submit
+              </Button>
             </Box>
           </Box>
         </Paper>
@@ -311,7 +313,7 @@ export default function Page() {
             // minHeight: 240,
           }}
         >
-          <FormControl fullWidth sx={{ marginY: 2 }}>
+          <FormControl fullWidth sx={{ width: 480, marginY: 2 }}>
             <InputLabel id="simple-select-label">Country</InputLabel>
             <Select
               labelId="simple-select-label"
@@ -347,7 +349,7 @@ export default function Page() {
               })}
             </Select>
           </FormControl>
-          <FormControl fullWidth sx={{ marginY: 2 }}>
+          <FormControl fullWidth sx={{ width: 480, marginY: 2 }}>
             <InputLabel id="simple-select-fieldset">Fieldset</InputLabel>
             <TextField
               // labelId="simple-select-fieldset"
@@ -370,16 +372,19 @@ export default function Page() {
           </FormControl>
           <Autocomplete
             disablePortal
-            freeSolo
+            // freeSolo
             value={Object.entries(countries)
-              .map((countryCode) => countryCode[1])
-              .find((item) => item === selected)}
+              .map((countryCode) => ({
+                label: countryCode[1],
+                id: countryCode[0],
+              }))
+              .find((item) => item.label === selected)}
             id="combo-box-demo"
             options={Object.entries(countries).map((countryCode) => ({
               label: countryCode[1],
               id: countryCode[0],
             }))}
-            sx={{ width: 380, marginY: 2 }}
+            sx={{ width: 480, marginY: 2 }}
             renderOption={(props, option) => (
               <Box
                 component="li"
@@ -404,12 +409,12 @@ export default function Page() {
                     style={{ marginLeft: 'auto', marginRight: 'auto' }}
                   />
                 </IconButton>
-                {option.label} ({option.id})
+                {option.label} {/* ({option.id}) */}
               </Box>
             )}
             renderInput={(params) => <TextField {...params} label="Country" />}
           />
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" sx={{ width: 480 }}>
             Submit
           </Button>
           <form style={{ marginTop: '2rem', marginBottom: '2rem' }}>
