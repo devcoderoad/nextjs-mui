@@ -24,10 +24,10 @@ import { constant } from '@config/constants'
 
 /* Components */
 import Copyright from '@components/Copyright'
-import { Paper, Stack } from '@mui/material'
+import { IconButton, Paper, Stack } from '@mui/material'
 import {
-  IconDisc,
-  IconServer,
+  IconArrowRight,
+  IconCpu2,
   IconServer2,
   IconServerBolt,
   IconServerCog,
@@ -430,8 +430,10 @@ function PricingContent() {
               <Grid item xl={12}>
                 <Box>
                   <Typography variant="caption" textAlign={'center'}>
-                    when you choose your plan, Lorem ipsum dolor sit, amet
-                    consectetur adipisicing elit. Ipsum, veniam quae.
+                    After the free trial period ends, you will be automatically
+                    charged the monthly subscription fee. You can cancel your
+                    subscription and request a refund within 7 days after your
+                    trial expires.
                   </Typography>
                 </Box>
               </Grid>
@@ -472,6 +474,197 @@ function PricingContent() {
                   Configuration
                 </Typography>
               </Stack>
+            </Grid>
+          </Grid>
+        </Box>
+      </Paper>
+      <Paper
+        elevation={6}
+        sx={{
+          mt: 3,
+          backgroundColor: 'transparent',
+          position: 'relative',
+          zIndex: 0,
+          overflow: 'hidden',
+          ':before': {
+            top: '-30rem',
+            right: '-10rem',
+            width: '980px',
+            height: '980px',
+            content: '" "',
+            backgroundColor: '#f2f2f2',
+            position: 'absolute',
+            zIndex: '-1',
+            borderRadius: '20px',
+            bottom: '0',
+            transform: 'rotate(-45deg)',
+          },
+        }}
+      >
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'space-between'}
+          alignContent={'space-evenly'}
+          py={20}
+          px={3}
+          sx={{
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 0,
+            ':before': {
+              content: '""',
+              zIndex: -1,
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              backgroundPosition: 'top center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundImage:
+                'url("data:image/svg+xml,%3C%3Fxml version=%271.0%27 encoding=%27utf-8%27%3F%3E%3Csvg viewBox=%270 0 500 500%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath fill=%27%23ffffff%27 fill-opacity=%271%27 d=%27M 210.91 244.412 L 252.545 246.271 C 294.179 248.268 377.449 251.777 460.718 246.271 C 543.987 240.553 627.256 225.823 668.891 218.212 L 710.526 210.741 L 710.526 289.305 L 668.891 289.305 C 627.256 289.305 543.987 289.305 460.718 289.305 C 377.449 289.305 294.179 289.305 252.545 289.305 L 210.91 289.305 L 210.91 244.412 Z%27 style=%27transform-origin: 460.718px 250.023px;%27 transform=%27matrix(0, -1, 1, 0, 0, 0.000015258789)%27/%3E%3C/svg%3E");',
+            },
+          }}
+        >
+          <Grid container columns={12} spacing={2} gap={0}>
+            <Grid item xl={6}>
+              <Grid item xl={12}>
+                <Box mb={6}>
+                  <Typography
+                    variant="h5"
+                    textAlign={'center'}
+                    color="secondary"
+                  >
+                    Choose your Plan
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid
+                container
+                columns={12}
+                spacing={2}
+                height={'100%'}
+                gap={0}
+                mx={3}
+              >
+                <Grid item xl={6}>
+                  <Card elevation={0} sx={{ backgroundColor: 'transparent' }}>
+                    <CardHeader
+                      sx={{ pb: 0 }}
+                      title={
+                        <Typography
+                          variant="h4"
+                          fontWeight={600}
+                          color="primary"
+                        >
+                          Droptler
+                        </Typography>
+                      }
+                    />
+                    <CardContent sx={{ pt: 0 }}>
+                      <ol>
+                        <li>500Mb Hardisk Space</li>
+                        <li>50Gb Bandwidth</li>
+                        <li>1 Database instance</li>
+                      </ol>
+                      <Button variant="outlined" size="small">
+                        Subscribe
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xl={6}>
+                  <Card elevation={0} sx={{ backgroundColor: 'transparent' }}>
+                    <CardHeader
+                      sx={{ pb: 0 }}
+                      title={
+                        <Typography variant="h4" fontWeight={600} color="error">
+                          Burkenetes
+                        </Typography>
+                      }
+                    />
+                    <CardContent sx={{ pt: 0 }}>
+                      <ol>
+                        <li>Unlimited Hardisk Space</li>
+                        <li>Up from 50Gb Bandwidth</li>
+                        <li>Unlimeted Database instances</li>
+                      </ol>
+                      <Button variant="outlined" size="small" color="error">
+                        Subscribe
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+              <Grid item xl={12}>
+                <Box>
+                  <Typography variant="caption" textAlign={'center'}>
+                    After the free trial period ends, you will be automatically
+                    charged the monthly subscription fee. You can cancel your
+                    subscription and request a refund within 7 days after your
+                    trial expires.
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              xl={6}
+              alignSelf={'center'}
+              textAlign={'center'}
+              mx={'auto'}
+            >
+              <Box className="GridItemstyles-sc-eu71zi-0 guHjPi" mx={8}>
+                <div className="CardProductstyles__StyledCardProductContainer-sc-12ecnad-0 jDNkna">
+                  <div className="CardProductstyles__StyledMainContent-sc-12ecnad-1 kmAfXG">
+                    <div className="CardProductstyles__StyledHeaderContent-sc-12ecnad-3 hjDika">
+                      <div className="CardProductstyles__StyledCardProductHeader-sc-12ecnad-4 fESANw">
+                        <div className="CardProductstyles__StyledHeaderIcon-sc-12ecnad-9 eEWZzO">
+                          <IconCpu2 size={58} stroke={1} />
+                        </div>
+                        <div className="CardProductstyles__StyledCardProductHeaderTitle-sc-12ecnad-5 teLuC">
+                          <h3 className="Typographystyles-sc-o7qsl9-0 ebxQNu">
+                            Premium CPU-Optimized
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                    <svg viewBox="0 0 1 0.002" preserveAspectRatio="none">
+                      <path
+                        d="M0 0 l12 0"
+                        stroke="#FFF"
+                        stroke-width="1"
+                        stroke-dasharray="4.8"
+                        vector-effect="non-scaling-stroke"
+                        stroke-linecap="round"
+                      ></path>
+                    </svg>
+                    <div className="CardProductstyles__StyledCardProductText-sc-12ecnad-2 djFjKh">
+                      <ul className="CardProductstyles__StyledFeatureList-sc-12ecnad-7 bQkfJ">
+                        <li>
+                          <p className="Typographystyles-sc-o7qsl9-0 fOEtTW">
+                            Upgrade to Premium CPU-Optimized for up to 10
+                            network speeds, faster processors, &amp; NVMe SSDs.
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <p className="Typographystyles-sc-o7qsl9-0 jHehA">
+                      <a
+                        className="LinkTextstyles-sc-jz3jcd-0 ftQMfF"
+                        href="/pricing/droplets#cpu-optimized-droplets"
+                      >
+                        Get started
+                        <IconButton>
+                          <IconArrowRight />
+                        </IconButton>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </Box>
             </Grid>
           </Grid>
         </Box>

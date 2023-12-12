@@ -25,12 +25,15 @@
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "recharts": "^2.1.16"
+    "react-world-flags": "^1.6.0",
+    "recharts": "^2.1.16",
+    "svg-country-flags": "^1.2.10"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.4",
     "@types/node": "latest",
     "@types/react": "latest",
+    "@types/react-world-flags": "^1.4.5",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "apexcharts": "^3.41.0",
