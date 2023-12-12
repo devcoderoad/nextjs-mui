@@ -11,23 +11,55 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import {
   Autocomplete,
   FormControl,
+  Grid,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
+  Stack,
+  Typography,
 } from '@mui/material'
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
 /* Libs */
-// import { CircleFlag } from 'react-circle-flags'
 import Flag from 'react-world-flags'
 import countries from 'svg-country-flags/countries.json'
 
-export default function Page() {
-  // console.log(countries('us'))
-  const [selected, setSelected] = React.useState('Andorra')
+/* form states */
+const initialValue = {
+  username: '',
+  email: '',
+  phone: '',
+  address: '',
+}
 
-  // console.log({ selected })
+type Action =
+  | { type: 'username'; payload: string }
+  | { type: 'email'; payload: string }
+  | { type: 'phone'; payload: string }
+  | { type: 'address'; payload: string }
+  | { type?: 'reset' }
+
+const reducer = (state: typeof initialValue, action: Action) => {
+  switch (action.type) {
+    case 'username':
+      return { ...state, username: action.payload }
+    case 'email':
+      return { ...state, email: action.payload }
+    case 'phone':
+      return { ...state, phone: action.payload }
+    case 'address':
+      return { ...state, address: action.payload }
+    case 'reset':
+      return initialValue
+    default:
+      throw new Error(`Unknown action type: ${action.type}`)
+  }
+}
+
+export default function Page() {
+  const [selected, setSelected] = React.useState('Andorra')
+  const [state, dispatch] = React.useReducer(reducer, initialValue)
 
   return (
     <DashboardLayout>
@@ -42,63 +74,167 @@ export default function Page() {
           }}
         >
           <h2>Registration</h2>
-          <Box
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            id="form-registration"
-            noValidate
-            autoComplete="off"
-          >
-            <div>
-              <TextField
-                required
-                id="outlined-required"
-                label="Required"
-                defaultValue="Hello World"
-              />
-              <TextField
-                disabled
-                id="outlined-disabled"
-                label="Disabled"
-                defaultValue="Hello World"
-              />
-              <TextField
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-              />
-              <TextField
-                id="outlined-read-only-input"
-                label="Read Only"
-                defaultValue="Hello World"
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-              <TextField
-                id="outlined-number"
-                label="Number"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <TextField
-                id="outlined-search"
-                label="Search field"
-                type="search"
-              />
-              <TextField
-                id="outlined-helperText"
-                label="Helper text"
-                defaultValue="Default Value"
-                helperText="Some important text"
-              />
-            </div>
-          </Box>
+          <Grid container spacing={[0, 2]} gap={[1, 2]} columns={12}>
+            <Grid
+              item
+              component="form"
+              xl={3}
+              sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                button: {
+                  marginRight: '.5rem',
+                },
+              }}
+              id="form-settings"
+              noValidate
+              autoComplete="off"
+            >
+              <Box>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <AccountCircle
+                    sx={{ color: 'action.active', mr: 1, my: 0.25 }}
+                  />
+                  <TextField
+                    id="input-with-sx"
+                    label="Username"
+                    variant="standard"
+                    margin="dense"
+                    size="small"
+                    defaultValue={state.username}
+                    value={state.username}
+                    onChange={(event) =>
+                      dispatch({
+                        type: 'username',
+                        payload: event.target.value,
+                      })
+                    }
+                    helperText="your username to sign in"
+                    required
+                  />
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
+                  <TextField
+                    id="input-with-sx"
+                    label="Email"
+                    variant="standard"
+                    margin="dense"
+                    size="small"
+                    defaultValue={state.email}
+                    value={state.email}
+                    onChange={(event) =>
+                      dispatch({
+                        type: 'email',
+                        payload: event.target.value,
+                      })
+                    }
+                  />
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
+                  <TextField
+                    id="input-with-sx"
+                    label="Phone"
+                    variant="standard"
+                    margin="dense"
+                    size="small"
+                    defaultValue={state.phone}
+                    value={state.phone}
+                    onChange={(event) =>
+                      dispatch({
+                        type: 'phone',
+                        payload: event.target.value,
+                      })
+                    }
+                  />
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                  <MapIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
+                  <TextField
+                    id="input-with-sx"
+                    label="Address"
+                    variant="standard"
+                    margin="dense"
+                    multiline
+                    maxRows={3}
+                    size="small"
+                    defaultValue={state.address}
+                    value={state.address}
+                    onChange={(event) =>
+                      dispatch({
+                        type: 'address',
+                        payload: event.target.value,
+                      })
+                    }
+                  />
+                </Box>
+              </Box>
+              <Box sx={{ marginBottom: '2rem', marginTop: '2rem' }}>
+                <Button size="large" variant="contained" fullWidth>
+                  Submit
+                </Button>
+              </Box>
+            </Grid>
+            <Grid item xl={5}>
+              <Box
+                component="fieldset"
+                sx={{ borderColor: '#f2f2f2' }}
+                px={3}
+                pt={3}
+              >
+                <Typography
+                  component={'legend'}
+                  variant="h5"
+                  color={'secondary'}
+                  aria-label="registration-result"
+                >
+                  Your Registration Confirmation
+                </Typography>
+                <Typography variant="body1" color="secondary">
+                  Username:
+                </Typography>
+                {state.username}
+                <hr />
+                <Typography variant="body1" color="secondary">
+                  Email:
+                </Typography>
+                {state.email}
+                <hr />
+                <Typography variant="body1" color="secondary">
+                  Phone:
+                </Typography>
+                {state.phone}
+                <hr />
+                <Typography variant="body1" color="secondary">
+                  Address:
+                </Typography>
+                {state.address}
+                <hr />
+                <Stack
+                  sx={{ marginBottom: '2rem', marginTop: '2rem' }}
+                  direction={'row'}
+                  gap={2}
+                >
+                  <Button size="large" variant="outlined" fullWidth>
+                    Confirm
+                  </Button>
+                  <Button
+                    size="large"
+                    variant="outlined"
+                    fullWidth
+                    color="error"
+                    onClick={() =>
+                      dispatch({
+                        type: 'reset',
+                      })
+                    }
+                  >
+                    Reset
+                  </Button>
+                </Stack>
+              </Box>
+            </Grid>
+          </Grid>
           <h2>Settings</h2>
           <Box
             component="form"
@@ -167,7 +303,7 @@ export default function Page() {
               {/* </form> */}
             </div>
           </Box>
-          <h2>Check In</h2>
+          <h2>Disabled</h2>
           <Box
             component="form"
             sx={{
@@ -236,75 +372,8 @@ export default function Page() {
         <Paper
           sx={{
             p: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            // minHeight: 240,
           }}
-        >
-          <Box
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { m: 1, width: '25ch' },
-              button: {
-                marginRight: '.5rem',
-              },
-            }}
-            id="form-settings"
-            noValidate
-            autoComplete="off"
-          >
-            <Box>
-              <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <AccountCircle
-                  sx={{ color: 'action.active', mr: 1, my: 0.25 }}
-                />
-                <TextField
-                  id="input-with-sx"
-                  label="Full Name"
-                  variant="standard"
-                  margin="dense"
-                />
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <EmailIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
-                <TextField
-                  id="input-with-sx"
-                  label="Email"
-                  variant="standard"
-                  margin="dense"
-                />
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <PhoneIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
-                <TextField
-                  id="input-with-sx"
-                  label="Phone"
-                  variant="standard"
-                  margin="dense"
-                />
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <MapIcon sx={{ color: 'action.active', mr: 1, my: 0.25 }} />
-                <TextField
-                  id="input-with-sx"
-                  label="Address"
-                  variant="standard"
-                  margin="dense"
-                  multiline
-                  maxRows={3}
-                />
-              </Box>
-            </Box>
-            <Box
-              sx={{ marginBottom: '2rem', marginTop: '2rem' }}
-              maxWidth={'sm'}
-            >
-              <Button size="large" variant="contained" fullWidth>
-                Submit
-              </Button>
-            </Box>
-          </Box>
-        </Paper>
+        ></Paper>
         <Paper
           sx={{
             p: 4,
