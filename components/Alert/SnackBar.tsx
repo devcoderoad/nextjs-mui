@@ -55,12 +55,7 @@ interface OwnProps {
   type?: 'fixed' | 'relative'
   message?: string
   mode?: AlertColor
-  variant?:
-    | OverridableStringUnion<
-        'outlined' | 'filled' | 'standard',
-        AlertPropsVariantOverrides
-      >
-    | undefined
+  variant?: 'standard' | 'filled' | 'outlined'
 }
 
 export default function SnackBar(props: OwnProps) {
