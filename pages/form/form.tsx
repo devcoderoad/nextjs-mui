@@ -11,10 +11,14 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import {
   Autocomplete,
   FormControl,
+  FormControlLabel,
+  FormLabel,
   Grid,
   IconButton,
   InputLabel,
   MenuItem,
+  Radio,
+  RadioGroup,
   Select,
   Stack,
   Typography,
@@ -31,6 +35,7 @@ const initialValue = {
   email: '',
   phone: '',
   address: '',
+  monster: '',
 }
 
 type Action =
@@ -38,6 +43,7 @@ type Action =
   | { type: 'email'; payload: string }
   | { type: 'phone'; payload: string }
   | { type: 'address'; payload: string }
+  | { type: 'monster'; payload: string }
   | { type?: 'reset' }
 
 const reducer = (state: typeof initialValue, action: Action) => {
@@ -50,6 +56,8 @@ const reducer = (state: typeof initialValue, action: Action) => {
       return { ...state, phone: action.payload }
     case 'address':
       return { ...state, address: action.payload }
+    case 'monster':
+      return { ...state, monster: action.payload }
     case 'reset':
       return initialValue
     default:
@@ -108,8 +116,8 @@ export default function Page() {
                         payload: event.target.value,
                       })
                     }
-                    helperText="your username to sign in"
-                    required
+                    // helperText="your username to sign in"
+                    // required
                   />
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -168,6 +176,38 @@ export default function Page() {
                     }
                   />
                 </Box>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', mt: 2 }}>
+                  <FormControl component={'fieldset'}>
+                    <FormLabel
+                      component={'legend'}
+                      id="demo-radio-buttons-group-label"
+                      sx={{ mb: 1 }}
+                    >
+                      Choose your favorite monster
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="sasquatch"
+                      name="radio-buttons-group"
+                      value={state.monster}
+                      onChange={(e) =>
+                        dispatch({ type: 'monster', payload: e.target.value })
+                      }
+                    >
+                      <FormControlLabel
+                        value="Kraken"
+                        control={<Radio size="small" />}
+                        label="Kraken"
+                      />
+                      <FormControlLabel
+                        value="Sasquatch"
+                        control={<Radio size="small" />}
+                        label="Sasquatch"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Box>
               </Box>
               <Box sx={{ marginBottom: '2rem', marginTop: '2rem' }}>
                 <Button size="large" variant="contained" fullWidth>
@@ -209,6 +249,11 @@ export default function Page() {
                   Address:
                 </Typography>
                 {state.address}
+                <hr />
+                <Typography variant="body1" color="secondary">
+                  Monster:
+                </Typography>
+                {state.monster}
                 <hr />
                 <Stack
                   sx={{ marginBottom: '2rem', marginTop: '2rem' }}
@@ -372,11 +417,6 @@ export default function Page() {
         <Paper
           sx={{
             p: 4,
-          }}
-        ></Paper>
-        <Paper
-          sx={{
-            p: 4,
             display: 'flex',
             flexDirection: 'column',
             // minHeight: 240,
@@ -486,22 +526,6 @@ export default function Page() {
           <Button variant="contained" size="large" sx={{ width: 480 }}>
             Submit
           </Button>
-          <form style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-            <fieldset>
-              <legend>Choose your favorite monster</legend>
-
-              <input type="radio" id="kraken" name="monster" value="K" />
-              <label htmlFor="kraken">Kraken</label>
-              <br />
-
-              <input type="radio" id="sasquatch" name="monster" value="S" />
-              <label htmlFor="sasquatch">Sasquatch</label>
-              <br />
-
-              <input type="radio" id="mothman" name="monster" value="M" />
-              <label htmlFor="mothman">Mothman</label>
-            </fieldset>
-          </form>
         </Paper>
       </React.Fragment>
     </DashboardLayout>

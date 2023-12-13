@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Button,
   Container,
@@ -43,6 +42,7 @@ import CardStatsDefault from '@components/Stats/Default'
 import CardStatsBadged from '@components/Stats/Badge'
 import CardStatsSummary from '@components/Stats/Summary'
 import BadgeDefault from '@components/Badge/Default'
+import AlertSnackBar from '@components/Alert/SnackBar'
 import React from 'react'
 
 export default function Page() {
@@ -117,55 +117,131 @@ export default function Page() {
                 <CardStatsBadged />
               </Box>
             </Box>
-            <Box marginBottom={2}>
-              <Typography
-                marginBottom={1}
-                color="secondary"
-                component="h4"
-                variant="subtitle2"
-              >
-                Icon
-              </Typography>
-              <Stack direction={'row'} spacing={1}>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-primary)',
-                  }}
+            <Box marginY={3} display={'inline'}>
+              <Stack direction={'row'} spacing={2}>
+                <Stack
+                  direction={'row'}
+                  spacing={1}
+                  alignContent={'center'}
+                  alignItems={'center'}
                 >
-                  <IconHourglassHigh color="white" stroke={1.1} />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-warning)',
-                  }}
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Icon
+                  </Typography>
+                  <IconButton
+                    sx={{
+                      borderRadius: 'calc(0.5rem* 1 )',
+                      boxShadow: 'none',
+                      width: 'calc(2.75rem * 1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--gradient-primary)',
+                    }}
+                  >
+                    <IconHourglassHigh color="white" stroke={1.1} />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      borderRadius: 'calc(0.5rem* 1 )',
+                      boxShadow: 'none',
+                      width: 'calc(2.75rem * 1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--gradient-warning)',
+                    }}
+                  >
+                    <IconHourglass color="white" stroke={1.1} />
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      borderRadius: 'calc(0.5rem* 1 )',
+                      boxShadow: 'none',
+                      width: 'calc(2.75rem * 1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'var(--gradient-primary)',
+                    }}
+                  >
+                    <IconShoppingCart color="white" stroke={1.1} />
+                  </IconButton>
+                </Stack>
+                <Stack
+                  direction={'row'}
+                  spacing={2}
+                  alignContent={'center'}
+                  alignItems={'center'}
                 >
-                  <IconHourglass color="white" stroke={1.1} />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    borderRadius: 'calc(0.5rem* 1 )',
-                    boxShadow: 'none',
-                    width: 'calc(2.75rem * 1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'var(--gradient-primary)',
-                  }}
-                >
-                  <IconShoppingCart color="white" stroke={1.1} />
-                </IconButton>
+                  <Typography
+                    marginBottom={1}
+                    color="secondary"
+                    component="h4"
+                    variant="subtitle2"
+                  >
+                    Alert
+                  </Typography>
+                  <Grid container direction={'row'} spacing={2} gap={2}>
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="success"
+                      type="relative"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="warning"
+                      type="relative"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="info"
+                      type="relative"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="error"
+                      type="relative"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="success"
+                      type="relative"
+                      variant="outlined"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="warning"
+                      type="relative"
+                      variant="filled"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="info"
+                      type="relative"
+                      variant="outlined"
+                    />
+                    <AlertSnackBar
+                      title="Hold Up"
+                      message="This is the message"
+                      mode="error"
+                      type="relative"
+                      variant="outlined"
+                    />
+                  </Grid>
+                </Stack>
               </Stack>
             </Box>
             <Box marginBottom={2}>
