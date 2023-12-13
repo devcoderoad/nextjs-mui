@@ -1,18 +1,15 @@
 import * as React from 'react'
 
-import MuiAlert, {
-  AlertColor,
-  AlertProps,
-  AlertPropsVariantOverrides,
-} from '@mui/material/Alert'
+import MuiAlert, { AlertColor, AlertProps } from '@mui/material/Alert'
 
 import { OverridableStringUnion } from '@mui/types'
-import { Snackbar, AlertTitle, Collapse } from '@mui/material'
+import { Snackbar, AlertTitle, Fade, IconButton } from '@mui/material'
 import {
   IconAlertTriangle,
   IconCircleCheck,
   IconExclamationCircle,
   IconInfoCircle,
+  IconX,
 } from '@tabler/icons-react'
 
 const Alert = React.forwardRef(function Alert(
@@ -65,6 +62,7 @@ export default function SnackBar(props: OwnProps) {
     mode = 'error',
     type = 'fixed',
     variant = 'standard',
+    ...rest
   } = props
   const [open, setOpen] = React.useState(true)
 
@@ -77,19 +75,29 @@ export default function SnackBar(props: OwnProps) {
   }
 
   const renderAlert = () => (
-    <Collapse in={open}>
+    <Fade in={open}>
       <Alert
-        onClose={handleCloseAlert}
+        action={
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={handleCloseAlert}
+          >
+            <IconX size={16} style={{ ...modeRecord[mode] }} />
+          </IconButton>
+        }
         severity={mode}
         sx={{ ...modeRecord[mode] }}
         iconMapping={{ [mode]: iconRecord[mode] }}
-        elevation={4}
+        elevation={2}
         variant={variant}
+        {...rest}
       >
         <AlertTitle>{title}</AlertTitle>
         {message}
       </Alert>
-    </Collapse>
+    </Fade>
   )
 
   return type === 'fixed' ? (
