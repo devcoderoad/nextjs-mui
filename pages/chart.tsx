@@ -5,9 +5,11 @@ import {
   Card,
   CardActionArea,
   CardActions,
+  CardContent,
   CardHeader,
   Container,
   Grid,
+  IconButton,
   Paper,
   Stack,
   Typography,
@@ -23,61 +25,24 @@ import {
   ChartApex,
   ChartApexArea,
   ChartApexBar,
+  ChartApexDonut,
+  ChartApexPie,
+  ChartApexRadial,
 } from '@components/Chart/apexcharts'
 import TabsDefault from '@components/Tabs/Default'
 import {
+  IconArrowBounce,
   IconHandClick,
-  IconHandTwoFingers,
+  IconReceipt2,
+  IconReportAnalytics,
   IconReportMoney,
   IconShoppingBagPlus,
-  IconUser,
   IconUserCircle,
+  IconZoomMoney,
 } from '@tabler/icons-react'
 
 export default function Page() {
   function renderChartOne() {
-    return (
-      <Stack justifyContent="space-between" direction="column" spacing={0}>
-        <Stack
-          justifyContent="space-between"
-          direction="row"
-          spacing={0}
-          mb={2}
-        >
-          <Box>
-            <Typography variant="h6">Chart Paper</Typography>
-          </Box>
-          <Box>
-            <Cog />
-          </Box>
-        </Stack>
-        <Grid container justifyContent="space-between" spacing={5}>
-          <Grid item xl={4}>
-            <Paper elevation={6}>
-              <ChartApexBasicArea />
-            </Paper>
-          </Grid>
-          <Grid item xl={4}>
-            <Paper elevation={6}>
-              <ChartApex />
-            </Paper>
-          </Grid>
-          <Grid item xl={4}>
-            <Paper elevation={6}>
-              <ChartApexArea />
-            </Paper>
-          </Grid>
-          <Grid item xl={4}>
-            <Paper elevation={6}>
-              <ChartApexBar />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Stack>
-    )
-  }
-
-  function renderChartTwo() {
     return (
       <Stack justifyContent="space-between" direction="column" spacing={0}>
         <Stack
@@ -98,84 +63,392 @@ export default function Page() {
             <Card>
               <CardHeader
                 title={
-                  <Typography variant="h6">
-                    Visitor
-                    <IconUserCircle
-                      style={{
-                        verticalAlign: 'middle',
-                        marginLeft: 2,
-                        float: 'right',
-                      }}
+                  <Box lineHeight={0}>
+                    <Typography variant="caption">
+                      Visitor
+                      <IconUserCircle
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight={'bold'}
                       color="var(--secondary)"
-                      size={24}
-                    />
-                  </Typography>
+                    >
+                      123k
+                    </Typography>
+                  </Box>
                 }
               />
-              <ChartApexBasicArea />
+              <CardContent>
+                <ChartApex />
+              </CardContent>
             </Card>
           </Grid>
           <Grid item xl={4}>
             <Card>
               <CardHeader
                 title={
-                  <Typography variant="h6">
-                    Summary
-                    <IconShoppingBagPlus
-                      style={{
-                        verticalAlign: 'middle',
-                        marginLeft: 2,
-                        float: 'right',
-                      }}
+                  <Box lineHeight={0}>
+                    <Typography variant="caption">
+                      Summary
+                      <IconShoppingBagPlus
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight={'bold'}
                       color="var(--secondary)"
-                      size={24}
-                    />
-                  </Typography>
+                    >
+                      22k
+                    </Typography>
+                  </Box>
                 }
               />
-              <ChartApex />
+              <CardContent>
+                <ChartApexBasicArea />
+              </CardContent>
             </Card>
           </Grid>
           <Grid item xl={4}>
             <Card>
               <CardHeader
                 title={
-                  <Typography variant="h6">
-                    Anatomy
-                    <IconHandClick
-                      style={{
-                        verticalAlign: 'middle',
-                        marginLeft: 2,
-                        float: 'right',
-                      }}
+                  <Box lineHeight={0}>
+                    <Typography variant="caption">
+                      Anatomy
+                      <IconHandClick
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight={'bold'}
                       color="var(--secondary)"
-                      size={24}
-                    />
-                  </Typography>
+                    >
+                      33k
+                    </Typography>
+                  </Box>
                 }
               />
-              <ChartApexArea />
+              <CardContent>
+                <ChartApexArea />
+              </CardContent>
             </Card>
           </Grid>
           <Grid item xl={4}>
             <Card>
               <CardHeader
                 title={
-                  <Typography variant="h6">
-                    Sales
-                    <IconReportMoney
-                      style={{
-                        verticalAlign: 'middle',
-                        marginLeft: 2,
-                        float: 'right',
-                      }}
+                  <Box lineHeight={0}>
+                    <Typography variant="caption">
+                      Sales
+                      <IconReportMoney
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight={'bold'}
                       color="var(--secondary)"
-                      size={24}
-                    />
-                  </Typography>
+                    >
+                      $52,945
+                    </Typography>
+                  </Box>
                 }
               />
               <ChartApexBar />
+            </Card>
+          </Grid>
+        </Grid>
+      </Stack>
+    )
+  }
+
+  function renderChartTwo() {
+    return (
+      <Stack justifyContent="space-between" direction="column" spacing={0}>
+        <Stack
+          justifyContent="space-between"
+          direction="row"
+          spacing={0}
+          mb={2}
+        >
+          <Box>
+            <Typography variant="h6">Chart Paper</Typography>
+          </Box>
+          <Box>
+            <Cog />
+          </Box>
+        </Stack>
+        <Grid container justifyContent="space-between" spacing={5}>
+          <Grid item xl={4}>
+            <Stack
+              direction={'row'}
+              gap={0.5}
+              alignItems={'center'}
+              justifyItems={'center'}
+              mb={1}
+            >
+              <Box color="success.main">
+                <IconReceipt2 size={36} stroke={1.5} />
+              </Box>
+              <Box color="success.main">
+                <Typography
+                  fontWeight={'bolder'}
+                  fontSize={14}
+                  lineHeight={0.5}
+                >
+                  Sales Summary
+                </Typography>
+                <Typography variant="caption" color={'secondary.dark'}>
+                  10% up since last month
+                </Typography>
+              </Box>
+            </Stack>
+            <Paper elevation={2}>
+              <ChartApex />
+            </Paper>
+          </Grid>
+          <Grid item xl={4}>
+            <Stack
+              direction={'row'}
+              gap={0.5}
+              alignItems={'center'}
+              justifyItems={'center'}
+              mb={1}
+            >
+              <Box color="info.main">
+                <IconReportAnalytics size={36} stroke={1.5} />
+              </Box>
+              <Box color="info.main">
+                <Typography
+                  fontWeight={'bolder'}
+                  fontSize={14}
+                  lineHeight={0.5}
+                >
+                  Analytic Summary
+                </Typography>
+                <Typography variant="caption" color={'secondary.dark'}>
+                  10% up since last month
+                </Typography>
+              </Box>
+            </Stack>
+            <Paper elevation={2}>
+              <ChartApexBasicArea />
+            </Paper>
+          </Grid>
+          <Grid item xl={4}>
+            <Stack
+              direction={'row'}
+              gap={0.5}
+              alignItems={'center'}
+              justifyItems={'center'}
+              mb={1}
+            >
+              <Box color="primary.main">
+                <IconZoomMoney size={36} stroke={1.5} />
+              </Box>
+              <Box color="primary.main">
+                <Typography
+                  fontWeight={'bolder'}
+                  fontSize={14}
+                  lineHeight={0.5}
+                >
+                  Revenue
+                </Typography>
+                <Typography variant="caption" color={'secondary.dark'}>
+                  10% up since last month
+                </Typography>
+              </Box>
+            </Stack>
+            <Paper elevation={2}>
+              <ChartApexArea />
+            </Paper>
+          </Grid>
+          <Grid item xl={4}>
+            <Stack
+              direction={'row'}
+              gap={0.5}
+              alignItems={'center'}
+              justifyItems={'center'}
+              mb={1}
+            >
+              <Box color="error.main">
+                <IconArrowBounce size={38} stroke={1.5} />
+              </Box>
+              <Box color="error.main">
+                <Typography
+                  fontWeight={'bolder'}
+                  fontSize={14}
+                  lineHeight={0.5}
+                >
+                  Turnover
+                </Typography>
+                <Typography variant="caption" color={'secondary.dark'}>
+                  10% up since last month
+                </Typography>
+              </Box>
+            </Stack>
+            <Paper elevation={2}>
+              <ChartApexBar />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Stack>
+    )
+  }
+
+  function renderChartThree() {
+    return (
+      <Stack justifyContent="space-between" direction="column" spacing={0}>
+        <Stack
+          justifyContent="space-between"
+          direction="row"
+          spacing={0}
+          mb={2}
+        >
+          <Box>
+            <Typography variant="h6">Chart Card</Typography>
+          </Box>
+          <Box>
+            <Cog />
+          </Box>
+        </Stack>
+        <Grid container justifyContent="space-between" spacing={5}>
+          <Grid item xl={4}>
+            <Card>
+              <CardHeader
+                title={
+                  <Box lineHeight={0}>
+                    <Typography variant="h6">
+                      Visitor
+                      <IconUserCircle
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography variant="caption" color="var(--secondary)">
+                      77k
+                    </Typography>
+                  </Box>
+                }
+              />
+              <CardContent>
+                <ChartApexDonut />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xl={4}>
+            <Card>
+              <CardHeader
+                title={
+                  <Box lineHeight={0}>
+                    <Typography variant="h6">
+                      Summary
+                      <IconShoppingBagPlus
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography variant="caption" color="var(--secondary)">
+                      89k
+                    </Typography>
+                  </Box>
+                }
+              />
+              <CardContent>
+                <ChartApexPie />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xl={4}>
+            <Card>
+              <CardHeader
+                title={
+                  <Box lineHeight={0}>
+                    <Typography variant="h6">
+                      Anatomy
+                      <IconHandClick
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography variant="caption" color="var(--secondary)">
+                      54k
+                    </Typography>
+                  </Box>
+                }
+              />
+              <CardContent>
+                <ChartApexArea />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xl={4}>
+            <Card>
+              <CardHeader
+                title={
+                  <Box lineHeight={0}>
+                    <Typography variant="h6">
+                      Sales
+                      <IconReportMoney
+                        style={{
+                          verticalAlign: 'middle',
+                          marginLeft: 2,
+                          float: 'right',
+                        }}
+                        color="var(--secondary)"
+                        size={24}
+                      />
+                    </Typography>
+                    <Typography variant="caption" color="var(--secondary)">
+                      231k
+                    </Typography>
+                  </Box>
+                }
+              />
+              <ChartApexRadial />
             </Card>
           </Grid>
         </Grid>
@@ -199,7 +472,7 @@ export default function Page() {
               items={[
                 { key: 1, title: 'Chart Paper', item: renderChartOne() },
                 { key: 2, title: 'Chart Card', item: renderChartTwo() },
-                { key: 3, title: 'Chart JS Three', item: renderChartOne() },
+                { key: 3, title: 'Chart Pie', item: renderChartThree() },
               ]}
             />
           </Paper>

@@ -314,4 +314,9 @@ export const globalStyles = css`
       color: #ffffff;
     }
   }
+  .apexcharts-tooltip {
+    /* background: #f3f3f3 !important;
+    color: orange !important; */
+    border-radius: 0 !important;
+  }
 `

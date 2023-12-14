@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 // import { Box, DefaultProps, useMantineTheme, Sx } from '@mantine/core'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { ApexOptions } from 'apexcharts'
 import { ReactNode } from 'react'
 // import { LoaderOverlay } from '@/components/loader'
@@ -12,7 +12,7 @@ const ApexChartReact = dynamic(
   () => import('react-apexcharts').then((mod) => mod),
   {
     ssr: false,
-    loading: () => <>Loading</>,
+    loading: () => <Typography variant="caption">Loading</Typography>,
   }
 )
 
@@ -24,6 +24,7 @@ function ChartApex(props: {
   const itemChart: ApexOptions = {
     chart: {
       id: 'basic-sparkline',
+      height: 120,
       sparkline: {
         enabled: true,
       },
@@ -54,6 +55,8 @@ function ChartApex(props: {
         '7/11/2000',
         '8/11/2000',
         '9/11/2000',
+        '10/11/2000',
+        '11/11/2000',
       ],
       labels: { show: false },
     },
@@ -82,7 +85,7 @@ function ChartApex(props: {
     series: [
       {
         name: 'Sales',
-        data: [10, 3, 10, 9, 29, 19, 22, 9, 12],
+        data: [10, 3, 10, 9, 29, 19, 22, 9, 12, 2, 20],
       },
     ],
   }
@@ -104,7 +107,7 @@ function ChartApex(props: {
       <ApexChartReact
         options={itemChart}
         series={itemChart.series}
-        height="280"
+        height="120"
       />
     </Box>
   )
@@ -118,7 +121,7 @@ function ChartApexArea(props: {
   const itemAreas: ApexOptions = {
     chart: {
       id: 'basic-bar',
-      height: 280,
+      height: 120,
       sparkline: {
         enabled: true,
       },
@@ -127,7 +130,9 @@ function ChartApexArea(props: {
       show: false,
     },
     xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      categories: [
+        1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+      ],
     },
     fill: {
       type: 'gradient',
@@ -140,8 +145,8 @@ function ChartApexArea(props: {
     },
     series: [
       {
-        name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
+        name: 'yearly',
+        data: [30, 10, 45, 20, 49, 60, 50, 71, 55, 78, 62, 80],
       },
     ],
   }
@@ -164,7 +169,7 @@ function ChartApexArea(props: {
         options={itemAreas}
         series={itemAreas.series}
         type="area"
-        height="280"
+        height="120"
         width="100%"
       />
       {/* <ApexChartReact
@@ -184,14 +189,28 @@ function ChartApexBasicArea(props: {
   // sx: Sx[] | Sx
 }): ReactNode {
   const itemBasic: ApexOptions = {
+    tooltip: {
+      theme: 'dark',
+      // style: {
+      //   fontSize: '3rem',
+      // },
+    },
     chart: {
       id: 'basic-area',
-      height: 280,
+      height: 120,
       type: 'area',
       toolbar: {
         show: false,
       },
       sparkline: { enabled: true },
+      dropShadow: {
+        enabled: !0,
+        top: 3,
+        left: 14,
+        blur: 4,
+        opacity: 0.12,
+        color: '#0d6efd',
+      },
     },
     dataLabels: {
       enabled: false,
@@ -254,7 +273,112 @@ function ChartApexBasicArea(props: {
         options={itemBasic}
         series={itemBasic.series}
         id="basic-area"
-        height="280"
+        height="120"
+      />
+    </Box>
+  )
+}
+
+function ChartApexBar(props: {
+  type?: 'sparkline' | ''
+  data?: any
+  // sx: Sx[] | Sx
+}): ReactNode {
+  const options: ApexOptions = {
+    series: [
+      {
+        name: 'Net Profit',
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+      },
+      {
+        name: 'Revenue',
+        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+      },
+      {
+        name: 'Free Cash Flow',
+        data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+      },
+    ],
+    chart: {
+      type: 'bar',
+      height: 120,
+      toolbar: {
+        show: false,
+      },
+      sparkline: { enabled: true },
+    },
+    grid: {
+      show: false,
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '55%',
+        borderRadius: 3,
+        // endingShape: 'rounded',
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: ['transparent'],
+    },
+    xaxis: {
+      categories: [
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+      ],
+    },
+    yaxis: {
+      title: {
+        text: '$ (thousands)',
+      },
+    },
+    fill: {
+      opacity: 1,
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return '$ ' + val + ' thousands'
+        },
+      },
+    },
+  }
+  return (
+    <Box
+      sx={{
+        '.apexcharts-tooltip': {
+          background: '#f3f3f3',
+          color: 'black',
+          zIndex: 1040,
+          '.apexcharts-tooltip-title': {
+            padding: '.25rem 0 0 .5rem',
+          },
+        },
+      }}
+      // {...rest}
+    >
+      <ApexChartReact
+        // chart={itemPies.chart}
+        // {...itemPies}
+        // type="donut"
+        type="bar"
+        options={options}
+        series={options.series}
+        id="basic-pie"
+        // width="100%"
+        height="120"
       />
     </Box>
   )
@@ -267,9 +391,11 @@ function ChartApexDonut(props: {
 }): ReactNode {
   const itemDonut: ApexOptions = {
     chart: {
-      height: 280,
+      // height: 120,
+      // height: '880',
       // id: 'basic-donut',
-      // type: 'donut',
+      // height: '280',
+      type: 'donut',
       toolbar: {
         show: false,
       },
@@ -313,7 +439,8 @@ function ChartApexDonut(props: {
         type="donut"
         series={itemDonut.series}
         id="basic-donut"
-        height="280"
+        // width="100%"
+        height="580"
       />
     </Box>
   )
@@ -387,86 +514,24 @@ function ChartApexPie(props: {
         series={options.series}
         id="basic-pie"
         width="100%"
-        height="310"
+        height="280"
       />
     </Box>
   )
 }
 
-function ChartApexBar(props: {
+function ChartApexGauge(props: {
   type?: 'sparkline' | ''
   data?: any
   // sx: Sx[] | Sx
 }): ReactNode {
   const options: ApexOptions = {
-    series: [
-      {
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
-      },
-      {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
-      },
-      {
-        name: 'Free Cash Flow',
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
-      },
-    ],
     chart: {
-      type: 'bar',
-      height: 280,
-      toolbar: {
-        show: false,
-      },
-      sparkline: { enabled: true },
+      height: 350,
+      type: 'radialBar',
     },
-    grid: {
-      show: false,
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '55%',
-        // endingShape: 'rounded',
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ['transparent'],
-    },
-    xaxis: {
-      categories: [
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-      ],
-    },
-    yaxis: {
-      title: {
-        text: '$ (thousands)',
-      },
-    },
-    fill: {
-      opacity: 1,
-    },
-    tooltip: {
-      y: {
-        formatter: function (val) {
-          return '$ ' + val + ' thousands'
-        },
-      },
-    },
+    series: [70],
+    labels: ['Progress'],
   }
   return (
     <Box
@@ -486,12 +551,12 @@ function ChartApexBar(props: {
         // chart={itemPies.chart}
         // {...itemPies}
         // type="donut"
-        type="bar"
+        type="radialBar"
         options={options}
         series={options.series}
-        id="basic-pie"
+        id="basic-radialBar"
         // width="100%"
-        height="280"
+        // height="120"
       />
     </Box>
   )
@@ -505,7 +570,7 @@ function ChartApexRadial(props: {
   const options: ApexOptions = {
     series: [76, 67, 61, 90],
     chart: {
-      height: 280,
+      height: 120,
       type: 'radialBar',
     },
     grid: {
@@ -541,9 +606,9 @@ function ChartApexRadial(props: {
       show: true,
       floating: true,
       fontSize: '14px',
-      position: 'left',
-      offsetX: 160,
-      offsetY: 15,
+      position: 'right',
+      offsetX: 170,
+      offsetY: 5,
       labels: {
         useSeriesColors: true,
       },
@@ -594,7 +659,7 @@ function ChartApexRadial(props: {
         series={options.series}
         id="basic-radialBar"
         // width="100%"
-        height="310"
+        // height="120"
       />
     </Box>
   )
@@ -608,4 +673,5 @@ export {
   ChartApexPie,
   ChartApexBar,
   ChartApexRadial,
+  ChartApexGauge,
 }
