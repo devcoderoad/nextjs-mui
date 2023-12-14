@@ -45,7 +45,12 @@ import {
 export default function Page() {
   function renderChartOne() {
     return (
-      <Stack justifyContent="space-between" direction="column" spacing={0}>
+      <Stack
+        key={1}
+        justifyContent="space-between"
+        direction="column"
+        spacing={0}
+      >
         <Stack
           justifyContent="space-between"
           direction="row"
@@ -59,7 +64,19 @@ export default function Page() {
             <Cog />
           </Box>
         </Stack>
-        <Grid container justifyContent="space-between" spacing={5}>
+        <Grid
+          container
+          justifyContent="space-between"
+          spacing={3}
+          sx={{
+            '.MuiCardContent-root': {
+              paddingTop: 0,
+            },
+            '.MuiCardHeader-root': {
+              paddingBottom: 0,
+            },
+          }}
+        >
           <Grid item xl={4}>
             <Card>
               <CardHeader
@@ -183,7 +200,9 @@ export default function Page() {
                   </Box>
                 }
               />
-              <ChartApexBar />
+              <CardContent>
+                <ChartApexBar />
+              </CardContent>
             </Card>
           </Grid>
         </Grid>
@@ -193,7 +212,12 @@ export default function Page() {
 
   function renderChartTwo() {
     return (
-      <Stack justifyContent="space-between" direction="column" spacing={0}>
+      <Stack
+        key={2}
+        justifyContent="space-between"
+        direction="column"
+        spacing={0}
+      >
         <Stack
           justifyContent="space-between"
           direction="row"
@@ -327,7 +351,12 @@ export default function Page() {
 
   function renderChartThree() {
     return (
-      <Stack justifyContent="space-between" direction="column" spacing={0}>
+      <Stack
+        key={3}
+        justifyContent="space-between"
+        direction="column"
+        spacing={0}
+      >
         <Stack
           justifyContent="space-between"
           direction="row"
@@ -343,7 +372,7 @@ export default function Page() {
         </Stack>
         <Grid container justifyContent="space-between" spacing={5}>
           <Grid item xl={4}>
-            <Card>
+            <Card sx={{ width: '394px' }}>
               <CardHeader
                 title={
                   <Box lineHeight={0}>
@@ -371,7 +400,7 @@ export default function Page() {
             </Card>
           </Grid>
           <Grid item xl={4}>
-            <Card>
+            <Card sx={{ width: '394px' }}>
               <CardHeader
                 title={
                   <Box lineHeight={0}>
@@ -399,7 +428,7 @@ export default function Page() {
             </Card>
           </Grid>
           <Grid item xl={4}>
-            <Card>
+            <Card sx={{ width: '394px' }}>
               <CardHeader
                 title={
                   <Box lineHeight={0}>
@@ -426,13 +455,13 @@ export default function Page() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xl={4}>
-            <Card>
+          <Grid item xl={4} maxWidth={'540px'}>
+            <Card sx={{ width: '394px' }}>
               <CardHeader
                 title={
                   <Box lineHeight={0}>
                     <Typography variant="h6">
-                      Sales
+                      Acquisition
                       <IconReportMoney
                         style={{
                           verticalAlign: 'middle',

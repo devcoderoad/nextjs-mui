@@ -23,6 +23,7 @@ function ChartApex(props: {
 }): ReactNode {
   const itemChart: ApexOptions = {
     chart: {
+      fontFamily: 'inherit',
       id: 'basic-sparkline',
       height: 120,
       sparkline: {
@@ -113,6 +114,103 @@ function ChartApex(props: {
   )
 }
 
+function ChartApexBasicArea(props: {
+  type?: 'sparkline' | ''
+  data?: any
+  // sx: Sx[] | Sx
+}): ReactNode {
+  const itemBasic: ApexOptions = {
+    chart: {
+      fontFamily: 'inherit',
+      id: 'basic-area',
+      height: 120,
+      type: 'area',
+      toolbar: {
+        show: false,
+      },
+      sparkline: { enabled: true },
+      dropShadow: {
+        enabled: !0,
+        top: 3,
+        left: 14,
+        blur: 4,
+        opacity: 0.12,
+        color: '#0d6efd',
+      },
+    },
+    tooltip: {
+      theme: 'dark',
+      // style: {
+      //   fontSize: '3rem',
+      // },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 90, 100],
+      },
+    },
+    grid: {
+      show: false,
+    },
+    yaxis: {
+      labels: { show: false },
+    },
+    xaxis: {
+      labels: { show: false },
+      categories: [
+        '01 Jan',
+        '02 Jan',
+        '03 Jan',
+        '04 Jan',
+        '05 Jan',
+        '06 Jan',
+        '07 Jan',
+        '08 Jan',
+        '09 Jan',
+        '10 Jan',
+        '11 Jan',
+        '12 Jan',
+      ],
+    },
+    series: [
+      {
+        name: 'Summary',
+        data: [24, 32, 25, 34, 26, 35, 27, 36, 28, 37, 29],
+      },
+    ],
+  }
+
+  return (
+    <Box
+      sx={{
+        '.apexcharts-tooltip': {
+          background: '#f3f3f3',
+          color: 'black',
+          zIndex: 1040,
+          '.apexcharts-tooltip-title': {
+            padding: '.25rem 0 0 .5rem',
+          },
+        },
+      }}
+      // {...rest}
+    >
+      <ApexChartReact
+        options={itemBasic}
+        series={itemBasic.series}
+        id="basic-area"
+        height="120"
+      />
+    </Box>
+  )
+}
+
 function ChartApexArea(props: {
   type?: 'sparkline' | ''
   data?: any
@@ -120,6 +218,7 @@ function ChartApexArea(props: {
 }): ReactNode {
   const itemAreas: ApexOptions = {
     chart: {
+      fontFamily: 'inherit',
       id: 'basic-bar',
       height: 120,
       sparkline: {
@@ -183,102 +282,6 @@ function ChartApexArea(props: {
   )
 }
 
-function ChartApexBasicArea(props: {
-  type?: 'sparkline' | ''
-  data?: any
-  // sx: Sx[] | Sx
-}): ReactNode {
-  const itemBasic: ApexOptions = {
-    tooltip: {
-      theme: 'dark',
-      // style: {
-      //   fontSize: '3rem',
-      // },
-    },
-    chart: {
-      id: 'basic-area',
-      height: 120,
-      type: 'area',
-      toolbar: {
-        show: false,
-      },
-      sparkline: { enabled: true },
-      dropShadow: {
-        enabled: !0,
-        top: 3,
-        left: 14,
-        blur: 4,
-        opacity: 0.12,
-        color: '#0d6efd',
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
-        stops: [0, 90, 100],
-      },
-    },
-    grid: {
-      show: false,
-    },
-    yaxis: {
-      labels: { show: false },
-    },
-    xaxis: {
-      labels: { show: false },
-      categories: [
-        '01 Jan',
-        '02 Jan',
-        '03 Jan',
-        '04 Jan',
-        '05 Jan',
-        '06 Jan',
-        '07 Jan',
-        '08 Jan',
-        '09 Jan',
-        '10 Jan',
-        '11 Jan',
-        '12 Jan',
-      ],
-    },
-    series: [
-      {
-        name: 'Series 1',
-        data: [45, 32, 38, 40, 20, 28, 20, 38, 22, 38, 42],
-      },
-    ],
-  }
-
-  return (
-    <Box
-      sx={{
-        '.apexcharts-tooltip': {
-          background: '#f3f3f3',
-          color: 'black',
-          zIndex: 1040,
-          '.apexcharts-tooltip-title': {
-            padding: '.25rem 0 0 .5rem',
-          },
-        },
-      }}
-      // {...rest}
-    >
-      <ApexChartReact
-        options={itemBasic}
-        series={itemBasic.series}
-        id="basic-area"
-        height="120"
-      />
-    </Box>
-  )
-}
-
 function ChartApexBar(props: {
   type?: 'sparkline' | ''
   data?: any
@@ -300,6 +303,8 @@ function ChartApexBar(props: {
       },
     ],
     chart: {
+      id: 'bar-chart',
+      fontFamily: 'inherit',
       type: 'bar',
       height: 120,
       toolbar: {
@@ -409,32 +414,37 @@ function ChartApexDonut(props: {
 }): ReactNode {
   const itemDonut: ApexOptions = {
     chart: {
-      // height: 120,
-      // height: '880',
-      // id: 'basic-donut',
-      // height: '280',
+      fontFamily: 'inherit',
       type: 'donut',
       toolbar: {
         show: false,
       },
     },
     series: [44, 55, 41, 17, 15],
-    // chart: {
-    //   type: 'donut',
-    // },
-    responsive: [
-      {
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200,
-          },
-          legend: {
-            position: 'bottom',
+    labels: ['Apple', 'Mango', 'Orange', 'Watermelon', 'Avocado'],
+    dataLabels: {
+      enabled: true,
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 5,
+        left: 7,
+        blur: 6,
+        opacity: 0.1,
+      },
+    },
+    plotOptions: {
+      pie: {
+        customScale: 1,
+        donut: {
+          background: 'rgba(0,0,0,0.05)',
+          size: '60%',
+          labels: {
+            show: true,
           },
         },
       },
-    ],
+    },
   }
   return (
     <Box
@@ -442,6 +452,7 @@ function ChartApexDonut(props: {
         '.apexcharts-tooltip': {
           background: '#f3f3f3',
           color: 'black',
+          borderRadius: 0,
           zIndex: 1040,
           '.apexcharts-tooltip-title': {
             padding: '.25rem 0 0 .5rem',
@@ -451,14 +462,12 @@ function ChartApexDonut(props: {
       // {...rest}
     >
       <ApexChartReact
-        // chart={itemPies.chart}
-        // {...itemPies}
         options={itemDonut}
         type="donut"
         series={itemDonut.series}
         id="basic-donut"
         // width="100%"
-        height="580"
+        height="380px"
       />
     </Box>
   )
@@ -472,6 +481,7 @@ function ChartApexPie(props: {
   const options: ApexOptions = {
     series: [25, 15, 44, 55, 41, 17],
     chart: {
+      fontFamily: 'inherit',
       width: '100%',
       type: 'pie',
     },
@@ -491,13 +501,13 @@ function ChartApexPie(props: {
     plotOptions: {
       pie: {
         dataLabels: {
-          offset: -5,
+          offset: 18,
         },
       },
     },
-    title: {
-      text: 'Monochrome Pie',
-    },
+    // title: {
+    //   text: 'Monochrome Pie',
+    // },
     dataLabels: {
       formatter(val: any, opts): any {
         const name = opts.w.globals.labels[opts.seriesIndex]
@@ -532,7 +542,7 @@ function ChartApexPie(props: {
         series={options.series}
         id="basic-pie"
         width="100%"
-        height="280"
+        height="220"
       />
     </Box>
   )
@@ -545,7 +555,8 @@ function ChartApexGauge(props: {
 }): ReactNode {
   const options: ApexOptions = {
     chart: {
-      height: 350,
+      fontFamily: 'inherit',
+      height: 220,
       type: 'radialBar',
     },
     series: [70],
@@ -574,7 +585,7 @@ function ChartApexGauge(props: {
         series={options.series}
         id="basic-radialBar"
         // width="100%"
-        // height="120"
+        height="220"
       />
     </Box>
   )
@@ -588,6 +599,7 @@ function ChartApexRadial(props: {
   const options: ApexOptions = {
     series: [76, 67, 61, 90],
     chart: {
+      fontFamily: 'inherit',
       height: 120,
       type: 'radialBar',
     },
@@ -630,9 +642,9 @@ function ChartApexRadial(props: {
       labels: {
         useSeriesColors: true,
       },
-      // markers: {
-      //   size: 0,
-      // },
+      markers: {
+        offsetX: -5,
+      },
       formatter: function (seriesName, opts) {
         return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex]
       },
@@ -661,6 +673,10 @@ function ChartApexRadial(props: {
           '.apexcharts-tooltip-title': {
             padding: '.25rem 0 0 .5rem',
           },
+          // '.apexcharts-legend-text': {
+          //   paddingLeft: '15px',
+          //   marginLeft: '-10px',
+          // },
         },
         // '.apexcharts-legend-text': {
         //   fontSize: '.18rem',
