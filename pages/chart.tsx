@@ -28,6 +28,7 @@ import {
   ChartApexDonut,
   ChartApexPie,
   ChartApexRadial,
+  ChartApexGauge,
 } from '@components/Chart/apexcharts'
 import TabsDefault from '@components/Tabs/Default'
 import {
@@ -64,7 +65,7 @@ export default function Page() {
               <CardHeader
                 title={
                   <Box lineHeight={0}>
-                    <Typography variant="caption">
+                    <Typography variant="body2">
                       Visitor
                       <IconUserCircle
                         style={{
@@ -96,7 +97,7 @@ export default function Page() {
               <CardHeader
                 title={
                   <Box lineHeight={0}>
-                    <Typography variant="caption">
+                    <Typography variant="body2">
                       Summary
                       <IconShoppingBagPlus
                         style={{
@@ -128,7 +129,7 @@ export default function Page() {
               <CardHeader
                 title={
                   <Box lineHeight={0}>
-                    <Typography variant="caption">
+                    <Typography variant="body2">
                       Anatomy
                       <IconHandClick
                         style={{
@@ -160,7 +161,7 @@ export default function Page() {
               <CardHeader
                 title={
                   <Box lineHeight={0}>
-                    <Typography variant="caption">
+                    <Typography variant="body2">
                       Sales
                       <IconReportMoney
                         style={{
@@ -421,7 +422,7 @@ export default function Page() {
                 }
               />
               <CardContent>
-                <ChartApexArea />
+                <ChartApexGauge />
               </CardContent>
             </Card>
           </Grid>

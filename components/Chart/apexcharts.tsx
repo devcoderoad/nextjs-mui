@@ -306,6 +306,14 @@ function ChartApexBar(props: {
         show: false,
       },
       sparkline: { enabled: true },
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 5,
+        left: 7,
+        blur: 6,
+        opacity: 0.1,
+      },
     },
     grid: {
       show: false,
@@ -346,6 +354,16 @@ function ChartApexBar(props: {
     },
     fill: {
       opacity: 1,
+      // type: 'gradient',
+      // gradient: {
+      //   shade: 'dark',
+      //   gradientToColors: ['#FDD835'],
+      //   shadeIntensity: 1,
+      //   type: 'horizontal',
+      //   opacityFrom: 1,
+      //   opacityTo: 1,
+      //   stops: [0, 100, 100, 100],
+      // },
     },
     tooltip: {
       y: {
