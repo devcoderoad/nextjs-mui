@@ -7,7 +7,10 @@ import {
   styled,
   Box,
   BadgeOwnProps,
+  BadgePropsColorOverrides,
 } from '@mui/material'
+import { OverridableStringUnion } from '@mui/types'
+
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 export interface OwnProps extends BadgeOwnProps {
   id: number
@@ -15,14 +18,10 @@ export interface OwnProps extends BadgeOwnProps {
   title: string
   text: string
   timeStamp: string
-  type?:
-    | 'primary'
-    | 'secondary'
-    | 'default'
-    | 'error'
-    | 'info'
-    | 'success'
-    | 'warning'
+  type: OverridableStringUnion<
+    'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning',
+    BadgePropsColorOverrides
+  >
 }
 
 export type OwnBadgeProps = {
@@ -31,7 +30,11 @@ export type OwnBadgeProps = {
 }
 
 const StyledBadge = styled(Badge)(
-  ({ color }: { color: Extract<'type', OwnProps> }) => {
+  ({
+    color,
+  }: {
+    color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
+  }) => {
     const defaultColor = {
       primary: {
         backgroundColor: 'primary.main',
@@ -173,7 +176,7 @@ export default function MessageUser({
               >
                 {item.author.slice(0, 1)}
                 <StyledBadge
-                  color={item.type}
+                  color={item?.type}
                   overlap="circular"
                   anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                   variant="dot"

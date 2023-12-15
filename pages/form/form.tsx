@@ -9,25 +9,23 @@ import EmailIcon from '@mui/icons-material/Email'
 import MapIcon from '@mui/icons-material/LocationOn'
 import PhoneIcon from '@mui/icons-material/Phone'
 import {
-  Autocomplete,
   FormControl,
   FormControlLabel,
   FormLabel,
   Grid,
-  IconButton,
   InputLabel,
-  MenuItem,
   Radio,
   RadioGroup,
-  Select,
   Stack,
   Typography,
 } from '@mui/material'
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
 /* Libs */
-import Flag from 'react-world-flags'
-import countries from 'svg-country-flags/countries.json'
+// import Flag from 'react-world-flags'
+// import countries from 'svg-country-flags/countries.json'
+
+import { InputSelect, InputAutoComplete } from '@components/Form/Country'
 
 /* form states */
 const initialValue = {
@@ -422,42 +420,8 @@ export default function Page() {
             // minHeight: 240,
           }}
         >
-          <FormControl fullWidth sx={{ width: 480, marginY: 2 }}>
-            <InputLabel id="simple-select-label">Country</InputLabel>
-            <Select
-              labelId="simple-select-label"
-              id="simple-select"
-              value={selected}
-              label="Country"
-              onChange={(e) => setSelected(String(e.target.value))}
-            >
-              {Object.entries(countries).map((countryCode) => {
-                return (
-                  <MenuItem value={countryCode[1]} key={`${countryCode[0]}`}>
-                    <IconButton
-                      sx={{
-                        overflow: 'hidden',
-                        borderRadius: '100%',
-                        width: 25,
-                        height: 25,
-                        textAlign: 'center',
-                        marginRight: '.75rem',
-                        boxShadow: 'var(--drop-shadow-light)',
-                      }}
-                      size="small"
-                    >
-                      <Flag
-                        code={`${countryCode[0]}`}
-                        height={25}
-                        style={{ marginLeft: 'auto', marginRight: 'auto' }}
-                      />
-                    </IconButton>
-                    {countryCode[1]}
-                  </MenuItem>
-                )
-              })}
-            </Select>
-          </FormControl>
+          <InputSelect />
+
           <FormControl fullWidth sx={{ width: 480, marginY: 2 }}>
             <InputLabel id="simple-select-fieldset">Fieldset</InputLabel>
             <TextField
@@ -479,50 +443,9 @@ export default function Page() {
               </Button>
             </form> */}
           </FormControl>
-          <Autocomplete
-            disablePortal
-            // freeSolo
-            value={Object.entries(countries)
-              .map((countryCode) => ({
-                label: countryCode[1],
-                id: countryCode[0],
-              }))
-              .find((item) => item.label === selected)}
-            id="combo-box-demo"
-            options={Object.entries(countries).map((countryCode) => ({
-              label: countryCode[1],
-              id: countryCode[0],
-            }))}
-            sx={{ width: 480, marginY: 2 }}
-            renderOption={(props, option) => (
-              <Box
-                component="li"
-                sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
-                {...props}
-              >
-                <IconButton
-                  sx={{
-                    overflow: 'hidden',
-                    borderRadius: '100%',
-                    width: 25,
-                    height: 25,
-                    textAlign: 'center',
-                    marginRight: '.75rem',
-                    boxShadow: 'var(--drop-shadow-light)',
-                  }}
-                  size="small"
-                >
-                  <Flag
-                    code={option.id}
-                    height={25}
-                    style={{ marginLeft: 'auto', marginRight: 'auto' }}
-                  />
-                </IconButton>
-                {option.label} {/* ({option.id}) */}
-              </Box>
-            )}
-            renderInput={(params) => <TextField {...params} label="Country" />}
-          />
+
+          <InputAutoComplete />
+
           <Button variant="contained" size="large" sx={{ width: 480 }}>
             Submit
           </Button>

@@ -2,8 +2,6 @@ import { Box, Grid, Paper, Typography } from '@mui/material'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
-/* Components */
-// import Chart from "@components/Chart/ReChart";
 
 export default function Page() {
   return (

@@ -156,6 +156,7 @@ function ChartApexBasicArea(props: {
         stops: [0, 90, 100],
       },
     },
+    colors: ['#ff9900', '#ff0099'],
     grid: {
       show: false,
     },
@@ -183,6 +184,19 @@ function ChartApexBasicArea(props: {
       {
         name: 'Summary',
         data: [24, 32, 25, 34, 26, 35, 27, 36, 28, 37, 29],
+      },
+      {
+        name: 'Change',
+        data: [14, 22, 15, 24, 16, 25, 17, 26, 18, 27, 19],
+        // fill: {
+        //   type: 'gradient',
+        //   gradient: {
+        //     shadeIntensity: 1,
+        //     opacityFrom: 0.7,
+        //     opacityTo: 0.9,
+        //     stops: [0, 90, 100],
+        //   },
+        // },
       },
     ],
   }

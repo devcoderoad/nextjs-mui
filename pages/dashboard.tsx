@@ -1,20 +1,7 @@
 import * as React from 'react'
 
 /* MUI */
-import {
-  Avatar,
-  Button,
-  Box,
-  Divider,
-  Grid,
-  Paper,
-  Typography,
-  IconButton,
-  Popover,
-  Stack,
-  Badge,
-  LinearProgress,
-} from '@mui/material'
+import { Button, Box, Grid, Paper, Typography } from '@mui/material'
 
 /* Layouts */
 import DashboardLayout from '@layouts/DashboardLayout'
@@ -26,16 +13,12 @@ import DashboardBreadcrumb from '@components/Toolbar/Breadcrumb'
 import AvatarProfile from '@components/Avatar/Profile'
 import Cog from '@components/Cog/Default'
 
-import shadows from '@mui/material/styles/shadows'
 /* Icons */
-import { IconCoin, IconUsers, IconFolderPlus } from '@tabler/icons-react'
+import { IconCoin, IconFolderPlus } from '@tabler/icons-react'
 
 /* Components */
 import CardStatsDefault from '@components/Stats/Default'
 import CardStatsBadged from '@components/Stats/Badge'
-
-/* Styles */
-import { styledPaper } from '@src/styles'
 
 function Page() {
   return (
@@ -44,77 +27,6 @@ function Page() {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} xl={12}>
           <CardStatsBadged />
-          {/* <Grid container spacing={2} columns={12}>
-            <Grid item md={4} xs={12}>
-              <Paper sx={styledPaper}>
-                <Typography color="secondary">
-                  <Badge
-                    color="secondary"
-                    badgeContent=" "
-                    variant="dot"
-                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
-                  />
-                  Organic Search Traffic
-                </Typography>
-                <Typography
-                  color={'primary'}
-                  component={'h2'}
-                  fontSize={'28px'}
-                  fontWeight={'900'}
-                  sx={{ display: 'inline', mr: 0.5 }}
-                >
-                  278%
-                </Typography>
-                <small style={{ color: 'red' }}>-17%</small>
-              </Paper>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Paper sx={styledPaper}>
-                <Typography color="secondary">
-                  <Badge
-                    color="warning"
-                    badgeContent=" "
-                    variant="dot"
-                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
-                  />
-                  Paid Search Traffic
-                </Typography>
-                <Typography
-                  color={'orange'}
-                  component={'h2'}
-                  fontSize={'28px'}
-                  fontWeight={'900'}
-                  sx={{ display: 'inline', mr: 0.5 }}
-                >
-                  45%
-                </Typography>
-                <small style={{ color: 'green' }}>+4%</small>
-              </Paper>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Paper sx={styledPaper}>
-                <Typography color="secondary">
-                  <Badge
-                    color="info"
-                    badgeContent=" "
-                    variant="dot"
-                    sx={{ ml: 0.5, mr: 1.25, verticalAlign: 'middle' }}
-                  />
-                  Backlinks
-                </Typography>
-                <Typography
-                  color={'#2e9cf2'}
-                  component={'h2'}
-                  fontSize={'28px'}
-                  fontWeight={'900'}
-                  sx={{ display: 'inline', mr: 0.5 }}
-                >
-                  278%
-                </Typography>
-                <small style={{ color: '#2e9cf2' }}>-17%</small>
-              </Paper>
-            </Grid>
-          </Grid> */}
         </Grid>
         <Grid item xs={12} sm={12} lg={4}>
           <Grid container wrap="wrap" spacing={5} columns={12}>
@@ -161,13 +73,8 @@ function Page() {
         <Grid item xs={12} xl={4}>
           <CardStatsDefault
             title="Total Views"
-            total={9991}
-            items={[
-              { name: 'Swedia', value: 12, type: 'success' },
-              // { name: 'Global', value: 20, type: 'warning' },
-              // { name: 'Finland', value: 88, type: 'info' },
-              // { name: 'Italy', value: 20, type: 'primary' },
-            ]}
+            total={19911}
+            items={[{ name: 'Swedia', value: 12, type: 'success' }]}
             type="primary"
           />
         </Grid>
@@ -180,7 +87,7 @@ function Page() {
           />
         </Grid>
         <Grid item xs={12} xl={4}>
-          <CardStatsDefault type="warning" total={1001} />
+          <CardStatsDefault type="warning" total={1701} />
         </Grid>
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>

@@ -225,18 +225,20 @@ function FaqContent() {
 export default function Page() {
   return (
     <DashboardLayout>
-      {/* <FaqContent /> */}
-      <Paper sx={{ my: 3 }}>
-        <Faqs items={tiers} />
-      </Paper>
-      <Paper sx={{ p: 2 }}>
-        <Typography p={3} component="h4" fontSize={22} fontWeight={600}>
-          Frequently Asked Questions
-        </Typography>
-        <Box m={2} width={'75%'}>
-          <FaqAccordion />
-        </Box>
-      </Paper>
+      <React.Fragment>
+        {/* <FaqContent /> */}
+        <Paper sx={{ my: 3 }}>
+          <Faqs items={tiers} />
+        </Paper>
+        <Paper sx={{ p: 2 }}>
+          <Typography p={3} component="h4" fontSize={22} fontWeight={600}>
+            Frequently Asked Questions
+          </Typography>
+          <Box m={2} width={'75%'}>
+            <FaqAccordion />
+          </Box>
+        </Paper>
+      </React.Fragment>
     </DashboardLayout>
   )
 }

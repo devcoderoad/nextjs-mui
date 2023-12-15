@@ -9,7 +9,8 @@ import {
   Stack,
   Badge,
   Alert,
-  Snackbar,
+  AlertColor,
+  // Snackbar,
 } from '@mui/material'
 
 import Table from '@mui/material/Table'
@@ -21,6 +22,7 @@ import TableRow from '@mui/material/TableRow'
 /* Components */
 import Title from './Title'
 import CogDefault from './Cog/Default'
+import AlertSnackBar from './Alert/SnackBar'
 
 // Generate Order Data
 function createData({
@@ -98,6 +100,12 @@ function preventDefault(event: any) {
 export default function Orders() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [openSnack, setOpenSnack] = React.useState(false)
+  const [detail, setDetail] = React.useState<{
+    title?: string
+    mode?: AlertColor
+    message?: string | React.ReactElement
+  }>()
+  // console.log({ detail })
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
@@ -107,8 +115,19 @@ export default function Orders() {
     setAnchorEl(null)
   }
 
-  const handleCog = (type: string, id: number) => {
-    console.log({ type, data: id })
+  const handleCog = (type: string, mode: AlertColor, row: any) => {
+    setDetail({
+      title: `${type.toUpperCase()} ORDER`,
+      mode,
+      message: (
+        <Box color={'secondary.main'}>
+          <div>{row?.name}</div>
+          <div>{row?.shipTo}</div>
+          <div>{row?.paymentMethod}</div>
+          <div>{row?.date}</div>
+        </Box>
+      ),
+    })
     setOpenSnack(true)
   }
 
@@ -178,25 +197,24 @@ export default function Orders() {
                 </TableCell>
                 <TableCell align="center">
                   <CogDefault
-                    onRefresh={() => handleCog('refresh', row.id)}
-                    onReload={() => handleCog('reload', row.id)}
-                    onRemove={() => handleCog('reload', row.id)}
+                    onRefresh={() => handleCog('refresh', 'success', row)}
+                    onReload={() => handleCog('reload', 'info', row)}
+                    onRemove={() => handleCog('remove', 'warning', row)}
                   />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        <Snackbar
+        <AlertSnackBar
           open={openSnack}
           autoHideDuration={3000}
           onClose={handleCloseSnack}
+          title={detail?.title}
+          message={detail?.message}
+          mode={detail?.mode}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <Alert severity="warning" sx={{ width: '100%' }} elevation={8}>
-            This is a success message!
-          </Alert>
-        </Snackbar>
+        />
       </Box>
       <Link color="primary" href="#" onClick={preventDefault}>
         See more orders

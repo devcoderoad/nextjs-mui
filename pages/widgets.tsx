@@ -193,24 +193,28 @@ export default function Page() {
                       message="This is the message"
                       mode="success"
                       type="relative"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
                       message="This is the message"
                       mode="warning"
                       type="relative"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
                       message="This is the message"
                       mode="info"
                       type="relative"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
                       message="This is the message"
                       mode="error"
                       type="relative"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
@@ -218,6 +222,7 @@ export default function Page() {
                       mode="success"
                       type="relative"
                       variant="outlined"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
@@ -225,6 +230,7 @@ export default function Page() {
                       mode="warning"
                       type="relative"
                       variant="filled"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
@@ -232,6 +238,7 @@ export default function Page() {
                       mode="info"
                       type="relative"
                       variant="outlined"
+                      closeButton
                     />
                     <AlertSnackBar
                       title="Hold Up"
@@ -239,6 +246,7 @@ export default function Page() {
                       mode="error"
                       type="relative"
                       variant="outlined"
+                      closeButton
                     />
                   </Grid>
                 </Stack>

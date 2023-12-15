@@ -3,7 +3,14 @@ import * as React from 'react'
 import MuiAlert, { AlertColor, AlertProps } from '@mui/material/Alert'
 
 import { OverridableStringUnion } from '@mui/types'
-import { Snackbar, AlertTitle, Fade, IconButton } from '@mui/material'
+import {
+  Snackbar,
+  AlertTitle,
+  Fade,
+  IconButton,
+  SnackbarProps,
+  BoxProps,
+} from '@mui/material'
 import {
   IconAlertTriangle,
   IconCircleCheck,
@@ -16,7 +23,24 @@ const Alert = React.forwardRef(function Alert(
   props: React.PropsWithChildren & AlertProps,
   ref: any
 ) {
-  return <MuiAlert elevation={1} ref={ref} variant="standard" {...props} />
+  return (
+    <MuiAlert
+      // elevation={2}
+      ref={ref}
+      variant="standard"
+      // action={
+      //   <IconButton
+      //     aria-label="close"
+      //     color="inherit"
+      //     size="small"
+      //     // onClick={() => setOpen(false)}
+      //   >
+      //     <IconX size={16} />
+      //   </IconButton>
+      // }
+      {...props}
+    />
+  )
 })
 
 const modeRecord: Record<
@@ -41,27 +65,31 @@ const iconRecord: Record<
   OverridableStringUnion<AlertColor>,
   React.ReactElement
 > = {
-  success: <IconExclamationCircle size={28} />,
-  warning: <IconCircleCheck size={28} />,
-  info: <IconInfoCircle size={28} />,
-  error: <IconAlertTriangle size={28} />,
+  success: <IconExclamationCircle size={26} />,
+  warning: <IconCircleCheck size={26} />,
+  info: <IconInfoCircle size={26} />,
+  error: <IconAlertTriangle size={26} />,
 }
 
 interface OwnProps {
   title?: string
   type?: 'fixed' | 'relative'
-  message?: string
+  message?: string | JSX.Element
   mode?: AlertColor
   variant?: 'standard' | 'filled' | 'outlined'
+  closeButton?: boolean
 }
 
-export default function SnackBar(props: OwnProps) {
+export default function AlertSnackBar(
+  props: OwnProps & SnackbarProps & BoxProps
+) {
   const {
     title = '',
     message = 'This is a success message!',
-    mode = 'error',
+    mode = 'success',
     type = 'fixed',
     variant = 'standard',
+    closeButton = false,
     ...rest
   } = props
   const [open, setOpen] = React.useState(true)
@@ -71,28 +99,38 @@ export default function SnackBar(props: OwnProps) {
   }
 
   const onCloseBar = () => {
-    setOpen(!open)
+    setOpen(false)
   }
 
   const renderAlert = () => (
-    <Fade in={open}>
+    <Fade in={open} {...rest}>
       <Alert
-        action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            size="small"
-            onClick={handleCloseAlert}
-          >
-            <IconX size={16} style={{ ...modeRecord[mode] }} />
-          </IconButton>
-        }
+        {...(closeButton
+          ? {
+              onClose: () => {
+                handleCloseAlert()
+              },
+              // action: (
+              //   <IconButton
+              //     aria-label="close"
+              //     color="inherit"
+              //     size="small"
+              //     onClick={() => handleCloseAlert()}
+              //   >
+              //     <IconX size={16} style={{ ...modeRecord[mode] }} />
+              //   </IconButton>
+              // ),
+            }
+          : null)}
         severity={mode}
-        sx={{ ...modeRecord[mode] }}
+        sx={{
+          ...modeRecord[mode],
+          '.MuiButtonBase-root': { transform: 'scale(0.75)' },
+          /* '.MuiTypography-root': { ...modeRecord[mode] }, */
+        }}
         iconMapping={{ [mode]: iconRecord[mode] }}
-        elevation={2}
+        elevation={1}
         variant={variant}
-        {...rest}
       >
         <AlertTitle>{title}</AlertTitle>
         {message}
@@ -107,7 +145,8 @@ export default function SnackBar(props: OwnProps) {
       autoHideDuration={4000}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       onClose={onCloseBar}
-      key="top-right"
+      key={`top-right-${title}`}
+      {...rest}
     >
       {renderAlert()}
     </Snackbar>

@@ -8,7 +8,6 @@ import PersonPinIcon from '@mui/icons-material/PersonPin'
 import DashboardLayout from '@layouts/DashboardLayout'
 
 /* Components */
-import Cog from '@components/Cog/Default'
 import TabsDefault from '@components/Tabs/Default'
 
 export default function Page() {

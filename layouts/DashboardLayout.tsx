@@ -4,7 +4,7 @@ import { styled, useTheme } from '@mui/material/styles'
 /* Components */
 import { ClickAwayListener } from '@mui/base'
 import MuiDrawer from '@mui/material/Drawer'
-import MuiAppBar from '@mui/material/AppBar'
+import MuiAppBar, { AppBarOwnProps, AppBarProps } from '@mui/material/AppBar'
 import MenuIcon from '@mui/icons-material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
@@ -50,7 +50,7 @@ import {
   thirdListItems,
 } from '@components/ListMenu/listItems'
 
-import AlertBar from '@components/Alert/SnackBar'
+import AlertSnackBar from '@components/Alert/SnackBar'
 import Copyright from '@components/Copyright'
 import FloatConfig from '@components/Float/Config'
 import FloatNotify from '@components/Float/Notify'
@@ -69,14 +69,16 @@ import { PropsWithChildren } from 'react'
 
 const drawerWidth = 240
 
-interface OwnProps {
-  // children?: React.ReactElement | null | undefined
-  open?: boolean
-  theme?: any
+interface CrumbProps {
   breadcrumb?: {
     name?: string
     url?: string
   }[]
+}
+interface OwnProps extends CrumbProps {
+  // children?: React.ReactElement | null | undefined
+  open: boolean
+  theme?: any
 }
 
 interface ScrollProps {
@@ -133,7 +135,7 @@ const Drawer = styled(MuiDrawer, {
 }))
 
 function DashboardContent(
-  props: PropsWithChildren<OwnProps & ScrollProps & CommonProps>
+  props: PropsWithChildren<CrumbProps & ScrollProps & CommonProps>
 ) {
   const {
     breadcrumb = [{ name: 'Dashboard', url: '/dashboard' }],
@@ -490,8 +492,8 @@ function DashboardContent(
       }}
     >
       <AppBar
-        position="absolute"
         open={open}
+        position="absolute"
         elevation={0}
         // elevation={!!trigger ? 4 : 0}
         // enableColorOnDark
@@ -772,9 +774,10 @@ function DashboardContent(
             pt: 6,
           }}
         >
-          <AlertBar
+          <AlertSnackBar
             hidden={false}
-            content={{ title: '', description: '', type: '' }}
+            // title="Test Title"
+            // message="Test Message"
           />
           <FloatConfig />
           <HideOnScroll>
@@ -793,7 +796,7 @@ function DashboardContent(
 }
 
 export default function DashboardLayout(
-  props: PropsWithChildren<OwnProps & ScrollProps & CommonProps>
+  props: PropsWithChildren<CrumbProps & ScrollProps & CommonProps>
 ) {
   const { children, ...rest } = props
   return <DashboardContent {...rest}>{children}</DashboardContent>

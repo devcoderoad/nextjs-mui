@@ -129,162 +129,163 @@ export default function Page() {
   ]
   return (
     <DashboardLayout>
-      <Toolbar disableGutters component="nav">
-        <Link
-          href="/profile"
-          variant="subtitle2"
-          color="secondary.main"
-          sx={{
-            textDecoration: 'none',
-            mr: 2,
-            svg: { verticalAlign: 'middle', mr: 1 },
-          }}
-        >
-          <CircleIcon fontSize="small" />
-          Profile
-        </Link>
-        <Typography
-          variant="subtitle2"
-          color="secondary.main"
-          sx={{
-            textDecoration: 'none',
-            mr: 2,
-            svg: { verticalAlign: 'middle', mr: 1 },
-          }}
-        >
-          <CommentIcon fontSize="small" />
-          Hi, Administrator
-        </Typography>
-      </Toolbar>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} lg={4}>
-          <AvatarProfile />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={8}>
-          <Paper
+      <React.Fragment>
+        <Toolbar disableGutters component="nav">
+          <Link
+            href="/profile"
+            variant="subtitle2"
+            color="secondary.main"
             sx={{
-              p: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100%',
+              textDecoration: 'none',
+              mr: 2,
+              svg: { verticalAlign: 'middle', mr: 1 },
             }}
           >
-            <Deposit />
-            <Box marginY={2}>
-              <Button
-                size="small"
-                variant="contained"
-                color="success"
-                endIcon={<AddCardIcon />}
-              >
-                Add Account
-              </Button>
-              {/* <GroupButton /> */}
-            </Box>
-          </Paper>
-        </Grid>
-        {/* Recent Orders */}
-        <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Orders />
-          </Paper>
-        </Grid>
-        <Grid item sm={12} lg={6}>
-          <Paper sx={{ p: 2 }}>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              // alignContent="center"
-              // verticalAlign="top"
+            <CircleIcon fontSize="small" />
+            Profile
+          </Link>
+          <Typography
+            variant="subtitle2"
+            color="secondary.main"
+            sx={{
+              textDecoration: 'none',
+              mr: 2,
+              svg: { verticalAlign: 'middle', mr: 1 },
+            }}
+          >
+            <CommentIcon fontSize="small" />
+            Hi, Administrator
+          </Typography>
+        </Toolbar>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} lg={4}>
+            <AvatarProfile />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={8}>
+            <Paper
+              sx={{
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100%',
+              }}
             >
+              <Deposit />
+              <Box marginY={2}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  endIcon={<AddCardIcon />}
+                >
+                  Add Account
+                </Button>
+                {/* <GroupButton /> */}
+              </Box>
+            </Paper>
+          </Grid>
+          {/* Recent Orders */}
+          <Grid item xs={12}>
+            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+              <Orders />
+            </Paper>
+          </Grid>
+          <Grid item sm={12} lg={6}>
+            <Paper sx={{ p: 2 }}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                // alignContent="center"
+                // verticalAlign="top"
+              >
+                <Typography
+                  component="h3"
+                  variant="h6"
+                  paddingBottom={1}
+                  color="secondary.dark"
+                >
+                  Tasks
+                </Typography>
+                <Cog />
+              </Box>
+              <Grid container fontSize="small">
+                <Grid item xs={12}>
+                  {dataTasks &&
+                    dataTasks.map((item) => {
+                      return (
+                        <Box
+                          key={item.id}
+                          display="flex"
+                          justifyContent="space-between"
+                          alignItems="top"
+                          border={1}
+                          borderColor="secondary.light"
+                          paddingY={1}
+                          paddingX={2}
+                          sx={{
+                            cursor: 'pointer',
+                            transition: '.15s ease',
+                            ':hover': {
+                              bgcolor: 'secondary.light',
+                              boxShadow: '2px 2px 10px #cccccc',
+                              transform: 'translateY(-5px)',
+                            },
+                          }}
+                        >
+                          <Stack mr={2}>
+                            <Typography
+                              color={`${item.type}.main`}
+                              component="h5"
+                              fontWeight="600"
+                            >
+                              {item.icon} {item.title}
+                            </Typography>
+                            <Box color="secondary.dark" mt={0.25}>
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: item.description,
+                                }}
+                              />
+                            </Box>
+                          </Stack>
+                          <Stack alignItems="end">
+                            <Box component="div" color="secondary.main">
+                              {item.createdAt}
+                            </Box>
+                            <Button
+                              variant="text"
+                              size="small"
+                              // color={item.type}
+                              startIcon={<CheckBoxIcon />}
+                            >
+                              {item.action}
+                            </Button>
+                          </Stack>
+                        </Box>
+                      )
+                    })}
+                  <Box textAlign="right" color="secondary">
+                    <Link href="#">see all</Link>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid item sm={12} lg={6}>
+            <Paper sx={{ p: 2 }}>
               <Typography
                 component="h3"
                 variant="h6"
                 paddingBottom={1}
                 color="secondary.dark"
               >
-                Tasks
+                Projects
               </Typography>
-              <Cog />
-            </Box>
-            <Grid container fontSize="small">
-              <Grid item xs={12}>
-                {dataTasks &&
-                  dataTasks.map((item) => {
-                    return (
-                      <Box
-                        key={item.id}
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems="top"
-                        border={1}
-                        borderColor="secondary.light"
-                        paddingY={1}
-                        paddingX={2}
-                        sx={{
-                          cursor: 'pointer',
-                          transition: '.15s ease',
-                          ':hover': {
-                            bgcolor: 'secondary.light',
-                            boxShadow: '2px 2px 10px #cccccc',
-                            transform: 'translateY(-5px)',
-                          },
-                        }}
-                      >
-                        <Stack mr={2}>
-                          <Typography
-                            color={`${item.type}.main`}
-                            component="h5"
-                            fontWeight="600"
-                          >
-                            {item.icon} {item.title}
-                          </Typography>
-                          <Box color="secondary.dark" mt={0.25}>
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: item.description,
-                              }}
-                            />
-                          </Box>
-                        </Stack>
-                        <Stack alignItems="end">
-                          <Box component="div" color="secondary.main">
-                            {item.createdAt}
-                          </Box>
-                          <Button
-                            variant="text"
-                            size="small"
-                            // color={item.type}
-                            startIcon={<CheckBoxIcon />}
-                          >
-                            {item.action}
-                          </Button>
-                        </Stack>
-                      </Box>
-                    )
-                  })}
-                <Box textAlign="right" color="secondary">
-                  <Link href="#">see all</Link>
-                </Box>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-        <Grid item sm={12} lg={6}>
-          <Paper sx={{ p: 2 }}>
-            <Typography
-              component="h3"
-              variant="h6"
-              paddingBottom={1}
-              color="secondary.dark"
-            >
-              Projects
-            </Typography>
-            <Grid container fontSize="small">
               <Grid container fontSize="small">
-                <Grid item xs={12}>
-                  {/* {dataTasks &&
+                <Grid container fontSize="small">
+                  <Grid item xs={12}>
+                    {/* {dataTasks &&
                     dataTasks.map((item) => {
                       return (
                         <Box
@@ -334,55 +335,62 @@ export default function Page() {
                         </Box>
                       );
                     })} */}
-                  <TableContainer>
-                    <Table
-                      sx={{ minWidth: 650 }}
-                      size="small"
-                      aria-label="a dense table"
-                    >
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Dessert (100g serving)</TableCell>
-                          <TableCell align="right">Calories</TableCell>
-                          <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                          <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                          <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow
-                            key={row.name}
-                            hover
-                            sx={{
-                              '&:last-child td, &:last-child th': { border: 0 },
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
-                              {row.name}
+                    <TableContainer>
+                      <Table
+                        sx={{ minWidth: 650 }}
+                        size="small"
+                        aria-label="a dense table"
+                      >
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>Dessert (100g serving)</TableCell>
+                            <TableCell align="right">Calories</TableCell>
+                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+                            <TableCell align="right">
+                              Protein&nbsp;(g)
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
                           </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                    {/* <TablePagination
+                        </TableHead>
+                        <TableBody>
+                          {rows.map((row) => (
+                            <TableRow
+                              key={row.name}
+                              hover
+                              sx={{
+                                '&:last-child td, &:last-child th': {
+                                  border: 0,
+                                },
+                              }}
+                            >
+                              <TableCell component="th" scope="row">
+                                {row.name}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.calories}
+                              </TableCell>
+                              <TableCell align="right">{row.fat}</TableCell>
+                              <TableCell align="right">{row.carbs}</TableCell>
+                              <TableCell align="right">{row.protein}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                      {/* <TablePagination
                       rowsPerPageOptions={[3, 6, { value: -1, label: "All" }]}
                       count={rows.length}
                     /> */}
-                  </TableContainer>
-                  <Box textAlign="right" color="secondary">
-                    <Link href="#">see all</Link>
-                  </Box>
+                    </TableContainer>
+                    <Box textAlign="right" color="secondary">
+                      <Link href="#">see all</Link>
+                    </Box>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
+      </React.Fragment>
     </DashboardLayout>
   )
 }
